@@ -7,10 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/style.css" >
-    <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
-    <title>@yield('title')</title>
+    <link rel="stylesheet" href="{{asset('style.css')}}">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +19,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss','resources/sass/style.scss', 'resources/js/app.js'])                 
+
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
     
     <!-- Bootsorap & Fontawesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -68,7 +74,7 @@
                         @else
                             {{-- NAVIGATION AREA --}}
                             {{-- Create Post Button/link --}}
-                            <li class="nav-item me-3" title="Create Post">
+                            <li class="nav-item me-3 mt-2" title="Create Post">
                                 <a href="{{-- route('post.create') --}}" class="nav-link">
                                 <i class="fa-solid fa-pen-to-square"></i> Create post
                                 </a>
@@ -77,14 +83,13 @@
                             {{-- Account Dropdown Button --}}
                             <div class="account" >
                                 <li class="nav-item me-3 dropdown">
-                                    <button id="account-dropdown" class="nav-link" data-bs-toggle="dropdown">
+                                    <button id="account-dropdown" class="nav-link " data-bs-toggle="dropdown">
                                         @if (Auth::user()->avatar)
-                                            <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" class="rounded-circle avatar-sm">
-                                            <span style="color: #F7F3EB;">
+                                            <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" class="rounded-circle avatar-lg">
                                                 {{ Auth::user()->name }}
-                                            </span> 
                                         @else
-                                            <i class="fa-solid fa-circle-user icon-sm"></i> {{ Auth::user()->name }}
+                                            <img src="/images//profile_icon.png" alt="{{ Auth::user()->name }}" class="rounded-circle avatar-lg"></i> 
+                                            {{ Auth::user()->name }}
                                         @endif
                                     </button>
                                 
@@ -105,7 +110,7 @@
                                 </div>
                                 
                             </li>
-                            <li class="nav-item me-3" title="Admin">
+                            <li class="nav-item me-3  mt-2" title="Admin">
                                 @can('admin')
                                 {{-- Admin Controls --}}
                                 <a class="dropdown-item" href="{{-- route('admin.users') --}}">
@@ -115,7 +120,7 @@
                             </li>
                             <li class="nav-item">
                                 {{-- Logout Button/Link --}}
-                                <a class="nav-link" href="{{ route('logout') }}"
+                                <a class="nav-link  mt-2" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
                                     <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}
