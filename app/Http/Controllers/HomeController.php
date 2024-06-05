@@ -33,4 +33,9 @@ class HomeController extends Controller
     public function footer(){
         return view('layouts.footer');
     }
+
+    public function homepage(){
+        return view('homepage.homepage');
+    }
+
 }
