@@ -1,0 +1,52 @@
+/* homepage tab */
+/* shodow not yet */
+.tab_menu 
+{
+  display: flex;
+  align-items: flex-end;
+  min-height: 80px;
+  max-height: 100px;
+  width: 100%;
+  font-size: 32px;
+}
+.tab_menu-item 
+{
+  color: #887569;
+  font: bold 75% "Nunito";
+  list-style: none;
+  min-width: 18%;
+  max-width: 200px;
+  padding: 1rem .2rem;
+  text-align: center;
+  margin-right: 0.8%;
+  background-color: #DBD2C8;
+  border-top-left-radius: 0.5em 0.5em;
+  border-top-right-radius: 0.5em 0.5em;
+  cursor: grab;
+  transition: all 0.2s;
+}
+.tab_menu-item:first-of-type {
+  min-width: 24%;
+  max-width: 28%;
+}
+  /* is-active style */
+.tab_menu-item.is-active 
+{
+  background-color: #f7f3eb;
+  color: #4D1F01;
+  padding: 1.3rem 0;
+  text-decoration: underline;
+}
+  /* tab panel style */
+.tab_panel-box
+{
+  /* min-height: 80%; */
+  padding: 1rem 0.3rem;
+  border-radius: 0.5rem 0.5rem;
+  background-color: #f7f3eb;
+  display: none;
+}
+
+.tab_panel-box.is-show {
+  display: block;
+}
