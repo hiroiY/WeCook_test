@@ -8,11 +8,11 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         {{-- Login card --}}
-        <div class="card login-card my-auto">
+        <div id="login-card" class="card login-card my-auto">
           {{-- Login card body --}}
           <div class="card-body">
             {{-- Login title --}}
-            <p class="mb-5 display-4 login-ttl"><i class="fa-solid fa-chevron-left fa-xs"></i>Log in</p>
+            <p class="mb-5 display-4 login-ttl"><i class="fa-solid fa-chevron-left fa-xs login-ttl"></i>Log in</p>
             <form action="" method="post">
               @csrf
               
@@ -45,14 +45,14 @@
               {{-- Login button --}}
               <div class="row mb-4 justify-content-center">
                 <div class="col-10">
-                  <button type="submit" class="btn w-100 login-btn">Log in</button>
+                  <button id="login-btn" type="submit" class="btn w-100 login-btn">Log in</button>
                 </div>
               </div>
               
               {{-- New registration link--}}
               <div class="row mb-3">
                 <div class="col px-auto">
-                  <p class="text-center fw-bold">Are you new here? <a href="" class="text-decoration-none register-link">Register</a></p>
+                  <p class="text-center fw-bold are-you-new">Are you new here? <a href="" class="text-decoration-none register-link">Register</a></p>
                 </div>
               </div>
             </form>
