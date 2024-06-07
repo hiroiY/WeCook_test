@@ -1,5 +1,5 @@
 /* Login & Register */
-.login-card, #register-card{
+#login-card, #register-card{
   background-color: #F7F3EB;
   border-radius: 30px;
 }
@@ -7,11 +7,11 @@
   font-size: 35px;
   color: #4D1F01;
 }
-.login-btn, #register-btn{
+#login-btn, #register-btn{
   color: white;
   background-color: #E45900;
 }
-.login-link{
+.login-link, .register-link{
   color: #E45900;
 }
 .login-bg{
@@ -19,7 +19,7 @@
    background-size: cover;
    background-repeat: no-repeat;
 }
-.already-have-account{
+.already-have-account, .are-you-new{
   color: #4D1F01;
 }
 
