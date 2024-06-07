@@ -1,3 +1,29 @@
+/* Login & Register */
+.login-card, #register-card{
+  background-color: #F7F3EB;
+  border-radius: 30px;
+}
+.login-ttl{
+  font-size: 35px;
+  color: #4D1F01;
+}
+.login-btn, #register-btn{
+  color: white;
+  background-color: #E45900;
+}
+.login-link{
+  color: #E45900;
+}
+.login-bg{
+  background-image: url(../imgs/regi.png);
+   background-size: cover;
+   background-repeat: no-repeat;
+}
+.already-have-account{
+  color: #4D1F01;
+}
+
+
 *{
   font-family: "Nunito";
   color:#F7F3EB;
