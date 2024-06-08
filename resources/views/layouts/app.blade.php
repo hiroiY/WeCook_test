@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    @vite(['resources/sass/app.scss','resources/sass/style.scss', 'resources/js/app.js'])                 
+    @vite(['resources/sass/app.scss','resources/sass/style.scss', 'resources/js/app.js'])      
 
 
     <!-- Font awesome -->
@@ -143,8 +143,10 @@
         </nav>
 
         <main class="py-4" style="padding-top: 0px !important;">
+        @include('layous.navbar')
             @yield('content')
         </main>
+        <!-- include footer file here -->
     </div>
 </body>
 <footer>
