@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+{{-- Read the scss for login --}}
+@vite(['resources/sass/login.scss'])
+
 @section('title', 'Login')
 
 @section('content')
@@ -12,7 +15,7 @@
           {{-- Login card body --}}
           <div class="card-body">
             {{-- Login title --}}
-            <p class="mb-5 display-4 login-ttl"><i class="fa-solid fa-chevron-left fa-xs login-ttl"></i>Log in</p>
+            <p class="mb-5 display-4 login-card-ttl"><i class="fa-solid fa-chevron-left fa-xs login-card-ttl"></i>Log in</p>
             <form action="" method="post">
               @csrf
               
@@ -45,7 +48,7 @@
               {{-- Login button --}}
               <div class="row mb-4 justify-content-center">
                 <div class="col-10">
-                  <button id="login-btn" type="submit" class="btn w-100 login-btn">Log in</button>
+                  <button id="login-card-btn" type="submit" class="btn w-100 login-card-btn">Log in</button>
                 </div>
               </div>
               
