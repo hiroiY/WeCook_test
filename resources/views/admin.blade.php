@@ -9,9 +9,10 @@
 <link rel="stylesheet" 
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 >
+@vite(['resources/sass/admin.scss'])
 
 @section('content')
-<div class="container-fluid h-100">
+<div class="container-fluid h-100 p-0">
     <div class="col-2 text-white">
         {{-- Side bar --}}
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse">
