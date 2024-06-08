@@ -1,18 +1,20 @@
 @extends('layouts.app')
 
+@vite(['resources/sass/register.scss'])
+
 @section('title', 'Register')
 
 @section('content')
-<div class="py-5 login-bg">
+<div class="py-5 register-bg">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
         {{-- Register card --}}
-        <div id="register-card" class="card my-auto login-card">
+        <div id="register-card" class="card my-auto">
           {{-- Register card body --}}
           <div class="card-body">
-            {{-- Register title --}}
-            <p class="mb-5 display-4 login-ttl"><i class="fa-solid fa-chevron-left fa-xs login-ttl"></i>Register</p>
+            {{-- Register card title --}}
+            <p class="mb-5 display-4 register-card-ttl"><i class="fa-solid fa-chevron-left fa-xs register-card-ttl"></i>Register</p>
             <form action="" method="post">
               @csrf
 
@@ -71,7 +73,7 @@
               {{-- Register button --}}
               <div class="row mb-4 justify-content-center">
                 <div class="col-10">
-                  <button id="register-btn" type="submit" class="btn w-100 login-btn">Register</button>
+                  <button id="register-btn" type="submit" class="btn w-100">Register</button>
                 </div>
               </div>
               
