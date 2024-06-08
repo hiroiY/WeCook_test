@@ -1,5 +1,5 @@
 /* Login & Register */
-#login-card, #register-card{
+/* #login-card, #register-card{
   background-color: #F7F3EB;
   border-radius: 30px;
 }
@@ -21,7 +21,7 @@
 }
 .already-have-account, .are-you-new{
   color: #4D1F01;
-}
+} */
 
 
 *{
