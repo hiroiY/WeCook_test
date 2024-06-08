@@ -10,9 +10,6 @@
   data-bs-ride="carousel"
 >
   <div class="carousel-inner">
-    <!-- <div class="carousel-item active">
-      <img src="/images/homepage_top.png" class="d-block w-100 h-25" alt="homepage_top photo">
-    </div> -->
     <div class="carousel-item active">
       <a href="#">
         <img 
@@ -125,47 +122,43 @@
       class="tab_panel-box is-show" 
       data-panel="01"
     >
-      <p class="tab_panel-text">
+      <div class="tab_panel-text">
         Resently shared recipe page here.
-      </p>
+      </div>
     </div>
     <div 
       class="tab_panel-box" 
       data-panel="02"
     >
-      <p class="tab_panel-text">
+      <div class="tab_panel-text">
         Appetizer recipe page here.
-      </p>
+      </div>
     </div>
     <div 
       class="tab_panel-box" 
       data-panel="03"
     >
-      <p class="tab_panel-text">
+      <div class="tab_panel-text">
         Side dish recipe page here.
-      </p>
+      </div>
     </div>
     <div 
       class="tab_panel-box" 
       data-panel="04"
     >
-      <p class="tab_panel-text">
+      <div class="tab_panel-text">
         main dish recipe page here.
-      </p>
+      </div>
     </div>
     <div 
       class="tab_panel-box" 
       data-panel="05"
     >
-      <p class="tab_panel-text">
+      <div class="tab_panel-text">
         dessert recipe page here.
-      </p>
+      </div>
     </div>
   </div>
 </div>
 
-
-
-
-<script src="/index.js"></script>
 @endsection

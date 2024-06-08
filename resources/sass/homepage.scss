@@ -13,7 +13,7 @@
 .tab_menu-item 
 {
   color: #887569;
-  font: bold 75% "Nunito";
+  font: bold 72% "Nunito";
   list-style: none;
   min-width: 18%;
   max-width: 200px;
@@ -25,6 +25,7 @@
   border-top-right-radius: 0.5em 0.5em;
   cursor: grab;
   transition: all 0.2s;
+  box-shadow: .1em -.01rem 1px rgba(0, 0, 0, 0.196);
 }
 .tab_menu-item:first-of-type {
   min-width: 24%;
@@ -36,12 +37,13 @@
   background-color: #f7f3eb;
   color: #4D1F01;
   padding: 1.3rem 0;
-  text-decoration: underline;
+  text-decoration: underline  #88756965;
 }
   /* tab panel style */
 .tab_panel-box
 {
   /* min-height: 80%; */
+  box-shadow: .1em .1rem 3px rgba(0, 0, 0, 0.253);
   padding: 1rem 0.3rem;
   border-radius: 0.5rem 0.5rem;
   background-color: #f7f3eb;
@@ -51,4 +53,3 @@
 .tab_panel-box.is-show {
   display: block;
 }
-
