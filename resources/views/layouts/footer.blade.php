@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@vite(['resources/sass/footer.scss'])
+
 @section('content')
 
 <div class="footer py-5 footer-custom">
