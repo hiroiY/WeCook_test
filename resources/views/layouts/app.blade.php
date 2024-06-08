@@ -126,21 +126,30 @@
                             </li>
                             <li class="nav-item">
                                 {{-- Logout Button/Link --}}
-                                <a class="nav-link  mt-2" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}
-                                </a>
+                                <button type="" data-bs-toggle="modal" data-bs-target="#logout-{{ Auth::user()->id }}"">Log out</button>
+                                @include('modals.logout')
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                                </form>
-                            </li>
+                                
+
+
+                                {{-- <a class="nav-link  mt-2" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                            </form>
+                            </li> --}}
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
+
+        {{-- Logout modal --}}
+
 
         <main class="py-4" style="padding-top: 0px !important;">
             @yield('content')

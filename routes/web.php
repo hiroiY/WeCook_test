@@ -11,3 +11,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+// Logout modal
+// Route::get('/logoutmodal', [HomeController::class, 'logoutmodal']);
