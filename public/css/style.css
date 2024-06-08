@@ -1,4 +1,4 @@
-/* Login & Register */
+Login & Register
 #login-card, #register-card{
   background-color: #F7F3EB;
   border-radius: 30px;
@@ -16,8 +16,8 @@
 }
 .login-bg{
   background-image: url(../imgs/regi.png);
-   background-size: cover;
-   background-repeat: no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .already-have-account, .are-you-new{
   color: #4D1F01;

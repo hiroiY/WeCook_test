@@ -26,5 +26,11 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function admin(){
+        return view('admin');
+    }
 
+    public function footer(){
+        return view('layouts.footer');
+    }
 }
