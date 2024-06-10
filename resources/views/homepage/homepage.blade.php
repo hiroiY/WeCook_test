@@ -13,14 +13,15 @@
 <!-- tab menu area -->
 <div 
   class="tab mx-auto mt-5" 
-  style="max-width: 95%;"
+  style="max-width: 100%;" 
 >
-  <ul class="tab_menu m-0 p-0">
+  <ul class="tab_menu m-auto p-0" style="max-width: 93%;">
     <li 
-      class="tab_menu-item is-active" 
+      class="tab_menu-item is-active " 
       data-tab="01"
+      style="height: 100%;"
     >
-      Resently shared
+      Recently shared
     </li>
     <li 
       class="tab_menu-item " 
@@ -49,13 +50,13 @@
   </ul>
 
     <!-- tab_panel area/ text here! -->
-  <div class="tab_panel w-100">
+  <div class="tab_panel mx-auto" style="max-width: 93%;">
     <div 
       class="tab_panel-box is-show" 
       data-panel="01"
     >
-      <div class="tab_panel-text">
-        Resently shared recipe page here.
+      <div class="tab_panel-text" 
+        @include('homepage.recently')
       </div>
     </div>
     <div 
@@ -92,5 +93,5 @@
     </div>
   </div>
 </div>
-
+{{-- $all_recipes->links() --}}
 @endsection

@@ -16,10 +16,11 @@
   font: bold 72% "Nunito";
   list-style: none;
   min-width: 18%;
-  max-width: 200px;
+  // max-width: 180px;
   padding: 1rem .2rem;
   text-align: center;
   margin-right: 0.8%;
+  margin-top: 0;
   background-color: #DBD2C8;
   border-top-left-radius: 0.5em 0.5em;
   border-top-right-radius: 0.5em 0.5em;
@@ -29,7 +30,6 @@
 }
 .tab_menu-item:first-of-type {
   min-width: 24%;
-  max-width: 28%;
 }
   /* is-active style */
 .tab_menu-item.is-active 
@@ -38,6 +38,7 @@
   color: #4D1F01;
   padding: 1.3rem 0;
   text-decoration: underline  #88756965;
+  font-size: 0.8em;
 }
   /* tab panel style */
 .tab_panel-box
@@ -45,7 +46,7 @@
   /* min-height: 80%; */
   box-shadow: .1em .1rem 3px rgba(0, 0, 0, 0.253);
   padding: 1rem 0.3rem;
-  border-radius: 0.5rem 0.5rem;
+  border-radius: .2rem 1rem 1rem 1rem;
   background-color: #f7f3eb;
   display: none;
 }
