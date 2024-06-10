@@ -26,10 +26,8 @@ class HomeController extends Controller
         return view('home');
     }
 
-    // public function logoutmodal()
-    // {
-    //     return view('modals.logout');
-    // }
 
-
+    public function footer(){
+        return view('layouts.footer');
+    }
 }

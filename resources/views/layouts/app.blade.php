@@ -25,7 +25,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    @vite(['resources/sass/app.scss','resources/sass/style.scss', 'resources/js/app.js'])                 
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- @vite(['resources/sass/app.scss','resources/sass/style.scss', 'resources/js/app.js'])                  --}}
+
 
 
     <!-- Font awesome -->
@@ -126,7 +128,7 @@
                             </li>
                             <li class="nav-item">
                                 {{-- Logout Button/Link --}}
-                                <button type="" data-bs-toggle="modal" data-bs-target="#logout-{{ Auth::user()->id }}"">Log out</button>
+                                <button type="" data-bs-toggle="modal" data-bs-target="#logout-form">Log out</button>
                                 @include('modals.logout')
 
                                 
