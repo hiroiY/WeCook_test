@@ -43,6 +43,10 @@ class HomeController extends Controller
         return view('myrecipe');
     }
 
+    public function admin(){
+        return view('admin');
+    }
+
     public function footer()
     {
         return view('layouts.footer');
