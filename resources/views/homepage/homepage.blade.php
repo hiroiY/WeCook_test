@@ -13,13 +13,12 @@
 <!-- tab menu area -->
 <div 
   class="tab mx-auto mt-5" 
-  style="max-width: 100%;" 
+  style="max-width: 95%;"
 >
-  <ul class="tab_menu m-auto p-0" style="max-width: 93%;">
+  <ul class="tab_menu m-0 p-0">
     <li 
-      class="tab_menu-item is-active " 
+      class="tab_menu-item is-active" 
       data-tab="01"
-      style="height: 100%;"
     >
       Recently shared
     </li>
@@ -50,12 +49,12 @@
   </ul>
 
     <!-- tab_panel area/ text here! -->
-  <div class="tab_panel mx-auto" style="max-width: 93%;">
+  <div class="tab_panel w-100">
     <div 
       class="tab_panel-box is-show" 
       data-panel="01"
     >
-      <div class="tab_panel-text" 
+      <div class="row px-4 py-1">
         @include('homepage.recently')
       </div>
     </div>
@@ -63,35 +62,35 @@
       class="tab_panel-box" 
       data-panel="02"
     >
-      <div class="tab_panel-text">
-        Appetizer recipe page here.
+      <div class="row px-4 py-1">
+        @include('homepage.appetizer')
       </div>
     </div>
     <div 
       class="tab_panel-box" 
       data-panel="03"
     >
-      <div class="tab_panel-text">
-        Side dish recipe page here.
+      <div class="row px-4 py-1">
+      @include('homepage.sidedish')
       </div>
     </div>
     <div 
       class="tab_panel-box" 
       data-panel="04"
     >
-      <div class="tab_panel-text">
-        main dish recipe page here.
+      <div class="row px-4 py-1">
+      @include('homepage.maindish')
       </div>
     </div>
     <div 
       class="tab_panel-box" 
       data-panel="05"
     >
-      <div class="tab_panel-text">
-        dessert recipe page here.
+      <div class="row px-4 py-1">
+      @include('homepage.dessert')
       </div>
     </div>
   </div>
 </div>
-{{-- $all_recipes->links() --}}
+
 @endsection
