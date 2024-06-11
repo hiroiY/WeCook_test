@@ -37,8 +37,14 @@ class HomeController extends Controller
     public function homepage(){
         return view('homepage.homepage');
     }
+
     public function myrecipe()
     {
         return view('myrecipe');
+    }
+
+    public function footer()
+    {
+        return view('layouts.footer');
     }
 }
