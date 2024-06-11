@@ -1,29 +1,29 @@
 // logout modal
-.logout-modal-style{
-  background-color: #F7F3EB;
-  border-radius: 50px;
+.logout-modal-style {
+    background-color: #f7f3eb;
+    border-radius: 30px;
 }
 
-.modal-content{
-  -webkit-border-radius: 50px !important;
-  -moz-border-radius: 50px !important;
-  border-radius: 50px !important;
-  // border-radius: 100px !important;
+.modal-content {
+    -webkit-border-radius: 30px !important;
+    -moz-border-radius: 30px !important;
+    border-radius: 30px !important;
+    // border-radius: 100px !important;
 }
 
 // logout modal button
-#logout-btn{
-  color: white;
-  background-color: #E45900;
+#logout-btn {
+    color: white;
+    background-color: #e45900;
 }
 
 // logout modal title
-.logout-ttl{
-  font-size: 35px;
-  color: #4D1F01;
+.logout-ttl {
+    font-size: 35px;
+    color: #4d1f01;
 }
 
 // logout modal message
-.are-you-sure{
-  color: #4D1F01;
+.are-you-sure {
+    color: #4d1f01;
 }
