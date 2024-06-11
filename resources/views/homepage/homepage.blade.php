@@ -48,49 +48,14 @@
     </li>
   </ul>
 
-    <!-- tab_panel area/ text here! -->
+    <!-- tab_panel area/ specific recipe page here! -->
   <div class="tab_panel w-100">
-    <div 
-      class="tab_panel-box is-show" 
-      data-panel="01"
-    >
-      <div class="row px-4 py-1">
-        @include('homepage.recently')
-      </div>
-    </div>
-    <div 
-      class="tab_panel-box" 
-      data-panel="02"
-    >
-      <div class="row px-4 py-1">
-        @include('homepage.appetizer')
-      </div>
-    </div>
-    <div 
-      class="tab_panel-box" 
-      data-panel="03"
-    >
-      <div class="row px-4 py-1">
-      @include('homepage.sidedish')
-      </div>
-    </div>
-    <div 
-      class="tab_panel-box" 
-      data-panel="04"
-    >
-      <div class="row px-4 py-1">
-      @include('homepage.maindish')
-      </div>
-    </div>
-    <div 
-      class="tab_panel-box" 
-      data-panel="05"
-    >
-      <div class="row px-4 py-1">
-      @include('homepage.dessert')
-      </div>
-    </div>
+    @include('homepage.recently')
+    @include('homepage.appetizer')
+    @include('homepage.sidedish')
+    @include('homepage.maindish')
+    @include('homepage.dessert')
   </div>
 </div>
-
+<!-- pagenate will insert to each page. -->
 @endsection
