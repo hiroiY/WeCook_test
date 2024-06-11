@@ -30,4 +30,9 @@ class HomeController extends Controller
     {
         return view('myrecipe');
     }
+
+    public function footer()
+    {
+        return view('layouts.footer');
+    }
 }
