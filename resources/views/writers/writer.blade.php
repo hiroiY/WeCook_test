@@ -1,31 +1,62 @@
 @extends('layouts.app')
 
-@vite(['resources/sass/writers.scss',
-        'resources/js/tabs.js'])
+@vite(['resources/sass/writers.scss','resources/js/tabs.js'])
 
 @section('content')
 <!-- breadcrumb is here -->
-
+<div class="breadcrumb ms-5 mt-3">
+  <a 
+  href="{{-- route('homepage') --}}"
+  >
+    Home
+  </a> &nbsp; 
+  <i 
+    class="fa-solid fa-angle-right" 
+    style="color:#887569;"
+  >
+  </i> &nbsp;
+  <a 
+    href="#"
+  >
+    Recipe's name{{-- $recipe->name --}}
+  </a> &nbsp; 
+  <i 
+    class="fa-solid fa-angle-right" 
+    style="color:#887569;"
+  >
+  </i> &nbsp;
+  <a 
+    href="#"
+  >
+    Writer's name{{-- $recipe->user->name --}}
+  </a>
+</div>
 <!-- writer's acount here -->
-<div class="writer_account">
-  @if(Auth::user()->avatar)
-    <img 
-      src="{{ Auth::user()->avatar }}" 
-      alt="{{ Auth::user()->name }}" 
+<div class="writer_account mt-5 ms-4">
+  {{-- @if($recipe->user->avatar) --}}
+    <!-- <img 
+      src="{{-- $recipe->user->avatar --}}" 
+      alt="{{-- $recipe->user->name --}}" 
       class="rounded-circle avatar-lg"
     >
-    &nbsp;
-    {{ Auth::user()->name }}
-  @else
+    <a 
+      href="#"
+    >
+      {{-- $recipe->user->name --}} 
+    </a>-->
+    {{-- $recipe->user->name --}}
+  {{-- @else --}}
     <img 
       src="{{asset('/images//profile_icon.png')}}" 
-      alt="{{ Auth::user()->name }}" 
+      alt="{{-- $recipe->user->name --}}" 
       class="rounded-circle avatar-lg"
     >
-    </i> 
-    &nbsp;
-    {{ Auth::user()->name }}
-  @endif
+    <a 
+      href="#"
+    >
+      Mr.Cook {{-- $recipe->user->name --}} 
+    </a>
+  {{-- @endif --}}
 </div>
 <!-- tab menu area -->
 <div 
@@ -38,30 +69,31 @@
       data-tab="01"
     >
       Recently shared
+
     </li>
     <li 
       class="tab_menu-item " 
       data-tab="02"
     >
-      Appetizer
+      Appetizer&nbsp;<span>(11{{-- $user->recipes->count() --}})</span>
     </li>
     <li 
       class="tab_menu-item" 
       data-tab="03"
     >
-      Side dish
+      Side dish&nbsp;<span>(8{{-- $user->recipes->count() --}})</span>
     </li>
     <li 
       class="tab_menu-item" 
       data-tab="04"
     >
-      Main dish
+      Main dish&nbsp;<span>(4{{-- $user->recipes->count() --}})</span>
     </li>
     <li 
       class="tab_menu-item" 
       data-tab="05"
     >
-      Dessert
+      Dessert&nbsp;<span>(1{{-- $user->recipes->count() --}})</span>
     </li>
   </ul>
 
