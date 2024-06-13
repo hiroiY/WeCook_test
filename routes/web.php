@@ -29,3 +29,7 @@ Route::get('/homepage',[App\Http\Controllers\HomeController::class, 'homepage'])
 
 // Route::('/home', [HomeController::class, 'index])->name('home');
 // Route::('/mypage', [HomeController::class, 'mypage])->name('mypage');
+// require __DIR__ . '/auth.php';
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');

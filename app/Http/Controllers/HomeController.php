@@ -47,4 +47,8 @@ class HomeController extends Controller
     {
         return view('mypage');
     }
+    public function mypage2()
+    {
+        return view('mybookmark');
+    }
 }
