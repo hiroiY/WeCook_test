@@ -52,11 +52,9 @@
         <main class="py-4" style="padding-top: 0px !important;">
             @yield('content')
         </main>
-        <!-- include footer file here -->
+        
+        @include('layouts.footer')
     </div>
 </body>
-<footer>
-    <!-- include footer file here -->
 
-</footer>
 </html>
