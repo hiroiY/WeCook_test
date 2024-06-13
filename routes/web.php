@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -22,3 +23,4 @@ Route::get('/footer',[App\Http\Controllers\HomeController::class, 'footer'])->na
 Route::get('/admin',[App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
 Route::get('/footer',[App\Http\Controllers\HomeController::class, 'footer'])->name('footer');
 Route::get('/mypage/myrecipe', [App\Http\Controllers\HomeController::class, 'myrecipe'])->name('myrecipe');
+Route::get('/recipe/writer',[UserController::class, 'writer'])->name('writer');
