@@ -31,8 +31,9 @@ class HomeController extends Controller
     public function mypage2()
     {
         return view('mybookmark');
-
-    public function footer(){
+    }
+    public function footer()
+    {
         return view('layouts.footer');
     }
 }
