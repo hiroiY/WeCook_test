@@ -15,5 +15,6 @@ Route::get('/admin',[App\Http\Controllers\HomeController::class, 'admin'])->name
 Route::get('/usermanagement',[App\Http\Controllers\AdminController::class, 'usermanagement'])->name('usermanagement');
 Route::get('/postmanagement',[App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
 Route::get('/user-status',[App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
+Route::get('/post-status',[App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
 Route::get('/footer',[App\Http\Controllers\HomeController::class, 'footer'])->name('footer');
 Route::get('/homepage',[App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
