@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('homepage.homepage');
     }
 
     public function admin(){
@@ -34,16 +34,13 @@ class HomeController extends Controller
         return view('layouts.footer');
     }
 
-    public function homepage(){
-        return view('homepage.homepage');
-    }
-
     public function myrecipe()
     {
         return view('myrecipe');
     }
 
-    public function admin(){
+    public function admin()
+    {
         return view('admin');
     }
 
