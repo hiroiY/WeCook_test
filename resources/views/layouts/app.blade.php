@@ -52,12 +52,8 @@
         <main class="py-4" style="padding-top: 0px !important;">
             @yield('content')
         </main>
-<<<<<<< HEAD
         
         @include('layouts.footer')
-=======
-        <!-- include footer file here -->
->>>>>>> 4836c375f2ffb324a4adc076fa015e08cbb4b05c
     </div>
 </body>
 
