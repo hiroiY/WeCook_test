@@ -143,7 +143,7 @@
                     </ul>
                 </div>
             </div>
-        </nav> --}}
+        </nav>
 
         <main class="py-4" style="padding-top: 0px !important;">
             @yield('content')
