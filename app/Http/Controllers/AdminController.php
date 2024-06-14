@@ -18,5 +18,4 @@ class AdminController extends Controller
     public function poststatus(){                                 
         return view('admin.modal.post_status');                 
     }
-        
 }
