@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 
-    <!-- Font awesome -->
+    <!-- Fonts awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Scripts -->
@@ -27,7 +27,6 @@
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     {{-- CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     {{-- @vite(['resources/sass/app.scss','resources/sass/style.scss', 'resources/js/app.js'])                  --}}
 
@@ -52,12 +51,12 @@
         <main class="py-4" style="padding-top: 0px !important;">
             @yield('content')
         </main>
-        
-        @include('layouts.footer')
+        <!-- include footer file here -->
     </div>
 </body>
 <footer>
     <!-- include footer file here -->
+
 </footer>
 </html>
 
