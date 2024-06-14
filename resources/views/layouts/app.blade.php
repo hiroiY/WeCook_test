@@ -56,6 +56,5 @@
 </body>
 <footer>
     <!-- include footer file here -->
-
 </footer>
 </html>
