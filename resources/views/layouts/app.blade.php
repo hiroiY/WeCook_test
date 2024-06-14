@@ -56,5 +56,7 @@
         @include('layouts.footer')
     </div>
 </body>
-
+<footer>
+    <!-- include footer file here -->
+</footer>
 </html>
