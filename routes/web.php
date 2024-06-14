@@ -22,9 +22,6 @@ Route::get('/user-status',[App\Http\Controllers\AdminController::class, 'usersta
 Route::get('/post-status',[App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
 Route::get('/footer',[App\Http\Controllers\HomeController::class, 'footer'])->name('footer');
 Route::get('/admin',[App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
-Route::get('/user-status',[App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
-Route::get('/post-status',[App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
 Route::get('/footer',[App\Http\Controllers\HomeController::class, 'footer'])->name('footer');
-Route::get('/homepage',[App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
 Route::get('/mypage/myrecipe', [App\Http\Controllers\HomeController::class, 'myrecipe'])->name('myrecipe');

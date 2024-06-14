@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
     /**
      * Show the application dashboard.
@@ -22,7 +22,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // die('aa');
         return view('homepage.homepage');
     }
 
@@ -41,10 +40,6 @@ class HomeController extends Controller
     public function footer()
     {
         return view('layouts.footer');
-    }
-
-    public function homepage(){
-        return view('homepage.homepage');
     }
     
     public function myrecipe()

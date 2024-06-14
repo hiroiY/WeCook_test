@@ -1,7 +1,7 @@
 @vite(['resources/sass/navbar.scss'])
 <nav class="navbar navbar-expand-md shadow-sm p-1">
   <div class="container">
-    <a class="navbar-brand" href="{{ route('homepage') }}">
+    <a class="navbar-brand" href="{{ route('home') }}">
       <img src="/logo/Logo_white.png" alt="logo" class="me-2 pb-2">
       <span class="wecook"><span class="we">We</span>Cook</span>
     </a>
