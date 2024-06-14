@@ -143,7 +143,6 @@
         </nav>
 
         <main class="py-4" style="padding-top: 0px !important;">
-        @include('layous.navbar')
             @yield('content')
         </main>
         <!-- include footer file here -->
