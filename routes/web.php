@@ -8,8 +8,8 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
+// require __DIR__ . '/auth.php';
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -26,17 +26,5 @@ Route::get('/user-status',[App\Http\Controllers\AdminController::class, 'usersta
 Route::get('/post-status',[App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
 Route::get('/footer',[App\Http\Controllers\HomeController::class, 'footer'])->name('footer');
 Route::get('/homepage',[App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
-// require __DIR__ . '/auth.php';
-
-// Route::('/home', [HomeController::class, 'index])->name('home');
-// Route::('/mypage', [HomeController::class, 'mypage])->name('mypage');
-// require __DIR__ . '/auth.php';
-
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
 Route::get('/mypage/myrecipe', [App\Http\Controllers\HomeController::class, 'myrecipe'])->name('myrecipe');
