@@ -1,7 +1,7 @@
 @vite(['resources/sass/recipe_card_homepage.scss'])
 {{-- @foreach()--}}
 <div 
-  class="tab_panel-box" 
+  class="tab_panel-box is-show" 
   data-panel="01"
 >
   <div class="row px-4 py-1">
