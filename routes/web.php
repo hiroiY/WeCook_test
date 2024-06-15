@@ -22,3 +22,4 @@ Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'postst
 Route::get('/footer', [App\Http\Controllers\HomeController::class, 'footer'])->name('footer');
 Route::get('/mypage/myrecipe', [App\Http\Controllers\HomeController::class, 'myrecipe'])->name('myrecipe');
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
+Route::get('/editmyrecipe', [App\Http\Controllers\HomeController::class, 'editmyrecipe'])->name('editmyrecipe');
