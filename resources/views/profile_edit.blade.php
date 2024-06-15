@@ -3,7 +3,7 @@
 @vite(['resources/sass/profile_edit.scss'])
 
 @section('content') 
-<div class="row w-100">
+<div class="body row w-100">
     <div class="col-auto">
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar d-flex" >
         <div class="position-sticky">
@@ -28,26 +28,20 @@
         </nav>
     </div>
     <!-- profile edit -->
-    <div class="contents" style="width: 75%; margin-left: 8rem; margin-top: 1.5rem; border: solid grey;">
-        <div style="width: 50%; margin-left: 25%; border: solid black">
-            <div class="breadcrumb" style="border: solid red">
-                <a href="#">Home</a> &gt; <a href="#">Mr. Cook</a> &gt; <a href="#" class="selected fw-bold">Profile edit</a>
+    <div class="" style="width: 75%; height: 100%; margin-left: 7.5rem;">
+        <div style="width: 50%; margin-top: 3rem; margin-bottom: 3rem; margin-left: 22rem;">
+            <div class="breadcrumb">
+                <a href="#">Home</a> &gt; <a href="#">Mr. Cook</a> &gt; <a href="#" class="selected fw-bold">Profile Edit</a>
             </div>
-            <div class="avatar-title" style="border: solid black">
-                <p class="fw-bold" style="border: solid black">Avatar</p>
-            </div>
-            <div class="avatar-container" style="border: solid red">
-                <div class="avatar">
-                    <img src="/images/avatar.png" alt="Avatar">
-                </div>
-                <div class="arrow" style="border: solid green;">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </div>
-                <div class="update-photo fw-bold">
-                    <span>Update your photo</span>
+            <div class="form-group">
+                <label for="profile-image" class="form-label fw-bold"  style="font-size: 1.5rem">Avatar</label>
+                <input type="file" name="profile-image" id="profile-image" class="form-control" aria-describedby="image-info">
+                <div class="file-info" id="file-info">
+                    The acceptable formats are jpeg, jpg, png and gif only.<br>
+                    Max file size is 1048kB.
                 </div>
             </div>
-            <form style="border: solid blue">
+            <form>
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" placeholder="Mr.Cook">
