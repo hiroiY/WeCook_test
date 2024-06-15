@@ -6,7 +6,7 @@
 <!-- breadcrumb is here -->
 <div class="breadcrumb ms-5 mt-3">
   <a 
-  href="{{-- route('homepage') --}}"
+  href="{{ route('home') }}"
   >
     Home
   </a> &nbsp; 
