@@ -28,7 +28,7 @@
         </nav>
     </div>
     <!-- profile edit -->
-    <div class="" style="width: 75%; height: 100%; margin-left: 7.5rem;">
+    <div class="" style="width: 75%; height: 100%; margin-left: 5.5rem;">
         <div style="width: 50%; margin-top: 3rem; margin-bottom: 3rem; margin-left: 22rem;">
             <div class="breadcrumb">
                 <a href="#">Home</a> &gt; <a href="#">Mr. Cook</a> &gt; <a href="#" class="selected fw-bold">Profile Edit</a>
