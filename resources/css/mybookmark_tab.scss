@@ -1,0 +1,48 @@
+.tab-content {
+    padding: 0rem 0.3rem;
+}
+
+.card {
+    background-color: white;
+    // color: #2E1301;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* padding: 5rem; */
+    /* margin: 30px; */
+    /* flex: 1;     */
+} 
+
+.card .container {
+    padding: 50px;
+}
+
+.card .card-title {
+    font-size: 45px;
+    color: #2E1301;
+} 
+
+.card .edit-icon{
+    color: #E45900;
+    font-size: 18px;
+}
+
+.card .comment-icon {
+    color: #E45900;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    font-size: 18px;
+}
+.card .bookmark-icon {
+    color: #E45900;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    font-size: 18px;
+}
+
+.card .comment-text {
+    color: #2E1301;
+}
+
+.card .bookmark-text {
+    color: #2E1301;
+}
