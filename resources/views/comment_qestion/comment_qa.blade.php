@@ -3,8 +3,8 @@
 @vite(['resources\js\tabs.js'])
 @section('content')
 <!-- tab menu area-->
-<div class="comment_qa">
-    <div class="col w-100">
+<div class="comment_qa ms-5">
+    <div class="mx-auto">
       <div 
         class="tab me-auto mt-5" 
         style="max-width: 97%;"

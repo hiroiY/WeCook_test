@@ -66,7 +66,7 @@
             date
           </p>
         </div>
-        <div class="col-8 question_body d-flex">
+        <div class="col-8 question_body px-4 d-flex">
           <div class="my-auto p-1">
             <i class="fa-solid fa-q fa-3x"></i>
             <p class="qa_body"> question body here </p>
