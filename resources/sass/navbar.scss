@@ -1,4 +1,4 @@
-nav*{
+nav * {
   font-family: "Nunito";
   color:#F7F3EB;
 }
@@ -30,12 +30,12 @@ nav*{
   text-decoration: inherit;
   color: #F7F3EB;
 }
-#account-dropdown:focus,
+#account-dropdown:focus
 {
-  color: white;
+  color: #F7F3EB;
   }
 #account-dropdown:hover{
-color: white;
+color: #F7F3EB;
 }
 .account div{
   background-color: #2E1310;
