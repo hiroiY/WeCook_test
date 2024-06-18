@@ -37,15 +37,12 @@ class HomeController extends Controller
     {
         return view('mybookmark');
     }
-    public function footer()
-    {
-        return view('layouts.footer');
-    }
-
     public function myrecipe()
     {
         return view('myrecipe');
     }
+
+
     public function search() 
     {
         return view('search.search');
