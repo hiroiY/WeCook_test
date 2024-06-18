@@ -8,6 +8,11 @@ class RecipeController extends Controller
 
 {
 
+    public function editmyrecipe()
+    {
+        return view('editmyrecipe');
+    }
+    
     public function deleterecipe()
     {
         return view('delete_recipe');
