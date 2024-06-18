@@ -51,4 +51,8 @@ class HomeController extends Controller
     {
         return view('search.search');
     }
+    public function profile_edit()
+    {
+        return view('profile_edit');
+    }
 }
