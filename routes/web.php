@@ -27,3 +27,7 @@ Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'edit
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
 Route::get('/recipe/writer',[UserController::class, 'writer'])->name('writer');
 Route::get('/search',[HomeController::class, 'search'])->name('search');
+
+Route::get('/createrecipe',[App\Http\Controllers\RecipeController::class,'createrecipe']);
+
+Route::get('/detailrecipe',[App\Http\Controllers\RecipeController::class,'detailrecipe']);
