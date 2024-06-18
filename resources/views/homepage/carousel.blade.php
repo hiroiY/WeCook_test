@@ -1,11 +1,13 @@
+@vite(['resources/sass/carousel.scss'])
+@vite(['resources/js/carousel.js'])
 <div 
   id="carouselAutoplaying" 
   class="carousel slide"
   data-bs-ride="carousel"
 >
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <a href="">
+  <div class="carousel-inner carousel_menu">
+    <div class="carousel-item active is-active">
+      <a onclick="appetizerTab()">
         <div class="appetizer h-100">
           <h1>appetizer</h1>
         </div>
