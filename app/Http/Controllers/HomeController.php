@@ -46,5 +46,8 @@ class HomeController extends Controller
     {
         return view('myrecipe');
     }
-
+    public function search() 
+    {
+        return view('search.search');
+    }
 }
