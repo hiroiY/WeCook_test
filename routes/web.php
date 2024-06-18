@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -21,8 +22,7 @@ Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userst
 Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
 Route::get('/mypage/myrecipe', [App\Http\Controllers\HomeController::class, 'myrecipe'])->name('myrecipe');
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
-<<<<<<< HEAD
 Route::get('/editmyrecipe', [App\Http\Controllers\HomeController::class, 'editmyrecipe'])->name('editmyrecipe');
-=======
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
->>>>>>> 7cd6cbdb0c71fcbffbfa9f699a29028124f95665
+Route::get('/recipe/writer',[UserController::class, 'writer'])->name('writer');
+
