@@ -41,6 +41,10 @@ class HomeController extends Controller
     {
         return view('myrecipe');
     }
+    public function editmyrecipe()
+    {
+        return view('editmyrecipe');
+    }
 
 
 }
