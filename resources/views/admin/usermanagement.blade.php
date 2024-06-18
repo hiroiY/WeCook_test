@@ -19,14 +19,16 @@
             <div class="position-sticky">
                 <div class="list-group-flush mt-4">
                     <a
-                    href="#"
+                    href="{{ route('usermanagement')}}"
                     class="list-group-item list-group-item-action p-2 ripple mt-5"
                     aria-current="true"
                     >
                     <span class="selected">User Management</span>
                     </a>
-                    <a href="#" 
-                    class="list-group-item list-group-item-action p-2 ripple mt-5">
+                    <a 
+                    href="{{ route('postmanagement')}}" 
+                    class="list-group-item list-group-item-action p-2 ripple mt-5"
+                    >
                     <span class="unselected">Post Management</span>
                     </a>
                 </div>
@@ -38,7 +40,7 @@
             <div class="container-fluid">
                 <div class="mx-4 p-4">
                     {{-- Search bar --}}
-                    <form action="#">
+                    <form action="{{ route ('admin.users.search') }}" method="GET">
                         <input 
                             type="search" 
                             name="search_username" 
@@ -46,6 +48,7 @@
                             class="form-control d-inline search-input p-2 my-3" 
                             placeholder="&#xF52A;   Search by username" 
                             style="font-family: Bootstrap-icons; width: 400px"
+                            value="{{ isset($search_username) ? $search_username : '' }}"
                         >
                     </form>
                     {{-- Table --}}
@@ -62,44 +65,38 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($users as $user)
                             <tr>
                                 <td class="p-3">
-                                    <a href="#">
-                                        <i class="fa-solid fa-eye fa-eye-orange fa-xl my-3"></i>
-                                    </a>
+                                    @if($user->trashed())
+                                        <a href="">
+                                            <i class="fa-solid fa-eye-slash fa-xl my-3"></i>
+                                        </a>
+                                    @else
+                                        <a href="#">
+                                            <i class="fa-solid fa-eye fa-eye-orange fa-xl my-3"></i>
+                                        </a>
+                                    @endif
                                 </td>
                                 <td class="p-3">
-                                    <i class="fa-regular fa-circle-user fa-2x"></i>
+                                    @if($user->avatar)
+                                        <img src="{{ $user->avator }}" 
+                                            alt="{{ $user->name }}" 
+                                        >
+                                    @else <i class="fa-regular fa-circle-user fa-2x"></i>
+                                    @endif                                    
                                 </td>
                                 <td class="p-3">
-                                    <a href="#" class="textdecoration-none">Isabel jackson</a>
+                                    <a href="#" class="textdecoration-none">{{ $user->name }}</a>
                                 </td>
-                                <td class="p-3">isabel@mail.com</td>
+                                <td class="p-3">{{ $user->email }}</td>
                                 <td class="p-3">
-                                    <a href="#" class="textdecoration-none">54</a>
+                                    {{-- <a href="#" class="textdecoration-none">{{ $user->posts()->count() }}</a> --}}
                                 </td>
-                                <td class="p-3">March 8th, 2024</td>
-                                <td></td>
+                                <td class="p-3">{{ $user->created_at }}</td>
+                                <td class="p-3">{{ $user->deleted_at }}</td>
                             </tr> 
-                            <tr>
-                                <td class="p-3">
-                                    <a href="#">
-                                        <i class="fa-solid fa-eye-slash fa-xl my-3"></i>
-                                    </a>
-                                </td>
-                                <td class="p-3">
-                                    <i class="fa-regular fa-circle-user fa-2x"></i>
-                                </td>
-                                <td class="p-3">
-                                    <a href="#" class="textdecoration-none">Emma Thompson</a>
-                                </td>
-                                <td class="p-3">emma@mail.com</td>
-                                <td class="p-3">
-                                    <a href="#" class="textdecoration-none">6</a>
-                                </td>
-                                <td class="p-3">April 26th, 2024</td>
-                                <td class="p-3">May 16th, 2024</td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

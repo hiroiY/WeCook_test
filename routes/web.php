@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -22,3 +23,6 @@ Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'postst
 Route::get('/footer', [App\Http\Controllers\HomeController::class, 'footer'])->name('footer');
 Route::get('/mypage/myrecipe', [App\Http\Controllers\HomeController::class, 'myrecipe'])->name('myrecipe');
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
+Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
+Route::get('/admin/users/search', [AdminController::class, 'searchUsers'])->name('admin.users.search');
+Route::get('/admin/usermanagement', [AdminController::class, 'userManagement'])->name('admin.usermanagement');

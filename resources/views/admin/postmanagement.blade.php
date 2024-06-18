@@ -19,14 +19,16 @@
             <div class="position-sticky">
                 <div class="list-group-flush mt-4">
                     <a
-                    href="#"
+                    href="{{ route('usermanagement')}}"
                     class="list-group-item list-group-item-action p-2 ripple mt-5"
-                    aria-current="true"
                     >
                     <span class="unselected">User Management</span>
                     </a>
-                    <a href="#" 
-                    class="list-group-item list-group-item-action p-2 ripple mt-5">
+                    <a 
+                    href="{{ route('postmanagement')}}" 
+                    class="list-group-item list-group-item-action p-2 ripple mt-5"
+                    aria-current="true"
+                    >
                     <span class="selected">Post Management</span>
                     </a>
                 </div>
