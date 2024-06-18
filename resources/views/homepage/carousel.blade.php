@@ -7,7 +7,7 @@
 >
   <div class="carousel-inner carousel_menu">
     <div class="carousel-item active is-active">
-      <a onclick="appetizerTab()">
+      <a href="">
         <div class="appetizer h-100">
           <h1>appetizer</h1>
         </div>
