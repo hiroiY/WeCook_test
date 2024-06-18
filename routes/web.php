@@ -25,4 +25,4 @@ Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'm
 Route::get('/editmyrecipe', [App\Http\Controllers\HomeController::class, 'editmyrecipe'])->name('editmyrecipe');
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
 Route::get('/recipe/writer',[UserController::class, 'writer'])->name('writer');
-
+Route::get('/search',[HomeController::class, 'search'])->name('search');
