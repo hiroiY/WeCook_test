@@ -1,0 +1,58 @@
+/* Search SCSS */
+.search_results p{
+  color: #4D1F01;
+  span {
+    color: #e45900;
+  }
+}
+.tab_menu 
+{
+  display: flex;
+  align-items: flex-end;
+  min-height: 80px;
+  max-height: 100px;
+  width: 100%;
+  font-size: 32px;
+  box-shadow: #4D1F01;
+}
+.tab_menu-item 
+{
+  color: #887569;
+  font: bold 72% "Nunito";
+  list-style: none;
+  min-width: 24.2%;
+  // max-width: 180px;
+  padding: 1rem .2rem;
+  text-align: center;
+  margin-right: 0.8%;
+  margin-top: 0;
+  background-color: #DBD2C8;
+  border-top-left-radius: 0.5em 0.5em;
+  border-top-right-radius: 0.5em 0.5em;
+  cursor: grab;
+  transition: all 0.2s;
+  box-shadow: .1em -.01rem 1px rgba(0, 0, 0, 0.196);
+}
+  /* is-active style */
+.tab_menu-item.is-active 
+{
+  background-color: #f7f3eb;
+  color: #4D1F01;
+  padding: 1.3rem 0;
+  text-decoration: underline  #88756965;
+  font-size: 0.8em;
+}
+  /* tab panel style */
+.tab_panel-box
+{
+  /* min-height: 80%; */
+  box-shadow: .1em .1rem 3px rgba(0, 0, 0, 0.253);
+  padding: 1rem 0.3rem;
+  border-radius: .2rem 1rem 1rem 1rem;
+  background-color: #f7f3eb;
+  display: none;
+}
+
+.tab_panel-box.is-show {
+  display: block;
+}
