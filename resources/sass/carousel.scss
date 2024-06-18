@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+.appetizer{
+  background: url('/public/images/homepage/appetizer.jpg') center;
+  background-size: cover;
+  box-shadow: inset 0 -10em 12em #5c5c5c
+}
+.sidedish{
+  background: url('/public/images/homepage/sidedish.png') center;
+  background-size: cover;
+  box-shadow: inset 0 -10em 15em #5c5c5c
+}
+.maindish{
+  background: url('/public/images/homepage/maindish.jpg') center;
+  background-size: cover;
+  box-shadow: inset 0 -10em 15em #5c5c5c
+}
+.dessert{
+  background: url('/public/images/homepage/dessert.png') center;
+  background-size: cover;
+  box-shadow: inset 0 -10em 15em #5c5c5c
+}
+.carousel-item a {
+  text-decoration: none;
+  color: #f7f3eb;
+  font-family: "Playfair Display SC";
+}
+.carousel-item h1 {
+  font-size: 6em;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: max-content ;
+  height: max-content ;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
