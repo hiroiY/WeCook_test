@@ -1,4 +1,32 @@
-/* homepage tab */
+.breadcrumb
+{
+  color: #887569;
+  font-weight: bold;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: #887569;
+  }
+  a:nth-of-type(3) {
+    text-decoration: none;
+    color: #e45900;
+  }
+}
+.writer_account
+{
+  color: #2e1301;
+  font-size: 24px;
+  font-weight: bold;
+  a{
+    text-decoration: none;
+    color: #2e1301;
+  }
+}
+.writer_account img {
+  height: 2.4em;
+  width: 2.6em;
+}
+/* writer tab */
 .tab_menu 
 {
   display: flex;
@@ -26,6 +54,10 @@
   cursor: grab;
   transition: all 0.2s;
   box-shadow: .1em -.01rem 1px rgba(0, 0, 0, 0.196);
+  span{
+    font-size: 0.8em;
+    color: #887569;
+  }
 }
 .tab_menu-item:first-of-type {
   min-width: 24%;
@@ -38,6 +70,10 @@
   padding: 1.3rem 0;
   text-decoration: underline  #88756965;
   font-size: 0.8em;
+  span{
+    font-size: 0.8em;
+    color: #4D1F01;
+  }
 }
   /* tab panel style */
 .tab_panel-box
@@ -53,3 +89,4 @@
 .tab_panel-box.is-show {
   display: block;
 }
+
