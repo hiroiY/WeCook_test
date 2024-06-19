@@ -1,20 +1,20 @@
+
 .row {
-  margin: 2em auto 1em auto;
+  margin-top: 2em;
 }
 .row .recipe_photo{
   // width: 320px;
   // height: 240px;
-  width: 24em;
-  height: 16em;
+  width: 20em;
+  height: 15em;
   object-fit: auto;
   object-position: center;
   margin: 2.5em auto 0 auto;
   box-shadow: .1em .1em .1em #5c5c5c62;
 }
 .row .card {
-  width: 100%;
   margin-bottom: 3em;
-  padding: .8em;
+  padding-bottom: 1em;
   border-radius: 1em 1em;
   box-shadow: .01em .1em .1em #5c5c5c62;
 }
@@ -24,13 +24,11 @@
 .row .card-title {
   color: #4D1F01;
   font-weight: bold;
-  max-width: 9.2em;
+  max-width: 8em;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   padding-bottom: .5em;
-  margin-left: -.5em;
-  margin-right: 1em;
 }
 .row .card-body p {
   color: #5c5c5cbc;
@@ -45,7 +43,6 @@
   -webkit-line-clamp: 4;
 }
 .row a {
-  margin-left: .3em;
   color: #e45900;
   text-decoration: none;
   font-family: FontAwesome;

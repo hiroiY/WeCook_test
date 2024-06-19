@@ -3,10 +3,10 @@
   <div class="container">
     <a 
       class="navbar-brand" 
-      href="{{ route('home') }}"
+      href="{{-- route('homepage') --}}"
     >
       <img 
-        src="{{asset('logo//Logo_white.png')}}" 
+        src="/logo//Logo_white.png" 
         alt="logo" 
         class="me-2 pb-2"
       >
@@ -32,7 +32,7 @@
     >
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav m-auto">
-        <form action="{{-- route('search') --}}" class="my-auto">
+        <form action="{{-- route('search') --}}">
           <input 
             type="search" 
             name="search" 
@@ -118,14 +118,14 @@
               >
                 {{--My Recipe Button/Link --}}
                 <a 
-                  href="{{ route('myrecipe', Auth::user()->id) }}" 
+                  href="{{-- route('myrecipe.show', Auth::user()->id) --}}" 
                   class="dropdown-item"
                 >
                   My Recipe
                 </a>
                 {{--My Bookmark Button/Link --}}
                 <a 
-                  href="{{-- route('mybookmark', Auth::user()->id) --}}" 
+                  href="{{-- route('bookmark.show', Auth::user()->id) --}}" 
                   class="dropdown-item"
                 >
                   My Bookmark
@@ -164,11 +164,11 @@
                 aria-labelledby="account-dropdown"
               >
                 {{--User management button/Link --}}
-                <a href="{{ route('usermanagement') }}" class="dropdown-item">
+                <a href="{{-- route('myrecipe.show', Auth::user()->id) --}}" class="dropdown-item">
                   User Management
                 </a>
                 {{--post management button/Link --}}
-                <a href="{{ route('postmanagement') }}" class="dropdown-item">
+                <a href="{{-- route('bookmark.show', Auth::user()->id) --}}" class="dropdown-item">
                   Recipe Management
                 </a>
                 {{--category management button/Link --}}

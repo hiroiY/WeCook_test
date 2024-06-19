@@ -6,8 +6,8 @@
   <div class="row px-4 py-1">
     {{-- @foreach()--}}
     <div class="col-4 p-2">
-      <!-- recipe card -->
-      <div class="card">
+    <!-- recipe card -->
+      <div class="card recipe_card w-100">
         <!-- recipe photo -->
         <img 
           src="{{ asset('/images/recipe_photos/tomatoes.jpg') }}" 
@@ -17,7 +17,7 @@
         <div class="card-body">
           <!-- recipe title -->
           <div class="row mt-2 recipe_title">
-            <div class="col-8 pe-4">
+            <div class="col-auto pe-4">
               <h4 class="card-title">
                 Recipe's name here.
                 {{-- recipe()->name --}}
@@ -31,7 +31,7 @@
                 </span>
               </a>
             </div>
-            <div class="col-1">
+            <div class="col-auto ps-3">
               <a href="">
                 <i class="fa-regular fa-bookmark"></i>
               </a>
@@ -49,7 +49,7 @@
         <img src="{{ asset('/images/recipe_photos/tomatoes.jpg') }}" alt="" class="recipe_photo">
         <div class="card-body">
           <div class="row mt-2 recipe_title">
-            <div class="col-8 pe-4">
+            <div class="col-auto pe-4">
               <h4 class="card-title">
                 Recipe's name here.
                 {{-- recipe()->name --}}
@@ -63,7 +63,7 @@
                 </span>
               </a>
             </div>
-            <div class="col-1">
+            <div class="col-auto ps-3">
               <a href="">
                 <i class="fa-regular fa-bookmark"></i>
               </a>
@@ -80,7 +80,7 @@
         <img src="{{ asset('/images/recipe_photos/tomatoes.jpg') }}" alt="" class="recipe_photo">
         <div class="card-body">
           <div class="row mt-2 recipe_title">
-            <div class="col-8 pe-4">
+            <div class="col-auto pe-4">
               <h4 class="card-title">
                 Recipe's name here.
                 {{-- recipe()->name --}}
@@ -94,7 +94,7 @@
                 </span>
               </a>
             </div>
-            <div class="col-1">
+            <div class="col-auto ps-3">
               <a href="">
                 <i class="fa-regular fa-bookmark"></i>
               </a>
@@ -109,7 +109,7 @@
     {{--@endforeach--}}
     <div class="col-4 p-2">
     <!-- recipe card -->
-      <div class="card">
+      <div class="card recipe_card w-100">
         <!-- recipe photo -->
         <img 
           src="{{ asset('/images/recipe_photos/tomatoes.jpg') }}" 
@@ -119,7 +119,7 @@
         <div class="card-body">
           <!-- recipe title -->
           <div class="row mt-2 recipe_title">
-            <div class="col-8 pe-4">
+            <div class="col-auto pe-4">
               <h4 class="card-title">
                 Recipe's name here.
                 {{-- recipe()->name --}}
@@ -133,7 +133,7 @@
                 </span>
               </a>
             </div>
-            <div class="col-1">
+            <div class="col-auto ps-3">
               <a href="">
                 <i class="fa-regular fa-bookmark"></i>
               </a>
@@ -151,7 +151,7 @@
         <img src="{{ asset('/images/recipe_photos/tomatoes.jpg') }}" alt="" class="recipe_photo">
         <div class="card-body">
           <div class="row mt-2 recipe_title">
-            <div class="col-8 pe-4">
+            <div class="col-auto pe-4">
               <h4 class="card-title">
                 Recipe's name here.
                 {{-- recipe()->name --}}
@@ -165,7 +165,7 @@
                 </span>
               </a>
             </div>
-            <div class="col-1">
+            <div class="col-auto ps-3">
               <a href="">
                 <i class="fa-regular fa-bookmark"></i>
               </a>
@@ -182,7 +182,7 @@
         <img src="{{ asset('/images/recipe_photos/tomatoes.jpg') }}" alt="" class="recipe_photo">
         <div class="card-body">
           <div class="row mt-2 recipe_title">
-            <div class="col-8 pe-4">
+            <div class="col-auto pe-4">
               <h4 class="card-title">
                 Recipe's name here.
                 {{-- recipe()->name --}}
@@ -196,7 +196,7 @@
                 </span>
               </a>
             </div>
-            <div class="col-1">
+            <div class="col-auto ps-3">
               <a href="">
                 <i class="fa-regular fa-bookmark"></i>
               </a>
@@ -210,7 +210,7 @@
     </div>
     <div class="col-4 p-2">
     <!-- recipe card -->
-      <div class="card">
+      <div class="card recipe_card w-100">
         <!-- recipe photo -->
         <img 
           src="{{ asset('/images/recipe_photos/tomatoes.jpg') }}" 
@@ -220,7 +220,7 @@
         <div class="card-body">
           <!-- recipe title -->
           <div class="row mt-2 recipe_title">
-            <div class="col-8 pe-4">
+            <div class="col-auto pe-4">
               <h4 class="card-title">
                 Recipe's name here.
                 {{-- recipe()->name --}}
@@ -234,7 +234,7 @@
                 </span>
               </a>
             </div>
-            <div class="col-1">
+            <div class="col-auto ps-3">
               <a href="">
                 <i class="fa-regular fa-bookmark"></i>
               </a>
@@ -252,7 +252,7 @@
         <img src="{{ asset('/images/recipe_photos/tomatoes.jpg') }}" alt="" class="recipe_photo">
         <div class="card-body">
           <div class="row mt-2 recipe_title">
-            <div class="col-8 pe-4">
+            <div class="col-auto pe-4">
               <h4 class="card-title">
                 Recipe's name here.
                 {{-- recipe()->name --}}
@@ -266,7 +266,7 @@
                 </span>
               </a>
             </div>
-            <div class="col-1">
+            <div class="col-auto ps-3">
               <a href="">
                 <i class="fa-regular fa-bookmark"></i>
               </a>
@@ -283,7 +283,7 @@
         <img src="{{ asset('/images/recipe_photos/tomatoes.jpg') }}" alt="" class="recipe_photo">
         <div class="card-body">
           <div class="row mt-2 recipe_title">
-            <div class="col-8 pe-4">
+            <div class="col-auto pe-4">
               <h4 class="card-title">
                 Recipe's name here.
                 {{-- recipe()->name --}}
@@ -297,7 +297,7 @@
                 </span>
               </a>
             </div>
-            <div class="col-1">
+            <div class="col-auto ps-3">
               <a href="">
                 <i class="fa-regular fa-bookmark"></i>
               </a>
