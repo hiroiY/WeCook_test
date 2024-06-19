@@ -2,7 +2,6 @@
 
 @vite([
     'resources/sass/homepage.scss',
-    'resources/sass/carousel.scss',
     'resources/js/tabs.js'
 ])
 
@@ -13,13 +12,41 @@
 </div>
 
 <!-- Tab menu area -->
-<div class="tab mx-auto mt-5" style="max-width: 95%;">
-    <ul class="tab_menu m-0 p-0">
-        <li class="tab_menu-item is-active" data-tab="01">Recently shared</li>
-        <li class="tab_menu-item" data-tab="02">Appetizer</li>
-        <li class="tab_menu-item" data-tab="03">Side dish</li>
-        <li class="tab_menu-item" data-tab="04">Main dish</li>
-        <li class="tab_menu-item" data-tab="05">Dessert</li>
+<div 
+    class="tab mx-auto my-5" 
+    style="max-width: 92%;"
+>
+    <ul class="tab_menu tab-content m-0 p-0">
+        <li 
+            class="tab_menu-item is-active" 
+            data-tab="01"
+        >
+            Recently shared
+        </li>
+        <li 
+            class="tab_menu-item" 
+            data-tab="02"
+        >
+            Appetizer
+        </li>
+        <li 
+            class="tab_menu-item" 
+            data-tab="03"
+        >
+            Side dish
+        </li>
+        <li 
+            class="tab_menu-item" 
+            data-tab="04"
+        >
+            Main dish
+        </li>
+        <li 
+            class="tab_menu-item" 
+            data-tab="05"
+        >
+            Dessert
+        </li>
     </ul>
 
     <!-- Tab panel area / specific recipe page here! -->

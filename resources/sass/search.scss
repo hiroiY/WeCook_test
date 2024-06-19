@@ -1,4 +1,10 @@
-/* homepage tab */
+/* Search SCSS */
+.search_results p{
+  color: #4D1F01;
+  span {
+    color: #e45900;
+  }
+}
 .tab_menu 
 {
   display: flex;
@@ -14,7 +20,7 @@
   color: #887569;
   font: bold 72% "Nunito";
   list-style: none;
-  min-width: 18%;
+  min-width: 24.2%;
   // max-width: 180px;
   padding: 1rem .2rem;
   text-align: center;
@@ -26,9 +32,6 @@
   cursor: grab;
   transition: all 0.2s;
   box-shadow: .1em -.01rem 1px rgba(0, 0, 0, 0.196);
-}
-.tab_menu-item:first-of-type {
-  min-width: 24%;
 }
   /* is-active style */
 .tab_menu-item.is-active 
