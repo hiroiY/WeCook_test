@@ -17,7 +17,7 @@ body {
   .breadcrumb {
     font-size: 14px;
     color: #a5a5a5;
-    margin-bottom: 20px;
+    margin-bottom: 20px;    
   }
   
   .breadcrumb a {
@@ -109,6 +109,3 @@ body {
   .publish-button:hover {
     background-color: #c64900;
   }
-  
-
-  
