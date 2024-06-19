@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@vite(['resources/sass/createrecipe.scss'])
 @section('content')
 
 
