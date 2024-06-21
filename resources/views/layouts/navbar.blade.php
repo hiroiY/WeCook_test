@@ -77,7 +77,7 @@
             title="Create Post"
           >
             <a 
-              href="{{-- route('post.create') --}}" 
+              href="/createrecipe" 
               class="nav-link"
             >
               <i class="fa-solid fa-pen-to-square">
@@ -103,7 +103,7 @@
                   {{ Auth::user()->name }}
                 @else
                   <img 
-                    src="/images//profile_icon.png" 
+                    src="{{ asset('/images//profile_icon.png') }}" 
                     alt="{{ Auth::user()->name }}" 
                     class="rounded-circle avatar-lg"
                   >
