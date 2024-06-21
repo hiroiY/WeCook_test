@@ -17,9 +17,9 @@ return new class extends Migration
             $table->longText('photo')->nullable();
             $table->unsignedBigInteger('dish_id');
             $table->text('title',150);
-            $table->string('times');
+            $table->string('cooking_time');
             $table->text('ingredients');
-            $table->string('discription');
+            $table->string('description');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
