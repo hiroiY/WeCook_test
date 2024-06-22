@@ -3,10 +3,10 @@
   <div class="container">
     <a 
       class="navbar-brand" 
-      href="{{-- route('homepage') --}}"
+      href="{{ route('home') }}"
     >
       <img 
-        src="/logo//Logo_white.png" 
+        src="{{asset('logo//Logo_white.png')}}" 
         alt="logo" 
         class="me-2 pb-2"
       >
@@ -32,7 +32,7 @@
     >
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav m-auto">
-        <form action="{{-- route('search') --}}">
+        <form action="{{-- route('search') --}}" class="my-auto">
           <input 
             type="search" 
             name="search" 
@@ -77,7 +77,7 @@
             title="Create Post"
           >
             <a 
-              href="{{-- route('post.create') --}}" 
+              href="/createrecipe" 
               class="nav-link"
             >
               <i class="fa-solid fa-pen-to-square">
@@ -103,7 +103,7 @@
                   {{ Auth::user()->name }}
                 @else
                   <img 
-                    src="/images//profile_icon.png" 
+                    src="{{ asset('/images//profile_icon.png') }}" 
                     alt="{{ Auth::user()->name }}" 
                     class="rounded-circle avatar-lg"
                   >
@@ -118,14 +118,14 @@
               >
                 {{--My Recipe Button/Link --}}
                 <a 
-                  href="{{-- route('myrecipe.show', Auth::user()->id) --}}" 
+                  href="{{ route('myrecipe', Auth::user()->id) }}" 
                   class="dropdown-item"
                 >
                   My Recipe
                 </a>
                 {{--My Bookmark Button/Link --}}
                 <a 
-                  href="{{-- route('bookmark.show', Auth::user()->id) --}}" 
+                  href="{{-- route('mybookmark', Auth::user()->id) --}}" 
                   class="dropdown-item"
                 >
                   My Bookmark
@@ -164,11 +164,11 @@
                 aria-labelledby="account-dropdown"
               >
                 {{--User management button/Link --}}
-                <a href="{{-- route('myrecipe.show', Auth::user()->id) --}}" class="dropdown-item">
+                <a href="{{ route('usermanagement') }}" class="dropdown-item">
                   User Management
                 </a>
                 {{--post management button/Link --}}
-                <a href="{{-- route('bookmark.show', Auth::user()->id) --}}" class="dropdown-item">
+                <a href="{{ route('postmanagement') }}" class="dropdown-item">
                   Recipe Management
                 </a>
                 {{--category management button/Link --}}

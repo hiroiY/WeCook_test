@@ -1,0 +1,23 @@
+// Background colour for edit recipe page
+.edit-recipe {
+    background-color: #f7f3eb;
+}
+
+// Border colour for the inputs
+input.recipe-inp,
+select.recipe-inp,
+textarea.recipe-inp {
+    border-color: #e45900;
+}
+
+// bg colour and text colour for update button
+button.updaterecipe {
+    background-color: #e45900;
+    color: white;
+}
+
+// bg colour and text colour for update button upon hover
+button.updaterecipe:hover {
+    background-color: #e45900;
+    color: white;
+}
