@@ -63,9 +63,9 @@ class HomeController extends Controller
     {
         return view('mypage');
     }
-    public function mypage2()
+    public function mybookmark()
     {
-        return view('mybookmark');
+        return view('mypage.mybookmark');
     }
     public function myrecipe()
     {
