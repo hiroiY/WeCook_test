@@ -11,10 +11,13 @@ class HomeController extends Controller
      *
      * @return void
      */
+
+    // This allows non auth users to access to home page.
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
     }
+
     /**
      * Show the application dashboard.
      *
