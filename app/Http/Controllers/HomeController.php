@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Post; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\LengthAwarePaginator;
+
+
 
 class HomeController extends Controller
 {
@@ -29,24 +33,26 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    private function getRecentlyPosts()
+    private function getRecentlyPosts($page = 1, $perPage = 9)
     {
-        $home_posts = $this->post->get();
-        $recently_posts = [] ;
+        //Get latest 30 posts 
+        $home_posts = $this->post->take(30)->get();
+     
+        //Slicing appeared post on the current page
+        $recentlyPageItems = $home_posts->slice(($page - 1) * $perPage,$perPage)->all();
 
-        foreach($home_posts as $post)
-        {
-            $recently_posts[] = $post;
-        }
+        // Create LengthAwarePaginator instance 
+        $recentlyPaginatedItems = new LengthAwarePaginator( $recentlyPageItems, count($home_posts),$perPage, $page,['path' => LengthAwarePaginator::resolveCurrentPath(),]);
 
-        return  $recently_posts;
+        return $recentlyPaginatedItems;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $recently_posts = $this->getRecentlyPosts();
-        return view('homepage.homepage')
-                ->with('recently_posts', $recently_posts);
+        $page = $request->input('page', 1);
+        $recently_posts = $this->getRecentlyPosts($page);
+
+        return view('homepage.homepage', compact('recently_posts'));
     }
 
     public function admin()

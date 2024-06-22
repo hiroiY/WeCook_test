@@ -3,7 +3,7 @@
   class="tab_panel-box is-show" 
   data-panel="01"
 >
-  <div class="row px-4 py-1">
+  <div class="row px-3 py-1">
     @forelse($recently_posts as $post)
       <div class="col-4 p-2">
         <!-- recipe card -->
@@ -55,16 +55,17 @@
             </div>
             <!-- recipe discription -->
             <p class="card-text pt-0">
-              {{ $post->discription }}
+              {{ $post->description }}
             </p>
           </div>
         </div>
       </div>
     @empty
-      <div class="col-8 mx-auto">
-        <p class="display-3">Sorry! No Recipe Available.</h3>
+      <div class="col-auto mx-auto">
+        <p class="h2 sorry">Sorry! No Recipe Available.</h3>
       </div>
     @endforelse
   </div>
+  {{ $recently_posts->links() }}
 </div>
 
