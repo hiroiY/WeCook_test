@@ -16,10 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->longText('photo')->nullable();
             $table->unsignedBigInteger('dish_id');
-            $table->text('title',150);
+            $table->string('title',150);
             $table->string('cooking_time');
             $table->text('ingredients');
-            $table->string('description');
+            $table->longText('description');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Post; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\LengthAwarePaginator;
+
+
 
 class HomeController extends Controller
 {
@@ -12,10 +19,14 @@ class HomeController extends Controller
      * @return void
      */
 
-    // This allows non auth users to access to home page.
-    public function __construct()
+     private $post;
+     private $user;
+
+    public function __construct(Post $post, User $user)    
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth');
+        $this->post = $post;
+        $this->user = $user;
     }
 
     /**
@@ -23,9 +34,26 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    private function getRecentlyPosts($page = 1, $perPage = 9)
     {
-        return view('homepage.homepage');
+        //Get latest 30 posts 
+        $home_posts = $this->post->take(30)->get();
+     
+        //Slicing appeared post on the current page
+        $recentlyPageItems = $home_posts->slice(($page - 1) * $perPage,$perPage)->all();
+
+        // Create LengthAwarePaginator instance 
+        $recentlyPaginatedItems = new LengthAwarePaginator( $recentlyPageItems, count($home_posts),$perPage, $page,['path' => LengthAwarePaginator::resolveCurrentPath(),]);
+
+        return $recentlyPaginatedItems;
+    }
+
+    public function index(Request $request)
+    {
+        $page = $request->input('page', 1);
+        $recently_posts = $this->getRecentlyPosts($page);
+
+        return view('homepage.homepage', compact('recently_posts'));
     }
 
     public function admin()
@@ -36,9 +64,9 @@ class HomeController extends Controller
     {
         return view('mypage');
     }
-    public function mypage2()
+    public function mybookmark()
     {
-        return view('mybookmark');
+        return view('mypage.mybookmark');
     }
     public function myrecipe()
     {

@@ -30,4 +30,4 @@ Route::get('/search',[HomeController::class, 'search'])->name('search');
 
 Route::get('/createrecipe',[App\Http\Controllers\RecipeController::class,'createrecipe']);
 
-Route::get('/detailrecipe',[App\Http\Controllers\RecipeController::class,'detailrecipe']);
+Route::get('/detailrecipe/{id}',[App\Http\Controllers\RecipeController::class,'detailrecipe'])->name('detailrecipe');

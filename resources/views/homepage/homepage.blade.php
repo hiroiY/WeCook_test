@@ -2,7 +2,7 @@
 
 @vite([
     'resources/sass/homepage.scss',
-    'resources/js/tabs.js'
+    'resources/js/tabs_paginate.js'
 ])
 
 @section('content')
@@ -13,8 +13,9 @@
 
 <!-- Tab menu area -->
 <div 
-    class="tab mx-auto my-5" 
+    class="tab mx-auto py-5" 
     style="max-width: 92%;"
+    id="content-start"
 >
     <ul class="tab_menu tab-content m-0 p-0">
         <li 
