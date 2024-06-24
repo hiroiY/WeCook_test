@@ -24,7 +24,7 @@ class HomeController extends Controller
 
     public function __construct(Post $post, User $user)    
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
         $this->post = $post;
         $this->user = $user;
     }
