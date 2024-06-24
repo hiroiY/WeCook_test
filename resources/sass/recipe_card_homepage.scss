@@ -6,8 +6,12 @@
   // height: 240px;
   width: 98%;
   max-height: 8em;
+  width: 98%;
+  max-height: 8em;
   object-fit: auto;
   object-position: center;
+  margin: .7em auto 0 auto;
+  box-shadow: .05em .05em .08em #5c5c5c62;
   margin: .7em auto 0 auto;
   box-shadow: .05em .05em .08em #5c5c5c62;
 }
@@ -23,16 +27,24 @@
 // }
 .card a .card-title {
   text-shadow: none;
+// .card  .card-body{
+//   font-family: "Nunito";
+// }
+.card a .card-title {
+  text-shadow: none;
   color: #4D1F01;
   font-weight: bold;
+  // max-width: 9.2em;
+  width: 100%;
   // max-width: 9.2em;
   width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   margin-left: -.5em;
-    // margin-right: 1em;
+  // margin-right: 1em;
 }
+.card  .card-text {
 .card  .card-text {
   color: #5c5c5cbc;
   font-size: small;
@@ -46,6 +58,7 @@
   -webkit-line-clamp: 4;
 }
 .card a {
+.card a {
   margin-left: .3em;
   color: #e45900;
   text-decoration: none;
@@ -57,6 +70,47 @@
     font-size: .5em;
     font-weight: bold;
   }
+}
+.tab_panel-box .sorry {
+  font-family: "Nunito";
+  font-weight: bold;
+  padding: 1em;
+  text-decoration: underline dotted #88756965 .1em;
+}
+
+/* Paginate style */
+.pagination{
+  padding:0 0 0 45%;
+  margin-bottom: 1em;
+  line-height: 1.5em;
+  // border: solid red;
+}
+.page-link {
+  font-family: "Nunito";
+  color: #4d1f01;
+}
+.page-item .page-link {
+  border: solid .01em #e45900;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: #fefdfd;
+}
+.active .page-link {
+  border: solid .01em #e45900;
+  background-color: #e45900;
+  :hover{
+    color: inherit;
+  }
+}
+.page-item .page-link:hover {
+  color: #4d1f01;
+  background-color: #e457002c;
+}
+.disabled .page-link {
+  border: solid .01em #e45900;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: #fefdfd;
 }
 .tab_panel-box .sorry {
   font-family: "Nunito";

@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Post; 
+use App\Models\User;
+use App\Models\Post; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
+
+
 
 class HomeController extends Controller
 {
@@ -32,7 +36,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-     private function getRecentlyPosts($page = 1, $perPage = 9)
+    private function getRecentlyPosts($page = 1, $perPage = 9)
     {
         //Get latest 30 posts 
         $home_posts = $this->post->take(30)->get();
