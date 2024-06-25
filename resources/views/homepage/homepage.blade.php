@@ -7,7 +7,7 @@
 
 @section('content')
 <!-- Top image Carousel -->
-<div class="w-100 h-25">
+<div class="w-100 h-25" >
     @include('homepage.carousel')
 </div>
 
