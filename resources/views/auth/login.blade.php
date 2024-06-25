@@ -26,9 +26,17 @@
                   type="email"
                   name="email" 
                   id="email" 
-                  class="form-control" 
+                  class="form-control @error('email') is-invalid @enderror" 
                   placeholder="Email address"
+                  required
+                  autocomplete="email"
+                  value="{{ old('email') }}"
                   >
+                  @error('email')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
                 </div>
               </div>
               
@@ -39,9 +47,15 @@
                   type="password" 
                   name="password" 
                   id="password" 
-                  class="form-control" 
+                  class="form-control @error('password') is-invalid @enderror" 
                   placeholder="Password"
+                  required autocomplete="current-password"
                   >
+                  @error('password')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
                 </div>
               </div>
               
@@ -55,7 +69,7 @@
               {{-- New registration link--}}
               <div class="row mb-3">
                 <div class="col px-auto">
-                  <p class="text-center fw-bold are-you-new">Are you new here? <a href="" class="text-decoration-none register-link">Register</a></p>
+                  <p class="text-center fw-bold are-you-new">Are you new here? <a href="{{ route('register') }}" class="text-decoration-none register-link">Register</a></p>
                 </div>
               </div>
             </form>

@@ -24,10 +24,11 @@ class HomeController extends Controller
 
     public function __construct(Post $post, User $user)    
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->post = $post;
         $this->user = $user;
     }
+
     /**
      * Show the application dashboard.
      *
