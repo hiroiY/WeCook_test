@@ -12,7 +12,9 @@
                                             <p class="card-title fw-bold">Appetizer1</p>
                                         </div>
                                         <div>
-                                            <i class="edit-icon fa-solid fa-pen" style="font-size: 30px; margin-right: 5px;"></i>
+                                            <a href="{{ route('editmyrecipe') }}">
+                                                <i class="edit-icon fa-solid fa-pen" href="" style="font-size: 30px; margin-right: 5px;"></i>
+                                            </a>
                                         </div>                                                        
                                     </div>
                                     <div class="" style="width: 420px; margin-right: 5px;">
@@ -39,7 +41,9 @@
                                             <p class="card-title fw-bold">Appetizer2</p>
                                         </div>
                                         <div>
-                                            <i class="edit-icon fa-solid fa-pen" style="font-size: 30px; margin-right: 5px;"></i>
+                                            <a href="{{ route('editmyrecipe') }}">
+                                                <i class="edit-icon fa-solid fa-pen" style="font-size: 30px; margin-right: 5px;"></i>
+                                            </a>
                                         </div>                                                        
                                     </div>
                                     <div class="" style="width: 420px; margin-right: 5px;">
@@ -68,7 +72,9 @@
                                             <p class="card-title fw-bold">Appetizer3</p>
                                         </div>
                                         <div>
-                                            <i class="edit-icon fa-solid fa-pen" style="font-size: 30px; margin-right: 5px;"></i>
+                                            <a href="{{ route('editmyrecipe') }}">
+                                                <i class="edit-icon fa-solid fa-pen" style="font-size: 30px; margin-right: 5px;"></i>
+                                            </a>
                                         </div>                                                        
                                     </div>
                                     <div class="" style="width: 420px; margin-right: 5px;">
@@ -95,7 +101,9 @@
                                             <p class="card-title fw-bold">Appetizer4</p>
                                         </div>
                                         <div>
-                                            <i class="edit-icon fa-solid fa-pen" style="font-size: 30px; margin-right: 5px;"></i>
+                                            <a href="{{ route('editmyrecipe') }}">
+                                                <i class="edit-icon fa-solid fa-pen" style="font-size: 30px; margin-right: 5px;"></i>
+                                            </a>
                                         </div>                                                        
                                     </div>
                                     <div class="" style="width: 420px; margin-right: 5px;">

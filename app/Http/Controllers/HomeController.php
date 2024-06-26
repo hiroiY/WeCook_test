@@ -29,20 +29,11 @@ class HomeController extends Controller
     {
         return view('admin');
     }
-    public function mypage()
-    {
-        return view('mypage');
-    }
+    
     public function mypage2()
     {
         return view('mybookmark');
     }
-    public function myrecipe()
-    {
-        return view('mypage.myrecipe');
-    }
-
-
 
     public function search() 
     {

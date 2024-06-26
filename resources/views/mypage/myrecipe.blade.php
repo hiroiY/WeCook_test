@@ -17,11 +17,11 @@
           >
             <span class="ms-auto">My Recipe</span>
           </a>
-          <a href="#"
+          <a href="{{ route('mybookmark') }}"
           class="list-group-item list-group-item-action p-2 ripple unselected">
             <span>My Bookmark</span>
           </a>
-          <a href="#"
+          <a href="{{ route('profile_edit') }}"
           class="list-group-item list-group-item-action p-2 ripple unselected">
             <span>Profile Edit</span>
           </a>
