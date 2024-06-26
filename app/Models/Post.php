@@ -10,6 +10,16 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'photo',
+        'dish_id',
+        'title',
+        'times',
+        'ingredients',
+        'description'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class)->withTrashed();
