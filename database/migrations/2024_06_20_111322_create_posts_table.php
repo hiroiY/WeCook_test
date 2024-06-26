@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('dish_id')->references('id')->on('dishes');
+            $table->foreign('dish_id')->references('id')->on('dishes');         
         });
     }
 
@@ -34,4 +34,9 @@ return new class extends Migration
     {
         Schema::dropIfExists('posts');
     }
+
+    
 };
+
+
+

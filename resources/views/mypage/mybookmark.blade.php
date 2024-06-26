@@ -2,7 +2,7 @@
 
 @vite(['resources/js/tabs2.js'])
 
-@vite(['resources/css/mybookmark.scss'])
+@vite(['resources/sass/mybookmark.scss'])
 
 @section('content') 
 <div class="row w-100">
@@ -68,7 +68,7 @@
           data-panel="01"
         >
           <div class="tab_panel-text">
-          @include('mybookmark_tab.appetizer')
+          @include('mypage.mybookmark_tab.appetizer')
           </div>
         </div>
         <div
@@ -76,7 +76,7 @@
           data-panel="02"
         >
           <div class="tab_panel-text">
-          @include('mybookmark_tab.sidedish')
+          @include('mypage.mybookmark_tab.sidedish')
           </div>
         </div>
         <div
@@ -84,7 +84,7 @@
           data-panel="03"
         >
           <div class="tab_panel-text">
-            @include('mybookmark_tab.maindish')
+            @include('mypage.mybookmark_tab.maindish')
           </div>
         </div>
         <div
@@ -92,7 +92,7 @@
           data-panel="04"
         >
           <div class="tab_panel-text">
-            @include('mybookmark_tab.dessert')
+            @include('mypage.mybookmark_tab.dessert')
           </div>
         </div>
       </div>

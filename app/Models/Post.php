@@ -11,6 +11,16 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'user_id',
+        'photo',
+        'dish_id',
+        'title',
+        'times',
+        'ingredients',
+        'description'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class)->withTrashed();

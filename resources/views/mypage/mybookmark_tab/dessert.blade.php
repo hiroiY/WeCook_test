@@ -1,4 +1,4 @@
-@vite(['resources/css/mybookmark_tab.scss'])
+@vite(['resources/sass/mybookmark_tab.scss'])
 
 <div class="tab-content">
             {{-- <div class="container"> --}}
