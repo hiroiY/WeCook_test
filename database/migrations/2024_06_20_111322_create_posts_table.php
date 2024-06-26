@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('dish_id');
             $table->string('title',150);
             $table->string('cooking_time');
-            $table->text('ingredients');
-            $table->string('description');
+            $table->string('ingredients');
+            $table->text('description');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
