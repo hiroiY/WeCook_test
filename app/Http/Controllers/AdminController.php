@@ -18,4 +18,13 @@ class AdminController extends Controller
     public function poststatus(){                                 
         return view('admin.modal.post_status');                 
     }
+    public function logout(Request $request)
+    {
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/home');
+    }
+
 }

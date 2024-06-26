@@ -1,4 +1,7 @@
 @vite(['resources/sass/navbar.scss'])
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- has popper already -->
 <nav class="navbar navbar-expand-md shadow-sm p-1">
   <div class="container">
     <a 
@@ -182,18 +185,51 @@
           
           <li class="nav-item">
             {{-- Logout Button/Link --}}
-            <a class="nav-link  mt-2" href="{{ route('logout') }}"
+            {{-- <a class="nav-link  mt-2" href="{{ route('logout') }}"
               onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">
               <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}
+            </a> --}}
+            <a class="nav-link  mt-2" data-bs-toggle="modal" data-bs-target="#logoutModal">
+              <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}@include('modals.logout')
             </a>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
-            </form>
+            </form> --}}
           </li>
         @endguest
       </ul>
     </div>
   </div>
+  <script>
+    $(document).ready(function() {
+        // Handle Cancel button click
+        $('#cancel_btn').click(function() {
+            $('#logoutModal').modal('hide');
+        });
+
+
+        $('#logout-form').submit(function(e) {
+            e.preventDefault(); 
+
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: $(this).serialize(),
+                success: function(response) {
+                    // Handle success response
+                    console.log('Logout successful');
+                    window.location.href = '/'; 
+                },
+                error: function(xhr, status, error) {
+                    console.error('Logout failed:', error);
+                    alert('Logout failed. Please try again.');
+                }
+            });
+
+            $('#logoutModal').modal('hide');
+        });
+    });
+</script>
 </nav>
