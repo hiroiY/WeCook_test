@@ -1,3 +1,7 @@
+*{
+    font-family: "Nunito"
+}
+
 body, td {
     color: #4D1F01 !important;
 }
@@ -82,7 +86,7 @@ table {
 }
 .selected{
     font-weight: bold;
-
+    color: #F7F3EB
 }
 .unselected{
     color: #887569;
@@ -99,4 +103,40 @@ table {
     width: 60px;
     height: 60px;
     border-radius: 10%;
+}
+// .grab{
+//     cursor: grabbing;
+// }
+
+/* Paginate style */
+ul.pagination{
+    padding:0 0 0 45%;
+    margin-bottom: 1em;
+    line-height: 1.5em;
+}
+a.page-link {
+    font-family: "Nunito";
+    color: #4d1f01;
+}
+li.active .page-link {
+    border: solid .01em #e45900;
+    background-color: #e45900;
+    &:hover{
+    color: inherit;
+    }
+}
+li.page-item .page-link:hover {
+    color: #4d1f01;
+    background-color: #e457002c;
+}
+li.disabled .page-link {
+    border: solid .01em #e45900;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: #fefdfd;
+}
+li.page-item .page-link {
+    border: solid .01em #e45900;
+    font-size: 1.5em;
+    font-weight: bold;
 }

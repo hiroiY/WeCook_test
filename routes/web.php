@@ -18,7 +18,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Route::get('/logoutmodal', [HomeController::class, 'logoutmodal']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
-Route::get('/usermanagement', [App\Http\Controllers\AdminController::class, 'usermanagement'])->name('usermanagement');
 Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
 Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
 Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
@@ -34,4 +33,15 @@ Route::get('/createrecipe',[App\Http\Controllers\RecipeController::class,'create
 Route::get('/detailrecipe',[App\Http\Controllers\RecipeController::class,'detailrecipe']);
 Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
 Route::get('/admin/users/search', [AdminController::class, 'searchUsers'])->name('admin.users.search');
-Route::get('/admin/usermanagement', [AdminController::class, 'userManagement'])->name('admin.usermanagement');
+// Route::get('/admin/usermanagement', [AdminController::class, 'userManagement'])->name('admin.usermanagement');
+Route::get('/admin/usermanagement', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/usermanagement', [AdminController::class, 'index'])->name('usermanagement');
+
+
+// Route::delete('/admin/usermanagement/{id}/deactivate', [AdminController::class, 'deactivate'])->name('admin.usermanagement.deactivate');
+Route::patch('/admin/usermanagement/{id}/activate', [AdminController::class, 'activate'])->name('admin.usermanagement.activate');
+Route::patch('/admin/usermanagement/{id}/activate', [AdminController::class, 'activate'])->name('activate');
+Route::patch('/admin/usermanagement/{id}/deactivate', [AdminController::class, 'deactivate'])->name('admin.usermanagement.deactivate');
+Route::delete('/admin/usermanagement/{id}/deactivate', [AdminController::class, 'deactivate'])->name('deactivate');
+
+

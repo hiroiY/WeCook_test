@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class AdminController extends Controller
 {
@@ -17,49 +19,37 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
+        // $all_users = User::paginate(10);
         $search_username = $request->input('search_username');
-                    
-            if ($search_username) {
-                $request->validate([
-                    'search_username' => 'required|min:1'
-                ]);
-
-                $all_users = $this->user->where('name', 'like', '%'. $search_username . '%')
-                                        ->withTrashed()
-                                        ->latest()
-                                        ->paginate(5);
-            } else {
-                $all_users = $this->user->withTrashed()->latest()->paginate(5);
-            }
-            return view('admin.usermanagement', compact('all_users', 'search_username'));
+        
+        if ($search_username) {
+            $request->validate([
+                'search_username' => 'required|min:1'
+            ]);
+    
+            $all_users = User::where('name', 'like', '%'. $search_username . '%')
+                            ->withTrashed()
+                            ->latest()
+                            ->paginate(10);
+        } else {
+            $all_users = User::withTrashed()->latest()->paginate(10);
+        }
+        return view('admin.usermanagement', compact('all_users', 'search_username'));
     }
-    public function searchUsers(Request $request)
+    public function deactivate($id)
     {
-        $request->validate([
-            'search_username' => 'required|min:1'
-        ]);
-
-        $all_users = $this->user->where('name', 'like', '%'. $request->search_username . '%')
-                                ->withTrashed()
-                                ->latest()
-                                ->paginate(5);
-
-        return view('admin.usermanagement', [
-            'all_users' => $all_users,
-            'search_username' => $request->search_username,
-        ]);
+        $this->user->destroy($id);
+        return redirect()->back();
     }
-    public function userManagement()
+
+    public function activate(Request $request, $id)
     {
-        $users = User::withTrashed()->get();
-        return view('admin.usermanagement', [
-            'users' => $users
-        ]);
+        $this->user->onlyTrashed()->findOrFail($id)->restore();
+        return redirect()->back();
     }
 
-    // public function usermanagement(){
-    //     return view('admin.usermanagement');
-    // }
+
+
     public function postmanagement(){
         return view('admin.postmanagement');
     }
