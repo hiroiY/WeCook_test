@@ -7,16 +7,16 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RecipeController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage.homepage');
 });
 Auth::routes();
 // require __DIR__ . '/auth.php';
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/appetizer', [App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Logout modal
 // Route::get('/logoutmodal', [HomeController::class, 'logoutmodal']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
 Route::get('/usermanagement', [App\Http\Controllers\AdminController::class, 'usermanagement'])->name('usermanagement');
 Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
