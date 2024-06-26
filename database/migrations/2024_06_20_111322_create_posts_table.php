@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('title',150);
             $table->string('cooking_time');
             $table->text('ingredients');
-            $table->longText('description');
+            $table->string('description');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('dish_id')->references('id')->on('dishes');
+            $table->foreign('dish_id')->references('id')->on('dishes');         
         });
     }
 
@@ -34,4 +34,9 @@ return new class extends Migration
     {
         Schema::dropIfExists('posts');
     }
+
+    
 };
+
+
+

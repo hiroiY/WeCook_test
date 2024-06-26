@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\RecipeController;
 
 Route::get('/', function () {
     return view('homepage.homepage');
@@ -27,7 +28,10 @@ Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'edit
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
 Route::get('/recipe/writer',[UserController::class, 'writer'])->name('writer');
 Route::get('/search',[HomeController::class, 'search'])->name('search');
+// createrecipe
+// Route::middleware(['auth'])->group(function () {
+    Route::get('/createrecipe', [RecipeController::class, 'createrecipe'])->name('createrecipe');
+    Route::post('/storerecipe', [RecipeController::class, 'storeRecipe'])->name('storerecipe');
+    Route::get('/detailrecipe/{id}', [RecipeController::class, 'detailrecipe'])->name('detailrecipe');
+// });
 
-Route::get('/createrecipe',[App\Http\Controllers\RecipeController::class,'createrecipe']);
-
-Route::get('/detailrecipe/{id}',[App\Http\Controllers\RecipeController::class,'detailrecipe'])->name('detailrecipe');
