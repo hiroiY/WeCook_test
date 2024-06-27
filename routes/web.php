@@ -12,10 +12,13 @@ Route::get('/', function () {
 });
 Auth::routes();
 // require __DIR__ . '/auth.php';
+
+//Homepage's Routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/recently', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home/appetizer', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home/sidedish', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/home/maindish', [App\Http\Controllers\HomeController::class, 'index']);
 
 
 // Logout modal
