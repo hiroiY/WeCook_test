@@ -24,7 +24,7 @@ class HomeController extends Controller
 
     public function __construct(Post $post, User $user)    
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
         $this->post = $post;
         $this->user = $user;
     }
@@ -35,6 +35,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
+     //Get posts method on Homepage
     private function getRecentlyPosts($page = 1, $perPage = 9)
     {
         //Get latest 30 posts 
@@ -51,6 +52,7 @@ class HomeController extends Controller
         return $recentlyPaginatedItems;
     }
 
+    //Get Appetizer latest posts
     private function getAppetizerPosts($page = 1, $perPage = 9, $dishAppetizer = 1)
     {
         //Get the latest posts which dish_id is 1
@@ -70,6 +72,7 @@ class HomeController extends Controller
         return $appetizerPaginatedItems;
     }
 
+    //Get Side dish latest posts
     private function getSidedishPosts($page = 1, $perPage = 9, $dishSide = 2)
     {
         //Get the latest posts which dish_id is 2
@@ -89,18 +92,40 @@ class HomeController extends Controller
         return $sideDishPaginatedItems;
     }
 
+    //Get Main dish latest posts
+    private function getMaindishPosts($page = 1, $perPage = 9, $dishMain = 3)
+    {
+        //Get the latest posts which dish_id is 3
+       $get_dish_id_3 = $this->post->where('dish_id',$dishMain)->latest();
+
+       //Get 30 posts from last
+       $mainDishPosts = $get_dish_id_3->take(30)->get();
+
+       //Slices the items displayed on the main dish page.
+        $mainDishItems = $mainDishPosts->slice(($page - 1) * $perPage, $perPage)->all();
+
+        //Create LengthAwarePaginator instance 
+       $mainDishPaginatedItems = new LengthAwarePaginator($mainDishItems,count($mainDishPosts), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+
+       $mainDishPaginatedItems->withPath('/home/maindish');
+
+        return $mainDishPaginatedItems;
+    }
+
     public function index(Request $request)
     {
         $page = $request->input('page', 1);
         //dish_id
         $dishAppetizer = 1;
         $dishSide = 2;
+        $dishMain = 3;
 
         $recently_posts = $this->getRecentlyPosts($page);
         $appetizer_posts = $this->getAppetizerPosts($page,9,$dishAppetizer);
-        $sideDish_posts =  $this->getSidedishPosts($page, 9, $dishSide);
+        $sideDish_posts = $this->getSidedishPosts($page, 9, $dishSide);
+        $mainDish_posts = $this->getMaindishPosts($page, 9, $dishMain);
 
-        return view('homepage.homepage', compact('recently_posts','appetizer_posts','sideDish_posts'));
+        return view('homepage.homepage', compact('recently_posts','appetizer_posts','sideDish_posts','mainDish_posts'));
     }
     public function admin()
     {
