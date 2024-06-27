@@ -20,8 +20,6 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         // $all_users = User::paginate(10);
-        $search_username = $request->input('search_username');
-        
         if ($search_username) {
             $request->validate([
                 'search_username' => 'required|min:1'

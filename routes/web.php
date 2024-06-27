@@ -38,7 +38,7 @@ Route::get('/search',[HomeController::class, 'search'])->name('search');
 // });
 
 Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
-Route::get('/admin/users/search', [AdminController::class, 'searchUsers'])->name('admin.users.search');
+Route::get('/admin/users/search', [AdminController::class, 'search_username'])->name('admin.users.search');
 Route::get('/admin/usermanagement', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/usermanagement', [AdminController::class, 'index'])->name('usermanagement');
 

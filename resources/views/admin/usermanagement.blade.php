@@ -38,7 +38,7 @@
             </div>
         </nav>
     </div>
-    <div class="col overflow-auto h-100 py-5"> 
+    <div class="col overflow-auto h-100"> 
         <div class="content">
             <div class="container-fluid">
                 <div class="mx-4 p-4">
