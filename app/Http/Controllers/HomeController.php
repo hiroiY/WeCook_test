@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Post; 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +34,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+     //Get posts method on Homepage
     private function getRecentlyPosts($page = 1, $perPage = 9)
     {
         //Get latest 30 posts 
@@ -45,17 +47,86 @@ class HomeController extends Controller
         // Create LengthAwarePaginator instance 
         $recentlyPaginatedItems = new LengthAwarePaginator( $recentlyPageItems, count($home_posts),$perPage, $page,['path' => LengthAwarePaginator::resolveCurrentPath(),]);
 
+        $recentlyPaginatedItems->withPath('/home/recently');
+
         return $recentlyPaginatedItems;
+    }
+
+    //Get Appetizer latest posts
+    private function getAppetizerPosts($page = 1, $perPage = 9, $dishAppetizer = 1)
+    {
+        //Get the latest posts which dish_id is 1
+       $get_dish_id_1 = $this->post->where('dish_id',$dishAppetizer)->latest();
+
+       //Get 30 posts from last
+       $appetizerPosts = $get_dish_id_1->take(30)->get();
+
+       //Slices the items displayed on the appetizer page.
+        $appetizerItems = $appetizerPosts->slice(($page - 1) * $perPage, $perPage)->all();
+
+        //Create LengthAwarePaginator instance 
+       $appetizerPaginatedItems = new LengthAwarePaginator($appetizerItems,count($appetizerPosts), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+
+       $appetizerPaginatedItems->withPath('/home/appetizer');
+
+        return $appetizerPaginatedItems;
+    }
+
+    //Get Side dish latest posts
+    private function getSidedishPosts($page = 1, $perPage = 9, $dishSide = 2)
+    {
+        //Get the latest posts which dish_id is 2
+       $get_dish_id_2 = $this->post->where('dish_id',$dishSide)->latest();
+
+       //Get 30 posts from last
+       $sideDishPosts = $get_dish_id_2->take(30)->get();
+
+       //Slices the items displayed on the side dish page.
+        $sideDishItems = $sideDishPosts->slice(($page - 1) * $perPage, $perPage)->all();
+
+        //Create LengthAwarePaginator instance 
+       $sideDishPaginatedItems = new LengthAwarePaginator($sideDishItems,count($sideDishPosts), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+
+       $sideDishPaginatedItems->withPath('/home/sidedish');
+
+        return $sideDishPaginatedItems;
+    }
+
+    //Get Main dish latest posts
+    private function getMaindishPosts($page = 1, $perPage = 9, $dishMain = 3)
+    {
+        //Get the latest posts which dish_id is 3
+       $get_dish_id_3 = $this->post->where('dish_id',$dishMain)->latest();
+
+       //Get 30 posts from last
+       $mainDishPosts = $get_dish_id_3->take(30)->get();
+
+       //Slices the items displayed on the main dish page.
+        $mainDishItems = $mainDishPosts->slice(($page - 1) * $perPage, $perPage)->all();
+
+        //Create LengthAwarePaginator instance 
+       $mainDishPaginatedItems = new LengthAwarePaginator($mainDishItems,count($mainDishPosts), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+
+       $mainDishPaginatedItems->withPath('/home/maindish');
+
+        return $mainDishPaginatedItems;
     }
 
     public function index(Request $request)
     {
         $page = $request->input('page', 1);
+        //dish_id
+        $dishAppetizer = 1;
+        $dishSide = 2;
+        $dishMain = 3;
+
         $recently_posts = $this->getRecentlyPosts($page);
+        $appetizer_posts = $this->getAppetizerPosts($page,9,$dishAppetizer);
+        $sideDish_posts = $this->getSidedishPosts($page, 9, $dishSide);
+        $mainDish_posts = $this->getMaindishPosts($page, 9, $dishMain);
 
-        return view('homepage.homepage', compact('recently_posts'));
+        return view('homepage.homepage', compact('recently_posts','appetizer_posts','sideDish_posts','mainDish_posts'));
     }
-
     public function admin()
     {
         return view('admin');
@@ -72,8 +143,6 @@ class HomeController extends Controller
     {
         return view('mypage.myrecipe');
     }
-
-
 
     public function search() 
     {

@@ -1,14 +1,17 @@
 @extends('layouts.app')
 
-<link 
+<!-- <link 
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
     rel="stylesheet" 
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
     crossorigin="anonymous"
->
-<link rel="stylesheet" 
+> -->
+{{-- <link rel="stylesheet" 
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
->
+> --}}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- has popper already -->
 @vite(['resources/sass/admin.scss'])
 
 @section('content')
@@ -19,14 +22,16 @@
             <div class="position-sticky">
                 <div class="list-group-flush mt-4">
                     <a
-                    href="#"
+                    href="{{ route('usermanagement')}}"
                     class="list-group-item list-group-item-action p-2 ripple mt-5"
                     aria-current="true"
                     >
                     <span class="selected">User Management</span>
                     </a>
-                    <a href="#" 
-                    class="list-group-item list-group-item-action p-2 ripple mt-5">
+                    <a 
+                    href="{{ route('postmanagement')}}" 
+                    class="list-group-item list-group-item-action p-2 ripple mt-5"
+                    >
                     <span class="unselected">Post Management</span>
                     </a>
                 </div>
@@ -38,7 +43,7 @@
             <div class="container-fluid">
                 <div class="mx-4 p-4">
                     {{-- Search bar --}}
-                    <form action="#">
+                    <form action="{{ route ('admin.users.search') }}" method="GET">
                         <input 
                             type="search" 
                             name="search_username" 
@@ -46,6 +51,7 @@
                             class="form-control d-inline search-input p-2 my-3" 
                             placeholder="&#xF52A;   Search by username" 
                             style="font-family: Bootstrap-icons; width: 400px"
+                            value="{{ isset($search_username) ? $search_username : '' }}"
                         >
                     </form>
                     {{-- Table --}}
@@ -62,50 +68,88 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="p-3">
-                                    <a href="#">
-                                        <i class="fa-solid fa-eye fa-eye-orange fa-xl my-3"></i>
-                                    </a>
-                                </td>
-                                <td class="p-3">
-                                    <i class="fa-regular fa-circle-user fa-2x"></i>
-                                </td>
-                                <td class="p-3">
-                                    <a href="#" class="textdecoration-none">Isabel jackson</a>
-                                </td>
-                                <td class="p-3">isabel@mail.com</td>
-                                <td class="p-3">
-                                    <a href="#" class="textdecoration-none">54</a>
-                                </td>
-                                <td class="p-3">March 8th, 2024</td>
-                                <td></td>
-                            </tr> 
-                            <tr>
-                                <td class="p-3">
-                                    <a href="#">
-                                        <i class="fa-solid fa-eye-slash fa-xl my-3"></i>
-                                    </a>
-                                </td>
-                                <td class="p-3">
-                                    <i class="fa-regular fa-circle-user fa-2x"></i>
-                                </td>
-                                <td class="p-3">
-                                    <a href="#" class="textdecoration-none">Emma Thompson</a>
-                                </td>
-                                <td class="p-3">emma@mail.com</td>
-                                <td class="p-3">
-                                    <a href="#" class="textdecoration-none">6</a>
-                                </td>
-                                <td class="p-3">April 26th, 2024</td>
-                                <td class="p-3">May 16th, 2024</td>
-                            </tr>
+                            @foreach($all_users as $user)
+                                <tr class="grab" >
+                                    <td class="p-3">
+                                        @if($user->trashed())
+                                            <button class="dropdown-item text-success" 
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#activate-user-{{ $user->id }}"
+                                                    data-user-id="{{ $user->id }}">
+                                                <i class="fa-solid fa-eye-slash fa-xl my-3"></i>
+                                            </button>
+                                            {{-- Modal --}}
+                                            @include('admin.modal.user_status', ['user'=>$user])
+                                        @else
+                                            <button class="dropdown-item text-danger" 
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#deactivate-user-{{ $user->id }}"
+                                                    data-user-id="{{ $user->id }}">
+                                                <i class="fa-solid fa-eye fa-eye-orange fa-xl my-3"></i>
+                                            </button>
+                                            {{-- Modal --}}
+                                            @include('admin.modal.user_status', ['user'=>$user])
+                                        @endif
+                                    </td>
+                                    <td class="p-3">
+                                        @if($user->avatar)
+                                            <img src="{{ $user->avator }}" 
+                                                alt="{{ $user->name }}" 
+                                            >
+                                        @else <i class="fa-regular fa-circle-user fa-2x"></i>
+                                        @endif                                    
+                                    </td>
+                                    <td class="p-3">
+                                        <a href="#" class="textdecoration-none">{{ $user->name }}</a>
+                                    </td>
+                                    <td class="p-3">{{ $user->email }}</td>
+                                    <td class="p-3">
+                                        <a href="#" class="textdecoration-none">{{ $user->posts()->count() }}</a>
+                                    </td>
+                                    <td class="p-3">{{ $user->created_at }}</td>
+                                    <td class="p-3">{{ $user->deleted_at }}</td>
+                                </tr> 
+                            @endforeach
                         </tbody>
                     </table>
+                    {{ $all_users->links() }}
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('.activate-user').on('click', function() {
+            var userId = $(this).data('user-id');
+            $('#activate-user-' + userId).modal('show');
+
+            $('#activate_btn_' + userId).on('click', function() {
+                $.ajax({
+                    url: '/admin/usermanagement/' + userId + '/activate',
+                    type: 'PATCH',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            location.reload(); // Reload 
+                        } else {
+                            alert('Failed to reactivate user.');
+                        }
+                    },
+                    error: function() {
+                        alert('Error reactivating user.');
+                    }
+                });
+
+                $('#activate-user-' + userId).modal('hide');
+            });
+        });
+    });
+</script>
+
+
+    
 @endsection
 
