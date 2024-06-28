@@ -19,7 +19,7 @@ Route::get('/home/recently', [App\Http\Controllers\HomeController::class, 'index
 Route::get('/home/appetizer', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home/sidedish', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home/maindish', [App\Http\Controllers\HomeController::class, 'index']);
-
+Route::get('/home/dessert', [App\Http\Controllers\HomeController::class, 'index']);
 
 // Logout modal
 // Route::get('/logoutmodal', [HomeController::class, 'logoutmodal']);
@@ -31,7 +31,11 @@ Route::get('/mypage/myrecipe', [App\Http\Controllers\HomeController::class, 'myr
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
 Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'editmyrecipe'])->name('editmyrecipe');
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
-Route::get('/recipe/writer',[UserController::class, 'writer'])->name('writer');
+
+//Writers page
+Route::get('/{id}/writer',[UserController::class, 'writer'])->name('writer');
+Route::get('/{id}/writer/recently',[UserController::class, 'writer']);
+
 Route::get('/search',[HomeController::class, 'search'])->name('search');
 // createrecipe
 // Route::middleware(['auth'])->group(function () {
