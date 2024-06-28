@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 // require __DIR__ . '/auth.php';
 
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-// Logout modal
-// Route::get('/logoutmodal', [HomeController::class, 'logoutmodal']);
-Route::post('logout', [App\Http\Controllers\AdminController::class, 'logout'])->name('logout');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
