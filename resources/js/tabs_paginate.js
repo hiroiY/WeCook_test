@@ -94,6 +94,8 @@
     const tabItems = tabList.querySelectorAll('.tab_menu-item');
     const tabPanelItems = tabList.nextElementSibling.querySelectorAll('.tab_panel-box');
 
+    sessionStorage.removeItem("tab_panel");
+
     tabItems.forEach((tabItem) => {
       tabItem.classList.remove('is-active');
     });
