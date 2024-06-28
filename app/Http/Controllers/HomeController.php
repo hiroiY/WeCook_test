@@ -112,6 +112,26 @@ class HomeController extends Controller
         return $mainDishPaginatedItems;
     }
 
+    //Get Dessert latest posts
+    private function getDessertPosts($page = 1, $perPage = 9, $dishDessert = 4)
+    {
+        //Get the latest posts which dish_id is 4
+        $get_dish_id_4 = $this->post->where('dish_id',$dishDessert)->latest();
+
+        //Get 30 posts from last
+        $dessertPosts = $get_dish_id_4->take(30)->get();
+
+        //Slices the items displayed on the dessert page.
+        $dessertItems = $dessertPosts->slice(($page - 1) * $perPage, $perPage)->all();
+
+        //Create LengthAwarePaginator instance 
+        $dssertPaginatedItems = new LengthAwarePaginator($dessertItems,count($dessertPosts), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+
+        $dssertPaginatedItems->withPath('/home/dessert');
+
+        return $dssertPaginatedItems;
+    }
+
     public function index(Request $request)
     {
         $page = $request->input('page', 1);
@@ -119,13 +139,15 @@ class HomeController extends Controller
         $dishAppetizer = 1;
         $dishSide = 2;
         $dishMain = 3;
+        $dishDessert = 4;
 
         $recently_posts = $this->getRecentlyPosts($page);
         $appetizer_posts = $this->getAppetizerPosts($page,9,$dishAppetizer);
         $sideDish_posts = $this->getSidedishPosts($page, 9, $dishSide);
         $mainDish_posts = $this->getMaindishPosts($page, 9, $dishMain);
+        $dessert_posts = $this->getDessertPosts($page, 9, $dishDessert);
 
-        return view('homepage.homepage', compact('recently_posts','appetizer_posts','sideDish_posts','mainDish_posts'));
+        return view('homepage.homepage', compact('recently_posts','appetizer_posts','sideDish_posts','mainDish_posts','dessert_posts'));
     }
     public function admin()
     {

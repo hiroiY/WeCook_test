@@ -17,24 +17,19 @@ class AdminController extends Controller
         $this->user = $user;
     }
 
+    public function search_username(Request $request){
+        $search_username = $request->input('search_username');
+        $searched_username = User::where('name', 'like', '%'. $search_username . '%')
+        ->withTrashed()
+        ->latest()
+        ->paginate(10);
+        return view ('admin.search_user', compact('searched_username')) ;
+    }
+
     public function index(Request $request)
     {
-        // $all_users = User::paginate(10);
-        $search_username = $request->input('search_username');
-        
-        if ($search_username) {
-            $request->validate([
-                'search_username' => 'required|min:1'
-            ]);
-    
-            $all_users = User::where('name', 'like', '%'. $search_username . '%')
-                            ->withTrashed()
-                            ->latest()
-                            ->paginate(10);
-        } else {
             $all_users = User::withTrashed()->latest()->paginate(10);
-        }
-        return view('admin.usermanagement', compact('all_users', 'search_username'));
+        return view('admin.usermanagement', compact('all_users'));
     }
     public function deactivate($id)
     {
@@ -50,14 +45,14 @@ class AdminController extends Controller
 
 
 
-    public function postmanagement(){
-        return view('admin.postmanagement');
-    }
-    public function userstatus(){                                 
-        return view('admin.modal.user_status');                  
-    }                                                             
-    public function poststatus(){                                 
-        return view('admin.modal.post_status');                 
-    }
+    // public function postmanagement(){
+    //     return view('admin.postmanagement');
+    // }
+    // public function userstatus(){                                 
+    //     return view('admin.modal.user_status');                  
+    // }                                                             
+    // public function poststatus(){                                 
+    //     return view('admin.modal.post_status');                 
+    // }
 
 }
