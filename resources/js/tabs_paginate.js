@@ -2,20 +2,21 @@
 
   document.addEventListener('DOMContentLoaded', () => {
   const tabMenus = document.querySelectorAll('.tab_menu-item');
-  const tabPanelItems = document.querySelectorAll('.tab_panel-box');
+  // const tabPanelItems = document.querySelectorAll('.tab_panel-box');
 
-    // Event listeners added to pagination links.
-    const paginationLinks = document.querySelectorAll('.pagination-link');
-    paginationLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        scrollToContentStart();
-      });
-    });
+    // // Event listeners added to pagination links.
+    // const paginationLinks = document.querySelectorAll('.pagination-link');
+    // paginationLinks.forEach(link => {
+    //   link.addEventListener('click', () => {
+    //     scrollToContentStart();
+    //   });
+    // });
   
    // Save scroll position.
    function saveScrollPosition() {
     const path = window.location.pathname;
-    sessionStorage.setItem(path + '_scrollPosition', window.scrollY || document.documentElement.scrollTop);
+    // sessionStorage.setItem(path + '_scrollPosition', window.scrollY || document.documentElement.scrollTop);
+    sessionStorage.setItem("tab_panel", 0);
   }
 
   // Restor Saved scroll position.
@@ -25,6 +26,8 @@
     if (savedPosition) {
       window.scrollTo(0, parseInt(savedPosition, 10));
     }
+    //remove the scroll position 
+    sessionStorage.removeItem(path + '_scrollPosition');
   }
 
   // Save scroll position before leaving the page.
@@ -56,6 +59,8 @@
     if (element) {
       element.scrollIntoView();
     }
+    const tabData = sessionStorage.getItem("tab_panel");
+    tabSwitch(tabData);
   });
 
    // Function to save the tab state to session storage.
@@ -102,6 +107,7 @@
         tabPanelItem.classList.add('is-show');
       }
     });
+    sessionStorage.setItem("tab_panel",tabTargetData);
   }
 
     // Restore tab state on page load.
