@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header">
               <p class="logout-text">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-chevron-left fa-xs"></i></button>
                 Log Out
               </p>
             </div>
@@ -15,7 +15,11 @@
             <div class="modal-footer justify-content-center">
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn btn-warning text-white">Log out</button>
+                    <div class="row mb-3">
+                        <div class="col px-auto">
+                            <button type="submit" class="btn btn-warning text-white w-100 logout-button">Log out</button>
+                        </div>
+                      </div>
                 </form>
             </div>
         </div>

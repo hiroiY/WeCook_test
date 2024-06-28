@@ -1,36 +1,7 @@
-// // logout modal
-// .logout-modal-style {
-//     background-color: #f7f3eb;
-//     border-radius: 30px;
-// }
-
-// .modal-content {
-//     -webkit-border-radius: 30px !important;
-//     -moz-border-radius: 30px !important;
-//     border-radius: 30px !important;
-//     // border-radius: 100px !important;
-// }
-
-// // logout modal button
-// #logout-btn {
-//     color: white;
-//     background-color: #e45900;
-// }
-
-// // logout modal title
-// .logout-ttl {
-//     font-size: 35px;
-//     color: #4d1f01;
-// }
-
-// // logout modal message
-// .are-you-sure {
-//     color: #4d1f01;
-// }
-
 .modal-content {
     border-radius: 30px;
     padding: 20px;
+    background-color: #f7f3eb;
 }
 .modal-header{
     border-bottom: none;
@@ -67,4 +38,7 @@
 }
 .modal-footer .btn:hover {
     background-color: #ff4500;
+}
+.fa-solid{
+    color: #4d1f01;
 }
