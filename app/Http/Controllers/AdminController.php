@@ -72,9 +72,6 @@ class AdminController extends Controller
 }
 
 
-
-
-
     public function userstatus(){                                 
         return view('admin.modal.user_status');                  
     }                                                             
