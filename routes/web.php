@@ -7,12 +7,11 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RecipeController;
 
-Route::get('/', function () {
-    return view('homepage.homepage');
-});
+
 Auth::routes();
 // require __DIR__ . '/auth.php';
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 //Homepage's Routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/recently', [App\Http\Controllers\HomeController::class, 'index']);
@@ -21,8 +20,11 @@ Route::get('/home/sidedish', [App\Http\Controllers\HomeController::class, 'index
 Route::get('/home/maindish', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home/dessert', [App\Http\Controllers\HomeController::class, 'index']);
 
-// Logout modal
-// Route::get('/logoutmodal', [HomeController::class, 'logoutmodal']);
+
+Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
+Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
+Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
+Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
 Route::get('/mypage/myrecipe', [App\Http\Controllers\HomeController::class, 'myrecipe'])->name('myrecipe');
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
 Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'editmyrecipe'])->name('editmyrecipe');
