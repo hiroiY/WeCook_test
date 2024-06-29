@@ -82,6 +82,13 @@
   tabMenus.forEach((tabMenu) => {
     tabMenu.addEventListener('click', (e) => {
       const tabId = e.target.dataset.tab;
+      if( tabId === activeTabId ){
+        // keep the pagination...?
+
+      }else{
+        //restore the activeTabId....? 
+
+      }
       saveActiveTab(tabId); //save tab status
       tabSwitch(e); //Calls the tab switching process.
     });
