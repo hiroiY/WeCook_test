@@ -7,12 +7,11 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RecipeController;
 
-Route::get('/', function () {
-    return view('homepage.homepage');
-});
+
 Auth::routes();
 // require __DIR__ . '/auth.php';
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 //Homepage's Routes
 Route::controller(HomeController::class)->group(function() {
     Route::get('/home', 'index')->name('home');
@@ -24,8 +23,7 @@ Route::controller(HomeController::class)->group(function() {
 });
 
 
-// Logout modal
-// Route::get('/logoutmodal', [HomeController::class, 'logoutmodal']);
+
 Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
 Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
 Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
