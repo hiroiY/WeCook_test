@@ -63,7 +63,7 @@
 </div>
 <!-- tab menu area -->
 <div 
-  class="tab mx-auto mt-5" 
+  class="tab mx-auto my-5" 
   style="max-width: 95%;"
 >
   <ul class="tab_menu m-0 p-0">
