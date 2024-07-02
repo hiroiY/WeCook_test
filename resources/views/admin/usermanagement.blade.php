@@ -96,8 +96,6 @@
                                     <td class="p-3">{{ $user->created_at }}</td>
                                     <td class="p-3">{{ $user->deleted_at }}</td>
                                 </tr> 
-                                {{-- Modal --}}
-                                {{-- @include('admin.modal.user_status', ['user'=>$user]) --}}
                             @endforeach
                         </tbody>
                     </table>

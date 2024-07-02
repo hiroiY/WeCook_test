@@ -1,4 +1,8 @@
 @vite(['resources/sass/navbar.scss'])
+@vite(['resources/js/logout_modal.js'])
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- has popper already -->
 <nav class="navbar navbar-expand-md shadow-sm p-1">
   <div class="container">
     <a 
@@ -181,19 +185,13 @@
           </div>
           
           <li class="nav-item">
-            {{-- Logout Button/Link --}}
-            <a class="nav-link  mt-2" href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">
+            <a class="nav-link  mt-2" data-bs-toggle="modal" data-bs-target="#logoutModal">
               <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}
             </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-            </form>
           </li>
         @endguest
       </ul>
     </div>
   </div>
+@include('modals.logout')
 </nav>

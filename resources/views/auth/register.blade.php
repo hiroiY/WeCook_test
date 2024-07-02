@@ -80,7 +80,7 @@
               {{-- Login link--}}
               <div class="row mb-3">
                 <div class="col px-auto">
-                  <p class="text-center fw-bold already-have-account">Already have an account? <a href="" class="text-decoration-none login-link">Log in</a></p>
+                  <p class="text-center fw-bold already-have-account">Already have an account? <a href="{{ route('login') }}" class="text-decoration-none login-link">Log in</a></p>
                 </div>
               </div>
             </form>
