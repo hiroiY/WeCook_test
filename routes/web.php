@@ -42,13 +42,24 @@ Route::get('/search',[HomeController::class, 'search'])->name('search');
     Route::get('/detailrecipe/{id}', [RecipeController::class, 'detailrecipe'])->name('detailrecipe');
 // });
 
+// Admin
+Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
+// Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
+Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
+Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
+
 Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
 Route::get('/admin/users/search', [AdminController::class, 'search_username'])->name('admin.users.search');
-Route::get('/admin/usermanagement', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin/usermanagement', [AdminController::class, 'index'])->name('usermanagement');
+Route::get('/admin/posts/search', [AdminController::class, 'search_post'])->name('admin.posts.search');
 
+// Route::get('/admin/usermanagement', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/usermanagement', [AdminController::class, 'index'])->name('usermanagement');
+// Route::get('/admin/postmanagement', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/postmanagement', [AdminController::class, 'postmanagement'])->name('postmanagement');
 
 Route::patch('/admin/usermanagement/{id}/activate', [AdminController::class, 'activate'])->name('activate');
 Route::delete('/admin/usermanagement/{id}/deactivate', [AdminController::class, 'deactivate'])->name('deactivate');
+Route::patch('/admin/postmanagement/{id}/activate', [AdminController::class, 'activatePost'])->name('post.activate');
+Route::delete('/admin/postmanagement/{id}/deactivate', [AdminController::class, 'deactivatePost'])->name('post.deactivate');
 
 
