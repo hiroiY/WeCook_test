@@ -19,7 +19,7 @@ Route::controller(HomeController::class)->group(function() {
     Route::get('/home/appetizer', 'index');
     Route::get('/home/sidedish','index');
     Route::get('/home/maindish', 'index');
-    Route::view('/home/dessert', 'index');
+    Route::get('/home/dessert', 'index');
 });
 
 

@@ -1,5 +1,7 @@
 @vite(['resources/sass/navbar.scss'])
 @vite(['resources/js/logout_modal.js'])
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+ integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- has popper already -->
@@ -74,118 +76,125 @@
               </li>
             @endif
           @else
-          {{-- NAVIGATION AREA --}}
-          {{-- Create Post Button/link --}}
-          <li 
-            class="nav-item me-3 mt-2" 
-            title="Create Post"
-          >
-            <a 
-              href="/createrecipe" 
-              class="nav-link"
-            >
-              <i class="fa-solid fa-pen-to-square">
-              </i>
-                Create post
-            </a>
-          </li>
-
-          {{-- Account Dropdown Button --}}
-          <div class="account" >
-            <li class="nav-item me-3 dropdown">
-              <button 
-                id="account-dropdown" 
-                class="nav-link " 
-                data-bs-toggle="dropdown"
-              >
-                @if (Auth::user()->avatar)
-                  <img 
-                    src="{{ Auth::user()->avatar }}" 
-                    alt="{{ Auth::user()->name }}" 
-                    class="rounded-circle avatar-lg"
-                  >
-                  {{ Auth::user()->name }}
-                @else
-                  <img 
-                    src="{{ asset('/images//profile_icon.png') }}" 
-                    alt="{{ Auth::user()->name }}" 
-                    class="rounded-circle avatar-lg"
-                  >
-                  </i> 
-                  {{ Auth::user()->name }}
-                @endif
-              </button>
-          
-              <div 
-                class="dropdown-menu dropdown-menu-end" 
-                aria-labelledby="account-dropdown"
-              >
-                {{--My Recipe Button/Link --}}
-                <a 
-                  href="{{ route('myrecipe', Auth::user()->id) }}" 
-                  class="dropdown-item"
-                >
-                  My Recipe
-                </a>
-                {{--My Bookmark Button/Link --}}
-                <a 
-                  href="{{-- route('mybookmark', Auth::user()->id) --}}" 
-                  class="dropdown-item"
-                >
-                  My Bookmark
-                </a>
-                {{--My Profile Edit Button/Link --}}
-                <a 
-                  href="{{-- route('profile.show', Auth::user()->id) --}}" 
-                  class="dropdown-item"
-                >
-                  Profile Edit
-                </a>
-              </div>
-            </li>
-          </div>
-
-          {{-- Admin management Dropdown Button --}}
-          <div class="account">
+            {{-- NAVIGATION AREA --}}
+            {{-- Create Post Button/link --}}
             <li 
-              class="nav-item dropdown me-3 mt-2"
+              class="nav-item me-3 mt-2" 
+              title="Create Post"
             >
-            {{-- @can('admin') --}}
-              <button 
-                id="account-dropdown" 
-                class="nav-link " 
-                data-bs-toggle="dropdown"
+              <a 
+                href="/createrecipe" 
+                class="nav-link"
               >
-                <a 
-                  class="dropdown-item" 
-                  href="{{-- route('admin.users') --}}"
-                >
-                  Admin
-                </a>
-              </button>
-              <div 
-                class="dropdown-menu dropdown-menu-end" 
-                aria-labelledby="account-dropdown"
-              >
-                {{--User management button/Link --}}
-                <a href="{{ route('usermanagement') }}" class="dropdown-item">
-                  User Management
-                </a>
-                {{--post management button/Link --}}
-                <a href="{{ route('postmanagement') }}" class="dropdown-item">
-                  Recipe Management
-                </a>
-                {{--category management button/Link --}}
-                <!-- <a href="{{-- route('profile.show', Auth::user()->id) --}}" class="dropdown-item">
-                  Category Management
-                </a> -->
-              </div>
-              {{-- @endcan --}}
+                <i class="fa-solid fa-pen-to-square">
+                </i>
+                  Create post
+              </a>
             </li>
-          </div>
+
+            {{-- Account Dropdown Button --}}
+            <div class="account" >
+              <li class="nav-item me-3 dropdown">
+                <button 
+                  id="account-dropdown" 
+                  class="nav-link" 
+                  data-bs-toggle="dropdown"
+                >
+                  @if (Auth::user()->avatar)
+                    <img 
+                      src="{{ Auth::user()->avatar }}" 
+                      alt="{{ Auth::user()->name }}" 
+                      class="rounded-circle avatar-lg"
+                    >
+                    {{ Auth::user()->name }}
+                  @else
+                    <img 
+                      src="{{ asset('/images//profile_icon.png') }}" 
+                      alt="{{ Auth::user()->name }}" 
+                      class="rounded-circle avatar-lg"
+                    >
+                    </i> 
+                    {{ Auth::user()->name }}
+                  @endif
+                </button>
+            
+                <div 
+                  class="dropdown-menu dropdown-menu-end" 
+                  aria-labelledby="account-dropdown"
+                >
+                  {{--My Recipe Button/Link --}}
+                  <a 
+                    href="{{ route('myrecipe') }}
+                    {{-- route('myrecipe', Auth::user()->id) --}}" 
+                    class="dropdown-item"
+                  >
+                    My Recipe
+                  </a>
+                  {{--My Bookmark Button/Link --}}
+                  <a 
+                    href="{{ route('mybookmark') }}
+                    {{-- route('mybookmark', Auth::user()->id) --}}" 
+                    class="dropdown-item"
+                  >
+                    My Bookmark
+                  </a>
+                  {{--My Profile Edit Button/Link --}}
+                  <a 
+                    href="{{-- route('profile.show', Auth::user()->id) --}}" 
+                    class="dropdown-item"
+                  >
+                    Profile Edit
+                  </a>
+                </div>
+              </li>
+            </div>
+
+            {{-- Admin management Dropdown Button --}}
+            <div class="account">
+              <li 
+                class="nav-item dropdown me-3 mt-2"
+              >
+            {{-- @can('admin') --}}
+                <button 
+                  id="account-dropdown" 
+                  class="nav-link " 
+                  data-bs-toggle="dropdown"
+                >
+                  <a 
+                    class="dropdown-item" 
+                    href="{{-- route('admin.users') --}}"
+                  >
+                    Admin
+                  </a>
+                </button>
+                <div 
+                  class="dropdown-menu dropdown-menu-end" 
+                  aria-labelledby="account-dropdown"
+                >
+                  {{--User management button/Link --}}
+                  <a href="{{ route('usermanagement') }}" class="dropdown-item">
+                    User Management
+                  </a>
+                  {{--post management button/Link --}}
+                  <a href="{{ route('postmanagement') }}" class="dropdown-item">
+                    Post Management
+                  </a>
+                  {{--category management button/Link --}}
+                  <!-- <a href="{{-- route('profile.show', Auth::user()->id) --}}" class="dropdown-item">
+                    Category Management
+                  </a> -->
+                </div>
+              {{-- @endcan --}}
+              </li>
+            </div>
           
           <li class="nav-item">
-            <a class="nav-link  mt-2" data-bs-toggle="modal" data-bs-target="#logoutModal">
+            <a 
+              class="nav-link  mt-2" 
+              data-bs-toggle="modal" 
+              data-bs-target="#logoutModal"
+              style="cursor: pointer;"
+            >
               <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}
             </a>
           </li>
