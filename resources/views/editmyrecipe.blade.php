@@ -17,16 +17,16 @@
         <a href="">Omlette with green onion</a>
       </p>
     </div>
-    
+
     {{-- Edit recipe form --}}
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
       @csrf
       @method('PATCH')
 
       {{-- Recipe image input --}}
       <div class="mb-4">
         <label for="recipeimage" class="form-label h3">Recipe image</label>
-        <input type="file" name="" id="recipeimage" class="form-control recipe-inp" aria-describedby="recipeimage-info">
+        <input type="file" name="image" id="recipeimage" class="form-control recipe-inp" aria-describedby="recipeimage-info">
         <div class="form-text" id="recipeimage-info">
             The acceptable formats are jpeg, jpg, png and gif only. <br>
             Max file size is 1048kB.
@@ -40,37 +40,37 @@
       {{-- Recipe name input --}}
       <div class="mb-4">
         <label for="recipename" class="form-label h3">Recipe name</label>
-        <input type="text" name="" id="recipename" class="form-control recipe-inp" placeholder="Enter the recipe name">
+        <input type="text" name="name" id="recipename" value="" class="form-control recipe-inp" placeholder="Enter the recipe name">
       </div>
 
       <div class="row col mb-4">
         {{-- Recipe category dropdown button --}}
         <div class="col-6">
           <label for="recipecategory" class="form-label h3">Recipe category</label>
-          <select class="form-select recipe-inp" id="recipecategory" name="" required>
+          <select class="form-select recipe-inp" id="recipecategory" name="category" required>
             <option value="" disabled selected>Select a recipe category</option>
-            <option value="appetisers">Appetisers</option>
-            <option value="side-dish">Side dish</option>
-            <option value="main-dish">Main dish</option>
-            <option value="desserts">Desserts</option>
+            <option value="appetisers" {{ $recipe->category == 'appetisers' ? 'selected' : '' }}>Appetisers</option>
+            <option value="side-dish" {{ $recipe->category == 'side-dish' ? 'selected' : '' }}>Side dish</option>
+            <option value="main-dish" {{ $recipe->category == 'main-dish' ? 'selected' : '' }}>Main dish</option>
+            <option value="desserts" {{ $recipe->category == 'desserts' ? 'selected' : '' }}>Desserts</option>
           </select>
         </div>
         {{-- Cooking time input --}}
         <div class="col-6">
           <label for="cookingtime" class="form-label h3">Cooking time</label>
-          <input type="text" name="" id="cookingtime" class="form-control recipe-inp" placeholder="Estimated cooking time in mins/hrs">
+          <input type="text" name="cooking_time" id="cookingtime" value="{{ $recipe->cooking_time }}" class="form-control recipe-inp" placeholder="Estimated cooking time in mins/hrs">
         </div>
       </div>
 
       {{-- Ingredients input --}}
       <div class="mb-4">
         <label for="ingredients" class="form-label h3">Ingredients</label>
-        <textarea name="" id="ingredients" cols="30" rows="10" class="form-control recipe-inp" placeholder="Enter ingredients"></textarea>
+        <textarea name="" id="ingredients" cols="30" rows="10" class="form-control recipe-inp" placeholder="Enter ingredients">{{ $recipe->ingredients }}</textarea>
       </div>
       {{-- Descriptions input --}}
       <div class="mb-5">
         <label for="descriptions" class="form-label h3">Desctiptions</label>
-        <textarea name="" id="descriptions" cols="30" rows="10" class="form-control recipe-inp" placeholder="Enter descriptions"></textarea>
+        <textarea name="" id="descriptions" cols="30" rows="10" class="form-control recipe-inp" placeholder="Enter descriptions">{{ $recipe->description }}</textarea>
       </div>
 
 

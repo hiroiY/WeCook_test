@@ -30,6 +30,7 @@ Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'm
 Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'editmyrecipe'])->name('editmyrecipe');
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
 
+Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'editmyrecipe'])->name('editmyrecipe');
 //Writers page
 Route::get('/{id}/writer',[UserController::class, 'writer'])->name('writer');
 Route::get('/{id}/writer/recently',[UserController::class, 'writer']);
