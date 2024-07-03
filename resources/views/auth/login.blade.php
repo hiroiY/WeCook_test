@@ -12,7 +12,6 @@
       <div class="col-md-8">
         {{-- Login card --}}
         <div id="login-card" class="card login-card my-auto">
-          {{-- Login card body --}}
           <div class="card-body">
             {{-- Login title --}}
             <p class="mb-5 display-4 login-card-ttl"><i class="fa-solid fa-chevron-left fa-xs login-card-ttl"></i>Log in</p>
@@ -26,9 +25,17 @@
                   type="email"
                   name="email" 
                   id="email" 
-                  class="form-control" 
+                  class="form-control @error('email') is-invalid @enderror" 
                   placeholder="Email address"
+                  required
+                  autocomplete="email"
+                  value="{{ old('email') }}"
                   >
+                  @error('email')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
                 </div>
               </div>
               
@@ -39,9 +46,15 @@
                   type="password" 
                   name="password" 
                   id="password" 
-                  class="form-control" 
+                  class="form-control @error('password') is-invalid @enderror" 
                   placeholder="Password"
+                  required autocomplete="current-password"
                   >
+                  @error('password')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
                 </div>
               </div>
               
@@ -55,7 +68,7 @@
               {{-- New registration link--}}
               <div class="row mb-3">
                 <div class="col px-auto">
-                  <p class="text-center fw-bold are-you-new">Are you new here? <a href="" class="text-decoration-none register-link">Register</a></p>
+                  <p class="text-center fw-bold are-you-new">Are you new here? <a href="{{ route('register') }}" class="text-decoration-none register-link">Register</a></p>
                 </div>
               </div>
             </form>

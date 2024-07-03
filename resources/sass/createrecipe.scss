@@ -1,38 +1,42 @@
 /* createrecipe */
 
-*{
+.createrecipe * {
     font-family: "Nunito";
-    background-color: #F7F3EB;
     margin: 0;
     padding: 0;
-  }
-  
-  .container {
+    
+}
+
+.createrecipe {
+    background-color: #F7F3EB;
+}
+
+.createrecipe ._container {
     width: 50%;
     margin: 0 auto;
     padding: 20px;
     background-color: #F7F3EB;
     border: 1px solid #e0e0e0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .breadcrumb {
+}
+
+.createrecipe .breadcrumb {
     font-size: 14px;
     color: #a5a5a5;
     margin-bottom: 20px;
-  }
-  
-  .breadcrumb a {
+}
+
+.createrecipe .breadcrumb a {
     color: #e45900;
     text-decoration: none;
-  }
-  
-  .recipe-form {
+}
+
+.createrecipe .recipe-form {
     display: flex;
     flex-direction: column;
-  }
-  
-  .upload-photo {
+}
+
+.createrecipe .upload-photo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,52 +45,52 @@
     padding: 20px;
     margin-bottom: 20px;
     cursor: pointer;
-  }
-  
-  .upload-photo img {
+}
+
+.createrecipe .upload-photo img {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-  }
-  
-  .upload-photo span {
+}
+
+.createrecipe .upload-photo span {
     color: #e45900;
     font-size: 16px;
-  }
-  
-  .recipe-name {
+}
+
+.createrecipe .recipe-name {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #e45900;
     border-radius: 1cap;
     font-size: 16px;
     background-color: #F7F3EB;
-  }
-  
-  .dropdowns {
+    
+}
+
+.createrecipe .dropdowns {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
- 
-   
-  }
-  
-  .dropdown {
+    
+}
+
+.createrecipe .dropdown {
     padding: 10px;
     border: 1px solid #e45900;
     border-radius: 1cap;
     font-size: 16px;
     width: 48%;
     background-color: #F7F3EB;
-  }
-  
-  h3 {
+}
+
+.createrecipe h3 {
     margin-bottom: 10px;
     color: #5a5a5a;
-  }
-  
-  .ingredients,
-  .description {
+}
+
+.createrecipe .ingredients,
+.createrecipe .description {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #e45900;
@@ -94,10 +98,10 @@
     font-size: 16px;
     height: 150px;
     resize: vertical;
-    background-color: #F7F3EB;;
-  }
-  
-  .publish-button {
+    background-color: #F7F3EB;
+}
+
+.createrecipe .publish-button {
     padding: 15px;
     background-color: #e45900;
     border-radius: 1cap;
@@ -106,8 +110,8 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .publish-button:hover {
+}
+
+.createrecipe .publish-button:hover {
     background-color: #c64900;
-  }
+}
