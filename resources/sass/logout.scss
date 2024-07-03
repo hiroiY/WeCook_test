@@ -21,7 +21,7 @@
     border: none;
     color: #4d1f01;
 }
-.modal-body p{
+.modal-body p.logout{
     font-size: 24px;
     font-weight: bold;
     color: #4d1f01;
@@ -29,16 +29,16 @@
 .modal-footer {
     border-top: none;
 }
-.modal-footer .btn {
-    background-color: #ff6700;
+.modal-footer .logout-button {
+    background-color: #E45900;
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
     font-size: 16px;
 }
-.modal-footer .btn:hover {
-    background-color: #ff4500;
+.modal-footer .logout-button:hover {
+    background-color: #E45900;
 }
-.fa-solid{
+.fa-chevron-left{
     color: #4d1f01;
 }

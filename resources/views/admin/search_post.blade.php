@@ -68,7 +68,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($all_posts as $post)
+                            @foreach($searched_post as $post)
                             <tr>
                                 <td class="pt-4">
                                     {{-- Modal --}}
@@ -110,7 +110,7 @@
                         </tbody>
                     </table>
                     <div class="paginate">
-                        {{ $all_posts->links() }}
+                        {{ $searched_post->links() }}
                     </div>
                 </div>
             </div>

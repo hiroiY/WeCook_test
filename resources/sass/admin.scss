@@ -95,7 +95,12 @@ table {
     cursor: pointer;
 	color: #F7F3EB;
 }
-
+.photo{
+    width: 100px;
+    height: 30px;
+    object-fit: cover;
+    padding: 5px;
+}
 .thead{
     font-size: 18px;
 }
@@ -103,6 +108,9 @@ table {
     width: 60px;
     height: 60px;
     border-radius: 10%;
+    object-fit: cover;
+    // position: absolute;
+    // position: relative;
 }
 // .grab{
 //     cursor: grabbing;
@@ -110,8 +118,9 @@ table {
 
 /* Paginate style */
 ul.pagination{
-    padding:0 0 0 45%;
-    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
     line-height: 1.5em;
 }
 a.page-link {

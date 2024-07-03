@@ -40,7 +40,7 @@
                             name="search_username" 
                             id="search-username" 
                             class="form-control d-inline search-input p-2 my-3" 
-                            placeholder="&#xF52A;   Search by username" 
+                            placeholder="&#xF52A;   Search by Username" 
                             style="font-family: Bootstrap-icons; width: 400px"
                             value="{{ isset($search_username) ? $search_username : '' }}"
                         >
@@ -62,6 +62,8 @@
                             @foreach($searched_username as $user)
                                 <tr class="grab" >
                                     <td class="p-3">
+                                        {{-- Modal --}}
+                                        @include('admin.modal.user_status', ['user'=>$user])
                                         @if($user->trashed())
                                             <button class="dropdown-item text-success" 
                                                     data-bs-toggle="modal" 
@@ -69,8 +71,6 @@
                                                     data-user-id="{{ $user->id }}">
                                                 <i class="fa-solid fa-eye-slash fa-xl my-3"></i>
                                             </button>
-                                            {{-- Modal --}}
-                                            @include('admin.modal.user_status', ['user'=>$user])
                                         @else
                                             <button class="dropdown-item text-danger" 
                                                     data-bs-toggle="modal" 
@@ -78,8 +78,6 @@
                                                     data-user-id="{{ $user->id }}">
                                                 <i class="fa-solid fa-eye fa-eye-orange fa-xl my-3"></i>
                                             </button>
-                                            {{-- Modal --}}
-                                            @include('admin.modal.user_status', ['user'=>$user])
                                         @endif
                                     </td>
                                     <td class="p-3">

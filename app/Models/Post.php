@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\Post;
+use Illuminate\Http\Request;
+
 class Post extends Model
 {
     use HasFactory, SoftDeletes;
@@ -28,6 +31,19 @@ class Post extends Model
 
     public function dish()
     {
-        return $this->hasOne(Dish::class);
+        return $this->belongsTo(Dish::class, 'dish_id'); 
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->withoutTrashed();
+    }
+    public function getCommentCountAttribute()
+    {
+        return $this->comments()->count();
+    }
+    public function index()
+{
+    $posts = Post::withTrashed()->get();
+    return view('posts.index', compact('posts'));
+}
 }
