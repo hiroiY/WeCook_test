@@ -1,26 +1,31 @@
+* {
+  font-family: Nunito;
+}
 .breadcrumb
 {
   color: #887569;
   font-weight: bold;
   align-items: center;
+  i {
+    cursor: default;
+    margin: auto .01em;
+  }
   a {
     text-decoration: none;
     color: #887569;
   }
-  a:nth-of-type(3) {
+  .writer_name {
     text-decoration: none;
     color: #e45900;
+    cursor: default;
   }
 }
+
 .writer_account
 {
   color: #2e1301;
   font-size: 24px;
   font-weight: bold;
-  a{
-    text-decoration: none;
-    color: #2e1301;
-  }
 }
 .writer_account img {
   height: 2.4em;

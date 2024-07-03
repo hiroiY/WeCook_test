@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @vite(['resources/sass/writers.scss','resources/js/tabs_paginate.js'])
+<!-- I will chenge JavaScript file to tabs_pagination.js after the Backend/tab_action merged  -->
 
 @section('content')
 <!-- breadcrumb is here -->
@@ -12,55 +13,53 @@
   href="{{ route('home') }}"
   >
     Home
-  </a> &nbsp; 
+  </a> 
   <i 
     class="fa-solid fa-angle-right" 
     style="color:#887569;"
   >
-  </i> &nbsp;
+  </i>
   <a 
     href="#"
   >
-    Recipe's name{{-- $post->name --}}
-  </a> &nbsp; 
+   {{ $previous_post->title }}
+  </a>
   <i 
     class="fa-solid fa-angle-right" 
     style="color:#887569;"
   >
-  </i> &nbsp;
-  <a 
-    href="#"
+  </i>
+  <span
+    class="writer_name"
   >
     {{ $writer->name }}
-  </a>
+  </span>
 </div>
+
 <!-- writer's acount here -->
-<div class="writer_account mt-5 ms-4">
+<div 
+  class="writer_account mt-4 ms-4"
+>
    @if($writer->avatar)
     <img 
       src="{{-- $writer->avatar --}}" 
       alt="{{-- $writer->name --}}" 
-      class="rounded-circle avatar-lg"
+      class="rounded-circle avatar-lg ms-3"
     >
-    <a 
-      href="#"
-
-    >
-      {{ $writer->name }} 
-    </a>
   @else
     <img 
       src="{{asset('/images//profile_icon.png')}}" 
       alt="{{ $writer->name }}" 
-      class="rounded-circle avatar-lg"
+      class="rounded-circle avatar-lg ms-3"
     >
-    <a 
-      href="#"
-    >
-      {{ $writer->name }} 
-    </a>
   @endif
+  <span
+    class="writer_name"
+  >
+    {{ $writer->name }}
+  </span>
 </div>
+
 <!-- tab menu area -->
 <div 
   class="tab mx-auto my-5" 
@@ -72,7 +71,6 @@
       data-tab="01"
     >
       Recently shared
-
     </li>
     <li 
       class="tab_menu-item " 

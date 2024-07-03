@@ -32,15 +32,15 @@ Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'edit
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
 
 //Writers page
-Route::get('/{id}/writer',[WriterController::class, 'writer'])->name('writer');
-Route::get('/{id}/writer/recently',[WriterController::class, 'writer']);
+Route::get('/{post_id}/writer/{user_id}',[WriterController::class, 'writer'])->name('writer');
+Route::get('/{post_id}/writer/{user_id}/recently',[WriterController::class, 'writer']);
 
 Route::get('/search',[HomeController::class, 'search'])->name('search');
 // createrecipe
 // Route::middleware(['auth'])->group(function () {
     Route::get('/createrecipe', [RecipeController::class, 'createrecipe'])->name('createrecipe');
     Route::post('/storerecipe', [RecipeController::class, 'storeRecipe'])->name('storerecipe');
-    Route::get('/detailrecipe/{id}', [RecipeController::class, 'detailrecipe'])->name('detailrecipe');
+    Route::get('/detailrecipe/{post_id}/{user_id}', [RecipeController::class, 'detailrecipe'])->name('detailrecipe');
 // });
 
 // Admin
