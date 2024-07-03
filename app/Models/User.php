@@ -44,4 +44,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // 自分がbookmarkしている
+    public function bookmarked() {
+        return $this->hasMany(Bookmark::class, 'user_id');
+    }
+
+    
 }
