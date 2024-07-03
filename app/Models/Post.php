@@ -28,6 +28,20 @@ class Post extends Model
 
     public function dish()
     {
-        return $this->hasOne(Dish::class);
+        return $this->belongsTo(Dish::class);
     }
+    // detailrecipe pege
+        public function getCategoryLabelAttribute()
+    {
+        $categories = [
+            'appetizer' => 'Appetizer',
+            'side_dish' => 'Side dish',
+            'main_dish' => 'Main dish',
+            'dessert' => 'Dessert'
+        ];
+
+        return $categories[strtolower($this->category)] ?? $this->category;
+    }
+
+  
 }

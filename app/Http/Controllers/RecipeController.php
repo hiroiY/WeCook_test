@@ -39,13 +39,15 @@ class RecipeController extends Controller
             'description' => $request->input('description'),
         ]);
 
-        return redirect()->route('createrecipe')->with('success');
+        return redirect()->route('createrecipe')->with('success', 'Recipe created successfully.');
     }
 
     public function detailrecipe($id) 
     {
-        $recipe = Post::findOrFail($id); // IDでレコードを取得
-        return view('recipe.detailrecipe', compact('recipe'));
+        $recipe = Post::with('dish')->findOrFail($id);
+    
+            return view('recipe.detailrecipe', compact('recipe'));
+
     }
 
     public function editmyrecipe()

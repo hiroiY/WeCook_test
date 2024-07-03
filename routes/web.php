@@ -31,11 +31,11 @@ Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'del
 Route::get('/recipe/writer',[UserController::class, 'writer'])->name('writer');
 Route::get('/search',[HomeController::class, 'search'])->name('search');
 // createrecipe
-// Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/createrecipe', [RecipeController::class, 'createrecipe'])->name('createrecipe');
     Route::post('/storerecipe', [RecipeController::class, 'storeRecipe'])->name('storerecipe');
     Route::get('/detailrecipe/{id}', [RecipeController::class, 'detailrecipe'])->name('detailrecipe');
-// });
+});
 
 Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
 Route::get('/admin/users/search', [AdminController::class, 'searchUsers'])->name('admin.users.search');

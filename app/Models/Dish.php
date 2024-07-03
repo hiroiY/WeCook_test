@@ -11,6 +11,7 @@ class Dish extends Model
 
     public function post()
     {
-        return $this->belongsTo(Post::class);
+        return $this->hasOne(Post::class);
     }
+
 }
