@@ -10,13 +10,12 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        // User::factory(10)->create();
+        User::factory(30)->create()->each(function ($user) {
+            Post::factory(rand(3, 20))->create(['user_id' => $user->id]);
+        });
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
         $this->call([
+            UserPostSeeder::class,
             CommentsSeeder::class,
         ]);
 
@@ -24,9 +23,5 @@ class DatabaseSeeder extends Seeder
             BookmarkSeeder::class,
             DishSeeder::class,
         ]);
-        
-        User::factory(30)->create()->each(function ($user) {
-            Post::factory(rand(3, 20))->create(['user_id' => $user->id]);
-        });
     }
 }
