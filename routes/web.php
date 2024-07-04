@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\WriterController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RecipeController;
 
@@ -31,8 +32,13 @@ Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'edit
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
 
 //Writers page
-Route::get('/{id}/writer',[UserController::class, 'writer'])->name('writer');
-Route::get('/{id}/writer/recently',[UserController::class, 'writer']);
+Route::get('/{id}/writer',[WriterController::class, 'writer'])->name('writer');
+Route::get('/{id}/writer/recently',[WriterController::class, 'writer']);
+Route::get('/{id}/writer/appetizer',[WriterController::class, 'writer']);
+Route::get('/{id}/writer/sidedish',[WriterController::class, 'writer']);
+Route::get('/{id}/writer/maindish',[WriterController::class, 'writer']);
+Route::get('/{id}/writer/dessert',[WriterController::class, 'writer']);
+
 
 Route::get('/search',[HomeController::class, 'search'])->name('search');
 // createrecipe
