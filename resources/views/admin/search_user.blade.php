@@ -59,7 +59,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($all_users as $user)
+                            @foreach($searched_username as $user)
                                 <tr class="grab" >
                                     <td class="p-3">
                                         {{-- Modal --}}
@@ -99,7 +99,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $all_users->links() }}
+                    {{ $searched_username->links() }}
                 </div>
             </div>
         </div>

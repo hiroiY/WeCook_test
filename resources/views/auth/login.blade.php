@@ -12,7 +12,6 @@
       <div class="col-md-8">
         {{-- Login card --}}
         <div id="login-card" class="card login-card my-auto">
-          {{-- Login card body --}}
           <div class="card-body">
             {{-- Login title --}}
             <p class="mb-5 display-4 login-card-ttl"><i class="fa-solid fa-chevron-left fa-xs login-card-ttl"></i>Log in</p>
