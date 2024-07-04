@@ -36,11 +36,11 @@ Route::get('/{id}/writer/recently',[UserController::class, 'writer']);
 
 Route::get('/search',[HomeController::class, 'search'])->name('search');
 // createrecipe
-// Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/createrecipe', [RecipeController::class, 'createrecipe'])->name('createrecipe');
     Route::post('/storerecipe', [RecipeController::class, 'storeRecipe'])->name('storerecipe');
     Route::get('/detailrecipe/{id}', [RecipeController::class, 'detailrecipe'])->name('detailrecipe');
-// });
+});
 
 // Admin
 Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
