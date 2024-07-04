@@ -24,7 +24,7 @@ class HomeController extends Controller
 
     public function __construct(Post $post, User $user)    
     {
-        $this->middleware('auth')->except('index');
+        // $this->middleware('auth')->except('index');
         $this->post = $post;
         $this->user = $user;
     }
@@ -165,6 +165,8 @@ class HomeController extends Controller
     {
         return view('mypage.myrecipe');
     }
+
+
 
     public function search() 
     {

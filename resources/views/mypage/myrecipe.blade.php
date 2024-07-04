@@ -17,11 +17,11 @@
           >
             <span class="ms-auto">My Recipe</span>
           </a>
-          <a href="#"
+          <a href="{{ route('mybookmark') }}"
           class="list-group-item list-group-item-action p-2 ripple unselected">
             <span>My Bookmark</span>
           </a>
-          <a href="#"
+          <a href="{{ route('profile_edit') }}"
           class="list-group-item list-group-item-action p-2 ripple unselected">
             <span>Profile Edit</span>
           </a>
@@ -33,7 +33,7 @@
   <div class="col w-100">
     <div
       class="tab me-auto mt-5"
-      style="max-width: 97%; height: 1200px;"
+      style="max-width: 97%; height: 1600px;"
     >
       <ul class="tab_menu m-0 p-0">
         <li

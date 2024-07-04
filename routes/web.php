@@ -14,19 +14,23 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 //Homepage's Routes
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home/recently', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/home/appetizer', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/home/sidedish', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/home/maindish', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/home/dessert', [App\Http\Controllers\HomeController::class, 'index']);
+Route::controller(HomeController::class)->group(function() {
+    Route::get('/home', 'index')->name('home');
+    Route::get('/home/recently','index');
+    Route::get('/home/appetizer', 'index');
+    Route::get('/home/sidedish','index');
+    Route::get('/home/maindish', 'index');
+    Route::get('/home/dessert', 'index');
+});
+
 
 
 Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
 Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
 Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
 Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
-Route::get('/mypage/myrecipe', [App\Http\Controllers\HomeController::class, 'myrecipe'])->name('myrecipe');
+Route::get('/mypage/myrecipe/{id}', [App\Http\Controllers\MypageController::class, 'myrecipe'])->name('myrecipe');
+Route::get('/mypage/myrecipe/appetizer', [App\Http\Controllers\MypageController::class, 'appetizer'])->name('appetizer');
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
 Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'editmyrecipe'])->name('editmyrecipe');
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
@@ -39,12 +43,13 @@ Route::controller(WriterController::class)->group(function() {
 
 
 Route::get('/search',[HomeController::class, 'search'])->name('search');
+
+//Recipe Routes 
 // createrecipe
-// Route::middleware(['auth'])->group(function () {
     Route::get('/createrecipe', [RecipeController::class, 'createrecipe'])->name('createrecipe');
     Route::post('/storerecipe', [RecipeController::class, 'storeRecipe'])->name('storerecipe');
     Route::get('/detailrecipe/{post_id}/{user_id}', [RecipeController::class, 'detailrecipe'])->name('detailrecipe');
-// });
+
 
 // Admin
 Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
