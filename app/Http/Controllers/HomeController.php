@@ -166,11 +166,13 @@ class HomeController extends Controller
         return view('mypage.myrecipe');
     }
 
-
-
-    public function search() 
+// Navbar's search feature
+    public function search(Request $request) 
     {
-        return view('search.search');
+        $recipes = $this->post->where('title','like','%'.$request->search.'%');
+        $search = $request->input('search');
+
+        return view('search.search',compact('recipes','search'));
     }
     public function profile_edit()
     {
