@@ -76,6 +76,4 @@ class Post extends Model
 
         return $categories[strtolower($this->category)] ?? $this->category;
     }
-
-  
 }

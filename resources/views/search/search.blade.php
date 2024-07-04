@@ -10,36 +10,36 @@
 <div class="row justify-content-center mt-5">
   <div class="col-6 search_results">
       <p class="h4 mb-4">Search results for &nbsp;
-        "<span class="fw-bold">Chicken{{-- $search --}}</span>"</p>
+        "<span class="fw-bold">{{ $search }}</span>" ... ({{ $recipes->count() }})</p>
   </div>
 </div>
 
 <!-- Tab menu area -->
-<div class="tab mx-auto mt-5" style="max-width: 95%;">
+<div class="tab mx-auto my-5" style="max-width: 95%;">
     <ul class="tab_menu m-0 p-0">
         <li 
           class="tab_menu-item is-active" 
           data-tab="01"
         >
-          Appetizer&nbsp;<span>(11{{-- $user->recipes->count() --}})</span>
+          Appetizer&nbsp;<span>({{ $recipes->where('dish_id',1)->count() }})</span>
       </li>
         <li 
           class="tab_menu-item" 
           data-tab="02"
         >
-          Side dish&nbsp;<span>(11{{-- $user->recipes->count() --}})</span>
+          Side dish&nbsp;<span>({{ $recipes->where('dish_id', 2)->count() }})</span>
         </li>
         <li 
           class="tab_menu-item" 
           data-tab="03"
         >
-          Main dish&nbsp;<span>(11{{-- $user->recipes->count() --}})</span>
+          Main dish&nbsp;<span>({{ $recipes->where('dish_id', 3)->count() }})</span>
       </li>
         <li 
           class="tab_menu-item" 
           data-tab="04"
         >
-          Dessert&nbsp;<span>(11{{-- $user->recipes->count() --}})</span>
+          Dessert&nbsp;<span>({{ $recipes->where('dish_id', 4)->count() }})</span>
       </li>
     </ul>
 
