@@ -32,7 +32,7 @@ class WriterController extends Controller
         //Replace the placeholders
         $writer_id = $user_id;
         $writer_post_id = $post_id;
-        $path = '/{post_id}/writer/{user_id}';
+        $path = '/{post_id}/writer/{user_id}/recently';
         $post_id_path = str_replace('{post_id}',$writer_post_id,$path);
         $writer_id_path = str_replace('{user_id}',$writer_id,$post_id_path);
 
