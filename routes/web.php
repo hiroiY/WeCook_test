@@ -28,7 +28,8 @@ Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 
 Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
 Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
 Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
-Route::get('/mypage/myrecipe', [App\Http\Controllers\HomeController::class, 'myrecipe'])->name('myrecipe');
+Route::get('/mypage/myrecipe/{id}', [App\Http\Controllers\MypageController::class, 'myrecipe'])->name('myrecipe');
+Route::get('/mypage/myrecipe/appetizer', [App\Http\Controllers\MypageController::class, 'appetizer'])->name('appetizer');
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
 Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'editmyrecipe'])->name('editmyrecipe');
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');

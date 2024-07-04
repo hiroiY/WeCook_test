@@ -33,6 +33,24 @@ class Post extends Model
     {
         return $this->belongsTo(Dish::class, 'dish_id'); 
     }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    // bookmark全体を取得
+    public function bookmark()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    // 自分のpostがbookmarkされている
+    // Mybookmarkで使用★　$post->isBookmarked()
+    public function isBookmarked() 
+    {
+        return $this->bookmark()->where('user_id', Auth::user()->id)->exists();
+    }
     public function comments()
     {
         return $this->hasMany(Comment::class)->withoutTrashed();

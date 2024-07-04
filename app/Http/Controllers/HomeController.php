@@ -166,6 +166,8 @@ class HomeController extends Controller
         return view('mypage.myrecipe');
     }
 
+
+
     public function search() 
     {
         return view('search.search');
