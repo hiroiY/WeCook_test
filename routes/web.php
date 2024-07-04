@@ -1,11 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\WriterController;
 
 
 Auth::routes();
@@ -35,16 +36,20 @@ Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'edit
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
 
 //Writers page
-Route::get('/{id}/writer',[UserController::class, 'writer'])->name('writer');
-Route::get('/{id}/writer/recently',[UserController::class, 'writer']);
+Route::controller(WriterController::class)->group(function() {
+    Route::get('/{post_id}/writer/{user_id}', 'writer')->name('writer');
+    Route::get('/{post_id}/writer/{user_id}/recently', 'writer');
+});
+
 
 Route::get('/search',[HomeController::class, 'search'])->name('search');
+
+//Recipe Routes 
 // createrecipe
-Route::middleware(['auth'])->group(function () {
     Route::get('/createrecipe', [RecipeController::class, 'createrecipe'])->name('createrecipe');
     Route::post('/storerecipe', [RecipeController::class, 'storeRecipe'])->name('storerecipe');
-    Route::get('/detailrecipe/{id}', [RecipeController::class, 'detailrecipe'])->name('detailrecipe');
-});
+    Route::get('/detailrecipe/{post_id}/{user_id}', [RecipeController::class, 'detailrecipe'])->name('detailrecipe');
+
 
 // Admin
 Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');

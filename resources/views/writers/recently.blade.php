@@ -10,7 +10,9 @@
         <div class="card recipe_card w-100">
           <!-- recipe photo -->
           <a 
-            href="{{ route('detailrecipe', $post->id) }}" 
+            href="{{ route('detailrecipe',
+            ['post_id'=>$post->id, 
+            'user_id'=>$post->user->id]) }}" 
           >
             @if($post->photo)
               <img 
@@ -31,9 +33,10 @@
             <div class="row mt-2">
               <div class="col-8 pe-4">
                 <a 
-                    href="{{ route('detailrecipe', $post->id) }}"
-                    class="text-decoration-none"
-                  >
+                  href="{{ route('detailrecipe',
+                  ['post_id'=>$post->id, 
+                  'user_id'=>$post->user->id]) }}" 
+                >
                   <h4 class="card-title">
                     {{ $post->title }}
                   </h4>
@@ -44,12 +47,14 @@
                   &#xf086; 
                   <span>
                     11{{-- $post->comment->count() --}}
+                    <!-- I will write the code that can go to the comments section on the detail recipe page here. -->
                   </span>
                 </a>
               </div>
               <div class="col-1 ms-2">
                 <a href="#">
                   <i class="fa-regular fa-bookmark"></i>
+                  <!-- I will write the code that can use the bookmark feature here. -->
                 </a>
               </div>
             </div>
