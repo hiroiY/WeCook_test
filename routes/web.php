@@ -32,8 +32,11 @@ Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'edit
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
 
 //Writers page
-Route::get('/{post_id}/writer/{user_id}',[WriterController::class, 'writer'])->name('writer');
-Route::get('/{post_id}/writer/{user_id}/recently',[WriterController::class, 'writer']);
+Route::controller(WriterController::class)->group(function() {
+    Route::get('/{post_id}/writer/{user_id}', 'writer')->name('writer');
+    Route::get('/{post_id}/writer/{user_id}/recently', 'writer');
+});
+
 
 Route::get('/search',[HomeController::class, 'search'])->name('search');
 // createrecipe
