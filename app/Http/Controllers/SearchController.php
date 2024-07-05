@@ -45,29 +45,40 @@ class SearchController extends Controller
     private function getAppetizerPosts($page = 1, $perPage = 9, $dishAppetizer = 1, Request $request)
     {
         //Get the latest posts which dish_id is 1
-       $get_dish_id_1 = $this->post->where([['dish_id',  $dishAppetizer],
-       ['title','like','%'.$request->search.'%']])->latest()->get();
+       $get_dish_id_1 = $this
+                        ->post
+                        ->where([['dish_id',  $dishAppetizer],['title','like','%'.$request->search.'%']])
+                        ->latest()
+                        ->get();
     
        //Slices the items displayed on the appetizer page.
-        $appetizerItems = $get_dish_id_1->slice(($page - 1) * $perPage, $perPage)->all();
+        $appetizerItems = $get_dish_id_1
+                        ->slice(($page - 1) * $perPage, $perPage)
+                        ->all();
 
         //Create LengthAwarePaginator instance 
-       $appetizerPaginatedItems = new LengthAwarePaginator($appetizerItems, $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+       $appetizerPaginatedItems = new LengthAwarePaginator($appetizerItems,count( $get_dish_id_1) , $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
 
-       $appetizerPaginatedItems->withPath('search/appetizer');
+       $appetizerPaginatedItems->withPath('/search/appetizer');
 
         return $appetizerPaginatedItems;
     }
     private function getSideDishPosts($page = 1, $perPage = 9, $dishSide = 2, Request $request)
     {
         //Get the latest posts which dish_id is 1
-       $get_dish_id_2 = $this->post->where([['dish_id',$dishSide],['title','like','%'.$request->search.'%']])->latest()->get();
+       $get_dish_id_2 = $this
+                        ->post
+                        ->where([['dish_id',$dishSide],['title','like','%'.$request->search.'%']])
+                        ->latest()
+                        ->get();
 
        //Slices the items displayed on the appetizer page.
-        $sideDishItems = $get_dish_id_2->slice(($page - 1) * $perPage, $perPage)->all();
+        $sideDishItems = $get_dish_id_2
+                        ->slice(($page - 1) * $perPage, $perPage)
+                        ->all();
 
         //Create LengthAwarePaginator instance 
-       $sideDishPaginatedItems = new LengthAwarePaginator($sideDishItems, $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+       $sideDishPaginatedItems = new LengthAwarePaginator($sideDishItems, count( $get_dish_id_2), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
 
        $sideDishPaginatedItems->withPath('search/sidedish');
 
@@ -76,13 +87,17 @@ class SearchController extends Controller
     private function getMainDishPosts($page = 1, $perPage = 9, $dishMain = 3, Request $request)
     {
         //Get the latest posts which dish_id is 1
-       $get_dish_id_3 = $this->post->where([['dish_id',$dishMain],['title','like','%'.$request->search.'%']])->latest()->get();
+       $get_dish_id_3 = $this
+                        ->post
+                        ->where([['dish_id',$dishMain],['title','like','%'.$request->search.'%']])
+                        ->latest()
+                        ->get();
 
        //Slices the items displayed on the appetizer page.
         $mainDishItems = $get_dish_id_3->slice(($page - 1) * $perPage, $perPage)->all();
 
         //Create LengthAwarePaginator instance 
-       $mainDishPaginatedItems = new LengthAwarePaginator($mainDishItems, $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+       $mainDishPaginatedItems = new LengthAwarePaginator($mainDishItems,count( $get_dish_id_3), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
 
        $mainDishPaginatedItems->withPath('search/maindish');
 
@@ -91,13 +106,17 @@ class SearchController extends Controller
     private function getDessertPosts($page = 1, $perPage = 9, $dishDessert = 4, Request $request)
     {
         //Get the latest posts which dish_id is 1
-       $get_dish_id_4 = $this->post->where([['dish_id',$dishDessert],['title','like','%'.$request->search.'%']])->latest()->get();
+       $get_dish_id_4 = $this
+                        ->post
+                        ->where([['dish_id',$dishDessert],['title','like','%'.$request->search.'%']])
+                        ->latest()
+                        ->get();
 
        //Slices the items displayed on the appetizer page.
         $dessertItems = $get_dish_id_4->slice(($page - 1) * $perPage, $perPage)->all();
 
         //Create LengthAwarePaginator instance 
-       $dessertPaginatedItems = new LengthAwarePaginator($dessertItems, $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+       $dessertPaginatedItems = new LengthAwarePaginator($dessertItems, count( $get_dish_id_4), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
 
        $dessertPaginatedItems->withPath('search/dessert');
 

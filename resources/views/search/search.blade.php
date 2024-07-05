@@ -2,12 +2,15 @@
 
 @vite([
     'resources/sass/search.scss',
-    'resources/js/tabs_pagination.js'
+    'resources/js/search_tabs_page.js'
 ])
 
 @section('content')
 <!-- search results area -->
-<div class="row justify-content-center mt-5">
+<div 
+  class="row justify-content-center mt-5"
+  id="content-start";
+>
   <div class="col-6 search_results">
       <p class="h4 mb-4">Search results for &nbsp;
         "<span class="fw-bold">{{ $search }}</span>" ... ({{ $recipes->count() }})</p>
@@ -15,7 +18,10 @@
 </div>
 
 <!-- Tab menu area -->
-<div class="tab mx-auto my-5" style="max-width: 95%;">
+<div 
+  class="tab mx-auto my-5" 
+  style="max-width: 95%;"
+>
     <ul class="tab_menu m-0 p-0">
         <li 
           class="tab_menu-item is-active" 
