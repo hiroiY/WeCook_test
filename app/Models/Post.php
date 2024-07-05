@@ -17,7 +17,7 @@ class Post extends Model
         'photo',
         'dish_id',
         'title',
-        'times',
+        'cooking_time',
         'ingredients',
         'description'
     ];
