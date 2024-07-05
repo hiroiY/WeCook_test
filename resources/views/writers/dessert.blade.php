@@ -67,4 +67,8 @@
     </div>
   @endforelse
 </div>
+<div class="pagination-wrapper">
+  {{ $writer_dessert->links() }}
+</div>
+
 </div>

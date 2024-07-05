@@ -22,20 +22,29 @@ class WriterController extends Controller
         $this->post = $post;
     }
 
-    private function getWritersPosts ($page = 1, $perPage = 9, $id) 
-    {
-        $writers_posts = Post::where('user_id', $id)->firstOrFail()->take(30)->get();
-        $writersRecentlyItems = $writers_posts
-                                ->slice(($page - 1) * $perPage,$perPage)->all();
-        $writersPaginatedItem = new LengthAwarePaginator($writersRecentlyItems,count($writers_posts),
-                                $perPage,$page,[
-                                    'path' => LengthAwarePaginator::resolveCurrentPath()
-                                ]);
+    // private function getWritersPosts ($page = 1, $perPage = 9, $id) 
+    // {
+    //     $writers_posts = Post::where('user_id', $id)->paginate($perPage);
+    //     // ->firstOrFail()->take(30)->get();
+    //     $writersRecentlyItems = $writers_posts
+    //                             ->slice(($page - 1) * $perPage,$perPage)->all();
+    //     $writersPaginatedItem = new LengthAwarePaginator($writersRecentlyItems,count($writers_posts),
+    //                             $perPage,$page,[
+    //                                 'path' => LengthAwarePaginator::resolveCurrentPath()
+    //                             ]);
 
-        $writersPaginatedItem->withPath('writer/{id}/recently');
+    //     $writersPaginatedItem->withPath('writer/{id}/recently');
+    // }
 
-        return $writersPaginatedItem;
-    }
+    private function getWritersPosts($page = 1, $perPage = 9, $id) 
+{
+    $writers_posts = Post::where('user_id', $id)->paginate($perPage);
+    
+    $writers_posts->withPath(route('writer', ['id' => $id]));
+
+    return $writers_posts;
+}
+
     private function getAppetizerPosts ($page = 1, $perPage = 9, $dishID = 1, $id) 
     {
         $appetizer_posts = Post::where('user_id', $id)
@@ -43,18 +52,19 @@ class WriterController extends Controller
                             ->whereHas('dish', function ($query) use ($dishID){
                                 $query->where('id', $dishID);
                             })
-                            ->get();
+                            ->paginate($perPage);
                             
-        $appetizerRecentlyItems = $appetizer_posts
-                                ->slice(($page - 1) * $perPage,$perPage)->all();
-        $appetizerPaginatedItem = new LengthAwarePaginator($appetizerRecentlyItems,count($appetizer_posts),
-                                $perPage,$page,[
-                                    'path' => LengthAwarePaginator::resolveCurrentPath()
-                                ]);
+        // $appetizerRecentlyItems = $appetizer_posts
+        //                         ->slice(($page - 1) * $perPage,$perPage)->all();
+        // $appetizerPaginatedItem = new LengthAwarePaginator($appetizerRecentlyItems,count($appetizer_posts),
+        //                         $perPage,$page,[
+        //                             'path' => LengthAwarePaginator::resolveCurrentPath()
+        //                         ]);
 
-        $appetizerPaginatedItem->withPath('writer/{id}/appetizer');
+        // $appetizerPaginatedItem->withPath('writer/{id}/appetizer');
 
-        return $appetizerPaginatedItem;
+        // return $appetizerPaginatedItem;
+        return $appetizer_posts;
     }
     private function getSidedishPosts ($page = 1, $perPage = 9, $dishID = 2, $id) 
     {
@@ -62,18 +72,18 @@ class WriterController extends Controller
                             ->whereHas('dish', function ($query) use ($dishID){
                                 $query->where('id', $dishID);
                             })
-                            ->get();
+                            ->paginate($perPage);
                             
-        $sidedishRecentlyItems = $sidedish_posts
-                                ->slice(($page - 1) * $perPage,$perPage)->all();
-        $sidedishPaginatedItem = new LengthAwarePaginator($sidedishRecentlyItems,count($sidedish_posts),
-                                $perPage,$page,[
-                                    'path' => LengthAwarePaginator::resolveCurrentPath()
-                                ]);
+        // $sidedishRecentlyItems = $sidedish_posts
+        //                         ->slice(($page - 1) * $perPage,$perPage)->all();
+        // $sidedishPaginatedItem = new LengthAwarePaginator($sidedishRecentlyItems,count($sidedish_posts),
+        //                         $perPage,$page,[
+        //                             'path' => LengthAwarePaginator::resolveCurrentPath()
+        //                         ]);
 
-        $sidedishPaginatedItem->withPath('writer/{id}/sidedish');
+        // $sidedishPaginatedItem->withPath('writer/{id}/sidedish');
 
-        return $sidedishPaginatedItem;
+        return $sidedish_posts;
     }
     private function getMaindishPosts ($page = 1, $perPage = 9, $dishID = 3, $id) 
     {
@@ -81,18 +91,18 @@ class WriterController extends Controller
                             ->whereHas('dish', function ($query) use ($dishID){
                                 $query->where('id', $dishID);
                             })
-                            ->get();
+                            ->paginate($perPage);
                             
-        $maindishRecentlyItems = $maindish_posts
-                                ->slice(($page - 1) * $perPage,$perPage)->all();
-        $maindishPaginatedItem = new LengthAwarePaginator($maindishRecentlyItems,count($maindish_posts),
-                                $perPage,$page,[
-                                    'path' => LengthAwarePaginator::resolveCurrentPath()
-                                ]);
+        // $maindishRecentlyItems = $maindish_posts
+        //                         ->slice(($page - 1) * $perPage,$perPage)->all();
+        // $maindishPaginatedItem = new LengthAwarePaginator($maindishRecentlyItems,count($maindish_posts),
+        //                         $perPage,$page,[
+        //                             'path' => LengthAwarePaginator::resolveCurrentPath()
+        //                         ]);
 
-        $maindishPaginatedItem->withPath('writer/{id}/dish');
+        // $maindishPaginatedItem->withPath('writer/{id}/dish');
 
-        return $maindishPaginatedItem;
+        return $maindish_posts;
     }
     private function getDessertPosts ($page = 1, $perPage = 9, $dishID = 4, $id) 
     {
@@ -100,28 +110,29 @@ class WriterController extends Controller
                             ->whereHas('dish', function ($query) use ($dishID){
                                 $query->where('id', $dishID);
                             })
-                            ->get();
+                            ->paginate($perPage);
                             
-        $dessertRecentlyItems = $dessert_posts
-                                ->slice(($page - 1) * $perPage,$perPage)->all();
-        $dessertPaginatedItem = new LengthAwarePaginator($dessertRecentlyItems,count($dessert_posts),
-                                $perPage,$page,[
-                                    'path' => LengthAwarePaginator::resolveCurrentPath()
-                                ]);
+        // $dessertRecentlyItems = $dessert_posts
+        //                         ->slice(($page - 1) * $perPage,$perPage)->all();
+        // $dessertPaginatedItem = new LengthAwarePaginator($dessertRecentlyItems,count($dessert_posts),
+        //                         $perPage,$page,[
+        //                             'path' => LengthAwarePaginator::resolveCurrentPath()
+        //                         ]);
 
-        $dessertPaginatedItem->withPath('writer/{id}/dish');
+        // $dessertPaginatedItem->withPath('writer/{id}/dish');
 
-        return $dessertPaginatedItem;
+        return $dessert_posts;
     }
 
     public function writer(Request $request, $id) {
         $writer = $this->user->findOrFail($id);
         $page = $request->input('page',1);
-        $perPage = $request->input('perPage',9);
-        $dishID = 1;
-        $dishID = 2;
-        $dishID = 3;
-        $dishID = 4;
+        $perPage = 9;
+        // $perPage = $request->input('perPage',9);
+        // $dishID = 1;
+        // $dishID = 2;
+        // $dishID = 3;
+        // $dishID = 4;
 
         $writer_recently = $this->getWritersPosts($page,$perPage,$id);
         $writer_appetizer = $this->getAppetizerPosts($page, $perPage, $dishID = 1, $id);
@@ -163,7 +174,7 @@ class WriterController extends Controller
                     'appetizer_count',
                     'sidedish_count',
                     'maindish_count',
-                    'dessert_count'
+                    'dessert_count',
                 ));
     }
     

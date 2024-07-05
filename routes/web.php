@@ -38,7 +38,11 @@ Route::get('/{id}/writer/appetizer',[WriterController::class, 'writer']);
 Route::get('/{id}/writer/sidedish',[WriterController::class, 'writer']);
 Route::get('/{id}/writer/maindish',[WriterController::class, 'writer']);
 Route::get('/{id}/writer/dessert',[WriterController::class, 'writer']);
-
+// Route::get('/writer/{id}/recently', [WriterController::class, 'Recently'])->name('writer.recently');
+// Route::get('/writer/{id}/appetizer', [WriterController::class, 'Appetizer'])->name('writer.appetizer');
+// Route::get('/writer/{id}/sidedish', [WriterController::class, 'Sidedish'])->name('writer.sidedish');
+// Route::get('/writer/{id}/maindish', [WriterController::class, 'Maindish'])->name('writer.maindish');
+// Route::get('/writer/{id}/dessert', [WriterController::class, 'Dessert'])->name('writer.dessert');
 
 Route::get('/search',[HomeController::class, 'search'])->name('search');
 // createrecipe
