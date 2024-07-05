@@ -20,6 +20,9 @@ nav * {
   text-decoration: none;
   font-weight: bold;
   color: #F7F3EB;
+  i {
+    color: inherit;
+  }
 }
 .navbar a:visited,
 .navbar a:hover{

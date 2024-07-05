@@ -20,5 +20,4 @@ class UserController extends Controller
         $this->user = $user;
         $this->post = $post;
     }
-
 }
