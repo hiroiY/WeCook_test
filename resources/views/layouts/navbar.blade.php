@@ -34,7 +34,7 @@
     >
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav m-auto">
-        <form action="{{-- route('search') --}}" class="my-auto">
+        <form action="{{ route('search') }}" class="my-auto">
           <input 
             type="search" 
             name="search" 
@@ -120,7 +120,7 @@
                 >
                   {{--My Recipe Button/Link --}}
                   <a 
-                    href="{{ route('myrecipe', ['id' => Auth::user()->id]) }}
+                    href="{{ route('myrecipe',Auth::user()->id) }}
                     {{-- route('myrecipe', Auth::user()->id) --}}" 
                     class="dropdown-item"
                   >

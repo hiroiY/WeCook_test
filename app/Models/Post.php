@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-use App\Models\Post;
 use Illuminate\Http\Request;
 
 class Post extends Model
@@ -19,7 +17,7 @@ class Post extends Model
         'photo',
         'dish_id',
         'title',
-        'times',
+        'cooking_time',
         'ingredients',
         'description'
     ];
@@ -78,6 +76,4 @@ class Post extends Model
 
         return $categories[strtolower($this->category)] ?? $this->category;
     }
-
-  
 }

@@ -11,7 +11,9 @@
         <div class="card">
           <!-- recipe photo -->
           <a 
-            href="{{ route('detailrecipe', $post->id) }}" 
+            href="{{ route('detailrecipe',
+                  ['post_id'=>$post->id, 
+                  'user_id'=>$post->user->id]) }}" 
           >
             @if($post->photo)
               <img 
@@ -32,7 +34,9 @@
             <div class="row mt-2">
               <div class="col-8 pe-4">
                 <a 
-                  href="{{ route('detailrecipe', $post->id) }}"
+                  href="{{ route('detailrecipe',
+                  ['post_id'=>$post->id, 
+                  'user_id'=>$post->user->id]) }}"
                   class="text-decoration-none"
                 >
                   <h4 class="card-title">
