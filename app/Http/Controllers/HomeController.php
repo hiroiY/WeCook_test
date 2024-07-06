@@ -153,27 +153,24 @@ class HomeController extends Controller
     {
         return view('admin');
     }
-    public function mypage()
-    {
-        return view('mypage');
-    }
+
     public function mybookmark()
     {
         return view('mypage.mybookmark');
     }
+
     public function myrecipe()
     {
         return view('mypage.myrecipe');
     }
 
-
-
-    public function search() 
-    {
-        return view('search.search');
-    }
     public function profile_edit()
     {
         return view('profile_edit');
+    }
+    
+    public function search() 
+    {
+        return view('search.search');
     }
 }
