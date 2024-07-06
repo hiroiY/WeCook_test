@@ -41,132 +41,102 @@ class WriterController extends Controller
 
         return $writersPaginatedItem; 
     }
+    private function getAppetizerPosts ($page, $perPage, $dishID, $post_id, $user_id) 
+    {
+        $appetizer_posts = Post::where('user_id', $user_id)
+                                ->where('dish_id', $dishID)
+                                ->paginate($perPage);
+        //Replace the placeholders
+        $writer_id = $user_id;
+        $writer_post_id = $post_id;
+        $path = '/{post_id}/writer/{user_id}/appetizer';
+        $post_id_path = str_replace('{post_id}',$writer_post_id,$path);
+        $writer_id_path = str_replace('{user_id}',$writer_id,$post_id_path);
+                
+        $appetizer_posts->withPath($writer_id_path);
+                
+        return $appetizer_posts;
+    }
+    private function getSidedishPosts ($page, $perPage, $dishID, $post_id, $user_id) 
+    {
+        $sidedish_posts = Post::where('user_id', $user_id)
+                                ->where('dish_id', $dishID)
+                                ->paginate($perPage);
+        //Replace the placeholders
+        $writer_id = $user_id;
+        $writer_post_id = $post_id;
+        $path = '/{post_id}/writer/{user_id}/sidedish';
+        $post_id_path = str_replace('{post_id}',$writer_post_id,$path);
+        $writer_id_path = str_replace('{user_id}',$writer_id,$post_id_path);
+                
+        $sidedish_posts->withPath($writer_id_path);
+                
+        return $sidedish_posts;
+    }
+    private function getMaindishPosts ($page, $perPage, $dishID, $post_id, $user_id) 
+    {
+        $maindish_posts = Post::where('user_id', $user_id)
+                                ->where('dish_id', $dishID)
+                                ->paginate($perPage);
+        //Replace the placeholders
+        $writer_id = $user_id;
+        $writer_post_id = $post_id;
+        $path = '/{post_id}/writer/{user_id}/maindish';
+        $post_id_path = str_replace('{post_id}',$writer_post_id,$path);
+        $writer_id_path = str_replace('{user_id}',$writer_id,$post_id_path);
+                
+        $maindish_posts->withPath($writer_id_path);
+        
+        return $maindish_posts;
+    }
+    private function getDessertPosts ($page, $perPage, $dishID, $post_id, $user_id) 
+    {
+        $dessert_posts = Post::where('user_id', $user_id)
+                                ->where('dish_id', $dishID)
+                                ->paginate($perPage);
+        //Replace the placeholders
+        $writer_id = $user_id;
+        $writer_post_id = $post_id;
+        $path = '/{post_id}/writer/{user_id}/dessert';
+        $post_id_path = str_replace('{post_id}',$writer_post_id,$path);
+        $writer_id_path = str_replace('{user_id}',$writer_id,$post_id_path);
+        
+        $dessert_posts->withPath($writer_id_path);
+
+        return $dessert_posts;
+    }
 
     public function writer(Request $request, $post_id,$user_id) {
         $writer = $this->user->findOrFail($user_id);
         $previous_post =  $this->post->findOrFail($post_id);
         $page = $request->input('page',1);
         $perPage = $request->input('perPage',9);
-        //dish_id
         $Appetizer = 1;
         $writer_recently = $this->getWritersPosts($page,$perPage,$post_id,$user_id);
+        $writer_appetizer = $this->getAppetizerPosts($page, $perPage, $dishID = 1, $post_id, $user_id);
+        $writer_sidedish = $this->getSidedishPosts($page, $perPage, $dishID = 2, $post_id, $user_id);
+        $writer_maindish = $this->getMaindishPosts($page, $perPage, $dishID = 3, $post_id, $user_id);
+        $writer_dessert = $this->getDessertPosts($page, $perPage, $dishID = 4, $post_id, $user_id);
 
-        return view('writers.writer',compact('writer','previous_post','writer_recently'));
-    }
-}
-
-    private function getAppetizerPosts ($page = 1, $perPage = 9, $dishID = 1, $post_id, $user_id) 
-    {
-        
-        $appetizer_posts = Post::where('user_id', $user_id)
-                            ->whereHas('dish_id', function ($query) use ($dishID){
-                                $query->where('dish_id', $dishID);
-                            })
-                            ->paginate($perPage);
-                        //Replace the placeholders
-                        $writer_id = $user_id;
-                        $writer_post_id = $post_id;
-                        $path = '/{post_id}/writer/{user_id}/appetizer';
-                        $post_id_path = str_replace('{post_id}',$writer_post_id,$path);
-                        $writer_id_path = str_replace('{user_id}',$writer_id,$post_id_path);
-                
-                        $appetizer_posts->withPath($writer_id_path);
-                
-        return $appetizer_posts;
-    }
-    private function getSidedishPosts ($page = 1, $perPage = 9, $dishID = 2, $id) 
-    {
-        $sidedish_posts = Post::where('user_id', $id)
-                            ->whereHas('dish', function ($query) use ($dishID){
-                                $query->where('id', $dishID);
-                            })
-                            ->paginate($perPage);
-                            
-        // $sidedishRecentlyItems = $sidedish_posts
-        //                         ->slice(($page - 1) * $perPage,$perPage)->all();
-        // $sidedishPaginatedItem = new LengthAwarePaginator($sidedishRecentlyItems,count($sidedish_posts),
-        //                         $perPage,$page,[
-        //                             'path' => LengthAwarePaginator::resolveCurrentPath()
-        //                         ]);
-
-        // $sidedishPaginatedItem->withPath('writer/{id}/sidedish');
-
-        return $sidedish_posts;
-    }
-    private function getMaindishPosts ($page = 1, $perPage = 9, $dishID = 3, $id) 
-    {
-        $maindish_posts = Post::where('user_id', $id)
-                            ->whereHas('dish', function ($query) use ($dishID){
-                                $query->where('id', $dishID);
-                            })
-                            ->paginate($perPage);
-                            
-        // $maindishRecentlyItems = $maindish_posts
-        //                         ->slice(($page - 1) * $perPage,$perPage)->all();
-        // $maindishPaginatedItem = new LengthAwarePaginator($maindishRecentlyItems,count($maindish_posts),
-        //                         $perPage,$page,[
-        //                             'path' => LengthAwarePaginator::resolveCurrentPath()
-        //                         ]);
-
-        // $maindishPaginatedItem->withPath('writer/{id}/dish');
-
-        return $maindish_posts;
-    }
-    private function getDessertPosts ($page = 1, $perPage = 9, $dishID = 4, $id) 
-    {
-        $dessert_posts = Post::where('user_id', $id)
-                            ->whereHas('dish', function ($query) use ($dishID){
-                                $query->where('id', $dishID);
-                            })
-                            ->paginate($perPage);
-                            
-        // $dessertRecentlyItems = $dessert_posts
-        //                         ->slice(($page - 1) * $perPage,$perPage)->all();
-        // $dessertPaginatedItem = new LengthAwarePaginator($dessertRecentlyItems,count($dessert_posts),
-        //                         $perPage,$page,[
-        //                             'path' => LengthAwarePaginator::resolveCurrentPath()
-        //                         ]);
-
-        // $dessertPaginatedItem->withPath('writer/{id}/dish');
-
-        return $dessert_posts;
-    }
-
-    public function writer(Request $request, $id) {
-        $writer = $this->user->findOrFail($id);
-        $page = $request->input('page',1);
-        $perPage = 9;
-        // $perPage = $request->input('perPage',9);
-        // $dishID = 1;
-        // $dishID = 2;
-        // $dishID = 3;
-        // $dishID = 4;
-
-        $writer_recently = $this->getWritersPosts($page,$perPage,$id);
-        $writer_appetizer = $this->getAppetizerPosts($page, $perPage, $dishID = 1, $id);
-        $writer_sidedish = $this->getSidedishPosts($page, $perPage, $dishID = 2, $id);
-        $writer_maindish = $this->getMaindishPosts($page, $perPage, $dishID = 3, $id);
-        $writer_dessert = $this->getDessertPosts($page, $perPage, $dishID = 4, $id);
-
-        $appetizer_count = Post::where('user_id', $id)
+        $appetizer_count = Post::where('user_id', $user_id)
                                 ->whereHas('dish', function ($query) {
                                     $query->where('id', 1); 
                                 })
                                 ->count();
         
-        $sidedish_count = Post::where('user_id', $id)
+        $sidedish_count = Post::where('user_id', $user_id)
                                 ->whereHas('dish', function ($query) {
                                     $query->where('id', 2); 
                                 })
                                 ->count();
 
-        $maindish_count = Post::where('user_id', $id)
+        $maindish_count = Post::where('user_id', $user_id)
                                 ->whereHas('dish', function ($query) {
                                     $query->where('id', 3); 
                                 })
                                 ->count();
 
-        $dessert_count = Post::where('user_id', $id)
+        $dessert_count = Post::where('user_id', $user_id)
                                 ->whereHas('dish', function ($query) {
                                     $query->where('id', 4); 
                                 })
@@ -174,6 +144,7 @@ class WriterController extends Controller
 
         return view('writers.writer',compact(
                     'writer',
+                    'previous_post',
                     'writer_recently', 
                     'writer_appetizer',
                     'writer_sidedish',

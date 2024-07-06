@@ -20,9 +20,9 @@
   >
   </i>
   <a 
-    href="#"
+    href="{{ route('detailrecipe', ['post_id' => $previous_post->id, 'user_id' => $previous_post->user_id]) }}"
   >
-   {{ $previous_post->title }}
+  {{ $previous_post->title }}
   </a>
   <i 
     class="fa-solid fa-angle-right" 
@@ -40,7 +40,7 @@
 <div 
   class="writer_account mt-4 ms-4"
 >
-   @if($writer->avatar)
+  @if($writer->avatar)
     <img 
       src="{{-- $writer->avatar --}}" 
       alt="{{-- $writer->name --}}" 

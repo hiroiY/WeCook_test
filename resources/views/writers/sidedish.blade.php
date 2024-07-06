@@ -11,7 +11,7 @@
       <div class="card recipe_card w-100">
         <!-- recipe photo -->
         <a 
-          href="{{ route('detailrecipe', $post->id) }}" 
+          href="{{ route('detailrecipe', [$post->id, $writer->id]) }}" 
         >
           @if($post->photo)
             <img 
@@ -32,7 +32,7 @@
           <div class="row mt-2">
             <div class="col-8 pe-4">
               <a 
-                  href="{{ route('detailrecipe', $post->id) }}"
+                  href="{{ route('detailrecipe', [$post->id, $writer->id]) }}"
                   class="text-decoration-none"
                 >
                 <h4 class="card-title">
@@ -41,17 +41,25 @@
               </a>
             </div>
             <div class="col-auto px-0">
-              <a href="#">
+              <a href="{{ route('detailrecipe', [$post->id, $writer->id]) }}">
                 &#xf086; 
                 <span>
-                  11{{-- $post->comment->count() --}}
+                  {{ $post->comment->count() }}
                 </span>
               </a>
             </div>
             <div class="col-1 ms-2">
-              <a href="#">
-                <i class="fa-regular fa-bookmark"></i>
-              </a>
+              @auth
+                @if($post->isBookmarked())
+                  <a href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </a>
+                @else
+                  <a href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}">
+                    <i class="fa-regular fa-bookmark"></i>
+                  </a>
+                @endif
+              @endauth
             </div>
           </div>
           <!-- recipe description -->
@@ -67,4 +75,6 @@
     </div>
   @endforelse
 </div>
+<div class="pagination-wrapper">
+  {{ $writer_sidedish->links() }}
 </div>

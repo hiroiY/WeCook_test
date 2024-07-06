@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\WriterController;
+use App\Http\Controllers\BookmarkController;
 
 
 Auth::routes();
@@ -40,19 +40,16 @@ Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'del
 Route::controller(WriterController::class)->group(function() {
     Route::get('/{post_id}/writer/{user_id}', 'writer')->name('writer');
     Route::get('/{post_id}/writer/{user_id}/recently', 'writer');
+    Route::get('/{post_id}/writer/{user_id}/appetizer', 'writer');
+    Route::get('/{post_id}/writer/{user_id}/sidedish', 'writer');
+    Route::get('/{post_id}/writer/{user_id}/maindish', 'writer');
+    Route::get('/{post_id}/writer/{user_id}/dessert', 'writer');
 });
 
-Route::get('/{id}/writer',[WriterController::class, 'writer'])->name('writer');
-Route::get('/{id}/writer/recently',[WriterController::class, 'writer']);
-Route::get('/{id}/writer/appetizer',[WriterController::class, 'writer']);
-Route::get('/{id}/writer/sidedish',[WriterController::class, 'writer']);
-Route::get('/{id}/writer/maindish',[WriterController::class, 'writer']);
-Route::get('/{id}/writer/dessert',[WriterController::class, 'writer']);
-// Route::get('/writer/{id}/recently', [WriterController::class, 'Recently'])->name('writer.recently');
-// Route::get('/writer/{id}/appetizer', [WriterController::class, 'Appetizer'])->name('writer.appetizer');
-// Route::get('/writer/{id}/sidedish', [WriterController::class, 'Sidedish'])->name('writer.sidedish');
-// Route::get('/writer/{id}/maindish', [WriterController::class, 'Maindish'])->name('writer.maindish');
-// Route::get('/writer/{id}/dessert', [WriterController::class, 'Dessert'])->name('writer.dessert');
+// Bookmark
+Route::middleware('auth')->group(function () {
+    Route::get('bookmark/toggle/{post_id}', [BookmarkController::class, 'toggle'])->name('bookmark.toggle');
+});
 
 Route::get('/search',[HomeController::class, 'search'])->name('search');
 
@@ -65,19 +62,13 @@ Route::get('/search',[HomeController::class, 'search'])->name('search');
 
 // Admin
 Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
-// Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
 Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
 Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
-
 Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
 Route::get('/admin/users/search', [AdminController::class, 'search_username'])->name('admin.users.search');
 Route::get('/admin/posts/search', [AdminController::class, 'search_post'])->name('admin.posts.search');
-
-// Route::get('/admin/usermanagement', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/usermanagement', [AdminController::class, 'index'])->name('usermanagement');
-// Route::get('/admin/postmanagement', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/postmanagement', [AdminController::class, 'postmanagement'])->name('postmanagement');
-
 Route::patch('/admin/usermanagement/{id}/activate', [AdminController::class, 'activate'])->name('activate');
 Route::delete('/admin/usermanagement/{id}/deactivate', [AdminController::class, 'deactivate'])->name('deactivate');
 Route::patch('/admin/postmanagement/{id}/activate', [AdminController::class, 'activatePost'])->name('post.activate');
