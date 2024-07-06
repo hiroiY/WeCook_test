@@ -22,13 +22,16 @@
                     <input type="file" id="photo" name="photo" style="display: none;" >
                 </div>
                 <div class="form-text mt-0 mb-4 text-danger" id="image-info">
-                    *The acceptable formats are jpeg, jpg, png and gif only.&nbsp; (Max file is 2048Kb)
+                    *The acceptable formats are jpeg, jpg, png and gif only.&nbsp; (Max file is 2048Kb)  
+
                     @error('photo')
                     <p class="alert alert-danger text-danger small fw-bold">
                         {{ $message }}
                     </p>
                 @enderror
                 </div>
+            
+
                 <!-- recipe title -->
                 <input type="text" name="title" placeholder="Recipe Name: American style burger" class="recipe-name mt-3 mb-0" value="{{ old('title') }}">
                 @error('title')
@@ -36,19 +39,20 @@
                         {{ $message }}
                     </p>
                 @enderror
+
                 <!-- Select dish_id here -->
                 <div class="row p-auto my-4">
                     <div class="col-6 dropdowns">
-                        <select
-                            name="dish_category"
+                        <select 
+                            name="dish_category" 
                             class="dropdown dish-id w-100"
                         >
                             <option selected disabled>
                                 Dish Category
                             </option>
                             @foreach($all_dishes as $dish )
-                                <option
-                                    value="{{$dish->id}}"
+                                <option 
+                                    value="{{$dish->id}}" 
                                     @if(old('dish_category') == $dish->id) @selected(old('dish_category') == $dish->id) @endif
                                 >
                                     {{$dish->name}}
@@ -61,15 +65,17 @@
                             </p>
                         @enderror
                     </div>
+
                     <!-- cooking_time here -->
                     <div class="col-6">
-                        <input
-                            type="text"
-                            name="cooking_time"
-                            placeholder="Cooking Time: e.g., 30 minutes"
+                        <input 
+                            type="text" 
+                            name="cooking_time" 
+                            placeholder="Cooking Time: e.g., 30 minutes" 
                             class="cooking_time w-100"
                             value="{{ old('cooking_time') }}"
                         >
+                    
                         @error('cooking_time')
                             <p class="alert alert-danger text-danger small fw-bold mb-3 mt-1">
                                 {{ $message }}

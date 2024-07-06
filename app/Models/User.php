@@ -51,6 +51,12 @@ class User extends Authenticatable
         ];
     }
 
+    // 自分がbookmarkしている
+    public function bookmarked() {
+        return $this->hasMany(Bookmark::class, 'user_id');
+    }
+
+    
     public function posts()
     {
         return $this->hasMany(Post::class)->latest();

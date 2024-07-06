@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-// use App\Models\Post;
 use Illuminate\Http\Request;
 
 class Post extends Model
@@ -19,7 +17,7 @@ class Post extends Model
         'photo',
         'dish_id',
         'title',
-        'times',
+        'cooking_time',
         'ingredients',
         'description'
     ];
@@ -32,6 +30,24 @@ class Post extends Model
     public function dish()
     {
         return $this->belongsTo(Dish::class, 'dish_id'); 
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    // bookmark全体を取得
+    public function bookmark()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    // 自分のpostがbookmarkされている
+    // Mybookmarkで使用★　$post->isBookmarked()
+    public function isBookmarked() 
+    {
+        return $this->bookmark()->where('user_id', Auth::user()->id)->exists();
     }
     public function comments()
     {
@@ -46,4 +62,18 @@ class Post extends Model
     $posts = Post::withTrashed()->get();
     return view('posts.index', compact('posts'));
 }
+    //     return $this->belongsTo(Dish::class);
+    // }
+    // detailrecipe pege
+        public function getCategoryLabelAttribute()
+    {
+        $categories = [
+            'appetizer' => 'Appetizer',
+            'side_dish' => 'Side dish',
+            'main_dish' => 'Main dish',
+            'dessert' => 'Dessert'
+        ];
+
+        return $categories[strtolower($this->category)] ?? $this->category;
+    }
 }

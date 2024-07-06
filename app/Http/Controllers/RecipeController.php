@@ -9,21 +9,28 @@ class RecipeController extends Controller
 {
     private $post;
     private $dish;
-    public function __construct(Post $post, Dish $dish)
+
+    public function __construct(Post $post, Dish $dish) 
     {
         $this->post = $post;
         $this->dish = $dish;
     }
+
     public function createrecipe(Request $request){
         $all_dishes = $this->getAllDish();
+
         return view('recipe.createrecipe',compact('all_dishes'));
     }
+
+
     public function getAllDish () {
         $all_dishes = $this->dish->all();
+
         return $all_dishes;
     }
+    
     // Add storeRecipe method
-    public function storeRecipe(Request $request)
+    public function storeRecipe(Request $request) 
     {
         $createPost = $request->validate([
             'photo' => 'mimes:jpeg,png,jpg,gif,svg|max:1048',
@@ -53,6 +60,8 @@ class RecipeController extends Controller
         $recipe = Post::with('dish')->findOrFail($id);
             return view('recipe.detailrecipe', compact('recipe'));
     }
+
+    // Edit recipe method
     public function editMyRecipe($id)
     {
         $post = $this->post->findOrFail($id);
@@ -62,15 +71,7 @@ class RecipeController extends Controller
         return view('editmyrecipe')->with('post', $post);
     }
 
-    // Method: editmyrecipe method for editing recipes
-    // public function editmyrecipe($id)
-    // {
-    //     $post = $this->post->findOrFail($id);
-
-    //     $dishes = $post
-    //     return view('editmyrecipe', compact('post'));
-    // }
-
+    // Delete recipe method
     public function deleterecipe()
     {
         return view('delete_recipe');
