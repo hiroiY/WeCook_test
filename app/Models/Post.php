@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\Models\Post;
+// use App\Models\Post;
 use Illuminate\Http\Request;
 
 class Post extends Model
