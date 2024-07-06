@@ -17,7 +17,7 @@ class Post extends Model
         'photo',
         'dish_id',
         'title',
-        'times',
+        'cooking_time',
         'ingredients',
         'description'
     ];
@@ -76,6 +76,4 @@ class Post extends Model
 
         return $categories[strtolower($this->category)] ?? $this->category;
     }
-
-  
 }

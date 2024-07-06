@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\WriterController;
-
+use App\Http\Controllers\SearchController;
 
 Auth::routes();
 // require __DIR__ . '/auth.php';
@@ -41,8 +41,15 @@ Route::controller(WriterController::class)->group(function() {
     Route::get('/{post_id}/writer/{user_id}/recently', 'writer');
 });
 
+// Navbar's search Route
+Route::controller(SearchController::class)->group(function() {
+    Route::get('/search', 'search')->name('search');
+    Route::get('/search/appetizer', 'search');
+    Route::get('/search/sidedish', 'search');
+    Route::get('/search/maindish', 'search');
+    Route::get('/search/dessert', 'search');
+});
 
-Route::get('/search',[HomeController::class, 'search'])->name('search');
 
 //Recipe Routes 
 // createrecipe
