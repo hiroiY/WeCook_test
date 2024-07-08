@@ -4,18 +4,19 @@
 
 @section('content') 
 <div class="body row w-100">
+    <!-- side bar -->
     <div class="col-auto">
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar d-flex" >
         <div class="position-sticky">
             <div class="list-group-flush">
             <a
-            href="#"
-            class="list-group-item list-group-item-action p-2 ripple fw-bold unselected"
+            href="{{ route('myrecipe', ['id' => Auth::user()->id]) }}"
+            class="list-group-item list-group-item-action p-2 ripple unselected"
             aria-current="true"
             >
                 <span class="ms-auto">My Recipe</span>
             </a>
-            <a href="#"
+            <a href="{{ route('mybookmark', ['id' => Auth::user()->id]) }}"
             class="list-group-item list-group-item-action p-2 ripple unselected">
                 <span>My Bookmark</span>
             </a>
@@ -28,29 +29,48 @@
         </nav>
     </div>
     <!-- profile edit -->
-    <div class="" style="width: 75%; height: 100%; margin-left: 5.5rem;">
-        <div style="width: 50%; margin-top: 3rem; margin-bottom: 3rem; margin-left: 22rem;">
-            <div class="breadcrumb">
-                <a href="#">Home</a> &gt; <a href="#">Mr. Cook</a> &gt; <a href="#" class="selected fw-bold">Profile Edit</a>
-            </div>
-            <div class="form-group">
-                <label for="profile-image" class="form-label fw-bold"  style="font-size: 1.5rem">Avatar</label>
-                <input type="file" name="profile-image" id="profile-image" class="form-control" aria-describedby="image-info">
-                <div class="file-info" id="file-info">
-                    The acceptable formats are jpeg, jpg, png and gif only.<br>
-                    Max file size is 1048kB.
+    <div class="contents">
+        <div class="contents-box">
+            <!-- Bread Crumb -->
+            <form action="{{ route('profile_update', $user->id) }}" method="POST" enctype="multipart/form-data">
+                <div class="my-4 breadcrumb">
+                    <p>
+                        <a href="{{ route('home') }}">Home</a> >
+                        <a href="{{ route('myrecipe', ['id' => Auth::user()->id]) }}">{{ Auth::user()->name }}</a> >
+                        <a href="#" class="selected-breadcrumb">Profile Edit</a>
+                    </p>
                 </div>
-            </div>
-            <form>
+                <!-- Avatar -->
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Mr.Cook">
+                    <label for="avatar">Avatar</label>
+                    <input type="file" class="form-control" aria-describedby="image-info" img src="{{ asset('storage/' . $user->avatar) }}">
+                    <div class="file-info" id="file-info">
+                        The acceptable formats are jpeg, jpg, png and gif only.<br>
+                        Max file size is 1048kB.
+                    </div>
                 </div>
+                <!-- Username -->
                 <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" id="email" name="email" placeholder="Email address">
+                    <form>
+                        <div class="form" style="font-size: 1.5rem;">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" value="{{ $user->username }}" placeholder="{{ Auth::user()->name }}">
+                        </div>
+                    </form>
                 </div>
-                <button type="submit" class="btn fw-bold" style="color: #F7F3EB; background-color: #ff7a00;">Update profile</button>
+                <!-- Email Address -->
+                <div class="form-group">
+                    <form>
+                        <div class="form" style="font-size: 1.5rem;">
+                            <label for="email">Email address</label>
+                            <input type="email" id="email" name="email" placeholder="Email Address">
+                        </div>
+                    </form>
+                </div>
+                <!-- Submit Button -->
+                <div class="submit-box">
+                    <button type="submit" class="submit-button btn fw-bold" onclick="location.href='{{ route('myrecipe', ['id' => Auth::user()->id]) }}'">Update profile</button>
+                </div>
             </form>
         </div>
     </div>

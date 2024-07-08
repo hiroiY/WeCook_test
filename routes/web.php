@@ -23,9 +23,6 @@ Route::controller(HomeController::class)->group(function() {
     Route::get('/home/dessert', 'index');
 });
 
-
-
-Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
 Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
 Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
 Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
@@ -59,7 +56,8 @@ Route::controller(SearchController::class)->group(function() {
 
 
 // Admin
-Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
+Route::get('/mypage/profile_edit/{id}', [App\Http\Controllers\ProfileController::class, 'profile_edit'])->name('profile_edit');
+Route::post('/mypage/profile_update/{id}', [App\Http\Controllers\ProfileController::class, 'profile_update'])->name('profile_update');
 // Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
 Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
 Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
