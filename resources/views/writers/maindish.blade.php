@@ -82,3 +82,4 @@
 <div class="pagination-wrapper">
   {{ $writer_maindish->links() }}
 </div>
+</div>

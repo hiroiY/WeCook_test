@@ -78,3 +78,4 @@
 <div class="pagination-wrapper">
   {{ $writer_sidedish->links() }}
 </div>
+</div>
