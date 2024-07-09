@@ -1,0 +1,121 @@
+/* detailrecipe.scss */
+body.detailrecipe {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container.detailrecipe {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #F7F3EB;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.breadcrumb .detailrecipe {
+    
+    padding: 0;
+    margin-bottom: 20px;
+      color: #e45900;
+   
+
+    
+    &-item.detailrecipe {
+        a {
+            color: #4d1f01;
+            text-decoration: none;
+        }
+        
+        &.active {
+            color: #4d1f01;
+        }
+    }
+}
+
+.recipe-detail.detailrecipe {
+    .chef-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .recipe-title {
+        font-size: 2rem;
+        color: #4d1f01;
+        margin-bottom: 10px;
+
+        .fa-bookmark {
+            cursor: pointer;
+            transition: color 0.3s ease;
+            &.bookmarked {
+                fill: #e45900;
+            }
+        }
+    }
+
+    .food-photo {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .badge-primary {
+        background-color: #e45900;
+        color: #fff;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    .text-muted {
+        color: #4d1f01 !important;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        color: #4d1f01;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    ul, ol {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        color: #4d1f01;
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+    }
+
+    i {
+        margin-right: 5px;
+        color: #e45900;
+    }
+    .d-flex.justify-content-between.align-items-center.mb-3 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .text-muted.d-flex.align-items-center {
+        color: #4d1f01 !important;
+        display: flex;
+        align-items: center;
+    }
+    
+    .text-muted.d-flex.align-items-center i.far.fa-clock {
+        margin-right: 1rem;
+    }
+    
+    .text-muted.d-flex.align-items-center a.ml-3 {
+        margin-left: 5rem;
+    }
+    
+    
+}

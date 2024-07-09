@@ -1,66 +1,68 @@
 @extends('layouts.app')
 
-@vite(['resources/sass/writers.scss','resources/js/tabs.js'])
+@vite(['resources/sass/writers.scss','resources/js/tabs_pagination.js'])
+<!-- I will chenge JavaScript file to tabs_pagination.js after the Backend/tab_action merged  -->
 
 @section('content')
 <!-- breadcrumb is here -->
-<div class="breadcrumb ms-5 mt-3">
+<div 
+  class="breadcrumb ms-5 mt-3"
+  id="content-start"
+>
   <a 
   href="{{ route('home') }}"
   >
     Home
-  </a> &nbsp; 
+  </a> 
   <i 
     class="fa-solid fa-angle-right" 
     style="color:#887569;"
   >
-  </i> &nbsp;
+  </i>
   <a 
-    href="#"
+    href="{{ route('detailrecipe', ['post_id' => $previous_post->id, 'user_id' => $previous_post->user_id]) }}"
   >
-    Recipe's name{{-- $recipe->name --}}
-  </a> &nbsp; 
-  <i 
-    class="fa-solid fa-angle-right" 
-    style="color:#887569;"
-  >
-  </i> &nbsp;
-  <a 
-    href="#"
-  >
-    Writer's name{{-- $recipe->user->name --}}
+  {{ $previous_post->title }}
   </a>
+  <i 
+    class="fa-solid fa-angle-right" 
+    style="color:#887569;"
+  >
+  </i>
+  <span
+    class="writer_name"
+  >
+    {{ $writer->name }}
+  </span>
 </div>
+
 <!-- writer's acount here -->
-<div class="writer_account mt-5 ms-4">
-  {{-- @if($recipe->user->avatar) --}}
-    <!-- <img 
-      src="{{-- $recipe->user->avatar --}}" 
-      alt="{{-- $recipe->user->name --}}" 
-      class="rounded-circle avatar-lg"
+<div 
+  class="writer_account mt-4 ms-4"
+>
+  @if($writer->avatar)
+    <img 
+      src="{{-- $writer->avatar --}}" 
+      alt="{{-- $writer->name --}}" 
+      class="rounded-circle avatar-lg ms-3"
     >
-    <a 
-      href="#"
-    >
-      {{-- $recipe->user->name --}} 
-    </a>-->
-    {{-- $recipe->user->name --}}
-  {{-- @else --}}
+  @else
     <img 
       src="{{asset('/images//profile_icon.png')}}" 
-      alt="{{-- $recipe->user->name --}}" 
-      class="rounded-circle avatar-lg"
+      alt="{{ $writer->name }}" 
+      class="rounded-circle avatar-lg ms-3"
     >
-    <a 
-      href="#"
-    >
-      Mr.Cook {{-- $recipe->user->name --}} 
-    </a>
-  {{-- @endif --}}
+  @endif
+  <span
+    class="writer_name"
+  >
+    {{ $writer->name }}
+  </span>
 </div>
+
 <!-- tab menu area -->
 <div 
-  class="tab mx-auto mt-5" 
+  class="tab mx-auto my-5" 
   style="max-width: 95%;"
 >
   <ul class="tab_menu m-0 p-0">
@@ -69,31 +71,30 @@
       data-tab="01"
     >
       Recently shared
-
     </li>
     <li 
       class="tab_menu-item " 
       data-tab="02"
     >
-      Appetizer&nbsp;<span>(11{{-- $user->recipes->count() --}})</span>
+      Appetizer&nbsp;<span>({{ $appetizer_count }})</span>
     </li>
     <li 
       class="tab_menu-item" 
       data-tab="03"
     >
-      Side dish&nbsp;<span>(8{{-- $user->recipes->count() --}})</span>
+      Side dish&nbsp;<span>({{ $sidedish_count }})</span>
     </li>
     <li 
       class="tab_menu-item" 
       data-tab="04"
     >
-      Main dish&nbsp;<span>(4{{-- $user->recipes->count() --}})</span>
+      Main dish&nbsp;<span>({{  $maindish_count }})</span>
     </li>
     <li 
       class="tab_menu-item" 
       data-tab="05"
     >
-      Dessert&nbsp;<span>(1{{-- $user->recipes->count() --}})</span>
+      Dessert&nbsp;<span>({{ $dessert_count }})</span>
     </li>
   </ul>
 

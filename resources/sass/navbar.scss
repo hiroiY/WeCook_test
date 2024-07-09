@@ -1,9 +1,9 @@
-nav*{
+nav * {
   font-family: "Nunito";
   color:#F7F3EB;
 }
 .navbar{
-  background-color: #2E1310;
+  background-color: #2E1301;
 }
 .navbar img {
   height: 2.4em;
@@ -20,6 +20,9 @@ nav*{
   text-decoration: none;
   font-weight: bold;
   color: #F7F3EB;
+  i {
+    color: inherit;
+  }
 }
 .navbar a:visited,
 .navbar a:hover{
@@ -32,13 +35,13 @@ nav*{
 }
 #account-dropdown:focus
 {
-  color: white;
+  color: #F7F3EB;
   }
 #account-dropdown:hover{
-color: white;
+color: #F7F3EB;
 }
 .account div{
-  background-color: #2E1310;
+  background-color: #2E1301;
   color: inherit;
 }
 .account div a:visited{
@@ -48,7 +51,7 @@ color: white;
 }
 .account div a:hover{
   background-color: #F7F3EB;
-  color: #2E1310;
+  color: #2E1301;
   font-weight: bold;
 }
 #searchbar{
@@ -56,7 +59,7 @@ color: white;
   height: 2em;
   outline: 1px solid #F7F3EB;
   border-radius: 0.5rem;
-  background-color: #2E1310;
+  background-color: #2E1301;
   padding: 0.7em;
   color: #F7F3EB;
   font-family: Bootstrap-icons, "Nunito";

@@ -1,0 +1,71 @@
+// CSS
+/* homepage tab */
+// myrecipe.blade.php
+.sidebar {
+  font-family: "Nunito";
+  background-color: #2E1301;
+  max-width: 100%;
+  height: 115%;
+  padding: 2rem;
+  color: #F7F3EB;
+  float: left;
+  font-size: 1.3rem;
+}
+.sidebar .selected{
+  font-weight: bold;
+}
+.sidebar .unselected{
+  color: #887569;
+}
+.sidebar .unselected:hover{
+  cursor: pointer;
+  color: #F7F3EB;
+}
+.tab_menu
+{
+  display: flex;
+  align-items: flex-end;
+  min-height: 80px;
+  max-height: 100px;
+  width: 100%;
+  min-width: 50%;
+  font-size: 32px;
+}
+.tab_menu-item
+{
+  max-height: 80px;
+  color: #887569;
+  font: bold 72% "Nunito";
+  list-style: none;
+  padding: 1rem .2rem;
+  text-align: center;
+  margin-right: 0.5%;
+  background-color: #DBD2C8;
+  border-top-left-radius: 0.5em 0.5em;
+  border-top-right-radius: 0.5em 0.5em;
+  cursor: grab;
+  transition: all 0.2s;
+  box-shadow: .1em -.01rem 1px rgba(0, 0, 0, 0.196);
+}
+  /* is-active style */
+.tab_menu-item.is-active
+{
+  background-color: #F7F3EB;
+  color: #4D1F01;
+  padding: 1.3rem .2rem;
+  text-decoration: underline #88756965;
+}
+  /* tab panel style */
+.tab_panel-box
+{
+  /* min-height: 80%; */
+  height: 88%;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.253);
+  padding: 2rem 0.3rem;
+  border-radius: 0.5rem 0.5rem;
+  background-color: #F7F3EB;
+  display: none;
+}
+.tab_panel-box.is-show {
+  display: block;
+}

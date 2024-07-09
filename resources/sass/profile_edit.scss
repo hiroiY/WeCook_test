@@ -1,0 +1,120 @@
+    /* Side Bar */
+.sidebar {
+  font-family: "Nunito";
+  background-color: #2E1301;
+  max-width: 100%;
+  height: 100%;
+  padding: 2rem;
+  color: #F7F3EB;
+  float: left;
+  font-size: 1.3rem;
+}
+.sidebar .selected{
+  font-weight: bold;
+}
+.sidebar .unselected{
+  color: #887569;
+}
+.sidebar .unselected:hover{
+  cursor: pointer;
+  color: #F7F3EB;
+}
+
+// Body
+.body {
+    background-color: #F7F3EB;
+}
+
+/* Contents */
+.body .contents {
+    width: 75%;
+    height: 100%;
+    margin-left: 10rem;
+}
+
+.body .contents-box {
+    width: 60%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    margin-left: 22rem;
+}
+
+/* Bread Crumb */
+.body .breadcrumb {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #887569;
+}
+
+.body .breadcrumb .selected-breadcrumb {
+    color: #ff7a00;
+    font-weight: bold;
+}
+
+.body .breadcrumb a {
+    color: #887569;
+    text-decoration: none;
+}
+
+.body .breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Contents */
+.body .contents .contents-box .form-group {
+    margin-bottom: 20px;
+    // width: 100%;
+}
+
+.body .contents .contents-box .form-group label {
+    display: block;
+    // margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.body .contents .contents-box .form-group .form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ff7a00;
+}
+
+.body .contents .contents-box .form-group .form-control {
+    border: 1px solid #ff7a00;
+}
+
+.body .contents .contents-box .form-group .file-info {
+    color: #2E1301;
+}
+
+.body .contents .contents-box .form-group .form input[type="file"] {
+    border: 1px solid #ff7a00;
+    color: #2E1301;
+}
+
+.body .contents .contents-box .form-group .form input[type="file"], input[type="email"] {
+    border: 1px solid #ff7a00;
+    color: #2E1301;
+    background-color: white;
+}
+ 
+// Update btn
+.btn:hover {
+    background-color: #ff7a00;
+}
+
+.body .contents .contents-box .submit-button{
+    color: #F7F3EB;
+    background-color: #ff7a00;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+}
+
+.body .contents .contents-box .submit-box {
+    margin-top: 5%;
+}

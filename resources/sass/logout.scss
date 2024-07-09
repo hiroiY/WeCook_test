@@ -1,29 +1,44 @@
-// logout modal
-.logout-modal-style {
-    background-color: #f7f3eb;
-    border-radius: 30px;
-}
-
 .modal-content {
-    -webkit-border-radius: 30px !important;
-    -moz-border-radius: 30px !important;
-    border-radius: 30px !important;
-    // border-radius: 100px !important;
+    border-radius: 30px;
+    padding: 20px;
+    background-color: #f7f3eb;
 }
-
-// logout modal button
-#logout-btn {
-    color: white;
-    background-color: #e45900;
-}
-
-// logout modal title
-.logout-ttl {
-    font-size: 35px;
+.modal-header{
+    border-bottom: none;
+    display: flex;
+    justify-content: start;
     color: #4d1f01;
 }
-
-// logout modal message
-.are-you-sure {
+.modal-header .logout-text {
+    font-size: 35px;
+    font-weight: bold;
+    color: #4d1f01;
+}
+.btn-close {
+    font-size: 50px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    color: #4d1f01;
+}
+.modal-body p.logout{
+    font-size: 24px;
+    font-weight: bold;
+    color: #4d1f01;
+}
+.modal-footer {
+    border-top: none;
+}
+.modal-footer .logout-button {
+    background-color: #E45900;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+.modal-footer .logout-button:hover {
+    background-color: #E45900;
+}
+.fa-chevron-left{
     color: #4d1f01;
 }
