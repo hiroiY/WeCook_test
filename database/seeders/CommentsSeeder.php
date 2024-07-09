@@ -8,48 +8,49 @@ use Illuminate\Database\Seeder;
 use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-
+use Carbon\Carbon;
 
 class CommentsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    private $comment;
-
-    public function __construct(Comment $comment) {
-        $this->comment = $comment;
-    }
-
-    public function run(): void
+    
+    public function run()
     {
-        $comments = [
-            [
-                'user_id' => 1,
-                'post_id' => 1,
-                'body' => 'A',
-                'created_at' => now(),
-                'updated_at' => now()
-            ], [
-                'user_id' => 2,
-                'post_id' => 2,
-                'body' => 'A',
-                'created_at' => now(),
-                'updated_at' => now()
-            ], [
-                'user_id' => 1,
-                'post_id' => 3,
-                'body' => 'A',
-                'created_at' => now(),
-                'updated_at' => now()
-            ], [
-                'user_id' => 2,
-                'post_id' => 4,
-                'body' => 'A',
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
+        // Get all post ids from the posts table
+        $postIds = DB::table('posts')->pluck('id');
+        // Generate comments data
+        $comments = [];
+        foreach ($postIds as $postId) {
+            // Generate random number of comments for each post (between 1 to 5)
+            $numberOfComments = rand(1, 5);
+            for ($i = 0; $i < $numberOfComments; $i++) {
+                $comments[] = [
+                    'user_id' => rand(1, 10), // Adjust as per your user ids
+                    'post_id' => $postId,
+                    'body' => $this->generateRandomComment(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ];
+            }
+        }
+        // Insert data into the comments table
+        DB::table('comments')->insert($comments);
+    }
+    private function generateRandomComment()
+    {
+        // Array of sample comments
+        $sampleComments = [
+            'Great post!',
+            'Very informative.',
+            'I like this.',
+            'Nice work!',
+            'Interesting read.',
+            'Thanks for sharing.',
+            'Well written.',
         ];
-        $this->comment->insert($comments);
+        // Return a random comment from the sample comments array
+        return $sampleComments[array_rand($sampleComments)];
     }
 }
