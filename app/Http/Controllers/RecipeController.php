@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Post; // Postモデルをインポート
 use App\Models\Dish;
+use Illuminate\Support\Facades\Log;
 
 class RecipeController extends Controller
 {
@@ -71,6 +72,32 @@ class RecipeController extends Controller
         return view('editmyrecipe')->with('post', $post);
     }
 
+    // Update recipe method
+    public function updateMyRecipe(Request $request, $id){
+        // dd($request->all());
+
+        // try {
+            $post = Post::findOrFail($id);
+            $post->title = $request->input('recipename');
+            $post->dish_id = $request->input('recipecategory');
+            $post->cooking_time = $request->input('cooking_time');
+            $post->ingredients = $request->input('ingredients');
+            $post->description = $request->input('descriptions');
+            if ($request->hasFile('photo')) {
+                $this->post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));;                
+            }
+        //    dd($request->all(), $post);
+            $post->save();
+            // Log::info('Post updated successfully.', ['post_id' => $post->id]);
+            return redirect()->route('home')->with('success', 'Post updated successfully.');
+        // } catch (\Exception $e) {
+        //     Log::error('Failed to update post: ' . $e->getMessage(), [
+        //         'post_id' => $id,
+        //     ]);
+        // }
+
+    }
+    
     // Delete recipe method
     public function deleterecipe()
     {

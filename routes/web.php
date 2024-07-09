@@ -35,7 +35,7 @@ Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'm
 Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
 
 Route::get('/myrecipe/{id}/edit', [RecipeController::class, 'editMyRecipe'])->name('editmyrecipe');
-Route::patch('/myrecipe/{id}/update', [RecipeController::class, 'update'])->name('updaterecipe');
+Route::patch('/myrecipe/{id}/update', [RecipeController::class, 'updateMyRecipe'])->name('updatemyrecipe');
 //Writers page
 Route::controller(WriterController::class)->group(function() {
     Route::get('/{post_id}/writer/{user_id}', 'writer')->name('writer');
