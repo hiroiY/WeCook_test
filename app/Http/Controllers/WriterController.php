@@ -25,7 +25,7 @@ class WriterController extends Controller
     {
         //search the user and get user's latest 30 posts.
         $writers_posts = $this->post->findOrFail($post_id)
-                        ->take(30)->get();
+                        ->where('user_id',$user_id)->take(30)->latest()->get();
         
         $writersRecentlyItems = $writers_posts->slice(($page - 1) * $perPage,$perPage)->all();
         $writersPaginatedItem = new LengthAwarePaginator($writersRecentlyItems,count($writers_posts),$perPage,$page,['path' => LengthAwarePaginator::resolveCurrentPath()]);

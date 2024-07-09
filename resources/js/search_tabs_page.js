@@ -5,35 +5,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const recentlyTabId = '01'; 
 
   // save the current page for each tab
-  function saveCurrentPage(tabId, page) {
-    sessionStorage.setItem(`page_${tabId}`, page);
+  function saveCurrentPage(keyword,tabId, page) {
+    sessionStorage.setItem(`${keyword}_page_${tabId}`, page);
   }
 
   // get the saved current page for a tab
-  function getCurrentPage(tabId) {
-    return sessionStorage.getItem(`page_${tabId}`) || 1;
+  function getCurrentPage(keyword,tabId) {
+    return sessionStorage.getItem(`${keyword}_page_${tabId}`) || 1;
   }
 
   // reset the current page for a tab to 1
-  function resetCurrentPage(tabId) {
-    sessionStorage.getItem(`page_${tabId}`);
+  function resetCurrentPage(keyword,tabId) {
+    sessionStorage.getItem(`${keyword}_page_${tabId}`);
   }
   //I ask my batch member which is better for wecook the tab keep the page  it's user looked or not.
 
+  // get the keyword 
+  function getKeyword() {
+    return localStorage.getItem('keyword');
+  }
+
+  // remove the keyword 
+  function removeKeyword() {
+    return localStorage.removeItem('keyword');
+  }
+  
   // Save scroll position
   function saveScrollPosition() {
     const path = window.location.pathname;
-    sessionStorage.setItem(path + '_scrollPosition', window.scrollY || document.documentElement.scrollTop);
+    const path_search = path.search;
+    sessionStorage.setItem(path_search + '_scrollPosition', window.scrollY || document.documentElement.scrollTop);
   }
 
   // Restore scroll position
   function restoreScrollPosition() {
     const path = window.location.pathname;
-    const savedPosition = sessionStorage.getItem(path + '_scrollPosition');
+    const path_search = path.search;
+    const savedPosition = sessionStorage.getItem(path_search + '_scrollPosition');
     if (savedPosition) {
       window.scrollTo(0, parseInt(savedPosition, 10));
     }
-    sessionStorage.removeItem(path + '_scrollPosition');
+    sessionStorage.removeItem(path_search + '_scrollPosition');
   }
 
   //default scroll position
@@ -86,13 +98,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load the current page for a tab
   function loadCurrentPage(tabId) {
+    const keyword = getKeyword();
     const tabPanel = document.querySelector(`.tab_panel-box[data-panel="${tabId}"]`);
     if (tabPanel) {
-      const currentPage = getCurrentPage(tabId);
+      const currentPage = getCurrentPage(keyword,tabId);
       const paginationLinks = tabPanel.querySelectorAll('.pagination a');
       if (paginationLinks.length > 0) {
         const pageLink = paginationLinks[0].href.replace(/page=\d+/, `page=${currentPage}`);
         loadPage(pageLink, tabPanel);
+
+        // Add active on current page link
+        const currentLink = Array.from(paginationLinks).find(link => {
+          return new URL(link.href).searchParams.get('page') === currentPage;
+        });
+        if (currentLink) {
+          currentLink.classList.add('active');
+        }
       }
     }
   }
@@ -105,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const newContent = doc.querySelector(`.tab_panel-box[data-panel="${tabPanel.dataset.panel}"]`);
+        console.log(newContent);
         if (newContent) {
           tabPanel.innerHTML = newContent.innerHTML;
 
@@ -112,11 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
           paginationLinks.forEach(link => {
             link.addEventListener('click', (e) => {
               e.preventDefault();
+              const keyword = getKeyword();
               const url = e.currentTarget.href;
               const page = new URL(url).searchParams.get('page');
-              saveCurrentPage(tabPanel.dataset.panel, page);
+              saveCurrentPage(keyword,tabPanel.dataset.panel, page);
               loadPage(url, tabPanel);
               contentStartScroll();
+              // get the keyword on page load
+              getKeyword();
             });
           });
         }
@@ -126,11 +151,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   tabMenus.forEach((tabMenu) => {
     tabMenu.addEventListener('click', (e) => {
+      const keyword = getKeyword();
       const tabId = e.target.dataset.tab;
       const activeTabId = sessionStorage.getItem('activeTab');
 
       if (tabId !== activeTabId) {
-        resetCurrentPage(activeTabId); // Reset the current page
+        resetCurrentPage(keyword,activeTabId); // Reset the current page
       }
 
       saveActiveTab(tabId);
@@ -146,11 +172,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (recentlyTab) {
       recentlyTab.click();
     }
+    // get the keyword on page load
+    const keyword = getKeyword();
+    document.getElementById('keyword').textContent = keyword;
   });
 
   window.addEventListener('beforeunload', saveScrollPosition);
   window.addEventListener('popstate', () => {
     restoreActiveTab();
     restoreScrollPosition();
+    removeKeyword()
   });
 });

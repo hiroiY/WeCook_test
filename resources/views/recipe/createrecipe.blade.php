@@ -50,12 +50,14 @@
                             <option selected disabled>
                                 Dish Category
                             </option>
-                            @foreach($all_dishes as $dish )
+                            @foreach($all_dishes as $category )
                                 <option 
-                                    value="{{$dish->id}}" 
-                                    @if(old('dish_category') == $dish->id) @selected(old('dish_category') == $dish->id) @endif
+                                    value="{{$category->id}}" 
+                                    @if(old('dish_category') == $category->id) 
+                                        @selected(old('dish_category') == $category->id) 
+                                    @endif
                                 >
-                                    {{$dish->name}}
+                                    {{$category->name}}
                                 </option>
                             @endforeach
                         </select>
