@@ -32,9 +32,9 @@
 
     {{-- @if(the user is comment's owner) --}}
     <div class="p-3 mb-3 mx-3 comments-owner ">
-      <div class="row user_account w-100 mb-2 justify-content-between"> 
+      <div class="row user_account w-100 ms-0 mb-2 justify-content-between"> 
       {{--  @if(the user has avatar) --}}
-        <div class="col-3 d-inline-flex">
+        <div class="col-3 d-inline-flex ms-0 ps-0">
           <img src="{{ asset('images\profile_icon.png') }}" alt="">
           <p class="username my-auto p-1">Auth Username </p>
           {{--  @endif --}}
@@ -46,7 +46,7 @@
         </div>
         <div class="col-2 my-auto pe-0">
           <button type="button" class="ms-4 px-3 small">Edit</button>
-          <button type="submit" class="px-3 ms-2 me-0 small">Delete</button>
+          <button type="submit" class="px-3 ms-2 me-0 small mt-2">Delete</button>
         </div>
       </div>
 
