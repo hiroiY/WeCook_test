@@ -1,7 +1,5 @@
-@extends('layouts.app')
 @vite(['resources\sass\comment_qestion.scss'])
 @vite(['resources\js\tabs.js'])
-@section('content')
 <!-- tab menu area-->
 <div class="comment_qa ms-5">
     <div class="mx-auto">
@@ -38,4 +36,3 @@
       </div>
     </div>
   </div>
-  @endsection
