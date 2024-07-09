@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -27,32 +26,45 @@ class MypageController extends Controller
         $this->bookmark = $bookmark;
     }
 
-    // dishID=1(appetizer)がほしいとき
-    // $user_id => loginしている人のuser_idを入れる★
-    private function getAppetizerPosts($page = 1, $perPage = 4, $dishAppetizer = 1, $user_id = 1)
+    private function getPostsByDishId($user_id, $dishId, $page = 1, $perPage = 4)
     {
-        // $user = getUsersPost($id);
-        //Get the latest posts which dish_id is 1
-        $get_dish_id_1 = $this->post->where([['dish_id', '=', $dishAppetizer],['user_id', '=', $user_id]])->latest()->get();
-        //$get_dish_id_1 = $this->post->where('dish_id',$dishAppetizer)->latest()->get();
-       //Get 30 posts from last
-       //$appetizerPosts = $get_dish_id_1->take(30)->get();
-       //Slices the items displayed on the appetizer page.
-        $appetizerItems = $get_dish_id_1->slice(($page - 1) * $perPage, $perPage)->all();
-        //Create LengthAwarePaginator instance 
-       $appetizerPaginatedItems = new LengthAwarePaginator($appetizerItems, $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
-       $appetizerPaginatedItems->withPath('/mypage/myrecipe/appetizer');
-        return $appetizerPaginatedItems;
+        // Get the latest posts which match the specified dish_id
+        $get_posts = $this->post->where([
+            ['dish_id', '=', $dishId],
+            ['user_id', '=', $user_id]
+        ])->latest()->get();
+
+        // Slices the items displayed on the page.
+        $items = $get_posts->slice(($page - 1) * $perPage, $perPage)->all();
+
+        // Create LengthAwarePaginator instance 
+        $paginatedItems = new LengthAwarePaginator($items, $get_posts->count(), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
+        $paginatedItems->withPath("/mypage/myrecipe/$dishId");
+
+        return $paginatedItems;
     }
 
-    public function myrecipe(Request $request, $user_id)
+    public function myrecipe(Request $request)
     {
+        $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login'); // ログインしていない場合、ログインページへリダイレクト
+        }
+
         $page = $request->input('page', 1);
-        $user = $this->user->findOrFail($user_id);
-        //dish_id
-        $dishAppetizer = 1;
-        $appetizer_posts = $this->getAppetizerPosts($page,4,$dishAppetizer,$user_id);
+        $appetizer_posts = $this->getPostsByDishId($user->id, 1, $page, 4);
+        $maindish_posts = $this->getPostsByDishId($user->id, 2, $page, 4);
+        $sidedish_posts = $this->getPostsByDishId($user->id, 3, $page, 4);
+        $dessert_posts = $this->getPostsByDishId($user->id, 4, $page, 4);
 
-        return view('mypage.myrecipe', compact('appetizer_posts', 'user'));
-    }
+        // return view('mypage.myrecipe', compact('appetizer_posts', 'maindish_posts', 'sidedish_posts', 'dessert_posts', 'user'));
+
+         // 各ジャンルの投稿数を取得
+        $appetizer_count = $this->post->where(['dish_id' => 1, 'user_id' => $user->id])->count();
+        $sidedish_count = $this->post->where(['dish_id' => 2, 'user_id' => $user->id])->count();
+        $maindish_count = $this->post->where(['dish_id' => 3, 'user_id' => $user->id])->count();
+        $dessert_count = $this->post->where(['dish_id' => 4, 'user_id' => $user->id])->count();
+
+        return view('mypage.myrecipe', compact('appetizer_posts', 'maindish_posts', 'sidedish_posts', 'dessert_posts', 'user', 'appetizer_count', 'sidedish_count', 'maindish_count', 'dessert_count'));
+        }
 }

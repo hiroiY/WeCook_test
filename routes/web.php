@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\WriterController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\BookmarkController;
 
 
@@ -24,9 +25,6 @@ Route::controller(HomeController::class)->group(function() {
     Route::get('/home/dessert', 'index');
 });
 
-
-
-Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
 Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
 Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
 Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
@@ -50,8 +48,15 @@ Route::controller(WriterController::class)->group(function() {
 Route::middleware('auth')->group(function () {
     Route::get('bookmark/toggle/{post_id}', [BookmarkController::class, 'toggle'])->name('bookmark.toggle');
 });
+// Navbar's search Route
+Route::controller(SearchController::class)->group(function() {
+    Route::get('/search', 'search')->name('search');
+    Route::get('/search/appetizer', 'search');
+    Route::get('/search/sidedish', 'search');
+    Route::get('/search/maindish', 'search');
+    Route::get('/search/dessert', 'search');
+});
 
-Route::get('/search',[HomeController::class, 'search'])->name('search');
 
 //Recipe Routes 
 // createrecipe

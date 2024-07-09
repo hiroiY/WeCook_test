@@ -39,7 +39,7 @@ class HomeController extends Controller
     private function getRecentlyPosts($page = 1, $perPage = 9)
     {
         //Get latest 30 posts 
-        $home_posts = $this->post->take(30)->get();
+        $home_posts = $this->post->latest()->take(30)->get();
      
         //Slicing appeared post on the current page
         $recentlyPageItems = $home_posts->slice(($page - 1) * $perPage,$perPage)->all();
@@ -153,27 +153,24 @@ class HomeController extends Controller
     {
         return view('admin');
     }
-    public function mypage()
-    {
-        return view('mypage');
-    }
+
     public function mybookmark()
     {
         return view('mypage.mybookmark');
     }
+
     public function myrecipe()
     {
         return view('mypage.myrecipe');
     }
 
-
-
-    public function search() 
-    {
-        return view('search.search');
-    }
     public function profile_edit()
     {
         return view('profile_edit');
+    }
+    
+    public function search() 
+    {
+        return view('search.search');
     }
 }
