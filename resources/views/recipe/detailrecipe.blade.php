@@ -81,6 +81,6 @@
             </ol>
         </div>
     </div>
-    @include('comment_qestion\comment_qa')
+    @include('comment_qestion.comment_qa')
 <!-- </body> -->
 @endsection
