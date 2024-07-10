@@ -60,8 +60,8 @@
                         <span class="badge badge-primary">{{ $recipe->dish->name }}</span>
                         <span class="text-muted d-flex align-items-center">
                             <i class="far fa-clock mr-2"></i> {{ $recipe->cooking_time }}
-                            @if(Auth::user()->id === $recipe->id)
-                            <a href="{{ route('editmyrecipe') }}" class="ml-3"><i class="fas fa-pencil-alt"></i></a>
+                            @if(Auth::check()&&Auth::user()->id === $recipe->user_id)
+                                <a href="{{ route('editmyrecipe') }}" class="ml-3"><i class="fas fa-pencil-alt"></i></a>
                             @endif
                         </span>
                     </div>              

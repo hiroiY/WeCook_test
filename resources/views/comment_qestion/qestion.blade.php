@@ -24,7 +24,7 @@
         Add Qestion
       </button>
     </form>
-    @elseif(Auth::user()->id === $recipe->user->id)
+    @elseif(Auth::check()&&Auth::user()->id === $recipe->user->id)
     <form 
       action="#" 
       method="post"
@@ -49,7 +49,7 @@
       <h3 
         class="text-center my-5"
       >
-        Adding Comment is for auth users only, <a href="#">Register</a> or <a href="#">Login</a>
+        Adding Comment is for auth users only, <a href="{{ route('register') }}"">Register</a> or <a href="{{ route('login') }}"">Login</a>
       </h3>
     @endif
 

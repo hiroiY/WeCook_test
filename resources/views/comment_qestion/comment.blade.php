@@ -10,7 +10,7 @@
       <button type="submit" class="ms-1 p-1 border-0 rounded add" >Add Comment</button>
     </form>
     @else
-      <h3 class="text-center my-5">Adding Comment is for auth users only, <a href="#">Register</a> or <a href="#">Login</a></h3>
+      <h3 class="text-center my-5">Adding Comment is for auth users only, <a href="{{ route('register') }}"">Register</a> or <a href="{{ route('login') }}"">Login</a></h3>
     @endif
 
     <!-- comment area below-->
@@ -30,6 +30,7 @@
       <p class="mb-0">{{-- comment body here --}} Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     </div>
 
+    <!-- If the user is comment's owner -->
     {{-- @if(the user is comment's owner) --}}
     <div class="p-3 mb-3 mx-3 comments-owner ">
       <div class="row user_account w-100 ms-0 mb-2 justify-content-between"> 
