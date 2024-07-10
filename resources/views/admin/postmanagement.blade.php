@@ -101,7 +101,12 @@
                                         </div>
                                     </a>
                                 </td>
-                                <td style="vertical-align:middle">{{ $post->title }}</td>
+                                <td style="vertical-align:middle">
+                                    <a href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}"
+                                        class="textdecoration-none">
+                                        {{ $post->title }}
+                                    </a>
+                                </td>
                                 <td style="vertical-align:middle">
                                     <a
                                         href="{{ route('writer', ['post_id' => 
@@ -113,13 +118,9 @@
                                     </a>
                                 </td>
                                 <td style="vertical-align:middle">
-                                    <a
-                                    href="{{ route('writer', ['post_id' => 
-                                    $post->id, 'user_id' => 
-                                    $post->user->id]) }}"
-                                    class="textdecoration-none"
-                                >
-                                    {{ $post->comments_count ?? 0 }}
+                                    <a href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}"
+                                        class="textdecoration-none">
+                                        {{ $post->comments_count ?? 0 }}
                                 </a>
                                 </td>
                                 <td style="vertical-align:middle">{{ $post->dish->name }}</td>
