@@ -80,11 +80,14 @@
       </div>
       {{-- Delete recipe button --}}
       <div class="mb-3">
-        <button type="submit" class="btn btn-danger w-100">Delete recipe</button>
-      </div>
+        <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#delete-recipe">
+            Delete Recipe
+        </button>
+    </div>
     </form>
   </div>
 </div>
 </div>
-
+@include('delete_recipe')
 @endsection
+

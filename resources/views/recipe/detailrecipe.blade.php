@@ -49,7 +49,7 @@
                         <span class="text-muted d-flex align-items-center">
                             <i class="far fa-clock mr-2"></i> {{ $recipe->times }}
                             @auth
-                            <a href="{{ route('editmyrecipe') }}" class="ml-3"><i class="fas fa-pencil-alt"></i></a>
+                            <a href="{{ route('editmyrecipe', ['id' => $recipe->id]) }}" class="ml-3"><i class="fas fa-pencil-alt"></i></a>
                             @endauth
                         </span>
                     </div>              

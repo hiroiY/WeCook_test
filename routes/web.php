@@ -32,8 +32,10 @@ Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'postst
 Route::get('/mypage/myrecipe/{id}', [App\Http\Controllers\MypageController::class, 'myrecipe'])->name('myrecipe');
 Route::get('/mypage/myrecipe/appetizer', [App\Http\Controllers\MypageController::class, 'appetizer'])->name('appetizer');
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
-Route::get('/editmyrecipe', [App\Http\Controllers\RecipeController::class, 'editmyrecipe'])->name('editmyrecipe');
-Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
+Route::get('/editmyrecipe/{id}', [App\Http\Controllers\RecipeController::class, 'editmyrecipe'])->name('editmyrecipe');
+// Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
+Route::get('/recipe/{id}/delete', [RecipeController::class, 'deleterecipe'])->name('recipe.deleteConfirm');
+Route::post('/recipe/{id}/delete', [RecipeController::class, 'delete'])->name('recipe.delete');
 
 //Writers page
 Route::controller(WriterController::class)->group(function() {

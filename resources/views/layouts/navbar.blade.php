@@ -120,8 +120,9 @@
                 >
                   {{--My Recipe Button/Link --}}
                   <a 
-                    href="{{ route('myrecipe') }}
-                    {{-- route('myrecipe', Auth::user()->id) --}}" 
+                  {{-- 一時的 --}}
+                    {{-- href="{{ route('myrecipe') }} --}}
+                    route('myrecipe', Auth::user()->id)" 
                     class="dropdown-item"
                   >
                     My Recipe
