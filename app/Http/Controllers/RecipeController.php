@@ -49,7 +49,7 @@ class RecipeController extends Controller
         $this->post->ingredients = $request->ingredients;
         $this->post->description = $request->description;
         if ($request->hasFile('photo')) {
-            $this->post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));;
+            $this->post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));
             // $request->file('photo')->move(public_path('images'), $imageName);
         }
         $this->post->save();

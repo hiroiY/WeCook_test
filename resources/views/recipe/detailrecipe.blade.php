@@ -2,45 +2,48 @@
 
 @vite(['resources/sass/detailrecipe.scss'])
 @section('content')
-<!-- <body class="detailrecipe1"> -->
-    <div class="container detailrecipe mt-4">
-        <nav aria-label="breadcrumb">
+<div class="containe py-3">
+    <div class="detailrecipe px-5 pb-5 mx-3">
+        <!-- breadcrumb area -->
+        <nav 
+            aria-label="breadcrumb"
+            class="mb-3"
+        >
             <ol class="breadcrumb">
-                <li class="breadcrumb-item" style="color:black;">
-                    <a href="{{ route('home') }}" style="color:black;">Home</a>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('home') }}">Home</a>
                 </li>
-                {{-- <li class="breadcrumb-item" style="color:black;">
-                    <a href="{{ route('home') }}" style="color:black;">Cook Chef</a> --}}
+                <!-- {{-- <li class="breadcrumb-item" style="color:black;">
+                    <a href="{{ route('home') }}" style="color:black;">Cook Chef</a> --}} -->
                 </li>
-                <li class="breadcrumb-item active" style="color:black;" aria-current="page">{{ $recipe->title }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $recipe->title }}</li>
             </ol>
         </nav>
-        <div class="recipe-detail detailrecipe">  
-            <div class="d-flex align-items-center mb-3">
-                @if (Auth::check() && Auth::id() == $recipe->user_id)
-                    @if (Auth::user()->avatar)
-                        <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" class="chef-icon mr-2 rounded-circle">
-                    @else
-                        <img src="{{ asset('/images/profile_icon.png') }}" alt="{{ Auth::user()->name }}" class="chef-icon mr-2 rounded-circle">
-                    @endif
-                    <h2 class="m-0">&nbsp;{{ Auth::user()->name }}</h2>
-                @else
+
+        <!-- recipe detail area -->
+        <div class="recipe-detail detailrecipe pt-3">  
+            <!-- avatar&writer's name -->
+            <div class="mb-3">
+                <a 
+                    href="{{ route('writer',['post_id'=>$recipe->id, 'user_id'=>$recipe->user_id]) }}"
+                    class="writer-name d-flex"
+                >
                     @if ($recipe->user->avatar)
                         <img src="{{ $recipe->user->avatar }}" alt="{{ $recipe->user->name }}" class="chef-icon mr-2 rounded-circle">
                     @else
                         <img src="{{ asset('/images/profile_icon.png') }}" alt="{{ $recipe->user->name }}" class="chef-icon mr-2 rounded-circle">
                     @endif
-                    <h2 class="m-0">&nbsp;{{ $recipe->user->name }}</h2>
-                @endif
+                    <p class="h3 align-self-center fill-flex my-auto">&nbsp;{{ $recipe->user->name }}</p>
+                </a>
             </div>
-            <h1 class="recipe-title mb-3">
+            <h1 class="recipe-title mb-4 pt-3">
                 @auth
                     <i class="fas fa-bookmark {{ $recipe->is_bookmarked ? 'bookmarked' : '' }}"></i>
                 @endauth
                 {{ $recipe->title }}
             </h1>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-6">
                 @if($recipe->photo)
                     <img 
                         src="{{ $recipe->photo }}" 
@@ -55,15 +58,27 @@
                     >
                 @endif
                 </div>
-                <div class="col-md-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge badge-primary">{{ $recipe->dish->name }}</span>
-                        <span class="text-muted d-flex align-items-center">
-                            <i class="far fa-clock mr-2"></i> {{ $recipe->cooking_time }}
-                            @if(Auth::check()&&Auth::user()->id === $recipe->user_id)
-                                <a href="{{ route('editmyrecipe') }}" class="ml-3"><i class="fas fa-pencil-alt"></i></a>
-                            @endif
+                <div class="col-4">
+                    <div class="detail-content">
+                        <!-- dish-category here -->
+                        <span class="badge badge-primary ms-0 me-auto">{{ $recipe->dish->name }}</span>
+
+                        <!-- cooking_time here -->
+                        <span class="cooking-time mx-auto">
+                            <i class="far fa-clock mr-2 fa-xl me-3"></i>
+                            {{ $recipe->cooking_time }}
                         </span>
+
+                        <!-- Edit button here -->
+                        @if(Auth::check()&&Auth::user()->id === $recipe->user_id)
+                            <a 
+                                href="{{ route('editmyrecipe',['id'=>$recipe->id]) }}" 
+                                class="ml-3  mx-auto"
+                            >
+                                <i class="fas fa-pencil-alt fa-2xl"></i>
+                            </a>
+                        @endif
+                    
                     </div>              
                     <h3>Ingredients</h3>
                     <ul>
@@ -81,6 +96,8 @@
             </ol>
         </div>
     </div>
-    @include('comment_qestion\comment_qa')
-<!-- </body> -->
+
+    <!-- comment/Q&A area -->
+    @include('comment_qestion.comment_qa')
+</div> 
 @endsection
