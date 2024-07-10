@@ -20,9 +20,9 @@
   >
   </i>
   <a 
-    href="#"
+    href="{{ route('detailrecipe', ['post_id' => $previous_post->id, 'user_id' => $previous_post->user_id]) }}"
   >
-   {{ $previous_post->title }}
+  {{ $previous_post->title }}
   </a>
   <i 
     class="fa-solid fa-angle-right" 
@@ -40,7 +40,7 @@
 <div 
   class="writer_account mt-4 ms-4"
 >
-   @if($writer->avatar)
+  @if($writer->avatar)
     <img 
       src="{{-- $writer->avatar --}}" 
       alt="{{-- $writer->name --}}" 
@@ -76,25 +76,25 @@
       class="tab_menu-item " 
       data-tab="02"
     >
-      Appetizer&nbsp;<span>({{-- $writer->post->count() --}})</span>
+      Appetizer&nbsp;<span>({{ $appetizer_count }})</span>
     </li>
     <li 
       class="tab_menu-item" 
       data-tab="03"
     >
-      Side dish&nbsp;<span>({{-- $writer->post->count() --}})</span>
+      Side dish&nbsp;<span>({{ $sidedish_count }})</span>
     </li>
     <li 
       class="tab_menu-item" 
       data-tab="04"
     >
-      Main dish&nbsp;<span>({{-- $writer->post->count() --}})</span>
+      Main dish&nbsp;<span>({{  $maindish_count }})</span>
     </li>
     <li 
       class="tab_menu-item" 
       data-tab="05"
     >
-      Dessert&nbsp;<span>({{-- $writer->post->count() --}})</span>
+      Dessert&nbsp;<span>({{ $dessert_count }})</span>
     </li>
   </ul>
 

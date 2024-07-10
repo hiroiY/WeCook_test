@@ -1,5 +1,6 @@
 @vite(['resources/sass/navbar.scss'])
 @vite(['resources/js/logout_modal.js'])
+@vite(['resources/js/search_keyword.js'])
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <nav class="navbar navbar-expand-md shadow-sm p-1">
   <div class="container">
@@ -33,16 +34,19 @@
       id="navbarSupportedContent"
     >
       <!-- Left Side Of Navbar -->
+      <!-- Search bar -->
       <ul class="navbar-nav m-auto">
-        <form action="{{-- route('search') --}}" class="my-auto">
+        <form action="{{ route('search') }}" class="my-auto" method="GET">
           <input 
             type="search" 
             name="search" 
             id="searchbar" 
             class="form-control" 
             placeholder=" &#xF52A; Search all recipe !" 
+            value="{{ old('search') }}"
             autofocus
           >
+          <input type="submit" style="display: none;">
         </form>
       </ul>
 
@@ -120,9 +124,7 @@
                 >
                   {{--My Recipe Button/Link --}}
                   <a 
-                  {{-- 一時的 --}}
-                    {{-- href="{{ route('myrecipe') }} --}}
-                    route('myrecipe', Auth::user()->id)" 
+                    href="{{ route('myrecipe',['id' => Auth::user()->id]) }}" 
                     class="dropdown-item"
                   >
                     My Recipe

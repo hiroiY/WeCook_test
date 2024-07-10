@@ -43,19 +43,26 @@
                 </a>
               </div>
               <div class="col-auto px-0">
-                <a href="#">
+                <a href="{{ route('detailrecipe', [$post->id, $writer->id]) }}">
                   &#xf086; 
                   <span>
-                    11{{-- $post->comment->count() --}}
+                    {{ $post->comment->count() }}
                     <!-- I will write the code that can go to the comments section on the detail recipe page here. -->
                   </span>
                 </a>
               </div>
               <div class="col-1 ms-2">
-                <a href="#">
-                  <i class="fa-regular fa-bookmark"></i>
-                  <!-- I will write the code that can use the bookmark feature here. -->
-                </a>
+                @auth
+                @if($post->isBookmarked())
+                  <a href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}">
+                    <i class="fa-solid fa-bookmark"></i>
+                  </a>
+                @else
+                  <a href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}">
+                    <i class="fa-regular fa-bookmark"></i>
+                  </a>
+                @endif
+              @endauth
               </div>
             </div>
             <!-- recipe description -->
