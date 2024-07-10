@@ -61,7 +61,7 @@
                         <span class="text-muted d-flex align-items-center">
                             <i class="far fa-clock mr-2"></i> {{ $recipe->cooking_time }}
                             @if(Auth::check()&&Auth::user()->id === $recipe->user_id)
-                                <a href="{{ route('editmyrecipe') }}" class="ml-3"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="{{ route('editmyrecipe', $recipe->id) }}" class="ml-3"><i class="fas fa-pencil-alt"></i></a>
                             @endif
                         </span>
                     </div>              
@@ -81,6 +81,6 @@
             </ol>
         </div>
     </div>
-    @include('comment_qestion\comment_qa')
+    @include('comment_qestion.comment_qa')
 <!-- </body> -->
 @endsection

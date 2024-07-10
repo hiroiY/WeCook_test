@@ -22,17 +22,20 @@
         <div class="form-text" id="recipeimage-info">
             The acceptable formats are jpeg, jpg, png and gif only. <br>
             Max file size is 1048kB.
+            {{-- error handling --}}
+            @error('image')
+                <div class="text-danger small">{{ $message }}</div>
+            @enderror
         </div>
-        {{-- error handling --}}
-        @error('image')
-            <div class="text-danger small">{{ $message }}</div>
-        @enderror
       </div>
 
       {{-- Recipe name input --}}
       <div class="mb-4">
         <label for="recipename" class="form-label h3">Recipe name</label>
         <input type="text" name="recipename" id="recipename" value="{{ old('title', $post->title) }}" class="form-control recipe-inp" placeholder="">
+        @error('recipename')
+           <div class="text-danger small">{{ $message }}</div>
+        @enderror
       </div>
 
       <div class="row col mb-4">
@@ -41,10 +44,16 @@
           <label for="recipecategory" class="form-label h3">Recipe category</label>
           <select class="form-select recipe-inp" id="recipecategory" name="recipecategory" required>
             <option value="" disabled selected>Select a recipe category</option>
-            <option value="1">Appetizer</option>
-            <option value="2">Side dish</option>
-            <option value="3">Main dish</option>
-            <option value="4">Dessert</option>
+              @foreach($all_dishes as $category )
+                                <option 
+                                    value="{{$category->id}}" 
+                                    @if(old('recipecategory', $post->dish_id) == $category->id) 
+                                        @selected(old('recipecategory', $post->dish_id) == $category->id) 
+                                    @endif
+                                >
+                                    {{$category->name}}
+                                </option>
+                            @endforeach
           </select>
         </div>
         {{-- Cooking time input --}}
