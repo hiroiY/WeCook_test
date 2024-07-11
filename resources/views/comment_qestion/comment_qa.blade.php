@@ -2,7 +2,7 @@
 @vite(['resources\js\comment_qa.js'])
 <!-- tab menu area-->
 <div 
-  class="comment_qa ms-5"
+  class="comment_qa ms-5 py-5"
   id="content-comment"
 >
     <div class="mx-auto">
@@ -15,9 +15,9 @@
             class="tab_menu-item w-100 is-active" 
             data-tab="01"
           >
-            <i class="fa-regular fa-comments"></i>
+            <i class="fa-regular fa-comments me-1"></i>
             Comments&nbsp;
-            <span>(11)</span>
+            <span>({{ $recipe->comment->count() }})</span>
           </li>
           <li 
             class="tab_menu-item w-100" 
@@ -25,7 +25,7 @@
           >
             <i class="fa-solid fa-file-circle-question"></i>
             Q&A&nbsp;
-            <span>(11)</span>
+            <span>({{-- $recipe->all_questions->count() --}})</span>
           </li>
         </ul>
 

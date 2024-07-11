@@ -71,6 +71,8 @@ Route::controller(SearchController::class)->group(function() {
 
     // Store the Comment
     Route::post('/recipe/{post_id}/comment/store',[CommentController::class, 'storeComment'])->name('store.comment');
+    Route::patch('/recipe/{post_id}/comment/update',[CommentController::class, 'update'])->name('update.comment');
+    Route::delete('/recipe/{post_id}/comment/delete',[CommentController::class, 'delete'])->name('delete.comment');
 
 // Admin
 Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');

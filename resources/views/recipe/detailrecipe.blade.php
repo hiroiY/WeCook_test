@@ -16,7 +16,7 @@
                 <!-- {{-- <li class="breadcrumb-item" style="color:black;">
                     <a href="{{ route('home') }}" style="color:black;">Cook Chef</a> --}} -->
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $recipe->title }}</li>
+                <li class="breadcrumb-item current-reciprname" aria-current="page">{{ $recipe->title }}</li>
             </ol>
         </nav>
 
@@ -26,7 +26,7 @@
             <div class="mb-3">
                 <a 
                     href="{{ route('writer',['post_id'=>$recipe->id, 'user_id'=>$recipe->user_id]) }}"
-                    class="writer-name d-flex"
+                    class="writer-name d-flex py-auto"
                 >
                     @if ($recipe->user->avatar)
                         <img src="{{ $recipe->user->avatar }}" alt="{{ $recipe->user->name }}" class="chef-icon mr-2 rounded-circle">
