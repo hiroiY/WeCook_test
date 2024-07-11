@@ -61,7 +61,8 @@
                         <tbody>
                             @foreach($all_users as $user)
                                 <tr class="grab" >
-                                    <td class="p-3">
+                                    <td style="vertical-align:middle"
+                                        class="p-3">
                                         {{-- Modal --}}
                                         @include('admin.modal.user_status', ['user'=>$user])
                                         @if($user->trashed())
@@ -80,21 +81,41 @@
                                             </button>
                                         @endif
                                     </td>
-                                    <td class="p-3">
-                                        @if($user->avatar)
+                                    <td style="vertical-align:middle"
+                                        class="p-3">
+                                        {{-- @if($user->avatar)
                                             <img src="{{ $user->avator }}" 
                                                 alt="{{ $user->name }}" 
                                             >
                                         @else <i class="fa-regular fa-circle-user fa-2x"></i>
-                                        @endif                                    
+                                        @endif                                     --}}
+                                        @if($user->avatar)
+                                            <img 
+                                                src="{{-- $writer->avatar --}}" 
+                                                alt="{{-- $writer->name --}}" 
+                                                class="rounded-circle avatar-lg ms-2 thumb"
+                                            >
+                                        @else
+                                            <img 
+                                                src="{{asset('/images//profile_icon.png')}}" 
+                                                alt="{{ $user->name }}" 
+                                                class="rounded-circle avatar-lg ms-2 thumb"
+                                            >
+                                        @endif
+                                    
                                     </td>
-                                    <td class="p-3">
+                                    <td style="vertical-align:middle"
+                                        class="p-3">
                                         <a href="#" class="textdecoration-none">{{ $user->name }}</a>
                                     </td>
-                                    <td class="p-3">{{ $user->email }}</td>
-                                    <td class="p-3">{{ $user->posts()->count() }}</td>
-                                    <td class="p-3">{{ $user->created_at }}</td>
-                                    <td class="p-3">{{ $user->deleted_at }}</td>
+                                    <td style="vertical-align:middle"
+                                        class="p-3">{{ $user->email }}</td>
+                                    <td style="vertical-align:middle"
+                                        class="p-3">{{ $user->posts()->count() }}</td>
+                                    <td style="vertical-align:middle"
+                                        class="p-3">{{ $user->created_at }}</td>
+                                    <td style="vertical-align:middle"
+                                        class="p-3">{{ $user->deleted_at }}</td>
                                 </tr> 
                             @endforeach
                         </tbody>

@@ -70,7 +70,8 @@
                         <tbody>
                             @foreach($all_posts as $post)
                             <tr>
-                                <td class="pt-4">
+                                <td style="vertical-align:middle"
+                                    class="">
                                     {{-- Modal --}}
                                     @include('admin.modal.post_status', ['post'=>$post])
                                     @if($post->trashed())
@@ -90,8 +91,9 @@
                                         </button>
                                     @endif
                                 </td>
-                                <td class="p-3 photo">
-                                    <a href="#">
+                                <td style="vertical-align:middle"
+                                    class="p-3 photo">
+                                    <a href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}">
                                         <div class="thumb">
                                             <img src="{{ asset($post->photo) }}" 
                                                 alt="post-photo" 
@@ -99,9 +101,28 @@
                                         </div>
                                     </a>
                                 </td>
-                                <td style="vertical-align:middle">{{ $post->title }}</td>
-                                <td style="vertical-align:middle">{{ $post->user->name }}</td>
-                                <td style="vertical-align:middle">{{ $post->comments_count ?? 0 }}</td>
+                                <td style="vertical-align:middle">
+                                    <a href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}"
+                                        class="textdecoration-none">
+                                        {{ $post->title }}
+                                    </a>
+                                </td>
+                                <td style="vertical-align:middle">
+                                    <a
+                                        href="{{ route('writer', ['post_id' => 
+                                        $post->id, 'user_id' => 
+                                        $post->user->id]) }}"
+                                        class="textdecoration-none"
+                                    >
+                                        {{ $post->user->name }}
+                                    </a>
+                                </td>
+                                <td style="vertical-align:middle">
+                                    <a href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}"
+                                        class="textdecoration-none">
+                                        {{ $post->comments_count ?? 0 }}
+                                </a>
+                                </td>
                                 <td style="vertical-align:middle">{{ $post->dish->name }}</td>
                                 <td style="vertical-align:middle">{{ $post->created_at }}</td>
                                 <td style="vertical-align:middle">{{ $post->deleted_at }}</td>
