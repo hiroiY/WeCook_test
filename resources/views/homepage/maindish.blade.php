@@ -65,8 +65,8 @@
         </div>
       </div>
     @empty
-      <div class="col-auto mx-auto">
-        <p class="h2 sorry">Sorry! No Recipe Available.</h3>
+      <div class="col-auto text-center">
+        <p class="h2 sorry">Sorry! No Recipe Available.</p>
       </div>
     @endforelse
   </div>

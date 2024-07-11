@@ -9,6 +9,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\WriterController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\CommentController;
 
 
 Auth::routes();
@@ -65,6 +66,8 @@ Route::controller(SearchController::class)->group(function() {
     Route::post('/storerecipe', [RecipeController::class, 'storeRecipe'])->name('storerecipe');
     Route::get('/detailrecipe/{post_id}/{user_id}', [RecipeController::class, 'detailrecipe'])->name('detailrecipe');
 
+    // Store the Comment
+    Route::post('/recipe/{post_id}/comment/store',[CommentController::class, 'storeComment'])->name('store.comment');
 
 // Admin
 Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
