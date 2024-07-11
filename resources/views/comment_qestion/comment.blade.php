@@ -57,9 +57,17 @@
                   {{ date('M d, Y', strtotime($comment->created_at)) }}
                 </span>
               </div>
-              <div class="col-2 my-auto pe-0">
-                <button type="button" class="ms-4 px-3 small">Edit</button>
-                <button type="submit" class="px-3 ms-2 me-0 small mt-2">Delete</button>
+              <div class="col-2 me-0 pe-0">
+                <button type="button" class="ms-4 px-4 small">Edit</button>
+                <form 
+                  action="{{ route('delete.comment', $comment->id) }}" 
+                  method="post"
+                  class="d-inline-flex"
+                >
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="px-4 ms-2 me-0 small mt-2">Delete</button>
+                </form>
               </div>
               <p class="mb-0">{{ $comment->body}}</p>
             </div>
