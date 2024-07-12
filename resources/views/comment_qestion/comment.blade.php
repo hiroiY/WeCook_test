@@ -2,28 +2,33 @@
   class="tab_panel-box is-show" 
   data-panel="01"
 >
-  <div class="tab_panel-text">
+  <div class="tab_panel-text mt-5">
     @if(Auth::user())
-    <form 
-      action="{{ route('store.comment',$recipe->id) }}" 
-      method="post" 
-      class="px-5 d-flex my-5"
-    >
-      @csrf 
-      <input 
-        type="text" 
-        name="comment" 
-        id="comment" 
-        class="w-100 p-1" 
-        placeholder="Comments here"
+      @error('comment')
+        <div class="alert alert-danger text-danger small mx-5 py-2">
+          {{ $message }}
+        </div>
+      @enderror
+      <form 
+        action="{{ route('store.comment',$recipe->id) }}" 
+        method="post" 
+        class="px-5 d-flex mb-5"
       >
-      <button 
-        type="submit" 
-        class="ms-3 p-1 border-0 rounded add" 
-      >
-        Add Comment
-      </button>
-    </form>
+        @csrf 
+        <input 
+          type="text" 
+          name="comment" 
+          id="comment" 
+          class="w-100 p-1" 
+          placeholder="Comments here"
+        >
+        <button 
+          type="submit" 
+          class="ms-3 p-1 border-0 rounded add" 
+        >
+          Add Comment
+        </button>
+      </form>
     @else
       <h3 
         class="text-center my-5"
@@ -38,7 +43,7 @@
       @if(Auth::user())
         @if( $comment->user_id === Auth::user()->id )
           <div class="p-3 mb-3 mx-5 comments-owner">
-            <div class="row user_account w-100 ms-0 mb-2 justify-content-between">
+            <div class="row user_account w-100 ms-0 mb-0 justify-content-between">
               <div class="col-5 d-inline-flex ms-0 ps-0"> 
                 @if($comment->user->avatar)
                   <img src="{{ asset('images\profile_icon.png') }}" alt="">
@@ -57,19 +62,56 @@
                   {{ date('M d, Y', strtotime($comment->created_at)) }}
                 </span>
               </div>
-              <div class="col-2 me-0 pe-0">
-                <button type="button" class="ms-4 px-4 small">Edit</button>
+              <div class="col-auto me-0 pe-0">
+                <button 
+                  type="button" 
+                  class="edit-btn ms-3 px-4"
+                >
+                  Edit
+                </button>
+
+                <form 
+                  action="{{ route('update.comment', $comment->id) }}" 
+                  method="post"
+                  class="d-none edit-form d-inline-flex"
+                >
+                  @csrf
+                  @method('PATCH')
+                  <input 
+                    type="hidden" 
+                    name="body" 
+                    class="form-control save-comment"
+                    autofocus
+                  >
+                  <button 
+                    type="submit" 
+                    class="save-btn ms-2 px-4"
+                  >
+                    Save
+                  </button>
+                </form>
+
                 <form 
                   action="{{ route('delete.comment', $comment->id) }}" 
                   method="post"
-                  class="d-inline-flex"
+                  class="delete-btn d-inline-flex"
                 >
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="px-4 ms-2 me-0 small mt-2">Delete</button>
+                  <button 
+                    type="submit" 
+                    class="px-4 ms-2 me-0 mt-2"
+                  >
+                    Delete
+                  </button>
                 </form>
               </div>
-              <p class="mb-0">{{ $comment->body}}</p>
+              <p class="comment-body mt-2 mb-0 p-0" contenteditable="false">{{ $comment->body}}</p>
+              @error('body')
+                <p class="textdanger small">
+                  {{ $message }}
+                </p>
+              @enderror
             </div>
           </div>
         @else

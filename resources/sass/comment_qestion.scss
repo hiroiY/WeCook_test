@@ -111,14 +111,31 @@ img {
   background-color: #FCF0E9;
   border-radius: .7em .7em;
   box-shadow: 0 .1em .2em #8875699a;
-  button{
+  button {
     background-color: #4d1f0142;
     color: #4d1f01b0;
     font-weight: bold;
     border: none;
     box-shadow: none;
     border-radius: 1em;
-  }  
+  }
+  .username {
+    color: #4D1F01;
+    font-weight: 800;
+    font-size: 1.2em;
+  }
+  .d-none {
+    display: none;
+  }
+  .save-comment {
+    border: #FCF0E9;
+    background-color: #FCF0E9;
+    margin-top: 5em;
+  }
+  .comment-body[contenteditable="true"] {
+    border: none;
+    outline: none;
+  }
 }
 .user_account {
   width: max-content;

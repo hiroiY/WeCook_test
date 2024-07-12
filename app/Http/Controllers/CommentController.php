@@ -24,7 +24,7 @@ class CommentController extends Controller
     public function storeComment(Request $request, $id) 
     {
         $request->validate([
-            'comment' => 'required|min:1|max:300'
+            'comment' => 'required|min:1|max:300',
         ]);
 
        $this->post->findOrFail($id);
@@ -34,6 +34,24 @@ class CommentController extends Controller
         $this->comment->body = $request->comment;
 
         $this->comment->save();
+
+        return redirect()->back();
+    }
+
+    public function update(Request $request ,$id) 
+    {
+        $request->validate([
+            'body' => 'required|min:1|max:300',
+        ]);
+
+        $comment = $this->comment->findOrFail($id);
+
+        if($comment->user_id !== Auth::user()->id) {
+            return redirect()->back();
+        }
+        
+        $comment->body = $request->body;
+        $comment->save();
 
         return redirect()->back();
     }

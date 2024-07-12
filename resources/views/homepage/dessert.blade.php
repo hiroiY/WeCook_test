@@ -13,7 +13,7 @@
           <a 
             href="{{ route('detailrecipe',
                   ['post_id'=>$post->id, 
-                  'user_id'=>$post->user->id]) }}" 
+                  'user_id'=>$post->user_id]) }}" 
           >
             @if($post->photo)
               <img 
