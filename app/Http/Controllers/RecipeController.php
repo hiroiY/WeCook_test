@@ -58,8 +58,8 @@ class RecipeController extends Controller
 
     public function detailrecipe($id)
     {
-        $recipe = Post::with('dish')->findOrFail($id);
-            return view('recipe.detailrecipe', compact('recipe'));
+        $recipe = Post::with('dish', 'bookmarkedBy')->findOrFail($id);
+        return view('recipe.detailrecipe', compact('recipe'));
     }
 
     // Edit recipe method
