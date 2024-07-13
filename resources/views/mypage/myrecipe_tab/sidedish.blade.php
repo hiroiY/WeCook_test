@@ -11,7 +11,7 @@
                                 <p class="card-title">{{ \Illuminate\Support\Str::limit($post->title, 10) }}</p>
                             </div>
                             <div>
-                                <a href="{{ route('editmyrecipe') }}">
+                                <a href="{{ route('editmyrecipe', $post->id) }}">
                                     <i class="edit-icon fa-solid fa-pen"></i>
                                 </a>
                             </div>                                                        

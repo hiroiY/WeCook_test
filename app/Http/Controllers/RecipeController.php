@@ -69,7 +69,8 @@ class RecipeController extends Controller
         if(Auth::user()->id != $post->user->id && Auth::user()->role_id !=1){
             return redirect()->route('recipe.detailrecipe', $post->id);
         }
-        return view('editmyrecipe')->with('post', $post);
+        $all_dishes = $this->getAllDish();
+        return view('editmyrecipe')->with('post', $post)->with('all_dishes', $all_dishes);
     }
 
     // Update recipe method
@@ -77,19 +78,30 @@ class RecipeController extends Controller
         // dd($request->all());
 
         // try {
-            $post = Post::findOrFail($id);
+        // $post = Post::findOrFail($id);
+
+        $request->validate([
+            'image' => 'mimes:jpeg,png,jpg,gif,svg|max:1048',
+            'recipename' => 'required|min:1|max:150',
+            'recipecategory' => 'required',
+            'cooking_time' => 'required|max:150',
+            'ingredients' => 'required|min:1',
+            'descriptions' => 'required|min:1',
+        ]);
+            $post = $this->post->findOrFail($id);
+
             $post->title = $request->input('recipename');
             $post->dish_id = $request->input('recipecategory');
             $post->cooking_time = $request->input('cooking_time');
             $post->ingredients = $request->input('ingredients');
             $post->description = $request->input('descriptions');
-            if ($request->hasFile('photo')) {
-                $this->post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));;                
+            if ($request->hasFile('image')) {
+                $post->photo = 'data:image/' . $request->image->extension() . ';base64,' . base64_encode(file_get_contents($request->image));
             }
         //    dd($request->all(), $post);
             $post->save();
             // Log::info('Post updated successfully.', ['post_id' => $post->id]);
-            return redirect()->route('home')->with('success', 'Post updated successfully.');
+            return redirect()->route('detailrecipe', ['post_id'=>$post->id, 'user_id'=>$post->user_id]);
         // } catch (\Exception $e) {
         //     Log::error('Failed to update post: ' . $e->getMessage(), [
         //         'post_id' => $id,
@@ -99,17 +111,13 @@ class RecipeController extends Controller
     }
     
     // Delete recipe method
-    public function deleterecipe()
+    public function deleteMyRecipe($id)
     {
-        $recipe = Post::findOrFail($id);
-        return view('delete_recipe', compact('recipe'));
+        $post = $this->post->findOrFail($id);
+        $user = $post->user_id;
+        $post->forceDelete();
+        return redirect()->route('myrecipe', $user);
     }
 
-    public function delete($id)
-    {
-        $recipe = Post::findOrFail($id);
-        $recipe->delete();
-        return redirect()->route('home')->with('success', 'Recipe deleted successfully');
-    }
 }
 
