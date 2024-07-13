@@ -89,5 +89,6 @@
   </div>
 </div>
 </div>
-{{-- @include('writers.delete_recipe') --}}
+@include('delete_recipe')
 @endsection
+

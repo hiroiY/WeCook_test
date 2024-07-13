@@ -58,8 +58,8 @@ class RecipeController extends Controller
 
     public function detailrecipe($id)
     {
-        $recipe = Post::with('dish')->findOrFail($id);
-            return view('recipe.detailrecipe', compact('recipe'));
+        $recipe = Post::with('dish', 'bookmarkedBy')->findOrFail($id);
+        return view('recipe.detailrecipe', compact('recipe'));
     }
 
     // Edit recipe method
@@ -113,9 +113,15 @@ class RecipeController extends Controller
     // Delete recipe method
     public function deleteMyRecipe($id)
     {
-        $post = $this->post->findOrFail($id);
-        $post->forceDelete();
-        return view('deleteMyRecipe');
+        $recipe = Post::findOrFail($id);
+        return view('delete_recipe', compact('recipe'));
+    }
+
+    public function delete($id)
+    {
+        $recipe = Post::findOrFail($id);
+        $recipe->delete();
+        return redirect()->route('home')->with('success', 'Recipe deleted successfully');
     }
 }
 

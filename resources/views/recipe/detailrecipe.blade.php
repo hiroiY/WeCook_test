@@ -35,7 +35,9 @@
             </div>
             <h1 class="recipe-title mb-3">
                 @auth
-                    <i class="fas fa-bookmark {{ $recipe->is_bookmarked ? 'bookmarked' : '' }}"></i>
+                    <a href="{{ route('bookmark.toggle',['post_id' => $recipe->id])}}">
+                        <i class="fa-bookmark {{ $recipe->bookmarkedBy->contains(Auth::id()) ? 'fas bookmarked' : 'fa-regular' }}"></i>
+                    </a>
                 @endauth
                 {{ $recipe->title }}
             </h1>
