@@ -113,15 +113,17 @@ class RecipeController extends Controller
     // Delete recipe method
     public function deleteMyRecipe($id)
     {
-        $recipe = Post::findOrFail($id);
+        // $recipe = Post::findOrFail($id);
+        $post = $this->post->findOrFail($id);
+        $post->delete();
         return view('delete_recipe', compact('recipe'));
     }
 
     public function delete($id)
     {
-        $recipe = Post::findOrFail($id);
-        $recipe->delete();
-        return redirect()->route('home')->with('success', 'Recipe deleted successfully');
+        $post = $this->post->findOrFail($id);
+        $post->delete();
+        return redirect()->route('myrecipe');
     }
 }
 

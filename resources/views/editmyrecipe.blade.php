@@ -83,7 +83,7 @@
 
       {{-- Delete recipe button --}}
         <div class="mb-3">
-          <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#delete-user">Delete recipe</button>
+          <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#delete-post">Delete recipe</button>
         </div>
 
   </div>
