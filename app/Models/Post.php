@@ -76,4 +76,9 @@ class Post extends Model
 
         return $categories[strtolower($this->category)] ?? $this->category;
     }
+    
+    public function bookmarkedBy()
+    {
+        return $this->belongsToMany(User::class, 'bookmarks')->withPivot('user_id', 'post_id');
+    }
 }

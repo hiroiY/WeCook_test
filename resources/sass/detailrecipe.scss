@@ -18,8 +18,8 @@ body.detailrecipe {
     
     padding: 0;
     margin-bottom: 20px;
-      color: #e45900;
-   
+    color: #e45900;
+
 
     
     &-item.detailrecipe {
@@ -54,9 +54,12 @@ body.detailrecipe {
             }
         }
     }
+    .recipe-title a {
+        text-decoration: none;
+        }
 
     .food-photo {
-        width: 100%;
+        width: 400px;
         height: auto;
         border-radius: 10px;
         margin-bottom: 20px;
@@ -118,4 +121,21 @@ body.detailrecipe {
     }
     
     
+}
+.jump-comment{
+    float: right;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+.fa-comments{
+    color: #E45900;
+    font-size: 2rem;
+}
+.textdecoration-none{
+    text-decoration: none;
+    color: #4D1F01
+}
+.fa-arrow-turn-down{
+    color: #E45900;
+
 }

@@ -16,7 +16,7 @@ class BookmarkController extends Controller
         $bookmark = Bookmark::where('user_id', $user->id)->where('post_id', $post_id)->first();
 
         if ($bookmark) {
-            $bookmark->delete();
+            Bookmark::where('user_id', $user->id) ->where('post_id', $post_id) ->delete();
         } else {
             Bookmark::create([
                 'user_id' => $user->id,

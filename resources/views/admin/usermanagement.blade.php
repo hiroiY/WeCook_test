@@ -61,40 +61,95 @@
                         <tbody>
                             @foreach($all_users as $user)
                                 <tr class="grab" >
-                                    <td class="p-3">
+                                    <td 
+                                        style="vertical-align:middle"
+                                        class="p-3"
+                                    >
                                         {{-- Modal --}}
                                         @include('admin.modal.user_status', ['user'=>$user])
                                         @if($user->trashed())
-                                            <button class="dropdown-item text-success" 
-                                                    data-bs-toggle="modal" 
-                                                    data-bs-target="#activate-user-{{ $user->id }}"
-                                                    data-user-id="{{ $user->id }}">
+                                            <button 
+                                            class="dropdown-item text-success" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#activate-user-{{ $user->id }}"
+                                            data-user-id="{{ $user->id }}"
+                                            >
                                                 <i class="fa-solid fa-eye-slash fa-xl my-3"></i>
                                             </button>
                                         @else
-                                            <button class="dropdown-item text-danger" 
-                                                    data-bs-toggle="modal" 
-                                                    data-bs-target="#deactivate-user-{{ $user->id }}"
-                                                    data-user-id="{{ $user->id }}">
+                                            <button 
+                                            class="dropdown-item text-danger" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#deactivate-user-{{ $user->id }}"
+                                            data-user-id="{{ $user->id }}"
+                                            >
                                                 <i class="fa-solid fa-eye fa-eye-orange fa-xl my-3"></i>
                                             </button>
                                         @endif
                                     </td>
-                                    <td class="p-3">
+                                    <td style="vertical-align:middle"
+                                        class="p-3">
                                         @if($user->avatar)
-                                            <img src="{{ $user->avator }}" 
-                                                alt="{{ $user->name }}" 
+                                            <img 
+                                            src="{{ $writer->avatar }}" 
+                                            alt="{{ $writer->name }}" 
+                                            class="rounded-circle avatar-lg ms-2 thumb"
                                             >
-                                        @else <i class="fa-regular fa-circle-user fa-2x"></i>
-                                        @endif                                    
+                                        @else
+                                            <img 
+                                            src="{{asset('/images//profile_icon.png')}}" 
+                                            alt="{{ $user->name }}" 
+                                            class="rounded-circle avatar-lg ms-2 thumb"
+                                            >
+                                        @endif
+                                    
                                     </td>
-                                    <td class="p-3">
-                                        <a href="#" class="textdecoration-none">{{ $user->name }}</a>
+                                    <td 
+                                    style="vertical-align:middle"
+                                    class="p-3"
+                                    >
+                                        <a 
+                                        href="{{ route('myrecipe', ['id' => $user->id]) }}"
+                                        class="textdecoration-none"
+                                        >
+                                            {{ $user->name }}
+                                        </a>
                                     </td>
-                                    <td class="p-3">{{ $user->email }}</td>
-                                    <td class="p-3">{{ $user->posts()->count() }}</td>
-                                    <td class="p-3">{{ $user->created_at }}</td>
-                                    <td class="p-3">{{ $user->deleted_at }}</td>
+                                    <td 
+                                    style="vertical-align:middle"
+                                    class="p-3"
+                                    >
+                                        {{ $user->email }}
+                                    </td>
+                                    <td 
+                                    style="vertical-align:middle"
+                                    class="p-3"
+                                    >
+                                        @if($user->posts->isNotEmpty())
+                                            <a 
+                                            href="{{ route('writer', ['post_id' 
+                                            => $user->posts->first()->id, 'user_id' 
+                                            => $user->id]) }}"
+                                            class="textdecoration-none"
+                                            >
+                                                {{ $user->posts()->count() }}
+                                            </a>
+                                        @else
+                                            {{ $user->posts()->count() }}
+                                        @endif
+                                    </td>
+                                    <td 
+                                    style="vertical-align:middle"
+                                    class="p-3"
+                                    >
+                                        {{ $user->created_at }}
+                                    </td>
+                                    <td 
+                                    style="vertical-align:middle"
+                                    class="p-3"
+                                    >
+                                        {{ $user->deleted_at }}
+                                    </td>
                                 </tr> 
                             @endforeach
                         </tbody>

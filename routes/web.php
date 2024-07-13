@@ -35,6 +35,8 @@ Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'del
 
 Route::get('/myrecipe/{id}/edit', [RecipeController::class, 'editMyRecipe'])->name('editmyrecipe');
 Route::patch('/myrecipe/{id}/update', [RecipeController::class, 'updateMyRecipe'])->name('updatemyrecipe');
+Route::delete('/myrecipe/{id}/delete', [App\Http\Controllers\RecipeController::class, 'deleteMyRecipe'])->name('deleteMyRecipe');
+
 //Writers page
 Route::controller(WriterController::class)->group(function() {
     Route::get('/{post_id}/writer/{user_id}', 'writer')->name('writer');

@@ -2,7 +2,7 @@
 
 @vite(['resources/sass/detailrecipe.scss'])
 @section('content')
-<body class="detailrecipe1">
+<!-- <body class="detailrecipe1"> -->
     <div class="container detailrecipe mt-4">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -15,6 +15,14 @@
                 <li class="breadcrumb-item active" style="color:black;" aria-current="page">{{ $recipe->title }}</li>
             </ol>
         </nav>
+        {{-- button for jumo to the comment/QA section --}}
+        <div class="jump-comment">
+            <a href="#comment" class="textdecoration-none">
+                <i class="fa-regular fa-comments"></i>
+                Jump to comments 
+                <i class="fa-solid fa-arrow-turn-down"></i>
+            </a>    
+        </div>
         <div class="recipe-detail detailrecipe">  
             <div class="d-flex align-items-center mb-3">
                 @if (Auth::check() && Auth::id() == $recipe->user_id)
@@ -23,34 +31,48 @@
                     @else
                         <img src="{{ asset('/images/profile_icon.png') }}" alt="{{ Auth::user()->name }}" class="chef-icon mr-2 rounded-circle">
                     @endif
-                    <h2 class="m-0">{{ Auth::user()->name }}</h2>
+                    <h2 class="m-0">&nbsp;{{ Auth::user()->name }}</h2>
                 @else
                     @if ($recipe->user->avatar)
                         <img src="{{ $recipe->user->avatar }}" alt="{{ $recipe->user->name }}" class="chef-icon mr-2 rounded-circle">
                     @else
                         <img src="{{ asset('/images/profile_icon.png') }}" alt="{{ $recipe->user->name }}" class="chef-icon mr-2 rounded-circle">
                     @endif
-                    <h2 class="m-0">{{ $recipe->user->name }}</h2>
+                    <h2 class="m-0">&nbsp;{{ $recipe->user->name }}</h2>
                 @endif
             </div>
-            <h1 class="recipe-title">
+            <h1 class="recipe-title mb-3">
                 @auth
-                    <i class="fas fa-bookmark {{ $recipe->is_bookmarked ? 'bookmarked' : '' }}"></i>
+                    <a href="{{ route('bookmark.toggle',['post_id' => $recipe->id])}}">
+                        <i class="fa-bookmark {{ $recipe->bookmarkedBy->contains(Auth::id()) ? 'fas bookmarked' : 'fa-regular' }}"></i>
+                    </a>
                 @endauth
                 {{ $recipe->title }}
             </h1>
             <div class="row">
                 <div class="col-md-8">
-                    <img src="{{ asset('images/' . $recipe->photo) }}" alt="{{ $recipe->title }}" class="img-fluid rounded mb-3 food-photo">
+                @if($recipe->photo)
+                    <img 
+                        src="{{ $recipe->photo }}" 
+                        alt="{{ $recipe->title }}" 
+                        class="food-photo"
+                    >
+                @else
+                    <img 
+                        src="{{ asset('/images/recipe_photos/weCook.png') }}" 
+                        alt="{{ $recipe->title }}" 
+                        class="food-photo"
+                    >
+                @endif
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <span class="badge badge-primary">{{ $recipe->dish->name }}</span>
                         <span class="text-muted d-flex align-items-center">
-                            <i class="far fa-clock mr-2"></i> {{ $recipe->times }}
-                            @auth
-                            <a href="{{ route('editmyrecipe') }}" class="ml-3"><i class="fas fa-pencil-alt"></i></a>
-                            @endauth
+                            <i class="far fa-clock mr-2"></i> {{ $recipe->cooking_time }}
+                            @if(Auth::check()&&Auth::user()->id === $recipe->user_id)
+                                <a href="{{ route('editmyrecipe', $recipe->id) }}" class="ml-3"><i class="fas fa-pencil-alt"></i></a>
+                            @endif
                         </span>
                     </div>              
                     <h3>Ingredients</h3>
@@ -69,5 +91,8 @@
             </ol>
         </div>
     </div>
-</body>
+    {{-- landed place from the "jumo to the comment" button --}}
+    <h5 id="comment"></h5>
+    @include('comment_qestion.comment_qa')
+<!-- </body> -->
 @endsection
