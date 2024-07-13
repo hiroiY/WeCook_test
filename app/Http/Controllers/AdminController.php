@@ -40,7 +40,7 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
-            $all_users = User::withTrashed()->latest()->paginate(10);
+            $all_users = User::with('posts')->withTrashed()->latest()->paginate(10);
         return view('admin.usermanagement', compact('all_users'));
     }
     public function deactivate($id)

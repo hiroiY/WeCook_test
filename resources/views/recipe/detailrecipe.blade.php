@@ -15,6 +15,14 @@
                 <li class="breadcrumb-item active" style="color:black;" aria-current="page">{{ $recipe->title }}</li>
             </ol>
         </nav>
+        {{-- button for jumo to the comment/QA section --}}
+        <div class="jump-comment">
+            <a href="#comment" class="textdecoration-none">
+                <i class="fa-regular fa-comments"></i>
+                Jump to comments 
+                <i class="fa-solid fa-arrow-turn-down"></i>
+            </a>    
+        </div>
         <div class="recipe-detail detailrecipe">  
             <div class="d-flex align-items-center mb-3">
                 @if (Auth::check() && Auth::id() == $recipe->user_id)
@@ -63,7 +71,7 @@
                         <span class="text-muted d-flex align-items-center">
                             <i class="far fa-clock mr-2"></i> {{ $recipe->cooking_time }}
                             @if(Auth::check()&&Auth::user()->id === $recipe->user_id)
-                                <a href="{{ route('editmyrecipe') }}" class="ml-3"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="{{ route('editmyrecipe', $recipe->id) }}" class="ml-3"><i class="fas fa-pencil-alt"></i></a>
                             @endif
                         </span>
                     </div>              
@@ -83,6 +91,8 @@
             </ol>
         </div>
     </div>
+    {{-- landed place from the "jumo to the comment" button --}}
+    <h5 id="comment"></h5>
     @include('comment_qestion.comment_qa')
 <!-- </body> -->
 @endsection
