@@ -11,7 +11,7 @@
                                 <p class="card-title">{{ \Illuminate\Support\Str::limit($post->title, 10) }}</p>
                             </div>
                             <div>
-                                <a href="{{ route('editmyrecipe') }}">
+                                <a href="{{ route('editmyrecipe', $post->id) }}">
                                     <i class="edit-icon fa-solid fa-pen"></i>
                                 </a>
                             </div>                                                        
@@ -22,11 +22,11 @@
                         <div class="myrecipe-footer d-flex justify-content-between align-items-center">
                             <div>
                                 <i class="comment-icon fa-regular fa-comments"></i>
-                                <span class="comment-text fw-bold">{{ $post->comments->count() }}</span>
+                                <span class="comment-text fw-bold">{{ $post_counts[$post->id]['comments'] }}</span>
                             </div>
                             <div>
                                 <i class="bookmark-icon fa-regular fa-bookmark"></i>
-                                <span class="bookmark-text fw-bold">{{ $post->bookmark()->count() }}</span>
+                                <span class="bookmark-text fw-bold">{{ $post_counts[$post->id]['bookmarks'] }}</span>
                             </div>
                         </div>
                     </div>
@@ -37,6 +37,9 @@
                 <p class="h2 sorry">Sorry! No Recipe Available.</p>
             </div>
             @endforelse
+            <div class="pagination-wrapper">
+                {{ $sidedish_posts->links() }}
+            </div>
         </div>
     </div>
 </div>

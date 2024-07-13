@@ -56,7 +56,6 @@ class User extends Authenticatable
         return $this->hasMany(Bookmark::class, 'user_id');
     }
 
-    
     public function posts()
     {
         return $this->hasMany(Post::class)->latest();

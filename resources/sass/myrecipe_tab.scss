@@ -1,3 +1,4 @@
+// Contents
 .tab-content {
     .container {
         .row {
@@ -62,4 +63,38 @@
             }
         }
     }
+}
+
+// Paginate
+.pagination{
+  padding:0 0 0 40%;
+  margin-bottom: 1em;
+  line-height: 1.5em;
+}
+.page-link {
+  font-family: "Nunito";
+  color: #4d1f01;
+}
+.page-item .page-link {
+  border: solid .01em #e45900;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: #fefdfd;
+}
+.active .page-link {
+  border: solid .01em #e45900;
+  background-color: #e45900;
+  :hover{
+    color: inherit;
+  }
+}
+.page-item .page-link:hover {
+  color: #4d1f01;
+  background-color: #e457002c;
+}
+.disabled .page-link {
+  border: solid .01em #e45900;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: #fefdfd;
 }
