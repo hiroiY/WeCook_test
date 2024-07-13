@@ -14,7 +14,7 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="button" class="btn btn-cancel mx-2" data-bs-dismiss="modal">Cancel</button>
-                    <form action="{{ route('recipe.delete', ['id' => $post->id]) }}" method="post" class="d-flex justify-content-center">
+                    <form action="{{ route('deleteMyRecipe', ['id' => $post->id]) }}" method="post" class="d-flex justify-content-center">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-delete mx-2">Delete</button>

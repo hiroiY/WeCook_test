@@ -31,9 +31,6 @@ Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'postst
 Route::get('/mypage/myrecipe/{id}', [App\Http\Controllers\MypageController::class, 'myrecipe'])->name('myrecipe');
 Route::get('/mypage/myrecipe/appetizer', [App\Http\Controllers\MypageController::class, 'appetizer'])->name('appetizer');
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mybookmark'])->name('mybookmark');
-Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
-Route::get('/recipe/{id}/delete', [RecipeController::class, 'deleterecipe'])->name('recipe.deleteConfirm');
-Route::post('/recipe/{id}/delete', [RecipeController::class, 'delete'])->name('recipe.delete');
 
 Route::get('/myrecipe/{id}/edit', [RecipeController::class, 'editMyRecipe'])->name('editmyrecipe');
 Route::patch('/myrecipe/{id}/update', [RecipeController::class, 'updateMyRecipe'])->name('updatemyrecipe');
