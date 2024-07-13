@@ -139,7 +139,7 @@
                   </a>
                   {{--My Profile Edit Button/Link --}}
                   <a 
-                    href="{{-- route('profile.show', Auth::user()->id) --}}" 
+                    href="{{ route('profile_edit', Auth::user()->id) }}" 
                     class="dropdown-item"
                   >
                     Profile Edit
