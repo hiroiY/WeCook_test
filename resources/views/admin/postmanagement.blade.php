@@ -130,7 +130,7 @@
                                 </td>
                                 <td style="vertical-align:middle">
                                     <a 
-                                    href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}"
+                                    href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}#comment"
                                     class="textdecoration-none"
                                     >
                                         {{ $post->comments_count ?? 0 }}
