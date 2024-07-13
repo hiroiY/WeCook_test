@@ -31,10 +31,12 @@ Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'postst
 Route::get('/mypage/myrecipe/{id}', [App\Http\Controllers\MypageController::class, 'myrecipe'])->name('myrecipe');
 Route::get('/mypage/myrecipe/appetizer', [App\Http\Controllers\MypageController::class, 'appetizer'])->name('appetizer');
 Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
-Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
+// Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
 
 Route::get('/myrecipe/{id}/edit', [RecipeController::class, 'editMyRecipe'])->name('editmyrecipe');
 Route::patch('/myrecipe/{id}/update', [RecipeController::class, 'updateMyRecipe'])->name('updatemyrecipe');
+Route::delete('/myrecipe/{id}/deletemyrecipe', [App\Http\Controllers\RecipeController::class, 'deleteMyRecipe'])->name('deleteMyRecipe');
+
 //Writers page
 Route::controller(WriterController::class)->group(function() {
     Route::get('/{post_id}/writer/{user_id}', 'writer')->name('writer');

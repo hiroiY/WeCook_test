@@ -83,7 +83,7 @@ class RecipeController extends Controller
         $request->validate([
             'image' => 'mimes:jpeg,png,jpg,gif,svg|max:1048',
             'recipename' => 'required|min:1|max:150',
-            'dish_category' => 'required',
+            'recipecategory' => 'required',
             'cooking_time' => 'required|max:150',
             'ingredients' => 'required|min:1',
             'descriptions' => 'required|min:1',
@@ -101,7 +101,7 @@ class RecipeController extends Controller
         //    dd($request->all(), $post);
             $post->save();
             // Log::info('Post updated successfully.', ['post_id' => $post->id]);
-            return redirect()->route('home');
+            return redirect()->route('detailrecipe', ['post_id'=>$post->id, 'user_id'=>$post->user_id]);
         // } catch (\Exception $e) {
         //     Log::error('Failed to update post: ' . $e->getMessage(), [
         //         'post_id' => $id,
@@ -111,9 +111,11 @@ class RecipeController extends Controller
     }
     
     // Delete recipe method
-    public function deleterecipe()
+    public function deleteMyRecipe($id)
     {
-        return view('delete_recipe');
+        $post = $this->post->findOrFail($id);
+        $post->forceDelete();
+        return view('deleteMyRecipe');
     }
 }
 
