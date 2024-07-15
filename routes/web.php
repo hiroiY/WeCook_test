@@ -9,6 +9,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\WriterController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\ProfileController;
 
 
 Auth::routes();
@@ -35,7 +36,7 @@ Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'del
 
 Route::get('/myrecipe/{id}/edit', [RecipeController::class, 'editMyRecipe'])->name('editmyrecipe');
 Route::patch('/myrecipe/{id}/update', [RecipeController::class, 'updateMyRecipe'])->name('updatemyrecipe');
-Route::delete('/myrecipe/{id}/delete', [App\Http\Controllers\RecipeController::class, 'deleteMyRecipe'])->name('deleteMyRecipe');
+Route::delete('/myrecipe/{id}/delete', [RecipeController::class, 'deleteMyRecipe'])->name('deleteMyRecipe');
 
 //Writers page
 Route::controller(WriterController::class)->group(function() {
@@ -69,7 +70,8 @@ Route::controller(SearchController::class)->group(function() {
 
 
 // Admin
-Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
+Route::get('/mypage/profile_edit/{id}', [ProfileController::class, 'profile_edit'])->name('profile_edit');
+Route::patch('/mypage/profile_update/{id}', [ProfileController::class, 'profile_update'])->name('profile_update');
 Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
 Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
 Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');

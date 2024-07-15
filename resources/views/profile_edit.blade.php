@@ -26,8 +26,10 @@
     <div class="contents">
         <div class="contents-box">
             <!-- Bread Crumb -->
-            <form action="{{ route('profile_update', $user->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('profile_update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PATCH')
+
                 <div class="my-4 breadcrumb">
                     <p>
                         <a href="{{ route('home') }}">Home</a> >
@@ -39,8 +41,8 @@
                 <div class="form-group">
                     <label for="avatar">Avatar</label>
                     <input type="file" class="form-control" name="avatar" aria-describedby="image-info">
-                    <!-- @if ($user->avatar)
-                        <img src="{{ asset('storage/' . $user->avatar) }}" alt="avatar" style="max-width: 150px; margin-top: 10px;">
+                    <!-- @if (Auth::user()->avatar)
+                        <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="avatar" style="max-width: 150px; margin-top: 10px;">
                     @endif -->
                     <div class="file-info" id="file-info">
                         The acceptable formats are jpeg, jpg, png and gif only.<br>
