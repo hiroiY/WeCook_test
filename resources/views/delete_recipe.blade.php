@@ -24,5 +24,5 @@
         </div>
     </div>
 @else
-    <p>Recipe not found.</p>
+    {{-- <p>Recipe not found.</p> --}}
 @endif
