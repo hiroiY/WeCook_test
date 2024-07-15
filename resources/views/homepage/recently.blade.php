@@ -3,7 +3,7 @@
   class="tab_panel-box is-show" 
   data-panel="01"
 >
-  <div class="row px-3 py-1">
+  <div class="row px-4 py-1">
     @forelse($recently_posts as $post)
       <div class="col-4 p-2">
         <!-- recipe card -->

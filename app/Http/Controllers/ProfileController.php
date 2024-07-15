@@ -20,7 +20,7 @@ class ProfileController extends Controller
     {
         $user = User::find($id);
 
-        if (!$user) {
+        if (Auth::user()->id !== $user) {
             return redirect()->back()->with('error', 'User not found.');
         }
 

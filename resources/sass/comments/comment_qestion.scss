@@ -118,23 +118,12 @@ img {
     border: none;
     box-shadow: none;
     border-radius: 1em;
+    box-shadow: .1em .08rem .1em #8875699a;
   }
   .username {
     color: #4D1F01;
     font-weight: 800;
     font-size: 1.2em;
-  }
-  .d-none {
-    display: none;
-  }
-  .save-comment {
-    border: #FCF0E9;
-    background-color: #FCF0E9;
-    margin-top: 5em;
-  }
-  .comment-body[contenteditable="true"] {
-    border: none;
-    outline: none;
   }
 }
 .user_account {

@@ -58,7 +58,9 @@ class CommentController extends Controller
 
     public function delete($id) 
     {
-       $this->comment->destroy($id);
+        $comment = $this->comment->findOrFail($id);
+
+        $comment->forceDelete($id);
 
        return redirect()->back();
     }

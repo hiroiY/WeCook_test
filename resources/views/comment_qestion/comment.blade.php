@@ -66,30 +66,12 @@
                 <button 
                   type="button" 
                   class="edit-btn ms-3 px-4"
+                  data-bs-toggle="modal" 
+                  data-bs-target="#commentEdit"
                 >
                   Edit
                 </button>
-
-                <form 
-                  action="{{ route('update.comment', $comment->id) }}" 
-                  method="post"
-                  class="d-none edit-form d-inline-flex"
-                >
-                  @csrf
-                  @method('PATCH')
-                  <input 
-                    type="hidden" 
-                    name="body" 
-                    class="form-control save-comment"
-                    autofocus
-                  >
-                  <button 
-                    type="submit" 
-                    class="save-btn ms-2 px-4"
-                  >
-                    Save
-                  </button>
-                </form>
+                @include('comment_qestion.modal.comment_update')
 
                 <form 
                   action="{{ route('delete.comment', $comment->id) }}" 
@@ -106,12 +88,7 @@
                   </button>
                 </form>
               </div>
-              <p class="comment-body mt-2 mb-0 p-0" contenteditable="false">{{ $comment->body}}</p>
-              @error('body')
-                <p class="textdanger small">
-                  {{ $message }}
-                </p>
-              @enderror
+              <p class="comment-body mt-2 mb-0 p-0">{{ $comment->body}}</p>
             </div>
           </div>
         @else
