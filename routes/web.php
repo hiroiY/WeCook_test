@@ -9,8 +9,9 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\WriterController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\MypageController;
 
 Auth::routes();
 // require __DIR__ . '/auth.php';
@@ -26,21 +27,16 @@ Route::controller(HomeController::class)->group(function() {
     Route::get('/home/dessert', 'index');
 });
 
-Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
-Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
-Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
-Route::get('/mypage/myrecipe/{id}', [App\Http\Controllers\MypageController::class, 'myrecipe'])->name('myrecipe');
-Route::get('/mypage/myrecipe/appetizer', [App\Http\Controllers\MypageController::class, 'appetizer'])->name('appetizer');
-Route::get('/mypage/mybookmark', [App\Http\Controllers\HomeController::class, 'mypage2'])->name('mybookmark');
-Route::get('/editmyrecipe/{id}', [App\Http\Controllers\RecipeController::class, 'editmyrecipe'])->name('editmyrecipe');
-// Route::get('/delete-recipe', [App\Http\Controllers\RecipeController::class, 'deleterecipe'])->name('deleterecipe');
-Route::get('/recipe/{id}/delete', [RecipeController::class, 'deleterecipe'])->name('recipe.deleteConfirm');
-Route::post('/recipe/{id}/delete', [RecipeController::class, 'delete'])->name('recipe.delete');
+//My page
+Route::controller(MypageController::class)->group(function() {
+    Route::get('/mypage/myrecipe/{id}', 'myrecipe')->name('myrecipe');
+    Route::get('/mypage/myrecipe/appetizer', 'appetizer')->name('appetizer');
+    Route::get('/mypage/mybookmark/{id}', 'mybookmark')->name('mybookmark');
+});
 
-Route::get('/myrecipe/{id}/edit', [RecipeController::class, 'editMyRecipe'])->name('editmyrecipe');
-Route::patch('/myrecipe/{id}/update', [RecipeController::class, 'updateMyRecipe'])->name('updatemyrecipe');
 //Writers page
-Route::controller(WriterController::class)->group(function() {
+Route::controller(WriterController::class)->group(function() 
+{
     Route::get('/{post_id}/writer/{user_id}', 'writer')->name('writer');
     Route::get('/{post_id}/writer/{user_id}/recently', 'writer');
     Route::get('/{post_id}/writer/{user_id}/appetizer', 'writer');
@@ -50,11 +46,13 @@ Route::controller(WriterController::class)->group(function() {
 });
 
 // Bookmark
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () 
+{
     Route::get('bookmark/toggle/{post_id}', [BookmarkController::class, 'toggle'])->name('bookmark.toggle');
 });
 // Navbar's search Route
-Route::controller(SearchController::class)->group(function() {
+Route::controller(SearchController::class)->group(function() 
+{
     Route::get('/search', 'search')->name('search');
     Route::get('/search/appetizer', 'search');
     Route::get('/search/sidedish', 'search');
@@ -62,30 +60,49 @@ Route::controller(SearchController::class)->group(function() {
     Route::get('/search/dessert', 'search');
 });
 
-
 //Recipe Routes 
-// createrecipe
-    Route::get('/createrecipe', [RecipeController::class, 'createrecipe'])->name('createrecipe');
-    Route::post('/storerecipe', [RecipeController::class, 'storeRecipe'])->name('storerecipe');
-    Route::get('/detailrecipe/{post_id}/{user_id}', [RecipeController::class, 'detailrecipe'])->name('detailrecipe');
+
+Route::controller(RecipeController::class)->group(function() 
+{
+    // Recipe-Create/Detail/Delete
+    Route::get('/createrecipe','createrecipe')->name('createrecipe');
+    Route::post('/storerecipe','storeRecipe')->name('storerecipe');
+    Route::get('/detailrecipe/{post_id}/{user_id}','detailrecipe')->name('detailrecipe');
+    Route::get('/delete-recipe', 'deleterecipe')->name('deleterecipe');
+    //Edit My recipe
+    Route::get('/myrecipe/{id}/edit','editMyRecipe')->name('editmyrecipe');
+    Route::patch('/myrecipe/{id}/update','updateMyRecipe')->name('updatemyrecipe');
+    Route::delete('/myrecipe/{id}/delete', 'deleteMyRecipe')->name('deleteMyRecipe');
+});
 
     // Store the Comment
-    Route::post('/recipe/{post_id}/comment/store',[CommentController::class, 'storeComment'])->name('store.comment');
-    Route::patch('/recipe/{id}/comment/update',[CommentController::class, 'update'])->name('update.comment');
-    Route::delete('/recipe/{id}/comment/delete',[CommentController::class, 'delete'])->name('delete.comment');
+    Route::controller(CommentController::class)->group(function() 
+    {
+    Route::post('/recipe/{post_id}/comment/store', 'storeComment')->name('store.comment');
+    Route::patch('/recipe/{id}/comment/update','update')->name('update.comment');
+    Route::delete('/recipe/{id}/comment/delete','delete')->name('delete.comment');
+    });
 
 // Admin
-Route::get('/mypage/profile_edit', [App\Http\Controllers\HomeController::class, 'profile_edit'])->name('profile_edit');
-Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
-Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
-Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users');
-Route::get('/admin/users/search', [AdminController::class, 'search_username'])->name('admin.users.search');
-Route::get('/admin/posts/search', [AdminController::class, 'search_post'])->name('admin.posts.search');
-Route::get('/admin/usermanagement', [AdminController::class, 'index'])->name('usermanagement');
-Route::get('/admin/postmanagement', [AdminController::class, 'postmanagement'])->name('postmanagement');
-Route::patch('/admin/usermanagement/{id}/activate', [AdminController::class, 'activate'])->name('activate');
-Route::delete('/admin/usermanagement/{id}/deactivate', [AdminController::class, 'deactivate'])->name('deactivate');
-Route::patch('/admin/postmanagement/{id}/activate', [AdminController::class, 'activatePost'])->name('post.activate');
-Route::delete('/admin/postmanagement/{id}/deactivate', [AdminController::class, 'deactivatePost'])->name('post.deactivate');
+Route::controller(AdminController::class)->group(function() 
+{
+    //User management
+    Route::get('/admin/users', 'index')->name('admin.users');
+    Route::get('/admin/usermanagement','index')->name('usermanagement');
+    Route::get('/user-status', 'userstatus')->name('userstatus');
+    Route::patch('/admin/usermanagement/{id}/activate','activate')->name('activate');
+    Route::delete('/admin/usermanagement/{id}/deactivate','deactivate')->name('deactivate');
+    //Post management
+    Route::get('/postmanagement','postmanagement')->name('postmanagement');
+    Route::get('/admin/postmanagement','postmanagement')->name('postmanagement');
+    Route::get('/post-status','poststatus')->name('poststatus');
+    Route::patch('/admin/postmanagement/{id}/activate','activatePost')->name('post.activate');
+    Route::delete('/admin/postmanagement/{id}/deactivate','deactivatePost')->name('post.deactivate');
+    //admin search 
+    Route::get('/admin/users/search','search_username')->name('admin.users.search');
+    Route::get('/admin/posts/search', 'search_post')->name('admin.posts.search');
+});
 
-
+//My page Profile
+Route::get('/mypage/profile_edit/{id}', [ProfileController::class, 'profile_edit'])->name('profile_edit');
+Route::patch('/mypage/profile_update/{id}', [ProfileController::class, 'profile_update'])->name('profile_update');

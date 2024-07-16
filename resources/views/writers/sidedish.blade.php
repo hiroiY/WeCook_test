@@ -41,7 +41,7 @@
               </a>
             </div>
             <div class="col-auto px-0">
-              <a href="{{ route('detailrecipe', [$post->id, $writer->id]) }}">
+              <a href="{{ route('detailrecipe', [$post->id, $writer->id]) }}#comment">
                 &#xf086; 
                 <span>
                   {{ $post->comment->count() }}

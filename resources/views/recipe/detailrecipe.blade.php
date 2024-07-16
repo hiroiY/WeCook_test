@@ -19,6 +19,14 @@
                 <li class="breadcrumb-item current-reciprname" aria-current="page">{{ $recipe->title }}</li>
             </ol>
         </nav>
+        {{-- button for jumo to the comment/QA section --}}
+        <div class="jump-comment">
+            <a href="#comment-start" class="textdecoration-none">
+                <i class="fa-regular fa-comments"></i>
+                Jump to comments 
+                <i class="fa-solid fa-arrow-turn-down"></i>
+            </a>
+        </div>
 
         <!-- recipe detail area -->
         <div class="recipe-detail detailrecipe pt-3">  
@@ -38,7 +46,9 @@
             </div>
             <h1 class="recipe-title mb-4 pt-3">
                 @auth
-                    <i class="fas fa-bookmark {{ $recipe->is_bookmarked ? 'bookmarked' : '' }}"></i>
+                    <a href="{{ route('bookmark.toggle',['post_id' => $recipe->id])}}">
+                        <i class="fa-bookmark {{ $recipe->bookmarkedBy->contains(Auth::id()) ? 'fas bookmarked' : 'fa-regular' }}"></i>
+                    </a>
                 @endauth
                 {{ $recipe->title }}
             </h1>
@@ -96,7 +106,8 @@
             </ol>
         </div>
     </div>
-
+    {{-- landed place from the "jumo to the comment" button --}}
+    <h5 id="comment-start"></h5>
     <!-- comment/Q&A area -->
     @include('comment_qestion.comment_qa')
 </div> 
