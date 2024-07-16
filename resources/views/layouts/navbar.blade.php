@@ -131,15 +131,14 @@
                   </a>
                   {{--My Bookmark Button/Link --}}
                   <a 
-                    href="{{ route('mybookmark') }}
-                    {{-- route('mybookmark', Auth::user()->id) --}}" 
+                    href="{{ route('mybookmark',['id' => Auth::user()->id]) }}"
                     class="dropdown-item"
                   >
                     My Bookmark
                   </a>
                   {{--My Profile Edit Button/Link --}}
                   <a 
-                    href="{{-- route('profile.show', Auth::user()->id) --}}" 
+                    href="{{ route('profile_edit', Auth::user()->id) }}" 
                     class="dropdown-item"
                   >
                     Profile Edit

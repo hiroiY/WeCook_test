@@ -1,0 +1,56 @@
+
+//modal
+#commentEdit {
+
+  .modal-content
+  {
+    box-shadow: .1em .1em 1em #4d1f01aa;
+    background-color: #FCF0E9;
+  }
+
+  #btn-close 
+  {
+    background-color: transparent;
+    font-size: 1.2em;
+    color: #4d1f01;
+    
+  }
+  
+  .modal-title{
+    text-decoration: underline dotted #887569 .15em;
+  }
+  .save-comment 
+  {
+    border:solid #e45900;
+  }
+  
+  .btn-cancel,
+  .save-btn 
+  {
+    font-weight: 800;
+    font-size: 1.2em;
+  }
+  .error-message
+  {
+    color: red;
+    display: none;
+  } 
+  .form-control:invalid
+  {
+    border: solid red;
+  }
+  .form-control:invalid + .error-message 
+  {
+    display: block;
+  }
+  .save-comment
+  {
+    color: #4d1f01;
+    background-color: #fefdfd;
+    font-size: 1.2em;
+  }
+  .current-comment
+  {
+    font-size: 1.2em;
+  }
+}
