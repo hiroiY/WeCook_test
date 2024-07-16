@@ -1,14 +1,15 @@
 @vite(['resources/sass/myrecipe_tab.scss'])
+
 <div class="tab-content">
-    <div class="d-flex container">
+    <div class="container">
         <div class="row px-3 py-1">
             @forelse($dessert_posts as $post)
-            <div class="col-md-6 p-2">    
+            <div class="col-md-6 px-5 py-5">    
                 <div class="card"> 
                     <div class="card-itself container-fluid">
                         <div class="myrecipe-header d-flex justify-content-between align-items-center">
                             <div>
-                                <p class="card-title">{{ \Illuminate\Support\Str::limit($post->title, 10) }}</p>
+                                <p class="card-title">{{ \Illuminate\Support\Str::limit($post->title, 15) }}</p>
                             </div>
                             <div>
                                 <a href="{{ route('editmyrecipe', $post->id) }}">
@@ -22,11 +23,11 @@
                         <div class="myrecipe-footer d-flex justify-content-between align-items-center">
                             <div>
                                 <i class="comment-icon fa-regular fa-comments"></i>
-                                <span class="comment-text fw-bold">{{ $post_counts[$post->id]['comments'] }}</span>
+                                <span class="comment-text fw-bold">{{ $post->comments->count() }}</span>
                             </div>
                             <div>
                                 <i class="bookmark-icon fa-regular fa-bookmark"></i>
-                                <span class="bookmark-text fw-bold">{{ $post_counts[$post->id]['bookmarks'] }}</span>
+                                <span class="bookmark-text fw-bold">{{ $bookmark_counts[$post->id] ?? 0 }}</span>
                             </div>
                         </div>
                     </div>
