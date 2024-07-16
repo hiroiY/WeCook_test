@@ -7,7 +7,7 @@
 
 @section('content')
 <!-- Top image Carousel -->
-<div class="w-100 h-25" >
+<div class="w-100 h-25" id="top">
     @include('homepage.carousel')
 </div>
 
@@ -31,7 +31,7 @@
             Appetizer
         </li>
         <li 
-            class="tab_menu-item" 
+            class="tab_menu-item"
             data-tab="03"
         >
             Side dish
