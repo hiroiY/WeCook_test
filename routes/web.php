@@ -93,12 +93,14 @@ Route::controller(AdminController::class)->group(function()
     Route::patch('/admin/usermanagement/{id}/activate','activate')->name('activate');
     Route::delete('/admin/usermanagement/{id}/deactivate','deactivate')->name('deactivate');
     //Post management
+
     Route::get('/postmanagement','postmanagement')->name('postmanagement');
     Route::get('/admin/postmanagement','postmanagement')->name('postmanagement');
     Route::get('/post-status','poststatus')->name('poststatus');
     Route::patch('/admin/postmanagement/{id}/activate','activatePost')->name('post.activate');
     Route::delete('/admin/postmanagement/{id}/deactivate','deactivatePost')->name('post.deactivate');
     //admin search 
+    
     Route::get('/admin/users/search','search_username')->name('admin.users.search');
     Route::get('/admin/posts/search', 'search_post')->name('admin.posts.search');
 });

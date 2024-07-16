@@ -48,14 +48,22 @@
                 <a href="">
                   &#xf086; 
                   <span>
-                    11{{-- count here --}}
+                    {{ $post->comment->count() }}
                   </span>
                 </a>
               </div>
               <div class="col-1">
-                <a href="">
-                  <i class="fa-regular fa-bookmark"></i>
-                </a>
+                @auth
+                  @if($post->isBookmarked())
+                    <a href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}">
+                      <i class="fa-solid fa-bookmark"></i>
+                    </a>
+                  @else
+                    <a href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}">
+                      <i class="fa-regular fa-bookmark"></i>
+                    </a>
+                  @endif
+                @endauth
               </div>
             </div>
             <!-- recipe discription -->
