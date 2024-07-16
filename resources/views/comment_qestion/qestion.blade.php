@@ -1,5 +1,5 @@
 <div 
-  class="tab_panel-box is-show" 
+  class="tab_panel-box" 
   data-panel="02"
 >
   <div class="tab_panel-text">

@@ -4,17 +4,21 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Post; // Postモデルをインポート
 use App\Models\Dish;
+use App\Models\Comment;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Log;
 
 class RecipeController extends Controller
 {
     private $post;
     private $dish;
+    private $comment;
 
-    public function __construct(Post $post, Dish $dish) 
+    public function __construct(Post $post, Dish $dish, Comment $comment) 
     {
         $this->post = $post;
         $this->dish = $dish;
+        $this->comment = $comment;
     }
 
     public function createrecipe(Request $request){
@@ -49,17 +53,23 @@ class RecipeController extends Controller
         $this->post->ingredients = $request->ingredients;
         $this->post->description = $request->description;
         if ($request->hasFile('photo')) {
-            $this->post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));;
+            $this->post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));
             // $request->file('photo')->move(public_path('images'), $imageName);
         }
         $this->post->save();
         return redirect()->route('myrecipe',Auth::user()->id);
     }
 
-    public function detailrecipe($id)
+    public function detailrecipe(Request $request, $id)
     {
         $recipe = Post::with('dish', 'bookmarkedBy')->findOrFail($id);
-        return view('recipe.detailrecipe', compact('recipe'));
+        // get all of commnets.
+        $all_comments = $recipe
+                        ->comment()
+                        ->latest()
+                        ->paginate(5);
+
+        return view('recipe.detailrecipe', compact('recipe','all_comments'));
     }
 
     // Edit recipe method

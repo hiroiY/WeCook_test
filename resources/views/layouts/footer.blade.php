@@ -1,6 +1,6 @@
 
 @vite(['resources/sass/footer.scss'])
-<div class="footer py-5 footer-custom">
+<div class="footer py-5 footer-custom mt-0">
     <div class="container">
         <div class="row">
             <h1 class="text-warning"><span class="we">We</span><span class="cook">Cook</span></h1>

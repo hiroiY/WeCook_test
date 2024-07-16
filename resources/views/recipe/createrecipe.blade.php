@@ -22,7 +22,7 @@
                     <input type="file" id="photo" name="photo" style="display: none;" >
                 </div>
                 <div class="form-text mt-0 mb-4 text-danger" id="image-info">
-                    *The acceptable formats are jpeg, jpg, png and gif only.&nbsp; (Max file is 2048Kb)  
+                    *The acceptable formats are jpeg, jpg, png and gif only.&nbsp; (Max file is 1048Kb)  
 
                     @error('photo')
                     <p class="alert alert-danger text-danger small fw-bold">
