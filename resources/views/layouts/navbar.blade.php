@@ -152,7 +152,7 @@
               <li 
                 class="nav-item dropdown me-3 mt-2"
               >
-            {{-- @can('admin') --}}
+            @if(Auth::check() && Auth::user()->role_id === 1)
                 <button 
                   id="account-dropdown" 
                   class="nav-link " 
@@ -182,7 +182,7 @@
                     Category Management
                   </a> -->
                 </div>
-              {{-- @endcan --}}
+              @endif
               </li>
             </div>
           
