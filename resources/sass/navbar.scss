@@ -2,7 +2,7 @@ nav * {
   font-family: "Nunito";
   color:#F7F3EB;
 }
-.navbar{
+.navbar-expand-lg{
   background-color: #2E1301;
 }
 .navbar img {
@@ -13,7 +13,7 @@ nav * {
   color: #E45900;
 }
 .wecook{
-  font-size:2rem;
+  font-size:2.2rem;
   font-weight: bold;
 }
 .navbar a {
@@ -32,6 +32,8 @@ nav * {
   font-weight: bold;
   text-decoration: inherit;
   color: #F7F3EB;
+  background-color: #2E1301;
+  border: none;
 }
 #account-dropdown:focus
 {
@@ -54,8 +56,12 @@ color: #F7F3EB;
   color: #2E1301;
   font-weight: bold;
 }
+.navbar form{
+  max-width: 100%;
+  min-width: 20em;
+}
 #searchbar{
-  width: 400px;
+  // min-width: 130%;
   height: 2em;
   outline: 1px solid #F7F3EB;
   border-radius: 0.5rem;
@@ -66,4 +72,31 @@ color: #F7F3EB;
 } 
 #searchbar::placeholder{
   color: #887569;
+}
+.navbar-dark button.navbar-toggler{
+  border-color: rgba(0, 0, 0, 0);
+  :visited {
+    border-color: rgba(0, 0, 0, 0);
+  }
+  :active{
+    border-color: rgba(0, 0, 0, 0);
+  }
+}
+.navbar-expand-lg button.navbar-toggler.collapse{
+  border-color: rgba(0, 0, 0, 0);
+  :visited {
+   border-color: rgba(0, 0, 0, 0);
+  }
+  :active{
+    border-color: rgba(0, 0, 0, 0);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    text-align: right;
+    li {
+      text-align: right;
+    }
+  }
 }
