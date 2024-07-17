@@ -75,6 +75,8 @@ color: #F7F3EB;
 #searchbar::placeholder{
   color: #887569;
 }
+
+//Responsive style
 .navbar-dark button.navbar-toggler{
   border-color: rgba(0, 0, 0, 0);
   :visited {
@@ -94,7 +96,7 @@ color: #F7F3EB;
   }
 }
 
-@media (max-width: 912px) {
+@media (max-width: 992px) {
   .navbar-nav {
     text-align: right;
     li {

@@ -113,7 +113,12 @@
                       alt="{{ Auth::user()->name }}" 
                       class="rounded-circle avatar-lg"
                     >
-                    {{ Auth::user()->name }}
+                    <span 
+                      class="mt-1" 
+                      style="color: #F7F3EB;"
+                    >
+                      {{ Auth::user()->name }}
+                    </span>
                   @else
                     <img 
                       src="{{ asset('/images//profile_icon.png') }}" 
@@ -121,7 +126,12 @@
                       class="rounded-circle avatar-lg"
                     >
                     </i> 
-                    {{ Auth::user()->name }}
+                    <span 
+                      class="mt-1" 
+                      style="color: #F7F3EB;"
+                    >
+                      {{ Auth::user()->name }}
+                    </span>
                   @endif
                 </button>
             
@@ -133,6 +143,7 @@
                   <a 
                     href="{{ route('myrecipe',['id' => Auth::user()->id]) }}" 
                     class="dropdown-item"
+                    style="color: #F7F3EB;"
                   >
                     My Recipe
                   </a>
@@ -171,11 +182,19 @@
                     aria-labelledby="account-dropdown"
                   >
                     {{--User management button/Link --}}
-                    <a href="{{ route('usermanagement') }}" class="dropdown-item">
+                    <a 
+                      href="{{ route('usermanagement') }}"
+                      class="dropdown-item"
+                      style="color: #F7F3EB;"
+                     >
                       User Management
                     </a>
                     {{--post management button/Link --}}
-                    <a href="{{ route('postmanagement') }}" class="dropdown-item">
+                    <a 
+                      href="{{ route('postmanagement') }}" 
+                      class="dropdown-item"
+                      style="color: #F7F3EB;"
+                    >
                       Post Management
                     </a>
                     {{--category management button/Link --}}
