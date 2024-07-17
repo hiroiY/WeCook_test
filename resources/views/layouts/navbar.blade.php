@@ -151,6 +151,7 @@
                   <a 
                     href="{{ route('mybookmark',['id' => Auth::user()->id]) }}"
                     class="dropdown-item"
+                    style="color: #F7F3EB;"
                   >
                     My Bookmark
                   </a>
@@ -158,6 +159,7 @@
                   <a 
                     href="{{ route('profile_edit', Auth::user()->id) }}" 
                     class="dropdown-item"
+                    style="color: #F7F3EB;"
                   >
                     Profile Edit
                   </a>
