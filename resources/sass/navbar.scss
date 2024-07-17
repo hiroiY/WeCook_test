@@ -1,20 +1,22 @@
-nav * {
+.navbar-expand-lg{
   font-family: "Nunito";
   color:#F7F3EB;
+  background-color: #2E1301;
 }
-.navbar-expand-lg{
+.navbar-expand-lg .container-fluid {
   background-color: #2E1301;
 }
 .navbar img {
   height: 2.4em;
   width: 2.6em;
 }
-.we {
-  color: #E45900;
-}
 .wecook{
   font-size:2.2rem;
   font-weight: bold;
+  color: #F7F3EB
+}
+.we {
+  color: #E45900;
 }
 .navbar a {
   text-decoration: none;
@@ -92,10 +94,13 @@ color: #F7F3EB;
   }
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 912px) {
   .navbar-nav {
     text-align: right;
     li {
+      text-align: right;
+    }
+    .dropdown-item{
       text-align: right;
     }
   }

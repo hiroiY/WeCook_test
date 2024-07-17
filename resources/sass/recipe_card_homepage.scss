@@ -115,3 +115,35 @@
   padding: 1em;
   text-decoration: underline dotted #88756965 .1em;
 }
+@media (max-width: 912px) {
+  .dropdown-menu {
+    width: auto;
+    border: solid #88756994;
+    .dropdown-item{
+      padding: auto;
+      color: #e45900;
+    }
+    a:hover{
+    color: inherit;
+    background-color: inherit;
+  }
+  ul li a:focus{
+    color: inherit;
+    background-color: inherit;
+  }
+  }
+  .dropdown-toggle{
+    background-color: transparent;
+    border: none;
+    color: #887569;
+    text-align: right;
+  }
+  
+  
+}
+@media (max-width: 400px) {
+  .dropdown-menu {
+    width: 50%;
+  }
+
+}

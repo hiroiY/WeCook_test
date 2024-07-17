@@ -19,20 +19,20 @@
   background-size: cover;
   box-shadow: inset 0 -10em 15em #5c5c5c
 }
-.carousel .carousel-item a {
+.carousel .carousel-item {
   text-decoration: none;
   color: #f7f3eb;
   font-family: "Playfair Display SC";
 }
-.carousel .carousel-item a :hover
-{
-  color: #f7f3eb;
-}
-.carousel-item h1 {
-  font-size: 6em;
+// .carousel .carousel-item a :hover
+// {
+//   color: #f7f3eb;
+// }
+.carousel-item p {
+  font-size: 5.5em;
   font-weight: bold;
   text-transform: uppercase;
-  width: max-content ;
+  width: max-content;
   height: max-content ;
   position: absolute;
   top: 0;

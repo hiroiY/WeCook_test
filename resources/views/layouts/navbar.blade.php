@@ -92,6 +92,7 @@
               <a 
                 href="/createrecipe" 
                 class="nav-link"
+                style="color: #F7F3EB;"
               >
                 <i class="fa-solid fa-pen-to-square">
                 </i>
@@ -163,12 +164,7 @@
                     id="account-dropdown"
                     data-bs-toggle="dropdown"
                   >
-                    <a 
-                      class="dropdown-item" 
-                      href="{{-- route('admin.users') --}}"
-                    >
-                      Admin
-                    </a>
+                    Admin
                   </button>
                   <div 
                     class="dropdown-menu dropdown-menu-end" 
