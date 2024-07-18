@@ -105,7 +105,7 @@
                                     href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}"
                                     >
                                         <div class="thumb">
-                                            <img src="{{ asset($post->photo) }}" 
+                                            <img src="{{ ($post->photo) }}" 
                                             alt="post-photo" 
                                             class="img-fluid"
                                         >
