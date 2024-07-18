@@ -1,5 +1,4 @@
 @vite(['resources/sass/recipe_card_homepage.scss'])
-{{-- @foreach()--}}
 <div 
   class="tab_panel-box" 
   data-panel="04"
@@ -32,19 +31,19 @@
         <div class="card-body">
           <!-- recipe title -->
           <div class="row mt-2">
-            <div class="col-8 pe-4">
-              <a 
+              <div class="col-8 pe-4">
+                <a 
                   href="{{ route('detailrecipe',
                   ['post_id'=>$post->id, 
                   'user_id'=>$post->user->id]) }}"
                   class="text-decoration-none"
                 >
-                <h4 class="card-title">
-                  {{ $post->title }}
-                </h4>
-              </a>
-            </div>
-            <div class="col-auto px-0 d-none d-lg-block">
+                  <h4 class="card-title">
+                    {{ $post->title }}
+                  </h4>
+                </a>
+              </div>
+              <div class="col-auto px-0 d-none d-lg-block">
                 <a href="{{ route('detailrecipe',
                   ['post_id'=>$post->id, 
                   'user_id'=>$post->user->id]) }}">
@@ -67,6 +66,7 @@
                   @endif
                 @endauth
               </div>
+              <!-- responsive style (max-width: 912px) -->
               <div class="col-1 d-lg-none ms-auto me-3">
                 <div class="dropdown">
                   <button 
@@ -85,9 +85,8 @@
                   >
                     <li  style="width: auto; margin-right: 1em; padding-right:0;">
                       <a 
-                        class="dropdown-item" 
+                        class="dropdown-item tog-icon" 
                         href="{{ route('detailrecipe', ['post_id'=>$post->id, 'user_id'=>$post->user->id]) }}"
-                        style="color:e45900;"
                       >
                         &#xf086; 
                         <span>{{ $post->comment->count() }}</span>
@@ -97,17 +96,15 @@
                       @auth
                         @if($post->isBookmarked())
                           <a 
-                            class="dropdown-item" 
+                            class="dropdown-item  tog-icon" 
                             href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}"
-                            style="color:e45900;"
                           >
                             <i class="fa-solid fa-bookmark"></i>
                           </a>
                         @else
                           <a 
-                            class="dropdown-item" 
+                            class="dropdown-item tog-icon" 
                             href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}"
-                            style="color:e45900;"
                           >
                             <i class="fa-regular fa-bookmark"></i>
                           </a>

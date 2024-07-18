@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         if (currentLink) {
           currentLink.classList.add('active');
+          console.log(currentLink);
         }
       }
     }
@@ -126,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const newContent = doc.querySelector(`.tab_panel-box[data-panel="${tabPanel.dataset.panel}"]`);
-        console.log(newContent);
         if (newContent) {
           tabPanel.innerHTML = newContent.innerHTML;
 
