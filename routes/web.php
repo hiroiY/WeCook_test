@@ -57,7 +57,7 @@ Route::controller(SearchController::class)->group(function() {
 
 // Admin
 Route::get('/mypage/profile_edit/{id}', [App\Http\Controllers\ProfileController::class, 'profile_edit'])->name('profile_edit');
-Route::post('/mypage/profile_update/{id}', [App\Http\Controllers\ProfileController::class, 'profile_update'])->name('profile_update');
+Route::patch('/mypage/profile_update/{id}', [App\Http\Controllers\ProfileController::class, 'profile_update'])->name('profile_update');
 // Route::get('/postmanagement', [App\Http\Controllers\AdminController::class, 'postmanagement'])->name('postmanagement');
 Route::get('/user-status', [App\Http\Controllers\AdminController::class, 'userstatus'])->name('userstatus');
 Route::get('/post-status', [App\Http\Controllers\AdminController::class, 'poststatus'])->name('poststatus');
@@ -75,5 +75,4 @@ Route::patch('/admin/usermanagement/{id}/activate', [AdminController::class, 'ac
 Route::delete('/admin/usermanagement/{id}/deactivate', [AdminController::class, 'deactivate'])->name('deactivate');
 Route::patch('/admin/postmanagement/{id}/activate', [AdminController::class, 'activatePost'])->name('post.activate');
 Route::delete('/admin/postmanagement/{id}/deactivate', [AdminController::class, 'deactivatePost'])->name('post.deactivate');
-
 
