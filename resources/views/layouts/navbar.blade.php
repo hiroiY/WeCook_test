@@ -136,7 +136,7 @@
                 </button>
             
                 <div 
-                  class="dropdown-menu dropdown-menu-end" 
+                  class="dropdown-menu dropdown-menu-end m-0" 
                   aria-labelledby="account-dropdown"
                 >
                   {{--My Recipe Button/Link --}}

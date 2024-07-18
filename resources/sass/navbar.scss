@@ -95,14 +95,26 @@ color: #F7F3EB;
   }
 }
 
-@media (max-width: 992px) {
-  .navbar-nav {
+@media (max-width: 992px)
+ {
+  .navbar-nav 
+  {
     text-align: right;
-    li {
+    .account li .dropdown-menu
+    {
       text-align: right;
+      border: transparent;
     }
-    .dropdown-item{
-      text-align: right;
+    .account li .dropdown-item
+    {
+      width: min-content;
+      margin-left: auto;
+      color: #F7F3EB;
     }
+    .account li .dropdown-item:hover
+      {
+        background-color: #F7F3EB;
+        color: #2E1301;
+      }
   }
 }

@@ -20,13 +20,8 @@
   border-radius: 1em 1em;
   box-shadow: .01em .1em .1em #5c5c5c62;
 }
-// .card  .card-body{
-//   font-family: "Nunito";
-// }
 .card a .card-title {
   text-shadow: none;
-// .card  .card-body{
-//   font-family: "Nunito";
  }
 .card a .card-title {
   text-shadow: none;
@@ -123,7 +118,7 @@
       padding: auto;
       color: #e45900;
     }
-    a:hover{
+    .dropdown-menu .tog-icon:hover{
     color: inherit;
     background-color: inherit;
   }
