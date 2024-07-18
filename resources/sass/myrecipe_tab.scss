@@ -1,27 +1,27 @@
-// Contents
 .tab-content {
     .container {
         .row {
             .col-md-6 {
                 .card {
-                    height: 71%;
+                    height: 100%;
+                    margin-bottom: 3%;
                     .card-itself {
                         .myrecipe-header {
                             // display: flex;
-                            margin-bottom: 5%;
+                            // margin-bottom: 5%;
                             justify-content: space-between;
                             align-items: center;
                             .card-title {
                                 font-weight: bold;
                                 font-size: 35px;
                                 color: #2E1301;
-                                margin-top: 10px;
-                                margin-left: 20px;
+                                margin-top: 15px;
+                                margin-left: 10px;
                             }
                             .edit-icon {
                                 color: #E45900;
                                 font-size: 30px;
-                                margin-right: 20px;
+                                margin-right: 10px;
                                 margin-top: 8px;
                             }
                         }
@@ -47,7 +47,6 @@
                             .comment-icon,
                             .bookmark-icon {
                                 color: #E45900;
-                                margin-top: 10%;
                                 margin-top: 10%;
                                 margin-bottom: 10%;
                                 font-size: 30px;

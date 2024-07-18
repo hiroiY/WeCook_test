@@ -131,7 +131,3 @@ class MypageController extends Controller
     }
 
 }
-
-
-
-

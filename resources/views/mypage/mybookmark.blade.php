@@ -54,6 +54,9 @@
           <div class="tab_panel-text">
             @include('mypage.mybookmark_tab.appetizer')
           </div>
+          <!-- <div class="pagination-wrapper" style="border: solid red; ">
+                {{ $appetizer_posts->links() }}
+            </div> -->
         </div>
         <div class="tab_panel-box" data-panel="02">
           <div class="tab_panel-text">
