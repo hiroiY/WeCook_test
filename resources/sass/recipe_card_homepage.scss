@@ -20,13 +20,8 @@
   border-radius: 1em 1em;
   box-shadow: .01em .1em .1em #5c5c5c62;
 }
-// .card  .card-body{
-//   font-family: "Nunito";
-// }
 .card a .card-title {
   text-shadow: none;
-// .card  .card-body{
-//   font-family: "Nunito";
  }
 .card a .card-title {
   text-shadow: none;
@@ -52,6 +47,7 @@
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+  line-clamp: 4;
 }
 .card a {
   margin-left: .3em;
@@ -113,4 +109,36 @@
   font-weight: bold;
   padding: 1em;
   text-decoration: underline dotted #88756965 .1em;
+}
+@media (max-width: 912px) {
+  .dropdown-menu {
+    width: auto;
+    border: solid #88756994;
+    .dropdown-item{
+      padding: auto;
+      color: #e45900;
+    }
+    .dropdown-menu .tog-icon:hover{
+    color: inherit;
+    background-color: inherit;
+  }
+  ul li a:focus{
+    color: inherit;
+    background-color: inherit;
+  }
+  }
+  .dropdown-toggle{
+    background-color: transparent;
+    border: none;
+    color: #887569;
+    text-align: right;
+  }
+  
+  
+}
+@media (max-width: 400px) {
+  .dropdown-menu {
+    width: 50%;
+  }
+
 }
