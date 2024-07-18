@@ -11,9 +11,9 @@
   class="row justify-content-center mt-5"
   id="content-start";
 >
-  <div class="col-6 search_results">
+  <div class="col-6 search_results" name="search">
       <p class="h4 mb-4">Search results for &nbsp;
-        "<span class="fw-bold">{{ $search }}</span>" ... ({{ $recipes->count() }})</p>
+        "<span class="keyword fw-bold" keyword="search" id="keyword"></span>" ... ({{ $recipes->count() }})</p>
   </div>
 </div>
 

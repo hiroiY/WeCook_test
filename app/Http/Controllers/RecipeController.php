@@ -1,21 +1,24 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Post; // Postモデルをインポート
 use App\Models\Dish;
+use App\Models\Comment;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Log;
 
 class RecipeController extends Controller
 {
     private $post;
     private $dish;
+    private $comment;
 
-    public function __construct(Post $post, Dish $dish) 
+    public function __construct(Post $post, Dish $dish, Comment $comment) 
     {
         $this->post = $post;
         $this->dish = $dish;
+        $this->comment = $comment;
     }
 
     public function createrecipe(Request $request){
@@ -43,80 +46,88 @@ class RecipeController extends Controller
             'description' => 'required|min:1',
         ]);
 
-        // $imageName = '';        $this->post->photo = ;
-        // if ($request->hasFile('photo')) {
-        //     $imageName = time() . '.' . $request->file('photo')->extension();
-        //     // $request->file('photo')->move(public_path('images'), $imageName);
-        // }
-
         $this->post->user_id = Auth::user()->id;
         $this->post->title = $request->title;
         $this->post->dish_id = $request->dish_category;
         $this->post->cooking_time = $request->cooking_time;
         $this->post->ingredients = $request->ingredients;
         $this->post->description = $request->description;
-
         if ($request->hasFile('photo')) {
-            $this->post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));;
+            $this->post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));
             // $request->file('photo')->move(public_path('images'), $imageName);
         }
-
         $this->post->save();
-
         return redirect()->route('myrecipe',Auth::user()->id);
     }
 
-
-    // public function createrecipe(){
-    //     return view('recipe.createrecipe');
-    // }
-
-    // public function storeRecipe(Request $request) // storeRecipeメソッドを追加
-    // {
-    //     $request->validate([
-    //         'cover-photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    //         'recipe-name' => 'required|string|max:255',
-    //         'dish-category' => 'required|string|max:255',
-    //         'cooking-time' => 'required|string|max:255',
-    //         'ingredients' => 'required|string',
-    //         'description' => 'required|string',
-    //     ]);
-
-    //     $imageName = '';
-    //     if ($request->hasFile('cover-photo')) {
-    //         $imageName = time() . '.' . $request->file('cover-photo')->extension();
-    //         $request->file('cover-photo')->move(public_path('images'), $imageName);
-    //     }
-
-    //     Post::create([
-    //         'user_id' => auth()->id(), // 認証されたユーザーのIDを設定
-    //         'photo' => $imageName,
-    //         'dish_id' => 1, // ここは適切な dish_id を設定する必要があります
-    //         'title' => $request->input('recipe-name'),
-    //         'category' => $request->input('dish-category'), // dish-category を保存
-    //         'times' => $request->input('cooking-time'),
-    //         'ingredients' => $request->input('ingredients'),
-    //         'description' => $request->input('description'),
-    //     ]);
-
-    //     return redirect()->route('createrecipe')->with('success', 'Recipe created successfully.');
-    // }
-
-    public function detailrecipe($id) 
+    public function detailrecipe(Request $request, $id)
     {
-        $recipe = Post::with('dish')->findOrFail($id);
+        $recipe = Post::with('dish', 'bookmarkedBy')->findOrFail($id);
+        // get all of commnets.
+        $all_comments = $recipe
+                        ->comment()
+                        ->latest()
+                        ->paginate(5);
+
+        return view('recipe.detailrecipe', compact('recipe','all_comments'));
+    }
+
+    // Edit recipe method
+    public function editMyRecipe($id)
+    {
+        $post = $this->post->findOrFail($id);
+        if(Auth::user()->id != $post->user->id && Auth::user()->role_id !=1){
+            return redirect()->route('recipe.detailrecipe', $post->id);
+        }
+        $all_dishes = $this->getAllDish();
+        return view('editmyrecipe')->with('post', $post)->with('all_dishes', $all_dishes);
+    }
+
+    // Update recipe method
+    public function updateMyRecipe(Request $request, $id){
+        // dd($request->all());
+
+        // try {
+        // $post = Post::findOrFail($id);
+
+        $request->validate([
+            'image' => 'mimes:jpeg,png,jpg,gif,svg|max:1048',
+            'recipename' => 'required|min:1|max:150',
+            'recipecategory' => 'required',
+            'cooking_time' => 'required|max:150',
+            'ingredients' => 'required|min:1',
+            'descriptions' => 'required|min:1',
+        ]);
+            $post = $this->post->findOrFail($id);
+
+            $post->title = $request->input('recipename');
+            $post->dish_id = $request->input('recipecategory');
+            $post->cooking_time = $request->input('cooking_time');
+            $post->ingredients = $request->input('ingredients');
+            $post->description = $request->input('descriptions');
+            if ($request->hasFile('image')) {
+                $post->photo = 'data:image/' . $request->image->extension() . ';base64,' . base64_encode(file_get_contents($request->image));
+            }
+        //    dd($request->all(), $post);
+            $post->save();
+            // Log::info('Post updated successfully.', ['post_id' => $post->id]);
+            return redirect()->route('detailrecipe', ['post_id'=>$post->id, 'user_id'=>$post->user_id]);
+        // } catch (\Exception $e) {
+        //     Log::error('Failed to update post: ' . $e->getMessage(), [
+        //         'post_id' => $id,
+        //     ]);
+        // }
+
+    }
     
-            return view('recipe.detailrecipe', compact('recipe'));
-
-    }
-
-    public function editmyrecipe()
+    // Delete recipe method
+    public function deleteMyRecipe($id)
     {
-        return view('editmyrecipe');
+        $post = $this->post->findOrFail($id);
+        $user = $post->user_id;
+        $post->forceDelete();
+        return redirect()->route('myrecipe', $user);
     }
-    
-    public function deleterecipe()
-    {
-        return view('delete_recipe');
-    }
+
 }
+

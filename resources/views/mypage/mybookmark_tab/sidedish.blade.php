@@ -1,120 +1,46 @@
 @vite(['resources/sass/mybookmark_tab.scss'])
 
 <div class="tab-content">
-            {{-- <div class="container"> --}}
-                <div class="d-flex justify-content-evenly">
-                    <div class="card-vertical" style="padding-top: 10px;">
-                        <div id="photo1" class="tab-pane active">
-                            <div class="card mb-3">
-                                <div class="container-fluid" id="container">
-                                    <div class="header d-flex justify-content-between align-items-center" style="padding-top: 10px;">
-                                        <div>
-                                            <p class="card-title fw-bold">Appetizer1</p>
-                                        </div>
-                                        <div>
-                                            <i class="edit-icon fa-solid fa-pen" style="font-size: 30px; margin-right: 5px;"></i>
-                                        </div>                                                        
-                                    </div>
-                                    <div class="" style="width: 420px; margin-right: 5px;">
-                                        <img src="{{ asset('../images/appetizer/appetizer1.jpg') }}" alt="Tomato Rice" class="" style="width: 420px; margin-left: 2.5px;"/>
-                                    </div>
-                                    <div class="footer d-flex justify-content-between align-items-center" style="margin-top: 15px; margin-bottom: 20px;">
-                                        <div>
-                                            <i class="comment-icon fa-regular fa-comments" style="font-size: 30px; margin-left: 5px;"></i>
-                                            <span class="comment-text fw-bold" style="margin-left: 5px;">11</span>
-                                        </div>
-                                        <div>
-                                            <i class="bookmark-icon fa-regular fa-bookmark" style="font-size: 30px;"></i>
-                                            <span class="bookmark-text fw-bold" style="margin-right: 5px;">40</span>
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="container">
+        <div class="row px-3 py-1">
+            @forelse($sidedish_posts as $post)
+            <div class="col-md-6 px-5 py-5">    
+                <div class="card"> 
+                    <div class="card-itself container-fluid">
+                        <div class="myrecipe-header d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="card-title">{{ \Illuminate\Support\Str::limit($post->title, 15) }}</p>
                             </div>
+                            <div>
+                                <a href="{{ route('editmyrecipe', $post->id) }}">
+                                    <i class="edit-icon fa-solid fa-pen"></i>
+                                </a>
+                            </div>                                                        
                         </div>
-                        <div id="photo2" class="tab-pane active" style="padding-top: 10px">
-                            <div class="card mb-3">
-                                <div class="container-fluid" id="container">
-                                    <div class="header d-flex justify-content-between align-items-center" style="padding-top: 10px;">
-                                        <div>
-                                            <p class="card-title fw-bold">Appetizer2</p>
-                                        </div>
-                                        <div>
-                                            <i class="edit-icon fa-solid fa-pen" style="font-size: 30px; margin-right: 5px;"></i>
-                                        </div>                                                        
-                                    </div>
-                                    <div class="" style="width: 420px; margin-right: 5px;">
-                                        <img src="{{ asset('../images/appetizer/appetizer2.jpg') }}" alt="Tomato Rice" class="" style="width: 420px; margin-left: 2.5px;"/>
-                                    </div>
-                                    <div class="footer d-flex justify-content-between align-items-center" style="margin-top: 15px; margin-bottom: 20px;">
-                                        <div>
-                                            <i class="comment-icon fa-regular fa-comments" style="font-size: 30px; margin-left: 5px;"></i>
-                                            <span class="comment-text fw-bold" style="margin-left: 5px;">11</span>
-                                        </div>
-                                        <div>
-                                            <i class="bookmark-icon fa-regular fa-bookmark" style="font-size: 30px;"></i>
-                                            <span class="bookmark-text fw-bold" style="margin-right: 5px;">40</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="image-container">
+                            <img src="{{ $post->photo }}" alt="" class="img-fluid"/>
+                        </div>
+                        <div class="myrecipe-footer d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="comment-icon fa-regular fa-comments"></i>
+                                <span class="comment-text fw-bold">{{ $post->comments->count() }}</span>
                             </div>
-                        </div>
-                    </div>
-                    <div style="padding-top: 10px">
-                        <div id="photo3" class="tab-pane active">
-                            <div class="card mb-3">
-                                <div class="container-fluid" id="container">
-                                    <div class="header d-flex justify-content-between align-items-center" style="padding-top: 10px;">
-                                        <div>
-                                            <p class="card-title fw-bold">Appetizer3</p>
-                                        </div>
-                                        <div>
-                                            <i class="edit-icon fa-solid fa-pen" style="font-size: 30px; margin-right: 5px;"></i>
-                                        </div>                                                        
-                                    </div>
-                                    <div class="" style="width: 420px; margin-right: 5px;">
-                                        <img src="{{ asset('../images/appetizer/appetizer3.jpeg') }}" alt="Tomato Rice" class="" style="width: 420px; margin-left: 2.5px;"/>
-                                    </div>
-                                    <div class="footer d-flex justify-content-between align-items-center" style="margin-top: 15px; margin-bottom: 20px;">
-                                        <div>
-                                            <i class="comment-icon fa-regular fa-comments" style="font-size: 30px; margin-left: 5px;"></i>
-                                            <span class="comment-text fw-bold" style="margin-left: 5px;">11</span>
-                                        </div>
-                                        <div>
-                                            <i class="bookmark-icon fa-regular fa-bookmark" style="font-size: 30px;"></i>
-                                            <span class="bookmark-text fw-bold" style="margin-right: 5px;">40</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="photo4" class="tab-pane active" style="padding-top: 10px">
-                            <div class="card mb-3">
-                                <div class="container-fluid" id="container">
-                                    <div class="header d-flex justify-content-between align-items-center" style="padding-top: 10px;">
-                                        <div>
-                                            <p class="card-title fw-bold">Appetizer4</p>
-                                        </div>
-                                        <div>
-                                            <i class="edit-icon fa-solid fa-pen" style="font-size: 30px; margin-right: 5px;"></i>
-                                        </div>                                                        
-                                    </div>
-                                    <div class="" style="width: 420px; margin-right: 5px;">
-                                        <img src="{{ asset('../images/appetizer/appetizer4.jpg') }}" alt="Tomato Rice" class="" style="width: 420px; margin-left: 2.5px;"/>
-                                    </div>
-                                    <div class="footer d-flex justify-content-between align-items-center" style="margin-top: 15px; margin-bottom: 20px;">
-                                        <div>
-                                            <i class="comment-icon fa-regular fa-comments" style="font-size: 30px; margin-left: 5px;"></i>
-                                            <span class="comment-text fw-bold" style="margin-left: 5px;">11</span>
-                                        </div>
-                                        <div>
-                                            <i class="bookmark-icon fa-regular fa-bookmark" style="font-size: 30px;"></i>
-                                            <span class="bookmark-text fw-bold" style="margin-right: 5px;">40</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div>
+                                <i class="bookmark-icon fa-regular fa-bookmark"></i>
+                                <span class="bookmark-text fw-bold">{{ $bookmark_counts[$post->id] ?? 0 }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            {{-- </div> --}}
+            </div>
+            @empty
+            <div class="col-auto mx-auto">
+                <p class="h2 sorry">Sorry! No Recipe Available.</p>
+            </div>
+            @endforelse
+            <div class="pagination-wrapper">
+                {{ $sidedish_posts->links() }}
+            </div>
         </div>
+    </div>
+</div>

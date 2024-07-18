@@ -15,7 +15,7 @@
           <div class="card-body">
             {{-- Register card title --}}
             <p class="mb-5 display-4 register-card-ttl"><i class="fa-solid fa-chevron-left fa-xs register-card-ttl"></i>Register</p>
-            <form action="" method="post">
+            <form action="{{ route('register') }}" method="post">
               @csrf
 
               {{-- Username input --}}
@@ -23,11 +23,16 @@
                 <div class="col-10">
                   <input 
                   type="text"
-                  name="username" 
-                  id="username" 
-                  class="form-control" 
+                  name="name" 
+                  id="name" 
+                  class="form-control @error('name') is-invalid @enderror" 
                   placeholder="Username"
                   >
+                  @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                 </div>
               </div>
 
@@ -38,9 +43,14 @@
                   type="email"
                   name="email" 
                   id="email" 
-                  class="form-control" 
+                  class="form-control @error('email') is-invalid @enderror" 
                   placeholder="Email address"
                   >
+                  @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                 </div>
               </div>
               
@@ -56,14 +66,13 @@
                   >
                 </div>
               </div>
-
               {{-- Confirm Password input field --}}
               <div class="row mb-5 justify-content-center">
                 <div class="col-10">
                   <input 
                   type="password" 
-                  name="confirm-password" 
-                  id="confirm-password" 
+                  name="password_confirmation" 
+                  id="password_confirmation" 
                   class="form-control" 
                   placeholder="Confirm password"
                   >

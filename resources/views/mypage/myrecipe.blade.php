@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @vite(['resources/js/tabs.js'])
-@vite(['resources/sass/myrecipe.scss'])
+@vite(['resources/sass/myrecipe.scss', 'resources/js/tabs_pagination.js'])
 
 @section('content')
 <div class="row w-100">
@@ -16,7 +16,7 @@
           >
             <span class="ms-auto">My Recipe</span>
           </a>
-          <a href="{{ route('mybookmark') }}"
+          <a href="{{ route('mybookmark', ['id' => Auth::user()->id]) }}"
           class="list-group-item list-group-item-action p-2 ripple unselected">
             <span>My Bookmark</span>
           </a>
@@ -52,22 +52,22 @@
       <div class="tab_panel">
         <div class="tab_panel-box is-show" data-panel="01">
           <div class="tab_panel-text">
-            @include('mypage.myrecipe_tab.appetizer')
+            @include('mypage.myrecipe_tab.appetizer', ['posts' => $appetizer_posts, 'post_counts' => $post_counts])
           </div>
         </div>
         <div class="tab_panel-box" data-panel="02">
           <div class="tab_panel-text">
-            @include('mypage.myrecipe_tab.sidedish')
+            @include('mypage.myrecipe_tab.sidedish', ['posts' => $sidedish_posts, 'post_counts' => $post_counts])
           </div>
         </div>
         <div class="tab_panel-box" data-panel="03">
           <div class="tab_panel-text">
-            @include('mypage.myrecipe_tab.maindish')
+            @include('mypage.myrecipe_tab.maindish', ['posts' => $maindish_posts, 'post_counts' => $post_counts])
           </div>
         </div>
         <div class="tab_panel-box" data-panel="04">
           <div class="tab_panel-text">
-            @include('mypage.myrecipe_tab.dessert')
+            @include('mypage.myrecipe_tab.dessert', ['posts' => $dessert_posts, 'post_counts' => $post_counts])
           </div>
         </div>
       </div>

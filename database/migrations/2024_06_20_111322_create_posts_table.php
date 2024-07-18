@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('dish_id');
             $table->string('title',150);
             $table->string('cooking_time');
-            $table->string('ingredients');
+            $table->text('ingredients');
             $table->text('description');
             $table->timestamps();
 

@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'name' => $username,
             'email' => $username . '@mail.com',
             'email_verified_at' => now(),
-            'password' => bcrypt($username),
+            'password' => bcrypt("password"),
             'remember_token' => Str::random(10),
         ];
     }

@@ -5,52 +5,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const recentlyTabId = '01'; 
 
   // save the current page for each tab
-  function saveCurrentPage(keyword,tabId, page) {
-    sessionStorage.setItem(`${keyword}_page_${tabId}`, page);
+  function saveCurrentPage(postId,tabId, page) {
+    sessionStorage.setItem(`${postId}_page_${tabId}`, page);
   }
 
   // get the saved current page for a tab
-  function getCurrentPage(keyword,tabId) {
-    return sessionStorage.getItem(`${keyword}_page_${tabId}`) || 1;
+  function getCurrentPage(postId,tabId) {
+    return sessionStorage.getItem(`${postId}_page_${tabId}`) || 1;
   }
 
   // reset the current page for a tab to 1
-  function resetCurrentPage(keyword,tabId) {
-    sessionStorage.getItem(`${keyword}_page_${tabId}`);
+  function resetCurrentPage(postId,tabId) {
+    sessionStorage.getItem(`${postId}_page_${tabId}`);
   }
   //I ask my batch member which is better for wecook the tab keep the page  it's user looked or not.
-
-  // get the keyword 
-  function getKeyword() {
-    return localStorage.getItem('keyword');
-  }
-
-  // remove the keyword 
-  function removeKeyword() {
-    return localStorage.removeItem('keyword');
-  }
   
   // Save scroll position
   function saveScrollPosition() {
     const path = window.location.pathname;
-    const path_search = path.search;
-    sessionStorage.setItem(path_search + '_scrollPosition', window.scrollY || document.documentElement.scrollTop);
+    sessionStorage.setItem(path + '_scrollPosition', window.scrollY || document.documentElement.scrollTop);
   }
 
   // Restore scroll position
   function restoreScrollPosition() {
     const path = window.location.pathname;
-    const path_search = path.search;
-    const savedPosition = sessionStorage.getItem(path_search + '_scrollPosition');
+    const savedPosition = sessionStorage.getItem(path+ '_scrollPosition');
     if (savedPosition) {
       window.scrollTo(0, parseInt(savedPosition, 10));
     }
-    sessionStorage.removeItem(path_search + '_scrollPosition');
+    sessionStorage.removeItem(path + '_scrollPosition');
   }
 
   //default scroll position
   function contentStartScroll() {
-    const contentStart = document.getElementById('content-start');
+    const contentStart = document.getElementById('content-comment');
     contentStart.scrollIntoView({behavior:"instant"});
     //Honestly, I want to use "smooth" but it's so laggy when it is used. I don't know which is heavy My laptop or WeCook or both but I guess a reasen is there.
   }
@@ -98,10 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load the current page for a tab
   function loadCurrentPage(tabId) {
-    const keyword = getKeyword();
+    const postId = window.location.pathname;
     const tabPanel = document.querySelector(`.tab_panel-box[data-panel="${tabId}"]`);
     if (tabPanel) {
-      const currentPage = getCurrentPage(keyword,tabId);
+      const currentPage = getCurrentPage(postId,tabId);
       const paginationLinks = tabPanel.querySelectorAll('.pagination a');
       if (paginationLinks.length > 0) {
         const pageLink = paginationLinks[0].href.replace(/page=\d+/, `page=${currentPage}`);
@@ -126,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const newContent = doc.querySelector(`.tab_panel-box[data-panel="${tabPanel.dataset.panel}"]`);
-        console.log(newContent);
         if (newContent) {
           tabPanel.innerHTML = newContent.innerHTML;
 
@@ -134,14 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
           paginationLinks.forEach(link => {
             link.addEventListener('click', (e) => {
               e.preventDefault();
-              const keyword = getKeyword();
+              const postId = window.location.pathname;
               const url = e.currentTarget.href;
               const page = new URL(url).searchParams.get('page');
-              saveCurrentPage(keyword,tabPanel.dataset.panel, page);
+              saveCurrentPage(postId,tabPanel.dataset.panel, page);
               loadPage(url, tabPanel);
               contentStartScroll();
-              // get the keyword on page load
-              getKeyword();
             });
           });
         }
@@ -151,12 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   tabMenus.forEach((tabMenu) => {
     tabMenu.addEventListener('click', (e) => {
-      const keyword = getKeyword();
+      const postId = window.location.pathname;
       const tabId = e.target.dataset.tab;
       const activeTabId = sessionStorage.getItem('activeTab');
 
       if (tabId !== activeTabId) {
-        resetCurrentPage(keyword,activeTabId); // Reset the current page
+        resetCurrentPage(postId,activeTabId); // Reset the current page
       }
 
       saveActiveTab(tabId);
@@ -172,15 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (recentlyTab) {
       recentlyTab.click();
     }
-    // get the keyword on page load
-    const keyword = getKeyword();
-    document.getElementById('keyword').textContent = keyword;
   });
 
   window.addEventListener('beforeunload', saveScrollPosition);
   window.addEventListener('popstate', () => {
     restoreActiveTab();
     restoreScrollPosition();
-    removeKeyword()
   });
 });
