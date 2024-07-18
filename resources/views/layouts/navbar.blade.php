@@ -143,7 +143,6 @@
                   <a 
                     href="{{ route('myrecipe',['id' => Auth::user()->id]) }}" 
                     class="dropdown-item"
-                    style="color: #F7F3EB;"
                   >
                     My Recipe
                   </a>
@@ -151,7 +150,6 @@
                   <a 
                     href="{{ route('mybookmark',['id' => Auth::user()->id]) }}"
                     class="dropdown-item"
-                    style="color: #F7F3EB;"
                   >
                     My Bookmark
                   </a>
@@ -159,7 +157,6 @@
                   <a 
                     href="{{ route('profile_edit', Auth::user()->id) }}" 
                     class="dropdown-item"
-                    style="color: #F7F3EB;"
                   >
                     Profile Edit
                   </a>
@@ -187,7 +184,6 @@
                     <a 
                       href="{{ route('usermanagement') }}"
                       class="dropdown-item"
-                      style="color: #F7F3EB;"
                      >
                       User Management
                     </a>
@@ -195,7 +191,6 @@
                     <a 
                       href="{{ route('postmanagement') }}" 
                       class="dropdown-item"
-                      style="color: #F7F3EB;"
                     >
                       Post Management
                     </a>
