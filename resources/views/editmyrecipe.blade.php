@@ -10,14 +10,14 @@
 <div class="container">
   <div class="row justify-content-center">
 
-      {{-- Breadcrumb --}}
-      <div class="my-4">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{ route('myrecipe', ['id' => Auth::user()->id]) }}">{{ Auth::user()->name }}'s recipe</a></li>
-          <li class="breadcrumb-item active" aria-current="page">{{ $post->title }}</li>
-        </ol>
-      </div>
+    {{-- Breadcrumb --}}
+    <div class="breadcrumb my-4" id="breadcrumb-section">
+      <a href="{{ route('home') }}">Home</a>
+      <i class="fa-solid fa-angle-right"></i>
+      <a href="{{ route('myrecipe', ['id' => Auth::user()->id]) }}">{{ Auth::user()->name }}</a>
+      <i class="fa-solid fa-angle-right"></i>
+      <span class="" style="color: #e45900;">{{ $post->title }}</span>
+    </div>
 
     {{-- Edit recipe form --}}
     <form action="{{ route('updatemyrecipe', $post->id) }}" method="post" enctype="multipart/form-data">
