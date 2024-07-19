@@ -46,18 +46,23 @@ class MypageController extends Controller
         return $paginatedItems;
     }
 
-    public function myrecipe(Request $request)
+    public function myrecipe(Request $request, $id)
     {
-        $user = Auth::user();
-        if (!$user) {
-            return redirect()->route('login'); // ログインしていない場合、ログインページへリダイレクト
+        $user = User::findOrFail($id); 
+        // to confirm if the user is admin
+        if (!Auth::check()) {
+            return redirect()->route('login');
         }
-
+    
+        $loggedInUser = Auth::user();
+        if ($loggedInUser->id != $id && $loggedInUser->role_id != 1) {            
+            return redirect()->route('home');
+        }
         $page = $request->input('page', 1);
-        $appetizer_posts = $this->getPostsByDishId($user->id, 1, $page, 4);
-        $sidedish_posts = $this->getPostsByDishId($user->id, 2, $page, 4);
-        $maindish_posts = $this->getPostsByDishId($user->id, 3, $page, 4);
-        $dessert_posts = $this->getPostsByDishId($user->id, 4, $page, 4);
+        $appetizer_posts = $this->getPostsByDishId($id, 1, $page, 4);
+        $sidedish_posts = $this->getPostsByDishId($id, 2, $page, 4);
+        $maindish_posts = $this->getPostsByDishId($id, 3, $page, 4);
+        $dessert_posts = $this->getPostsByDishId($id, 4, $page, 4);
 
         // 各投稿のコメント数とブックマーク数を取得
         $post_counts = [];
@@ -71,10 +76,10 @@ class MypageController extends Controller
         }
 
         // 各ジャンルの投稿数を取得
-        $appetizer_count = $this->post->where(['dish_id' => 1, 'user_id' => $user->id])->count();
-        $sidedish_count = $this->post->where(['dish_id' => 2, 'user_id' => $user->id])->count();
-        $maindish_count = $this->post->where(['dish_id' => 3, 'user_id' => $user->id])->count();
-        $dessert_count = $this->post->where(['dish_id' => 4, 'user_id' => $user->id])->count();
+        $appetizer_count = $this->post->where(['dish_id' => 1, 'user_id' => $id])->count();
+        $sidedish_count = $this->post->where(['dish_id' => 2, 'user_id' => $id])->count();
+        $maindish_count = $this->post->where(['dish_id' => 3, 'user_id' => $id])->count();
+        $dessert_count = $this->post->where(['dish_id' => 4, 'user_id' => $id])->count();
 
         return view('mypage.myrecipe', compact('appetizer_posts', 'maindish_posts', 'sidedish_posts', 'dessert_posts', 'user', 'appetizer_count', 'sidedish_count', 'maindish_count', 'dessert_count', 'post_counts'));
     }
@@ -82,9 +87,15 @@ class MypageController extends Controller
 
     public function mybookmark(Request $request)
     {
-        $user = Auth::user();
-        if (!$user) {
-            return redirect()->route('login'); // ログインしていない場合、ログインページへリダイレクト
+        // $user = Auth::user();
+        // if (!$user) {
+        //     return redirect()->route('login'); // ログインしていない場合、ログインページへリダイレクト
+        // }
+        $loggedInUser = Auth::user();
+        $user = User::findOrFail($id);
+    
+        if (!$loggedInUser || (!$loggedInUser->isAdmin() && $loggedInUser->id != $user->id)) {
+            return redirect()->route('login'); // ログインしていない、またはアクセス権がない場合、ログインページへリダイレクト
         }
 
         $page = $request->input('page', 1);
