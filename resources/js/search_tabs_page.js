@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // get the keyword on page load
     const keyword = getKeyword();
-    document.getElementById('keyword').textContent = keyword;
+    // document.getElementById('keyword').textContent = keyword;
   });
 
   window.addEventListener('beforeunload', saveScrollPosition);
