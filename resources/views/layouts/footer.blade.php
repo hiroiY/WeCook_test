@@ -1,8 +1,6 @@
 
 @vite([
-    'resources/sass/footer.scss',
-    'resources/js/tabs_pagination.js',
-    'resources/js/search_keyword.js'
+    'resources/sass/footer.scss'
 ])
 <div class="footer py-5 footer-custom">
     <div class="container">
