@@ -1,120 +1,111 @@
-    /* Side Bar */
+/* Side Bar */
 .sidebar {
-  font-family: "Nunito";
-  background-color: #2E1301;
-  max-width: 100%;
-  height: 100%;
-  padding: 2rem;
-  color: #F7F3EB;
-  float: left;
-  font-size: 1.3rem;
+    background-color: #2E1301;
+    width: 200px;
+    height: 100vh;
+    padding: 20px;
+    color: #F7F3EB;
+    margin-right: 80px;
+    font-size: 1.3rem;
 }
-.sidebar .selected{
+.sidebar .selected {
   font-weight: bold;
 }
-.sidebar .unselected{
+.sidebar .unselected {
   color: #887569;
 }
-.sidebar .unselected:hover{
+.sidebar .unselected:hover {
   cursor: pointer;
   color: #F7F3EB;
 }
 
-// Body
+/* Body */
 .body {
-    background-color: #F7F3EB;
+  background-color: #F7F3EB;
 }
 
 /* Contents */
-.body .contents {
-    width: 75%;
-    height: 100%;
-    margin-left: 10rem;
+.contents-box {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
 }
 
-.body .contents-box {
+@media (min-width: 992px) {
+  .contents-box {
     width: 60%;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    margin-left: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* Bread Crumb */
-.body .breadcrumb {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #887569;
+.breadcrumb {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #887569;
 }
 
-.body .breadcrumb .selected-breadcrumb {
-    color: #ff7a00;
-    font-weight: bold;
+.breadcrumb .selected-breadcrumb {
+  color: #ff7a00;
+  font-weight: bold;
 }
 
-.body .breadcrumb a {
-    color: #887569;
-    text-decoration: none;
+.breadcrumb a {
+  color: #887569;
+  text-decoration: none;
 }
 
-.body .breadcrumb a:hover {
-    text-decoration: underline;
+.breadcrumb a:hover {
+  text-decoration: underline;
 }
 
-/* Contents */
-.body .contents .contents-box .form-group {
-    margin-bottom: 20px;
-    // width: 100%;
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
 }
 
-.body .contents .contents-box .form-group label {
-    display: block;
-    // margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 1.5rem;
+.form-group label {
+  display: block;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
-.body .contents .contents-box .form-group .form input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ff7a00;
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ff7a00;
 }
 
-.body .contents .contents-box .form-group .form-control {
-    border: 1px solid #ff7a00;
+.form-group .form-control {
+  border: 1px solid #ff7a00;
 }
 
-.body .contents .contents-box .form-group .file-info {
-    color: #2E1301;
+.file-info {
+  color: #2E1301;
+  margin-top: 10px;
 }
 
-.body .contents .contents-box .form-group .form input[type="file"] {
-    border: 1px solid #ff7a00;
-    color: #2E1301;
+.form-group input[type="file"] {
+  border: 1px solid #ff7a00;
+  color: #2E1301;
+  background-color: white;
 }
 
-.body .contents .contents-box .form-group .form input[type="file"], input[type="email"] {
-    border: 1px solid #ff7a00;
-    color: #2E1301;
-    background-color: white;
-}
- 
-// Update btn
+/* Update Profile Button */
 .btn:hover {
-    background-color: #ff7a00;
+  background-color: #ff7a00;
 }
 
-.body .contents .contents-box .submit-button{
-    color: #F7F3EB;
-    background-color: #ff7a00;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 20px;
-}
-
-.body .contents .contents-box .submit-box {
-    margin-top: 5%;
+.submit-box .submit-button {
+  color: #F7F3EB;
+  background-color: #ff7a00;
+//   padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 20px;
 }

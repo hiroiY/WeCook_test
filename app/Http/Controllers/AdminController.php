@@ -9,10 +9,12 @@ use App\Models\Dish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth; 
 
 class AdminController extends Controller
 {
     protected $user;
+    protected $post;
 
     public function __construct(User $user, Post $post)
     {
@@ -40,8 +42,12 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
+        if (Auth::check() && Auth::user()->isAdmin()) {
             $all_users = User::with('posts')->withTrashed()->latest()->paginate(10);
-        return view('admin.usermanagement', compact('all_users'));
+            return view('admin.usermanagement', compact('all_users'));
+        } else {
+            return redirect('/')->with('error', 'Access denied');
+        }    
     }
     public function deactivate($id)
     {
@@ -56,8 +62,12 @@ class AdminController extends Controller
     }
     public function postmanagement()
     {
+        if (Auth::check() && Auth::user()->isAdmin()) {
         $all_posts = Post::withTrashed()->latest()->paginate(10);
-        return view('admin.postmanagement', compact('all_posts'));
+            return view('admin.postmanagement', compact('all_posts'));
+        }else {
+            return redirect('/')->with('error', 'Access denied');
+        }
     }
     public function activatePost($id)
     {

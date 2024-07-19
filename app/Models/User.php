@@ -65,4 +65,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class)->latest();
     }
+    public function isAdmin()
+    {
+        return $this->role_id === 1;
+    }
 }
