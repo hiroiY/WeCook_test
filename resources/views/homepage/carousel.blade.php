@@ -7,32 +7,32 @@
 >
   <div class="carousel-inner carousel_menu">
     <div class="carousel-item active is-active">
-      <a href="">
+      {{-- <a href=""> --}}
         <div class="appetizer h-100">
-          <h1>appetizer</h1>
+          <p>appetizer</p>
         </div>
-      </a>
+      {{-- </a> --}}
     </div>
     <div class="carousel-item">
-      <a href="">
-        <div class="sidedish h-100">
-          <h1>side dish</h1>
-        </div>
-      </a>
-    </div>
-    <div class="carousel-item">
-      <a href="">
-          <div class="maindish h-100">
-            <h1>main dish</h1>
+      {{-- <a href=""> --}}
+          <div class="sidedish h-100">
+            <p>side dish</p>
           </div>
-      </a>
+      {{-- </a> --}}
     </div>
     <div class="carousel-item">
-      <a href="">
+      {{-- <a href=""> --}}
+            <div class="maindish h-100">
+              <p>main dish</p>
+            </div>
+      {{-- </a> --}}
+    </div>
+    <div class="carousel-item">
+      {{-- <a href=""> --}}
         <div class="dessert h-100">
-          <h1>dessert</h1>
+          <p>dessert</p>
         </div>
-      </a>
+      {{-- </a> --}}
     </div>
   </div>
   <button 

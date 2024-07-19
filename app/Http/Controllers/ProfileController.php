@@ -10,41 +10,87 @@ use App\Models\User;
 
 class ProfileController extends Controller
 {
+    // public function profile_edit($id)
+    // {
+    //     $user = User::find($id);
+    //     return view('profile_edit', compact('user'));
+    // }
     public function profile_edit($id)
     {
         $user = User::find($id);
+        // $user = $this->user->findOrFail(Auth::user()->id);
         return view('profile_edit', compact('user'));
     }
 
-    public function profile_update(Request $request, $id)
-    {
-        $user = User::find($id);
+//     public function profile_update(Request $request, $id)
+// {
+//     $request->validate([
+//         'name' => 'required|unique:users,name,' . Auth::user()->id,
+//         'email' => 'required|email|unique:users,email,' . Auth::user()->id,
+//         'avatar' => 'nullable|image|max:1048'
+//     ]);
 
-        if (Auth::user()->id !== $user) {
-            return redirect()->back()->with('error', 'User not found.');
-        }
+//     $user = Auth::user();
+//     $user->name = $request->name;
+//     $user->email = $request->email;
 
-        $request->validate([
-            'name' => 'required|unique:users,name,' . $id,
-            'email' => 'required|email|unique:users,email,' . $id,
-            'avatar' => 'nullable|image|max:1048'
-        ]);
+//     if ($request->hasFile('avatar')) {
+//         if ($user->avatar) {
+//             Storage::disk('public')->delete($user->avatar);
+//         }
+//         $avatarPath = $request->file('avatar')->store('avatars', 'public');
+//         $user->avatar = $avatarPath;
+//     }
 
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
+//     $user->save();
 
-        if ($request->hasFile('avatar')) {
-            // 古いアバターの削除
-            if ($user->avatar) {
-                Storage::disk('public')->delete($user->avatar);
+//     if ($request->expectsJson()) {
+//         return response()->json([
+//             'message' => 'Profile updated successfully!',
+//             'avatarUrl' => Storage::url($user->avatar)
+//         ]);
+//     }
+
+//     return redirect()->route('myrecipe', $user->id)->with('success', 'Profile updated successfully!');
+// }
+
+public function profile_update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|unique:users,name,' . Auth::user()->id,
+        'email' => 'required|email|unique:users,email,' . Auth::user()->id,
+        'avatar' => 'nullable|image|max:1048'
+    ]);
+
+    $user = Auth::user();
+    $user->name = $request->name;
+    $user->email = $request->email;
+
+    if ($request->hasFile('avatar')) {
+        if ($user->avatar) {
+            $oldAvatarPath = public_path('avatars/' . basename($user->avatar));
+            if (file_exists($oldAvatarPath)) {
+                unlink($oldAvatarPath);
             }
-            // 新しいアバターの保存
-            $avatarPath = $request->file('avatar')->store('avatars', 'public');
-            $user->avatar = $avatarPath;
         }
 
-        $user->save();
-
-        return redirect()->route('myrecipe', Auth::user()->id)->with('success', 'Profile updated successfully!');
+        $avatarFile = $request->file('avatar');
+        $avatarPath = 'avatars/' . uniqid() . '.' . $avatarFile->getClientOriginalExtension();
+        $avatarFile->move(public_path('avatars'), $avatarPath);
+        $user->avatar = $avatarPath;
     }
+
+    $user->save();
+
+    if ($request->expectsJson()) {
+        return response()->json([
+            'message' => 'Profile updated successfully!',
+            'avatarUrl' => asset($user->avatar)
+        ]);
+    }
+
+    return redirect()->route('myrecipe', $user->id)->with('success', 'Profile updated successfully!');
+}
+
+
 }
