@@ -2,7 +2,6 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- has popper already -->
 @vite(['resources/sass/admin.scss'])
 
 @section('content')
@@ -45,6 +44,12 @@
                             value="{{ isset($search_username) ? $search_username : '' }}"
                         >
                     </form>
+                    <div class="col-6 search_results" name="search">
+                        <p class="h4 mb-4">Search results for &nbsp;
+                            "<span style="color: #e45900">{{ $search_username }}</span>
+                            " ... ({{ $total_results }})
+                        </p>
+                    </div>
                     {{-- Table --}}
                     <table class="table table-sm table-hover">
                         <thead class="small">
@@ -60,43 +65,98 @@
                         </thead>
                         <tbody>
                             @foreach($searched_username as $user)
-                                <tr class="grab" >
-                                    <td class="p-3">
-                                        {{-- Modal --}}
-                                        @include('admin.modal.user_status', ['user'=>$user])
-                                        @if($user->trashed())
-                                            <button class="dropdown-item text-success" 
-                                                    data-bs-toggle="modal" 
-                                                    data-bs-target="#activate-user-{{ $user->id }}"
-                                                    data-user-id="{{ $user->id }}">
-                                                <i class="fa-solid fa-eye-slash fa-xl my-3"></i>
-                                            </button>
-                                        @else
-                                            <button class="dropdown-item text-danger" 
-                                                    data-bs-toggle="modal" 
-                                                    data-bs-target="#deactivate-user-{{ $user->id }}"
-                                                    data-user-id="{{ $user->id }}">
-                                                <i class="fa-solid fa-eye fa-eye-orange fa-xl my-3"></i>
-                                            </button>
-                                        @endif
-                                    </td>
-                                    <td class="p-3">
-                                        @if($user->avatar)
-                                            <img src="{{ $user->avator }}" 
-                                                alt="{{ $user->name }}" 
-                                            >
-                                        @else <i class="fa-regular fa-circle-user fa-2x"></i>
-                                        @endif                                    
-                                    </td>
-                                    <td class="p-3">
-                                        <a href="#" class="textdecoration-none">{{ $user->name }}</a>
-                                    </td>
-                                    <td class="p-3">{{ $user->email }}</td>
-                                    <td class="p-3">{{ $user->posts()->count() }}</td>
-                                    <td class="p-3">{{ $user->created_at }}</td>
-                                    <td class="p-3">{{ $user->deleted_at }}</td>
-                                </tr> 
-                            @endforeach
+                            <tr class="grab" >
+                                <td 
+                                    style="vertical-align:middle"
+                                    class="p-3"
+                                >
+                                    {{-- Modal --}}
+                                    @include('admin.modal.user_status', ['user'=>$user])
+                                    @if($user->trashed())
+                                        <button 
+                                        class="dropdown-item text-success" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#activate-user-{{ $user->id }}"
+                                        data-user-id="{{ $user->id }}"
+                                        >
+                                            <i class="fa-solid fa-eye-slash fa-xl my-3"></i>
+                                        </button>
+                                    @else
+                                        <button 
+                                        class="dropdown-item text-danger" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#deactivate-user-{{ $user->id }}"
+                                        data-user-id="{{ $user->id }}"
+                                        >
+                                            <i class="fa-solid fa-eye fa-eye-orange fa-xl my-3"></i>
+                                        </button>
+                                    @endif
+                                </td>
+                                <td style="vertical-align:middle"
+                                    class="p-3">
+                                    @if($user->avatar)
+                                        <img 
+                                        src="{{ $user->avatar }}" 
+                                        alt="{{ $user->name }}" 
+                                        class="rounded-circle avatar-lg ms-2 thumb"
+                                        >
+                                    @else
+                                        <img 
+                                        src="{{asset('/images//profile_icon.png')}}" 
+                                        alt="{{ $user->name }}" 
+                                        class="rounded-circle avatar-lg ms-2 thumb"
+                                        >
+                                    @endif
+                                
+                                </td>
+                                <td 
+                                style="vertical-align:middle"
+                                class="p-3"
+                                >
+                                    <a 
+                                    href="{{ route('myrecipe', ['id' => $user->id]) }}"
+                                    class="textdecoration-none"
+                                    >
+                                        {{ $user->name }}
+                                    </a>
+                                </td>
+                                <td 
+                                style="vertical-align:middle"
+                                class="p-3"
+                                >
+                                    {{ $user->email }}
+                                </td>
+                                <td 
+                                style="vertical-align:middle"
+                                class="p-3"
+                                >
+                                    @if($user->posts->isNotEmpty())
+                                        <a 
+                                        href="{{ route('writer', ['post_id' 
+                                        => $user->posts->first()->id, 'user_id' 
+                                        => $user->id]) }}"
+                                        class="textdecoration-none"
+                                        >
+                                            {{ $user->posts()->count() }}
+                                        </a>
+                                    @else
+                                        {{ $user->posts()->count() }}
+                                    @endif
+                                </td>
+                                <td 
+                                style="vertical-align:middle"
+                                class="p-3"
+                                >
+                                    {{ $user->created_at }}
+                                </td>
+                                <td 
+                                style="vertical-align:middle"
+                                class="p-3"
+                                >
+                                    {{ $user->deleted_at }}
+                                </td>
+                            </tr> 
+                        @endforeach
                         </tbody>
                     </table>
                     {{ $searched_username->links() }}

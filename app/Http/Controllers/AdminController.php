@@ -24,19 +24,38 @@ class AdminController extends Controller
 
     public function search_username(Request $request){
         $search_username = $request->input('search_username');
+
+        // for counting the result
+        $total_results = User::where('name', 'like', '%'. $search_username . '%')
+        ->withTrashed()
+        ->count();
+
         $searched_username = User::where('name', 'like', '%'. $search_username . '%')
         ->withTrashed()
         ->latest()
         ->paginate(10);
-        return view ('admin.search_user', compact('searched_username')) ;
+
+        // for pagination
+        $searched_username->appends(['search_username' => $search_username]);
+
+        return view ('admin.search_user', compact('searched_username', 'search_username', 'total_results')) ;
     }
     public function search_post(Request $request){
         $search_post = $request->input('search_post');
+
+        $total_results = Post::where('title', 'like', '%'. $search_post . '%')
+        ->withTrashed()
+        ->count();
+
         $searched_post = Post::where('title', 'like', '%'. $search_post . '%')
         ->withTrashed()
         ->latest()
         ->paginate(10);
-        return view ('admin.search_post', compact('searched_post')) ;
+
+        // for pagination
+        $searched_post->appends(['search_post' => $search_post]);
+
+        return view('admin.search_post', compact('searched_post', 'search_post', 'total_results'));
     }
 
 
