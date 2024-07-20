@@ -10,7 +10,6 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 >
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- has popper already -->
 
 @vite(['resources/sass/admin.scss'])
 
@@ -53,6 +52,10 @@
                             style="font-family: Bootstrap-icons; width: 400px"
                         >
                     </form>
+                    <div class="col-6 search_results" name="search">
+                        <p class="h4 mb-4">Search results for &nbsp;
+                            "<span style="color: #e45900">{{ $search_post }}</span>" ... ({{ $total_results }})</p>
+                    </div>
                     {{-- Table --}}
                     <table class="table table-sm table-hover">
                         <thead class="small">
@@ -70,38 +73,81 @@
                         <tbody>
                             @foreach($searched_post as $post)
                             <tr>
-                                <td class="pt-4">
+                                <td style="vertical-align:middle"
+                                    class="">
                                     {{-- Modal --}}
                                     @include('admin.modal.post_status', ['post'=>$post])
                                     @if($post->trashed())
-                                        <button class="dropdown-item text-success" 
-                                                data-bs-toggle="modal" 
-                                                data-bs-target="#activate-post-{{ $post->id }}"
-                                                data-post-id="{{ $post->id }}">
-                                            <i class="fa-solid fa-eye-slash fa-xl my-3"
-                                                style="vertical-align:middle"></i>
+                                        <button 
+                                        class="dropdown-item text-success" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#activate-post-{{ $post->id }}"
+                                        data-post-id="{{ $post->id }}"
+                                        >
+                                            <i 
+                                            class="fa-solid fa-eye-slash fa-xl my-3"
+                                            style="vertical-align:middle"
+                                            ></i>
                                         </button>
                                     @else
-                                        <button class="dropdown-item text-danger" 
-                                                data-bs-toggle="modal" 
-                                                data-bs-target="#deactivate-post-{{ $post->id }}"
-                                                data-post-id="{{ $post->id }}">
+                                        <button 
+                                        class="dropdown-item text-danger" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#deactivate-post-{{ $post->id }}"
+                                        data-post-id="{{ $post->id }}"
+                                        >
                                             <i class="fa-solid fa-eye fa-eye-orange fa-xl my-3"></i>
                                         </button>
                                     @endif
                                 </td>
-                                <td class="p-3 photo">
-                                    <a href="#">
+                                <td 
+                                style="vertical-align:middle"
+                                class="p-3 photo"
+                                >
+                                    <a 
+                                    href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}"
+                                    >
                                         <div class="thumb">
-                                            <img src="{{ asset($post->photo) }}" 
+                                            @if($post->photo)
+                                                <img 
+                                                src="{{ $post->photo }}" 
                                                 alt="post-photo" 
-                                                class="img-fluid">
+                                                class="img-fluid"
+                                                >
+                                            @else
+                                                <img 
+                                                src="{{ asset('/images/recipe_photos/weCook.png') }}" 
+                                                alt="{{ $post->title }}" 
+                                                class="food-photo img-fluid"
+                                                >
+                                            @endif
                                         </div>
                                     </a>
                                 </td>
-                                <td style="vertical-align:middle">{{ $post->title }}</td>
-                                <td style="vertical-align:middle">{{ $post->user->name }}</td>
-                                <td style="vertical-align:middle">{{ $post->comments_count ?? 0 }}</td>
+                                <td style="vertical-align:middle">
+                                    <a 
+                                    href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}"
+                                    class="textdecoration-none"
+                                    >
+                                        {{ $post->title }}
+                                    </a>
+                                </td>
+                                <td style="vertical-align:middle">
+                                    <a
+                                    href="{{ route('myrecipe', ['id' => $post->user->id]) }}"
+                                    class="textdecoration-none"
+                                    >
+                                        {{ $post->user->name }}
+                                    </a>
+                                </td>
+                                <td style="vertical-align:middle">
+                                    <a 
+                                    href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}#comment"
+                                    class="textdecoration-none"
+                                    >
+                                        {{ $post->comment_count ?? 0 }}
+                                </a>
+                                </td>
                                 <td style="vertical-align:middle">{{ $post->dish->name }}</td>
                                 <td style="vertical-align:middle">{{ $post->created_at }}</td>
                                 <td style="vertical-align:middle">{{ $post->deleted_at }}</td>
