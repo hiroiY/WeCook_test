@@ -91,8 +91,8 @@
                                         class="p-3">
                                         @if($user->avatar)
                                             <img 
-                                            src="{{ $writer->avatar }}" 
-                                            alt="{{ $writer->name }}" 
+                                            src="{{ $user->avatar }}" 
+                                            alt="{{ $user->name }}" 
                                             class="rounded-circle avatar-lg ms-2 thumb"
                                             >
                                         @else

@@ -56,11 +56,21 @@
               <div class="col-1 d-none d-lg-block">
                 @auth
                   @if($post->isBookmarked())
-                    <a href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}">
+                    <a 
+                      href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}"
+                      class="bookmark-btn"
+                      data-bookmark="{{ $post->id }}" 
+                      id="bookmark-{{ $post->id }}"
+                    >
                       <i class="fa-solid fa-bookmark"></i>
                     </a>
                   @else
-                    <a href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}">
+                    <a 
+                      href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}"
+                      class="bookmark-btn"
+                      data-bookmark="{{ $post->id }}" 
+                      id="bookmark-{{ $post->id }}"
+                    >
                       <i class="fa-regular fa-bookmark"></i>
                     </a>
                   @endif
@@ -96,14 +106,14 @@
                       @auth
                         @if($post->isBookmarked())
                           <a 
-                            class="dropdown-item  tog-icon" 
+                            class="dropdown-item  tog-icon bookmark-btn" 
                             href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}"
                           >
                             <i class="fa-solid fa-bookmark"></i>
                           </a>
                         @else
                           <a 
-                            class="dropdown-item tog-icon" 
+                            class="dropdown-item tog-icon bookmark-btn" 
                             href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}"
                           >
                             <i class="fa-regular fa-bookmark"></i>
