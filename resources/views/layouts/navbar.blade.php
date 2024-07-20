@@ -109,7 +109,7 @@
                 >
                   @if (Auth::user()->avatar)
                     <img 
-                      src="{{ asset(Auth::user()->avatar) }}" 
+                      src="{{ Auth::user()->avatar }}" 
                       alt="{{ Auth::user()->name }}" 
                       class="rounded-circle avatar-lg"
                     >
