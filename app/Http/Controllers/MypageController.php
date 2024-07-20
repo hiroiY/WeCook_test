@@ -85,7 +85,7 @@ class MypageController extends Controller
     }
 
 
-    public function mybookmark(Request $request)
+    public function mybookmark(Request $request, $id)
     {
         // $user = Auth::user();
         // if (!$user) {

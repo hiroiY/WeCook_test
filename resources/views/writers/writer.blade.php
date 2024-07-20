@@ -42,7 +42,7 @@
 >
   @if($writer->avatar)
     <img 
-      src="{{-- $writer->avatar --}}" 
+      src="{{ Auth::user()->avatar }}" 
       alt="{{-- $writer->name --}}" 
       class="rounded-circle avatar-lg ms-3"
     >
