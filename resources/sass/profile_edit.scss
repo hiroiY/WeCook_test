@@ -1,11 +1,10 @@
 /* Side Bar */
 .sidebar {
     background-color: #2E1301;
-    width: 200px;
-    height: 100vh;
-    padding: 20px;
+    width: 12em;
+    height: 100%;
+    padding: 2em;
     color: #F7F3EB;
-    margin-right: 80px;
     font-size: 1.3rem;
 }
 .sidebar .selected {
@@ -22,6 +21,7 @@
 /* Body */
 .body {
   background-color: #F7F3EB;
+  font-family: "Nunito";
 }
 
 /* Contents */
@@ -72,6 +72,12 @@
   font-size: 1.5rem;
 }
 
+.form-group .current-avatar{
+  height: 6.72em;
+  width: 7.28em;
+  object-fit: cover;
+  // object-position: center;
+}
 .form-group input {
   width: 100%;
   padding: 10px;
@@ -85,7 +91,7 @@
 }
 
 .file-info {
-  color: #2E1301;
+  color: #e45700d8;
   margin-top: 10px;
 }
 
