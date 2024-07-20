@@ -13,9 +13,6 @@
                 <li class="breadcrumb-item">
                     <a href="{{ route('home') }}">Home</a>
                 </li>
-                <!-- {{-- <li class="breadcrumb-item" style="color:black;">
-                    <a href="{{ route('home') }}" style="color:black;">Cook Chef</a> --}} -->
-                </li>
                 <li class="breadcrumb-item current-reciprname" aria-current="page">{{ $recipe->title }}</li>
             </ol>
         </nav>
@@ -37,7 +34,7 @@
                     class="writer-name d-flex py-auto"
                 >
                     @if ($recipe->user->avatar)
-                        <img src="{{ $recipe->user->avatar }}" alt="{{ $recipe->user->name }}" class="chef-icon mr-2 rounded-circle">
+                        <img src="{{ Auth::user()->avatar }}" alt="{{ $recipe->user->name }}" class="chef-icon mr-2 rounded-circle">
                     @else
                         <img src="{{ asset('/images/profile_icon.png') }}" alt="{{ $recipe->user->name }}" class="chef-icon mr-2 rounded-circle">
                     @endif

@@ -24,17 +24,31 @@
         @csrf
         @method('PATCH')
 
-        {{-- Recipe image input --}}
-        <div class="mb-4">
-          <label for="recipeimage" class="form-label h3">Recipe image</label>
-          <input type="file" name="image" id="recipeimage" class="form-control recipe-inp" aria-describedby="recipeimage-info">
-          <div class="form-text" id="recipeimage-info">
-              The acceptable formats are jpeg, jpg, png and gif only. <br>
-              Max file size is 1048kB.
-              {{-- error handling --}}
-              @error('image')
-                  <div class="text-danger small">{{ $message }}</div>
-              @enderror
+        {{-- Recipe current image --}}
+        <div class="row my-3">
+          <div class="col-5">
+            <label for="recipeimage" class="form-label h3">Current image</label>
+            <img src="{{ $post->photo }}" alt="current image" class="img-thumbnail d-block mx-auto">
+          </div>
+
+          {{-- Recipe image arrow --}}
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-arrow-right align-items-center" style="font-size: 5rem;"></i>
+          </div>
+
+        {{-- Recipe new image input --}}
+          <div class="col">
+            <label for="recipeimage" class="form-label h3">New image</label>
+            <img class="img-thumbnail d-block" src="" alt="new image">
+            <input type="file" name="image" id="recipeimage" class="form-control recipe-inp" aria-describedby="recipeimage-info">
+            <div class="form-text" id="recipeimage-info">
+                The acceptable formats are jpeg, jpg, png and gif only. <br>
+                Max file size is 1048kB.
+                {{-- error handling --}}
+                @error('image')
+                    <div class="text-danger small">{{ $message }}</div>
+                @enderror
+            </div>
           </div>
         </div>
 
