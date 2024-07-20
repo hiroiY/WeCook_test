@@ -9,6 +9,8 @@
 .navbar img {
   height: 2.4em;
   width: 2.6em;
+  object-fit: cover;
+  // object-position: center;
 }
 .wecook{
   font-size:2.2rem;
@@ -18,7 +20,7 @@
 .we {
   color: #E45900;
 }
-.navbar a {
+.navbar-expand-lg a {
   text-decoration: none;
   font-weight: bold;
   color: #F7F3EB;
@@ -26,8 +28,8 @@
     color: inherit;
   }
 }
-.navbar a:visited,
-.navbar a:hover{
+.navbar-expand-lg a:visited,
+.navbar-expand-lg a:hover{
   color: inherit;
 }
 .account button{
@@ -48,12 +50,12 @@ color: #F7F3EB;
   background-color: #2E1301;
   color: inherit;
 }
-.account div a:visited{
-  background-color: inherit;
-  color: inherit;
+.navbar-nav .account div a:visited{
+  background-color: #2E1301;
+  color: #F7F3EB;
   font-weight: bold;
 }
-.account div a:hover{
+.navbar-nav .account div a:hover{
   background-color: #F7F3EB;
   color: #2E1301;
   font-weight: bold;

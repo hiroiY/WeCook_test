@@ -40,21 +40,45 @@
                     <!-- Avatar -->
                     <div class="form-group">
                         <label for="avatar">Avatar</label>
-                        <input type="file" class="form-control" name="avatar" aria-describedby="image-info">
+                        <div class="d-flex justify-content-center">
+                        @if(Auth::user()->avatar)
+                            <img src="{{ Auth::user()->avatar }}" alt="{{  Auth::user()->avatar }}'s avatar"
+                            class="current-avatar me-4">
+                            <i class="fa-solid fa-arrow-right my-auto"></i>
+                        @endif
+                        <input type="file" class="form-control my-auto ms-4"  name="avatar" aria-describedby="image-info">
+                        </div>
+                       
                         <div class="file-info mt-2" id="file-info">
                             The acceptable formats are jpeg, jpg, png and gif only.<br>
                             Max file size is 1048kB.
                         </div>
+                        @error('avatar')
+                            <p class="alert alert-danger text-danger small fw-bold">
+                                {{ $message }}
+                            </p>
+                        @enderror
                     </div>
                     <!-- Username -->
                     <div class="form-group">
                         <label for="name" class="form-label" style="font-size: 1.5rem;">Username</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="{{ Auth::user()->name }}">
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Username" value="{{ old('email',Auth::user()->name) }}">
+                        @error('name')
+                            <p class="alert alert-danger text-danger small fw-bold">
+                                {{ $message }}
+                            </p>
+                        @enderror
                     </div>
                     <!-- Email Address -->
                     <div class="form-group">
                         <label for="email" class="form-label" style="font-size: 1.5rem;">Email address</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Email Address">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" value="{{ old('email',Auth::user()->email) }}">
+
+                        @error('email')
+                            <p class="alert alert-danger text-danger small fw-bold">
+                                {{ $message }}
+                            </p>
+                        @enderror
                     </div>
                     <!-- Submit Button -->
                     <div class="submit-box mt-5">

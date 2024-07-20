@@ -9,7 +9,16 @@
                     <div class="card-itself container-fluid">
                         <div class="myrecipe-header d-flex justify-content-between align-items-center">
                             <div>
-                                <p class="card-title">{{ \Illuminate\Support\Str::limit($post->title, 15) }}</p>
+                                <a 
+                                href="{{ route('detailrecipe',
+                                ['post_id'=>$post->id, 
+                                'user_id'=>$post->user->id]) }}"
+                                style="text-decoration: none"
+                                >
+                                    <p class="card-title">
+                                        {{ \Illuminate\Support\Str::limit($post->title, 15) }}
+                                    </p>
+                                </a>
                             </div>
                             <div>
                                 <a href="{{ route('editmyrecipe', $post->id) }}">
@@ -18,7 +27,16 @@
                             </div>                                                        
                         </div>
                         <div class="image-container">
-                            <img src="{{ $post->photo }}" alt="" class="img-fluid"/>
+                            <a 
+                            href="{{ route('detailrecipe',
+                            ['post_id'=>$post->id, 
+                            'user_id'=>$post->user->id]) }}"
+                            style="text-decoration: none"
+                            >
+                                <img 
+                                src="{{ $post->photo }}" 
+                                alt="" class="img-fluid"/>
+                            </a>
                         </div>
                         <div class="myrecipe-footer d-flex justify-content-between align-items-center">
                             <div>
