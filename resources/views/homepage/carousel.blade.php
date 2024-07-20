@@ -2,7 +2,7 @@
 <!-- @vite(['resources/js/carousel.js']) -->
 <div 
   id="carouselAutoplaying" 
-  class="carousel slide"
+  class="carousel slide m-0"
   data-bs-ride="carousel"
 >
   <div class="carousel-inner carousel_menu">

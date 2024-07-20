@@ -2,22 +2,29 @@
 .appetizer{
   background: url('/public/images/homepage/appetizer.jpg') center;
   background-size: cover;
-  box-shadow: inset 0 -10em 12em #5c5c5c
+  box-shadow: inset 0 -10em 12em #5c5c5c;
+  width: 100%;
 }
 .sidedish{
   background: url('/public/images/homepage/sidedish.png') center;
   background-size: cover;
-  box-shadow: inset 0 -10em 15em #5c5c5c
+  box-shadow: inset 0 -10em 15em #5c5c5c;
+  width: 100%;
 }
 .maindish{
   background: url('/public/images/homepage/maindish.jpg') center;
   background-size: cover;
-  box-shadow: inset 0 -10em 15em #5c5c5c
+  box-shadow: inset 0 -10em 15em #5c5c5c;
+  width: 100%;
 }
 .dessert{
   background: url('/public/images/homepage/dessert.png') center;
   background-size: cover;
-  box-shadow: inset 0 -10em 15em #5c5c5c
+  box-shadow: inset 0 -10em 15em #5c5c5c;
+  width: 100%;
+}
+.carousel {
+  height: 30%;
 }
 .carousel .carousel-item {
   text-decoration: none;
@@ -29,15 +36,10 @@
 //   color: #f7f3eb;
 // }
 .carousel-item p {
-  font-size: 5.5em;
+  display: flex;
+  justify-content: center;
+  font-size: 5em;
   font-weight: bold;
   text-transform: uppercase;
-  width: max-content;
-  height: max-content ;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+  padding-top: .45em;
 }
