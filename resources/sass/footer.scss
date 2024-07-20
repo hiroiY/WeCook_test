@@ -37,6 +37,19 @@ body, td {
 .disabled-link:hover {
     text-decoration: none;
 }
+#searchbar{
+    width: 20em;
+    height: 2em;
+    outline: 1px solid #F7F3EB;
+    border-radius: 0.5rem;
+    background-color: #2E1301;
+    padding: 0.7em;
+    color: #F7F3EB;
+    font-family: Bootstrap-icons, "Nunito";
+  } 
+  #searchbar::placeholder{
+    color: #887569;
+  }
 
 .footer #searchbar{
     width: 20em;

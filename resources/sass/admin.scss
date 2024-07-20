@@ -95,16 +95,17 @@ table {
     cursor: pointer;
 	color: #F7F3EB;
 }
-.photo{
-    width: 100px;
-    height: 30px;
+.photo img{
+    width: 100%;
+    height:100%;
+    border-radius: 15%;
     object-fit: cover;
     padding: 5px;
 }
 .thead{
     font-size: 18px;
 }
-.thumb img{
+.thumb {
     width: 70px;
     height: 70px;
     border-radius: 10%;
