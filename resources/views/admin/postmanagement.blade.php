@@ -10,7 +10,6 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 >
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> has popper already -->
 
 @vite(['resources/sass/admin.scss'])
 
@@ -107,7 +106,7 @@
                                         <div class="thumb">
                                             @if($post->photo)
                                                 <img 
-                                                src="{{ asset($post->photo) }}" 
+                                                src="{{ $post->photo }}" 
                                                 alt="post-photo" 
                                                 class="img-fluid"
                                                 >

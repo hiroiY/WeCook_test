@@ -3,6 +3,19 @@
     background-color: #f7f3eb;
 }
 
+// Breadcrumb section styling
+#breadcrumb-section {
+    font-weight: bold;
+    align-items: center;
+}
+#breadcrumb-section a {
+    color: #887569;
+}
+#breadcrumb-section i {
+    color: #887569;
+    margin: auto 0.4em;
+}
+
 // Border colour for the inputs
 input.recipe-inp,
 select.recipe-inp,

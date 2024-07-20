@@ -10,6 +10,15 @@
 <div class="container">
   <div class="row justify-content-center">
 
+    {{-- Breadcrumb --}}
+    <div class="breadcrumb my-4" id="breadcrumb-section">
+      <a href="{{ route('home') }}">Home</a>
+      <i class="fa-solid fa-angle-right"></i>
+      <a href="{{ route('myrecipe', ['id' => Auth::user()->id]) }}">{{ Auth::user()->name }}</a>
+      <i class="fa-solid fa-angle-right"></i>
+      <span class="" style="color: #e45900;">{{ $post->title }}</span>
+    </div>
+
     {{-- Edit recipe form --}}
     <form action="{{ route('updatemyrecipe', $post->id) }}" method="post" enctype="multipart/form-data">
       @csrf

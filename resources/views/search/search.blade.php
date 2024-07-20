@@ -13,7 +13,7 @@
 >
   <div class="col-6 search_results" name="search">
       <p class="h4 mb-4">Search results for &nbsp;
-        "<span class="keyword fw-bold" keyword="search" id="keyword"></span>" ... ({{ $recipes->count() }})</p>
+        "<span>{{ $search }}</span>" ... ({{ $recipes->count() }})</p>
   </div>
 </div>
 
