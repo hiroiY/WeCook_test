@@ -17,11 +17,6 @@ class ProfileController extends Controller
         $this->user= $user;
     }
 
-    // public function profile_edit($id)
-    // {
-    //     $user = User::find($id);
-    //     return view('profile_edit', compact('user'));
-    // }
     public function profile_edit($id)
     {
         $user = User::find($id);
@@ -61,50 +56,50 @@ class ProfileController extends Controller
 //     return redirect()->route('myrecipe', $user->id)->with('success', 'Profile updated successfully!');
 // }
 
-public function profile_update(Request $request, $id)
-{
-    $user = $this->user->findOrFail($id);
-
-    if(Auth::user()->id !== $user->id) 
+    public function profile_update(Request $request, $id)
     {
-        return redirect()->route('home');
-    }
+        $user = $this->user->findOrFail($id);
 
-    $request->validate([
-        'name' => 'required|min:1|unique:users,name,' . Auth::user()->id,
-        'email' => 'required|email|unique:users,email,' . Auth::user()->id,
-        'avatar' => 'mimes:jpeg,png,jpg,gif,svg|max:1048'
-    ]);
+        if(Auth::user()->id !== $user->id) 
+        {
+            return redirect()->route('home');
+        }
 
-    $user->name = $request->name;
-    $user->email = $request->email;
+        $request->validate([
+            'name' => 'required|min:1|unique:users,name,' . Auth::user()->id,
+            'email' => 'required|email|unique:users,email,' . Auth::user()->id,
+            'avatar' => 'mimes:jpeg,png,jpg,gif,svg|max:1048'
+        ]);
 
-    if ($request->hasFile('avatar')) {
-        $user->avatar = 'data:image/' . $request->avatar->extension() . ';base64,' . base64_encode(file_get_contents($request->avatar));
-        // if ($user->avatar) {
-        //     $oldAvatarPath = public_path('avatars/' . basename($user->avatar));
-        //     if (file_exists($oldAvatarPath)) {
-        //         unlink($oldAvatarPath);
-        //     }
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if ($request->hasFile('avatar')) {
+            $user->avatar = 'data:image/' . $request->avatar->extension() . ';base64,' . base64_encode(file_get_contents($request->avatar));
+            // if ($user->avatar) {
+            //     $oldAvatarPath = public_path('avatars/' . basename($user->avatar));
+            //     if (file_exists($oldAvatarPath)) {
+            //         unlink($oldAvatarPath);
+            //     }
+            // }
+
+            // $avatarFile = $request->file('avatar');
+            // $avatarPath = 'avatars/' . uniqid() . '.' . $avatarFile->getClientOriginalExtension();
+            // $avatarFile->move(public_path('avatars'), $avatarPath);
+            // $user->avatar = $avatarPath;
+        }
+
+        $user->save();
+
+        // if ($request->expectsJson()) {
+        //     return response()->json([
+        //         'message' => 'Profile updated successfully!',
+        //         'avatarUrl' => asset($user->avatar)
+        //     ]);
         // }
 
-        // $avatarFile = $request->file('avatar');
-        // $avatarPath = 'avatars/' . uniqid() . '.' . $avatarFile->getClientOriginalExtension();
-        // $avatarFile->move(public_path('avatars'), $avatarPath);
-        // $user->avatar = $avatarPath;
+        return redirect()->back();
     }
-
-    $user->save();
-
-    // if ($request->expectsJson()) {
-    //     return response()->json([
-    //         'message' => 'Profile updated successfully!',
-    //         'avatarUrl' => asset($user->avatar)
-    //     ]);
-    // }
-
-    return redirect()->back();
-}
 
 
 }

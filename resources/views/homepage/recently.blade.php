@@ -43,10 +43,11 @@
                   </h4>
                 </a>
               </div>
-              <div class="col-auto px-0 d-none d-lg-block">
+               <!-- transit to the comment area -->
+               <div class="col-auto px-0 d-none d-lg-block">
                 <a href="{{ route('detailrecipe',
                   ['post_id'=>$post->id, 
-                  'user_id'=>$post->user->id]) }}">
+                  'user_id'=>$post->user->id]) }}/#comment-start">
                   &#xf086; 
                   <span>
                     {{ $post->comment->count() }}
