@@ -9,7 +9,16 @@
                     <div class="card-itself container-fluid">
                         <div class="myrecipe-header d-flex justify-content-between align-items-center">
                             <div>
-                                <p class="card-title">{{ \Illuminate\Support\Str::limit($post->title, 15) }}</p>
+                                <a 
+                                href="{{ route('detailrecipe',
+                                ['post_id'=>$post->id, 
+                                'user_id'=>$post->user->id]) }}"
+                                style="text-decoration: none"
+                                >
+                                <p class="card-title">
+                                    {{ \Illuminate\Support\Str::limit($post->title, 15) }}
+                                </p>
+                            </a>
                             </div>
                             <div>
                                 <a href="{{ route('editmyrecipe', $post->id) }}">
@@ -18,13 +27,29 @@
                             </div>                                                        
                         </div>
                         <div class="image-container">
-                            <img src="{{ $post->photo }}" alt="" class="img-fluid"/>
+                            <a 
+                            href="{{ route('detailrecipe',
+                            ['post_id'=>$post->id, 
+                            'user_id'=>$post->user->id]) }}"
+                            style="text-decoration: none"
+                            >
+                                <img 
+                                src="{{ $post->photo }}" 
+                                alt="" class="img-fluid"/>
+                            </a>
                         </div>
                         <div class="myrecipe-footer d-flex justify-content-between align-items-center">
                             <div>
-                                <i class="comment-icon fa-regular fa-comments"></i>
-                                <!-- <span class="comment-text fw-bold">{{ $post->comments->count() }}</span> -->
+                                <a 
+                                href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}#comment-start"
+                                style="text-decoration: none"
+                                >
+                                    <i class="comment-icon fa-regular fa-comments"></i>
+                                    <!-- <span class="comment-text fw-bold">
+                                        {{ $post->comments->count() }}
+                                    </span> -->
                                 <span class="comment-text fw-bold">{{ $post_counts[$post->id]['comments'] ?? 0 }}</span>
+                                </a>
                             </div>
                             <div>
                                 <i class="bookmark-icon fa-regular fa-bookmark"></i>
