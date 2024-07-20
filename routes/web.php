@@ -29,9 +29,9 @@ Route::controller(HomeController::class)->group(function() {
 
 //My page
 Route::controller(MypageController::class)->group(function() {
-    Route::get('/mypage/myrecipe/{id}', 'myrecipe')->name('myrecipe');
+    Route::get('/mypage/{id}/myrecipe', 'myrecipe')->name('myrecipe');
     Route::get('/mypage/myrecipe/appetizer', 'appetizer')->name('appetizer');
-    Route::get('/mypage/mybookmark/{id}', 'mybookmark')->name('mybookmark');
+    Route::get('/mypage/{id}/mybookmark', 'mybookmark')->name('mybookmark');
 });
 
 //Writers page
