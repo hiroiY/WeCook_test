@@ -97,7 +97,7 @@
                     <li  style="width: auto; margin-right: 1em; padding-right:0;">
                       <a 
                         class="dropdown-item tog-icon" 
-                        href="{{ route('detailrecipe', ['post_id'=>$post->id, 'user_id'=>$post->user->id]) }}"
+                        href="{{ route('detailrecipe', ['post_id'=>$post->id, 'user_id'=>$post->user->id]) }}/#comment-start"
                       >
                         &#xf086; 
                         <span>{{ $post->comment->count() }}</span>
