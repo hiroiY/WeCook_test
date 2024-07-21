@@ -2,35 +2,35 @@
 <!-- @vite(['resources/js/carousel.js']) -->
 <div 
   id="carouselAutoplaying" 
-  class="carousel slide m-0"
+  class="carousel slide m-0" 
   data-bs-ride="carousel"
 >
   <div class="carousel-inner carousel_menu">
     <div class="carousel-item active is-active">
       {{-- <a href=""> --}}
-        <div class="appetizer h-100">
-          <p>appetizer</p>
+        <div class="appetizer d-flex justify-content-center">
+          <span>appetizer</span>
         </div>
       {{-- </a> --}}
     </div>
     <div class="carousel-item">
       {{-- <a href=""> --}}
-          <div class="sidedish h-100">
-            <p>side dish</p>
+          <div class="sidedish d-flex justify-content-center">
+            <span>side dish</span>
           </div>
       {{-- </a> --}}
     </div>
     <div class="carousel-item">
       {{-- <a href=""> --}}
-            <div class="maindish h-100">
-              <p>main dish</p>
+            <div class="maindish d-flex justify-content-center">
+              <span>main dish</span>
             </div>
       {{-- </a> --}}
     </div>
     <div class="carousel-item">
       {{-- <a href=""> --}}
-        <div class="dessert h-100">
-          <p>dessert</p>
+        <div class="dessert d-flex justify-content-center">
+          <span>dessert</span>
         </div>
       {{-- </a> --}}
     </div>

@@ -4,42 +4,64 @@
   background-size: cover;
   box-shadow: inset 0 -10em 12em #5c5c5c;
   width: 100%;
+  height: 100%;
 }
 .sidedish{
   background: url('/public/images/homepage/sidedish.png') center;
   background-size: cover;
   box-shadow: inset 0 -10em 15em #5c5c5c;
   width: 100%;
+  height: 100%;
 }
 .maindish{
   background: url('/public/images/homepage/maindish.jpg') center;
   background-size: cover;
   box-shadow: inset 0 -10em 15em #5c5c5c;
   width: 100%;
+  height: 100%;
 }
 .dessert{
   background: url('/public/images/homepage/dessert.png') center;
   background-size: cover;
   box-shadow: inset 0 -10em 15em #5c5c5c;
   width: 100%;
+  height: 100%;
 }
 .carousel {
-  height: 30%;
+  height: 28%;
 }
 .carousel .carousel-item {
+  height: 100%;
   text-decoration: none;
   color: #f7f3eb;
   font-family: "Playfair Display SC";
+  span {
+    font-size: 5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    height: max-content;
+    margin: auto;
+  }
 }
 // .carousel .carousel-item a :hover
 // {
 //   color: #f7f3eb;
 // }
-.carousel-item p {
-  display: flex;
-  justify-content: center;
-  font-size: 5em;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding-top: .45em;
+
+@media (max-width: 992px)
+ {
+  .carousel
+  {
+    height: 19%;
+    .carousel-item 
+    {
+      span {
+        font-size: 3em;
+        font-weight: bold;
+        text-transform: uppercase;
+        height: max-content;
+        margin: auto;
+      }
+    }
+  } 
 }

@@ -1,8 +1,5 @@
-
-@vite([
-    'resources/sass/footer.scss',
-    'resources/js/search_keyword.js'
-])
+@vite(['resources/sass/footer.scss'])
+@vite(['resources/js/search_keyword.js'])
 <div class="footer py-5 footer-custom">
     <div class="container">
         <div class="row">
@@ -15,8 +12,8 @@
                 </h1>
             </a>
             <div class="col-md-2 footer-section">
-                @guest
-                    <ul class="list-unstyled my-3">
+                <ul class="list-unstyled my-3">
+                    @guest
                         <li class="my-3">
                             <a href="{{ route('login') }}">Log in</a>
                         </li>
@@ -35,9 +32,7 @@
                             {{ __('Register') }}
                             </a>
                         </li>
-                    </ul>
-                @else
-                    <ul class="list-unstyled my-3">
+                    @else
                         <li class="my-3 disabled-link">
                             Log in
                         </li>
@@ -60,23 +55,20 @@
                             {{ __('Register') }}
                             </a>
                         </li>
-                    </ul>
-                @endguest
-                <ul class="navbar-nav m-auto">
-                    <form action="{{ route('search') }}" class="my-auto" method="GET">
-                        <input 
+                    @endguest
+                </ul>
+                <form action="{{ route('search') }}" class="my-auto d-flex" method="GET" role="search" for="search">
+                    <input 
                         type="search" 
                         name="search" 
                         id="searchbar" 
-                        class="form-control" 
+                        class="form-control"  
                         placeholder=" &#xF52A; Search all recipe !" 
-                        value="{{ old('search') }}"
-                        autofocus
-                        >
-                        <input type="submit" style="display: none;">
-                    </form>
-                    </ul>
-
+                        aria-label="Search"
+                        required
+                    >
+                    <input type="submit" style="display: none;">
+                </form>
             </div>
             <div class="col-md-2 footer-section">
                 @guest
@@ -153,7 +145,7 @@
                         </li>
                         <li class="my-3">
                                 <a
-                                href="{{-- route('profile.show', Auth::user()->id) --}}"
+                                href="{{ route('profile_edit', Auth::user()->id) }}"
                                 >
                                 Edit Profile
                                 </a>                        

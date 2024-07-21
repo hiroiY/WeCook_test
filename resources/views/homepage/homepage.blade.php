@@ -4,7 +4,6 @@
     'resources/sass/homepage.scss',
     'resources/js/tabs_pagination.js'
 ])
-<!-- @vite([ 'resources/js/bookmarks.js']) -->
 
 @section('content')
 <!-- Top image Carousel -->

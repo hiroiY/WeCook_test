@@ -3,7 +3,7 @@
 @vite(['resources/js/search_keyword.js'])
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <nav 
-  class="navbar navbar-expand-lg navbar-dark shadow-sm py-2"
+  class="navbar navbar-expand-lg navbar-dark top-nav py-2"
 >
   <div class="container-fluid">
     <a 
@@ -19,6 +19,7 @@
         <span class="we">We</span>Cook
       </span>
     </a>
+
     <button 
       class="navbar-toggler" 
       type="button" 
@@ -30,7 +31,6 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div 
       class="collapse navbar-collapse px-5 mt-1" 
       id="navbarSupportedContent"
@@ -39,7 +39,8 @@
       <!-- Search bar -->
       <ul class="navbar-nav me-auto">
         <form 
-          action="{{ route('search') }}" class="my-auto" 
+          action="{{ route('search') }}" 
+          class="my-auto" 
           method="GET" 
           role="search"
         >
@@ -52,6 +53,7 @@
             aria-label="Search"
             value="{{ old('search') }}"
             autofocus
+            required
           >
           <input type="submit" style="display: none;">
         </form>
@@ -205,7 +207,7 @@
           
           <li class="nav-item">
             <a 
-              class="nav-link ms-2" 
+              class="nav-link ms-2 logout-btn" 
               data-bs-toggle="modal" 
               data-bs-target="#logoutModal"
               style="cursor: pointer;"
