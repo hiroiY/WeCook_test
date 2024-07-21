@@ -3,7 +3,7 @@
 @vite(['resources/js/search_keyword.js'])
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <nav 
-  class="navbar navbar-expand-lg navbar-dark top-nav py-2"
+  class="navbar navbar-expand-lg top-nav py-2"
 >
   <div class="container-fluid">
     <a 
@@ -24,8 +24,8 @@
       class="navbar-toggler" 
       type="button" 
       data-bs-toggle="collapse" 
-      data-bs-target="#navbarSupportedContent" 
-      aria-controls="navbarSupportedContent" 
+      data-bs-target="#navbarContent" 
+      aria-controls="navbarContent" 
       aria-expanded="false" 
       aria-label="{{ __('Toggle navigation') }}"
     >
@@ -33,7 +33,7 @@
     </button>
     <div 
       class="collapse navbar-collapse px-5 mt-1" 
-      id="navbarSupportedContent"
+      id="navbarContent"
     >
       <!-- Left Side Of Navbar -->
       <!-- Search bar -->
@@ -218,6 +218,6 @@
         @endguest
       </ul>
     </div>
-  @include('modals.logout')
+    @include('modals.logout')
   </div>
 </nav>
