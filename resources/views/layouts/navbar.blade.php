@@ -108,6 +108,7 @@
                 <button 
                   id="account-dropdown"
                   data-bs-toggle="dropdown"
+                  class="pe-0 ms-2"
                 >
                   @if (Auth::user()->avatar)
                     <img 
@@ -175,6 +176,7 @@
                   <button 
                     id="account-dropdown"
                     data-bs-toggle="dropdown"
+                    class="pe-0 ms-2"
                   >
                     Admin
                   </button>
@@ -205,9 +207,9 @@
               </li>
             </span>
           
-          <li class="nav-item">
+          <li class="nav-item ms-2">
             <a 
-              class="nav-link ms-2 logout-btn" 
+              class="nav-link logout-btn" 
               data-bs-toggle="modal" 
               data-bs-target="#logoutModal"
               style="cursor: pointer;"

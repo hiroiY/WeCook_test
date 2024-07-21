@@ -98,6 +98,10 @@ color: #F7F3EB;
     .navbar-nav 
     {
       text-align: right;
+      .nav-link{
+        width: max-content;
+        margin-left: auto;
+      }
       .account li .dropdown-menu
       {
         text-align: right;
@@ -105,7 +109,7 @@ color: #F7F3EB;
       }
       .account li .dropdown-item
       {
-        width: min-content;
+        width: max-content;
         margin-left: auto;
         color: #F7F3EB;
       }
