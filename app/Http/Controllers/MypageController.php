@@ -94,7 +94,7 @@ class MypageController extends Controller
         $loggedInUser = Auth::user();
         $user = User::findOrFail($id);
     
-        if (!$loggedInUser || (!$loggedInUser->isAdmin() && $loggedInUser->id != $user->id)) {
+        if (!$loggedInUser || (!$loggedInUser->user->isAdmin() && $loggedInUser->id != $user->id)) {
             return redirect()->route('login'); // ログインしていない、またはアクセス権がない場合、ログインページへリダイレクト
         }
 
