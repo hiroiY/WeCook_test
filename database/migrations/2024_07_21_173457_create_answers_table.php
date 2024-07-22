@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('post_id')->constrained()->onDelete('cascade');
             $table->foreignID('user_id')->constrained()->onDelete('cascade');
+            $table->foreignID('question_id')->constrained();
             $table->string('body',300);
             $table->timestamps();
             $table->softDeletes();

@@ -26,16 +26,16 @@
         >
           <i class="fa-solid fa-file-circle-question"></i>
           Q&A&nbsp;
-          <span>({{-- $recipe->all_questions->count() --}})</span>
+          <span>({{ $recipe->questions()->count() }})</span>
         </li>
       </ul>
 
         <!-- tab_panel area/ text here! -->
       <div class="tab_panel">
         <!-- Comment area -->
-        @include('comment_qestion.comment')
+        @include('comment_question.comment')
         <!-- Question area -->
-        @include('comment_qestion.qestion')
+        @include('comment_question.question')
       </div>
     </div>
   </div>

@@ -17,7 +17,8 @@ class Answer extends Model
     {
         return $this->belongsTo(Post::class)->withTrashed();
     }
-    public function question() {
-        return $this->hasOne(Answer::class);
+    public function question() 
+    {
+        return $this->belongsTo(Question::class);
     }
 }

@@ -12,6 +12,9 @@ use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\AnswerController;
+use App\Models\Answer;
 
 Auth::routes();
 // require __DIR__ . '/auth.php';
@@ -108,3 +111,7 @@ Route::controller(AdminController::class)->group(function()
 //My page Profile
 Route::get('/mypage/profile_edit/{id}', [ProfileController::class, 'profile_edit'])->name('profile_edit');
 Route::patch('/mypage/profile_update/{id}', [ProfileController::class, 'profile_update'])->name('profile_update');
+
+//Q&A
+Route::post('/recipe/{post_id}/question', [QuestionController::class, 'storeQuestion'])->name('question');
+Route::post('/recipe/{question_id}/answer', [AnswerController::class, 'storeAnswer'])->name('answer');
