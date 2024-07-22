@@ -2,8 +2,7 @@
 
 @vite([
     'resources/sass/homepage.scss',
-    'resources/js/tabs_pagination.js',
-    'resources/js/bookmarks.js'
+    'resources/js/tabs_pagination.js'
 ])
 
 @section('content')

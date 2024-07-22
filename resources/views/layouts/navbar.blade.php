@@ -170,7 +170,7 @@
             {{-- Admin management Dropdown Button --}}
             <span class="account">
               <li 
-                class="nav-item dropdown mt-2 ms-3"
+                class="nav-item dropdown mt-2 ms-2"
               >
                 @if(Auth::check() && Auth::user()->role_id === 1)
                   <button 
@@ -207,7 +207,7 @@
               </li>
             </span>
           
-          <li class="nav-item ms-3">
+          <li class="nav-item ms-2">
             <a 
               class="nav-link logout-btn" 
               data-bs-toggle="modal" 
