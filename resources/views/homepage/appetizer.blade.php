@@ -57,23 +57,53 @@
               <div class="col-1 d-none d-lg-block">
                 @auth
                   @if($post->isBookmarked())
-                    <a 
+                  <form 
+                    action="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}" 
+                    method="post"
+                  >
+                    @csrf
+                    @method('DELETE')
+                    <button 
+                      type="submit"
+                      class="bookmark-btn"
+                      data-bookmark="{{ $post->id }}" 
+                      id="bookmark-{{ $post->id }}"
+                    >
+                      <i class="fa-solid fa-bookmark"></i>
+                    </button>
+                  </form>
+                    
+                    <!-- <a 
                       href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}"
                       class="bookmark-btn"
                       data-bookmark="{{ $post->id }}" 
                       id="bookmark-{{ $post->id }}"
                     >
                       <i class="fa-solid fa-bookmark"></i>
-                    </a>
+                    </a> -->
                   @else
-                    <a 
+                    <form 
+                      action="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}" 
+                      method="post"
+                    >
+                      @csrf
+                      <button 
+                        type="submit"
+                        class="bookmark-btn"
+                        data-bookmark="{{ $post->id }}" 
+                        id="bookmark-{{ $post->id }}"
+                      >
+                        <i class="fa-regular fa-bookmark"></i>
+                      </button>
+                    </form>
+                    <!-- <a 
                       href="{{ route('bookmark.toggle', ['post_id' => $post->id]) }}"
                       class="bookmark-btn"
                       data-bookmark="{{ $post->id }}" 
                       id="bookmark-{{ $post->id }}"
                     >
                       <i class="fa-regular fa-bookmark"></i>
-                    </a>
+                    </a> -->
                   @endif
                 @endauth
               </div>

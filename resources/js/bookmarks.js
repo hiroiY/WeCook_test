@@ -33,31 +33,37 @@
 //         });
 //     });
 // });
+
 $(document).ready(function() {
-    $('.bookmark-btn').on('click', function() {
+    $('.bookmark-btn').on('click', function(e) {
+        e.preventDefault();
         console.log('Bookmark button clicked');
         var postId = $(this).data('id');
         var icon = $(this).find('i');
 
         $.ajaxSetup({
-            headers: {
+            headers: 
+            {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
         $.ajax({
-            url: '/bookmark/click/' + postId, 
+            url: '/bookmark/toggle/' + postId, 
             type: 'POST',
-            success: function(response) {
-                if (response.bookmarked) {
+            success: function(response) 
+            {
+                if (response.bookmarked) 
+                {
                     icon.removeClass('fa-regular fa-bookmark').addClass('fa-solid fa-bookmark');
-                } else {
+                } else 
+                {
                     icon.removeClass('fa-solid fa-bookmark').addClass('fa-regular fa-bookmark');
                 }
             },
             error: function() {
                 alert('エラーが発生しました。');
             }
-        });        
+        });
     });
 });
