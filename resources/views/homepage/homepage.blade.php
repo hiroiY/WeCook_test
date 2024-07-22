@@ -4,11 +4,10 @@
     'resources/sass/homepage.scss',
     'resources/js/tabs_pagination.js'
 ])
-<!-- @vite([ 'resources/js/bookmarks.js']) -->
 
 @section('content')
 <!-- Top image Carousel -->
-<div class="w-100 h-25" id="top">
+<div class="w-100" id="top">
     @include('homepage.carousel')
 </div>
 

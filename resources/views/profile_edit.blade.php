@@ -46,7 +46,7 @@
                             class="current-avatar me-4">
                             <i class="fa-solid fa-arrow-right my-auto"></i>
                         @endif
-                        <input type="file" class="form-control my-auto ms-4"  name="avatar" aria-describedby="image-info">
+                        <input type="file" class="form-control my-auto ms-4"  name="avatar" id="avatar" aria-describedby="image-info">
                         </div>
                        
                         <div class="file-info mt-2" id="file-info">

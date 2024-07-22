@@ -1,12 +1,12 @@
-.navbar-expand-lg{
+.top-nav{
   font-family: "Nunito";
   color:#F7F3EB;
   background-color: #2E1301;
 }
-.navbar-expand-lg .container-fluid {
+.top-nav .container-fluid {
   background-color: #2E1301;
 }
-.navbar img {
+.top-nav img {
   height: 2.4em;
   width: 2.6em;
   object-fit: cover;
@@ -20,7 +20,7 @@
 .we {
   color: #E45900;
 }
-.navbar-expand-lg a {
+.top-nav a {
   text-decoration: none;
   font-weight: bold;
   color: #F7F3EB;
@@ -28,11 +28,11 @@
     color: inherit;
   }
 }
-.navbar-expand-lg a:visited,
-.navbar-expand-lg a:hover{
+ .top-nav a:visited,
+ .top-nav a:hover{
   color: inherit;
 }
-.account button{
+.top-nav .account button{
   font-weight: bold;
   text-decoration: inherit;
   color: #F7F3EB;
@@ -46,25 +46,26 @@
 #account-dropdown:hover{
 color: #F7F3EB;
 }
-.account div{
+.top-nav .account div{
   background-color: #2E1301;
   color: inherit;
 }
-.navbar-nav .account div a:visited{
+.top-nav .navbar-nav .account div a:visited{
   background-color: #2E1301;
   color: #F7F3EB;
   font-weight: bold;
 }
-.navbar-nav .account div a:hover{
+.top-nav .navbar-nav .account div a:hover{
   background-color: #F7F3EB;
   color: #2E1301;
   font-weight: bold;
 }
-.navbar form{
+.top-nav form{
   max-width: 100%;
   min-width: 20em;
 }
 #searchbar{
+  width: 18em;
   height: 2em;
   outline: 1px solid #F7F3EB;
   border-radius: 0.5rem;
@@ -78,45 +79,49 @@ color: #F7F3EB;
 }
 
 //Responsive style
-.navbar-dark button.navbar-toggler{
-  border-color: rgba(0, 0, 0, 0);
-  :visited {
-    border-color: rgba(0, 0, 0, 0);
+.navbar-toggler
+{
+  border-color: transparent;
+  &:focus 
+  {
+    box-shadow:none !important;
+    outline: none !important;
   }
-  :active{
-    border-color: rgba(0, 0, 0, 0);
-  }
-}
-.navbar-expand-lg button.navbar-toggler.collapse{
-  border-color: rgba(0, 0, 0, 0);
-  :visited {
-   border-color: rgba(0, 0, 0, 0);
-  }
-  :active{
-    border-color: rgba(0, 0, 0, 0);
+  .navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(247, 243, 235,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
   }
 }
-
 @media (max-width: 992px)
  {
-  .navbar-nav 
+  .top-nav 
   {
-    text-align: right;
-    .account li .dropdown-menu
+    .navbar-nav 
     {
       text-align: right;
-      border: transparent;
-    }
-    .account li .dropdown-item
-    {
-      width: min-content;
-      margin-left: auto;
-      color: #F7F3EB;
-    }
-    .account li .dropdown-item:hover
+      .nav-link{
+        width: max-content;
+        margin-left: auto;
+      }
+      .account li .dropdown-menu
+      {
+        text-align: right;
+        border: transparent;
+      }
+      .account li .dropdown-item
+      {
+        width: max-content;
+        margin-left: auto;
+        color: #F7F3EB;
+      }
+      .account li .dropdown-item:hover
       {
         background-color: #F7F3EB;
         color: #2E1301;
       }
+      #searchbar
+      {
+        margin-left: auto;
+      }
+    }
   }
 }
