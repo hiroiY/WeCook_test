@@ -61,12 +61,12 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
-        if (Auth::check() && Auth::user()->isAdmin()) {
+        if (Auth::check() && Auth::user()->role_id === 1) {
             $all_users = User::with('posts')->withTrashed()->latest()->paginate(10);
             return view('admin.usermanagement', compact('all_users'));
         } else {
             return redirect('/')->with('error', 'Access denied');
-        }    
+        }
     }
     public function deactivate($id)
     {
@@ -81,7 +81,7 @@ class AdminController extends Controller
     }
     public function postmanagement()
     {
-        if (Auth::check() && Auth::user()->isAdmin()) {
+        if (Auth::check() && Auth::user()->role_id === 1) {
         $all_posts = Post::withTrashed()->latest()->paginate(10);
             return view('admin.postmanagement', compact('all_posts'));
         }else {
@@ -98,7 +98,7 @@ class AdminController extends Controller
     {
         $this->post->destroy($id);
         return redirect()->back();
-}
+    }
 
 
     public function userstatus(){                                 

@@ -40,21 +40,12 @@
                         </div>
                         <div class="myrecipe-footer d-flex justify-content-between align-items-center">
                             <div>
-                                <a 
-                                href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}#comment-start"
-                                style="text-decoration: none"
-                                >
-                                    <i class="comment-icon fa-regular fa-comments"></i>
-                                    <span 
-                                    class="comment-text fw-bold"
-                                    style="text-decoration: none"
-                                    >{{ $post->comments->count() }}
-                                    </span>
-                                </a>
+                                <i class="comment-icon fa-regular fa-comments"></i>
+                                <span class="comment-text fw-bold">{{ $post_counts[$post->id]['comments'] ?? 0 }}</span>
                             </div>
                             <div>
                                 <i class="bookmark-icon fa-regular fa-bookmark"></i>
-                                <span class="bookmark-text fw-bold">{{ $bookmark_counts[$post->id] ?? 0 }}</span>
+                                <span class="bookmark-text fw-bold">{{ $post_counts[$post->id]['bookmarks'] ?? 0 }}</span>
                             </div>
                         </div>
                     </div>
@@ -69,5 +60,5 @@
                 {{ $appetizer_posts->links() }}
             </div>
         </div>
-    </div>
-</div>
+   </div>
+</div> 
