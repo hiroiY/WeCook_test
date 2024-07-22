@@ -30,21 +30,21 @@ class MypageController extends Controller
 
     private function getPostsByDishId($user_id, $dishId, $page = 1, $perPage = 4)
     {
-        // Get the latest posts which match the specified dish_id
-        $get_posts = $this->post->where([
+        return $this->post->where([
             ['dish_id', '=', $dishId],
             ['user_id', '=', $user_id]
-        ])->latest()->get();
+        ])->latest()->paginate($perPage);
 
         // Slices the items displayed on the page.
         $items = $get_posts->slice(($page - 1) * $perPage, $perPage)->all();
 
         // Create LengthAwarePaginator instance 
         $paginatedItems = new LengthAwarePaginator($items, $get_posts->count(), $perPage, $page, ['path' => LengthAwarePaginator::resolveCurrentPath()]);
-        $paginatedItems->withPath("/mypage/myrecipe/$dishId");
+        $paginatedItems->withPath("/mypage/$user_id/myrecipe/$dishId");
 
         return $paginatedItems;
     }
+
 
     public function myrecipe(Request $request, $id)
     {
@@ -63,6 +63,14 @@ class MypageController extends Controller
         $sidedish_posts = $this->getPostsByDishId($id, 2, $page, 4);
         $maindish_posts = $this->getPostsByDishId($id, 3, $page, 4);
         $dessert_posts = $this->getPostsByDishId($id, 4, $page, 4);
+
+        // デバッグ: クエリの結果を確認
+        // dd([
+        //     'appetizer_posts' => $appetizer_posts,
+        //     'sidedish_posts' => $sidedish_posts,
+        //     'maindish_posts' => $maindish_posts,
+        //     'dessert_posts' => $dessert_posts,
+        // ]);
 
         // 各投稿のコメント数とブックマーク数を取得
         $post_counts = [];
@@ -87,10 +95,6 @@ class MypageController extends Controller
 
     public function mybookmark(Request $request, $id)
     {
-        // $user = Auth::user();
-        // if (!$user) {
-        //     return redirect()->route('login'); // ログインしていない場合、ログインページへリダイレクト
-        // }
         $loggedInUser = Auth::user();
         $user = User::findOrFail($id);
     
@@ -105,6 +109,14 @@ class MypageController extends Controller
         $sidedish_posts = Post::whereIn('id', $bookmarkedPostIds)->where('dish_id', 2)->paginate(4, ['*'], $page);
         $maindish_posts = Post::whereIn('id', $bookmarkedPostIds)->where('dish_id', 3)->paginate(4, ['*'], $page);
         $dessert_posts = Post::whereIn('id', $bookmarkedPostIds)->where('dish_id', 4)->paginate(4, ['*'], $page);
+
+        // デバッグ: クエリの結果を確認
+        // dd([
+        //     'appetizer_posts' => $appetizer_posts,
+        //     'sidedish_posts' => $sidedish_posts,
+        //     'maindish_posts' => $maindish_posts,
+        //     'dessert_posts' => $dessert_posts,
+        // ]);
 
         $appetizer_count = Bookmark::whereHas('post', function($query) {
             $query->where('dish_id', 1);
@@ -123,22 +135,33 @@ class MypageController extends Controller
         })->where('user_id', $user->id)->count();
 
         // ログインユーザーがブックマークしている投稿を取得
-        $bookmarkedPosts = Post::whereIn('id', function($query) use ($user) {
-        $query->select('post_id')
-              ->from('bookmarks')
-              ->where('user_id', $user->id);
-        })->get();
+        // $bookmarkedPosts = Post::whereIn('id', function($query) use ($user) {
+        // $query->select('post_id')
+        //       ->from('bookmarks')
+        //       ->where('user_id', $user->id);
+        // })->get();
 
-        $bookmark_counts = [];
-        $bookmarkedPostCounts = Bookmark::select('post_id', DB::raw('COUNT(*) as count'))
-            ->groupBy('post_id')
-            ->get();
+        // $bookmark_counts = [];
+        // $bookmarkedPostCounts = Bookmark::select('post_id', DB::raw('COUNT(*) as count'))
+        //     ->groupBy('post_id')
+        //     ->get();
 
-            foreach ($bookmarkedPostCounts as $count) {
-                $bookmark_counts[$count->post_id] = $count->count;
+        //     foreach ($bookmarkedPostCounts as $count) {
+        //         $bookmark_counts[$count->post_id] = $count->count;
+        //     }
+        
+        $post_counts = [];
+        foreach ([$appetizer_posts, $maindish_posts, $sidedish_posts, $dessert_posts] as $posts) {
+            foreach ($posts as $post) {
+                $post_counts[$post->id] = [
+                    'comments' => Comment::where('post_id', $post->id)->count(),
+                    'bookmarks' => Bookmark::where('post_id', $post->id)->count(),
+                ];
             }
+        }
 
-        return view('mypage.mybookmark', compact('appetizer_posts', 'maindish_posts', 'sidedish_posts', 'dessert_posts', 'user', 'appetizer_count', 'sidedish_count', 'maindish_count', 'dessert_count', 'bookmarkedPosts', 'bookmark_counts'));
+        return view('mypage.mybookmark', compact('appetizer_posts', 'maindish_posts', 'sidedish_posts', 'dessert_posts', 'user', 'appetizer_count', 'sidedish_count', 'maindish_count', 'dessert_count', 'post_counts'));
+        // 'bookmark_counts', 'bookmarkedPosts'
     }
 
 }
