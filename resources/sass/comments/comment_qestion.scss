@@ -130,6 +130,7 @@ img {
   width: max-content;
   margin-left: auto;
 }
+
 // Qestion Style
 .user_question
 {
@@ -156,6 +157,16 @@ img {
   position: absolute;
   top: 1.5em;
   right: -1em;
+}
+.questions .username
+{
+  max-width: 1em;
+  min-width: 2em;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 .user_answer
 {

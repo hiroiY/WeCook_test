@@ -3,7 +3,7 @@
 @vite(['resources/js/search_keyword.js'])
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <nav 
-  class="navbar navbar-expand-lg navbar-dark shadow-sm py-2"
+  class="navbar navbar-expand-lg top-nav py-2"
 >
   <div class="container-fluid">
     <a 
@@ -19,27 +19,28 @@
         <span class="we">We</span>Cook
       </span>
     </a>
+
     <button 
       class="navbar-toggler" 
       type="button" 
       data-bs-toggle="collapse" 
-      data-bs-target="#navbarSupportedContent" 
-      aria-controls="navbarSupportedContent" 
+      data-bs-target="#navbarContent" 
+      aria-controls="navbarContent" 
       aria-expanded="false" 
       aria-label="{{ __('Toggle navigation') }}"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div 
       class="collapse navbar-collapse px-5 mt-1" 
-      id="navbarSupportedContent"
+      id="navbarContent"
     >
       <!-- Left Side Of Navbar -->
       <!-- Search bar -->
       <ul class="navbar-nav me-auto">
         <form 
-          action="{{ route('search') }}" class="my-auto" 
+          action="{{ route('search') }}" 
+          class="my-auto" 
           method="GET" 
           role="search"
         >
@@ -52,6 +53,7 @@
             aria-label="Search"
             value="{{ old('search') }}"
             autofocus
+            required
           >
           <input type="submit" style="display: none;">
         </form>
@@ -106,6 +108,7 @@
                 <button 
                   id="account-dropdown"
                   data-bs-toggle="dropdown"
+                  class="pe-0 ms-2"
                 >
                   @if (Auth::user()->avatar)
                     <img 
@@ -173,6 +176,7 @@
                   <button 
                     id="account-dropdown"
                     data-bs-toggle="dropdown"
+                    class="pe-0 ms-2"
                   >
                     Admin
                   </button>
@@ -203,9 +207,9 @@
               </li>
             </span>
           
-          <li class="nav-item">
+          <li class="nav-item ms-2">
             <a 
-              class="nav-link ms-2" 
+              class="nav-link logout-btn" 
               data-bs-toggle="modal" 
               data-bs-target="#logoutModal"
               style="cursor: pointer;"
@@ -216,6 +220,6 @@
         @endguest
       </ul>
     </div>
-  @include('modals.logout')
+    @include('modals.logout')
   </div>
 </nav>

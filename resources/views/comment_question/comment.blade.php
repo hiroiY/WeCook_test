@@ -71,7 +71,7 @@
                 >
                   Edit
                 </button>
-                @include('comment_qestion.modal.comment_update')
+                @include('comment_question.modal.comment_update')
 
                 <form 
                   action="{{ route('delete.comment', $comment->id) }}" 
