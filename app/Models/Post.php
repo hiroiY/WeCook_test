@@ -81,4 +81,13 @@ class Post extends Model
     {
         return $this->belongsToMany(User::class, 'bookmarks')->withPivot('user_id', 'post_id');
     }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }

@@ -68,8 +68,13 @@ class RecipeController extends Controller
                         ->comment()
                         ->latest()
                         ->paginate(5);
+        // get all of questions
+        $all_questions = $recipe
+                        ->questions()
+                        ->latest()
+                        ->paginate(5);
 
-        return view('recipe.detailrecipe', compact('recipe','all_comments'));
+        return view('recipe.detailrecipe', compact('recipe','all_comments','all_questions'));
     }
 
     // Edit recipe method

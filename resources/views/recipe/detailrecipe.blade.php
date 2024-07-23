@@ -110,7 +110,6 @@
     {{-- landed place from the "jumo to the comment" button --}}
     <h5 id="comment-start"></h5>
     <!-- comment/Q&A area -->
-        @include('comment_qestion.comment_qa')
-    </section>
+    @include('comment_question.comment_qa')
 </div> 
 @endsection
