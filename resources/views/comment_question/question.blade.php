@@ -49,17 +49,17 @@
     <div class="p-3 mx-5 mb-3 questions">
       @foreach($all_questions as $question)
         <div class="row user_question ms-0">
-          <div class="col-1 p-0">
+          <div class="col-auto p-0">
           </div>
-          <div class="col-1 p-0 h-25 mt-5 ms-auto">
+          <div class="col-sm-1 p-0 h-25 mt-5 ms-auto text-end">
             <p 
-              class="text-uppercase small mx-auto pt-4" 
+              class="text-uppercase small ms-auto pt-4" 
               style="color: #4D1F0191;"
             >
             {{ date('M d, Y', strtotime($question->created_at)) }}
             </p>
           </div>
-          <div class="col-8 question_body px-4 d-flex">
+          <div class="col-8 question_body px-4 d-flex ms-2">
             <div class="my-auto p-1">
               <i class="fa-solid fa-q fa-3x"></i>
               <p class="qa_body"> {{ $question->body}} </p>
@@ -67,7 +67,7 @@
           </div>
           <div class="col-1 text-start user_account p-0 ms-0">
             @if($question->user->avatar)
-              <img src="{{-- $comment->user->avatar --}}" alt="" class="ms-3">
+              <img src="{{ $question->user->avatar }}" alt="{{ $question->user->name }}" class="ms-3">
               <p class="username my-auto p-1">{{ $question->user->name}}</p>
             @else
               <div class="ps-1">
@@ -103,7 +103,7 @@
                 </p>
               </div>
             </div>
-            <div class="col-1 mt-5 mx-auto">
+            <div class="col-1 mt-5 me-auto">
               <p 
                 class="text-uppercase small pt-4" 
                 style="color: #4D1F0191;"

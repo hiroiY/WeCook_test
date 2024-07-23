@@ -42,8 +42,8 @@
 >
   @if($writer->avatar)
     <img 
-      src="{{ Auth::user()->avatar }}" 
-      alt="{{-- $writer->name --}}" 
+      src="{{ $writer->avatar }}" 
+      alt="{{ $writer->name }}" 
       class="rounded-circle avatar-lg ms-3"
     >
   @else

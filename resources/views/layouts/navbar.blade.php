@@ -88,7 +88,7 @@
             {{-- NAVIGATION AREA --}}
             {{-- Create Post Button/link --}}
             <li 
-              class="nav-item" 
+              class="nav-item icon-menu" 
               title="Create Post"
             >
               <a 
@@ -104,11 +104,11 @@
 
             {{-- Account Dropdown Button --}}
             <span class="account" >
-              <li class="nav-item ms-3 dropdown">
+              <li class="nav-item ms-3 dropdown my-auto">
                 <button 
                   id="account-dropdown"
                   data-bs-toggle="dropdown"
-                  class="pe-0 ms-2"
+                  class="pe-0 ms-2 account-username"
                 >
                   @if (Auth::user()->avatar)
                     <img 
@@ -170,7 +170,7 @@
             {{-- Admin management Dropdown Button --}}
             <span class="account">
               <li 
-                class="nav-item dropdown mt-2 ms-2"
+                class="nav-item dropdown mt-2 ms-3"
               >
                 @if(Auth::check() && Auth::user()->role_id === 1)
                   <button 
@@ -207,7 +207,7 @@
               </li>
             </span>
           
-          <li class="nav-item ms-2">
+          <li class="nav-item ms-3 icon-menu">
             <a 
               class="nav-link logout-btn" 
               data-bs-toggle="modal" 
