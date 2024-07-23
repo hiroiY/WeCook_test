@@ -21,9 +21,11 @@
                                 </a>
                             </div>
                             <div>
-                                <a href="{{ route('editmyrecipe', $post->id) }}">
-                                    <i class="edit-icon fa-solid fa-pen"></i>
-                                </a>
+                                @if (Auth::user()->id === $post->user->id || Auth::user()->role_id === 1)
+                                    <a href="{{ route('editmyrecipe', $post->id) }}">
+                                        <i class="edit-icon fa-solid fa-pen"></i>
+                                    </a>
+                                @endif
                             </div>                                                        
                         </div>
                         <div class="image-container">
