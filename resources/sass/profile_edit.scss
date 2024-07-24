@@ -102,10 +102,6 @@
 }
 
 /* Update Profile Button */
-.btn:hover {
-  background-color: #ff7a00;
-}
-
 .submit-box .submit-button {
   color: #F7F3EB;
   background-color: #ff7a00;
@@ -114,4 +110,9 @@
   cursor: pointer;
   width: 100%;
   font-size: 20px;
+}
+
+.submit-box .submit-button:hover {
+  color: #F7F3EB;
+  background-color: #ff7a00;
 }
