@@ -22,11 +22,9 @@
 }
 .card a .card-title {
   text-shadow: none;
- }
-.card a .card-title {
-  text-shadow: none;
   color: #4D1F01;
   font-weight: bold;
+  text-transform: capitalize;
   // max-width: 9.2em;
   width: 100%;
   text-overflow: ellipsis;
@@ -42,7 +40,6 @@
   width: 100%;
   min-height: 6em;
   max-height: 8em;
-  overflow: hidden;
   display: -webkit-box;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;

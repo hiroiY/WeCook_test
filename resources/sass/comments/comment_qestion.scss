@@ -87,6 +87,8 @@ input::placeholder {
 img {
   width: 3.4em;
   height: 3.6em;
+  object-fit: cover;
+  border-radius: 50%;
 }
 .add {
   color: #F7F3EB;
@@ -160,8 +162,9 @@ img {
 }
 .questions .username
 {
-  max-width: 1em;
-  min-width: 2em;
+  max-width: 3em;
+  min-width: 5em;
+  overflow: hidden;
   display: -webkit-box;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;

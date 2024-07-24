@@ -46,6 +46,14 @@
 #account-dropdown:hover{
 color: #F7F3EB;
 }
+.top-nav .account .account-username {
+  max-width: 15em;
+  min-width: 10em;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .top-nav .account div{
   background-color: #2E1301;
   color: inherit;
@@ -102,22 +110,32 @@ color: #F7F3EB;
         width: max-content;
         margin-left: auto;
       }
-      .account li .dropdown-menu
-      {
-        text-align: right;
-        border: transparent;
-      }
-      .account li .dropdown-item
-      {
-        width: max-content;
-        margin-left: auto;
-        color: #F7F3EB;
-      }
-      .account li .dropdown-item:hover
-      {
-        background-color: #F7F3EB;
-        color: #2E1301;
-      }
+      .account {
+        li 
+        {
+          .dropdown-menu 
+          {
+            text-align: right;
+            border: transparent;
+          }
+          .dropdown-item
+          {
+            width: max-content;
+            margin-left: auto;
+            color: #F7F3EB;
+          }
+          .dropdown-item:hover
+          {
+            background-color: #F7F3EB;
+            color: #2E1301;
+          }
+          .account-username
+          {
+            text-align: right;
+          }
+        }
+      } 
+      
       #searchbar
       {
         margin-left: auto;
