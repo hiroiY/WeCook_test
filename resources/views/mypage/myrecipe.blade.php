@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-@vite(['resources/js/tabs.js'])
 @vite(['resources/sass/myrecipe.scss', 'resources/js/tabs_pagination.js'])
 
 @section('content')
@@ -60,8 +59,8 @@
       </h4>
     @endif
     <div
-      class="tab me-auto mt-5"
-      style="max-width: 97%; height: 1600px;"
+      class="tab me-auto my-5"
+      style="max-width: 97%; height: auto;"
       id="content-start"
     >
       <ul class="tab_menu m-0 p-0">

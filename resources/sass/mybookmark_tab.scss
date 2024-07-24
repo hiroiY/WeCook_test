@@ -64,6 +64,22 @@
     }
 }
 
+@media (max-width: 992px) 
+{
+  .row
+  {
+    .col-auto
+    {
+      display: none;
+    }
+
+    .col
+    {
+      margin-left: 2.5em;
+    }
+  }
+}
+
 // Paginate
 .pagination{
   padding:0 0 0 40%;

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-<!-- @vite(['resources/js/tabs.js']) -->
 @vite(['resources/sass/mybookmark.scss', 'resources/js/tabs_pagination.js'])
 
 @section('content')
