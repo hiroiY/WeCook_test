@@ -40,8 +40,13 @@
                         </div>
                         <div class="myrecipe-footer d-flex justify-content-between align-items-center">
                             <div>
-                                <i class="comment-icon fa-regular fa-comments"></i>
-                                <span class="comment-text fw-bold">{{ $post_counts[$post->id]['comments'] ?? 0 }}</span>
+                                <a 
+                                href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}#comment-start"
+                                style="text-decoration: none"
+                                >
+                                    <i class="comment-icon fa-regular fa-comments"></i>
+                                    <span class="comment-text fw-bold">{{ $post_counts[$post->id]['comments'] ?? 0 }}</span>
+                                </a>
                             </div>
                             <div>
                                 <i class="bookmark-icon fa-regular fa-bookmark"></i>

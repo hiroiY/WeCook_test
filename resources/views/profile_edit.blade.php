@@ -10,10 +10,10 @@
             <nav id="sidebarMenu" class="sidebar collapse d-lg-block">
                 <div class="position-sticky">
                     <div class="list-group-flush">
-                        <a href="{{ route('myrecipe', ['id' => Auth::user()->id]) }}" class="list-group-item list-group-item-action p-2 ripple unselected" aria-current="true">
+                        <a href="{{ route('myrecipe', ['id' => $user->id]) }}" class="list-group-item list-group-item-action p-2 ripple unselected" aria-current="true">
                             <span class="ms-auto">My Recipe</span>
                         </a>
-                        <a href="{{ route('mybookmark', ['id' => Auth::user()->id]) }}" class="list-group-item list-group-item-action p-2 ripple unselected">
+                        <a href="{{ route('mybookmark', ['id' => $user->id]) }}" class="list-group-item list-group-item-action p-2 ripple unselected">
                             <span>My Bookmark</span>
                         </a>
                         <a href="#" class="list-group-item list-group-item-action p-2 ripple selected">
@@ -33,7 +33,7 @@
                     <div class="my-4 breadcrumb">
                         <p>
                             <a href="{{ route('home') }}">Home</a> >
-                            <a href="{{ route('myrecipe', ['id' => Auth::user()->id]) }}">{{ Auth::user()->name }}</a> >
+                            <a href="{{ route('myrecipe', ['id' => $user->id]) }}">{{ $user->name }}</a> >
                             <a href="#" class="selected-breadcrumb">Profile Edit</a>
                         </p>
                     </div>
@@ -41,8 +41,8 @@
                     <div class="form-group">
                         <label for="avatar">Avatar</label>
                         <div class="d-flex justify-content-center">
-                        @if(Auth::user()->avatar)
-                            <img src="{{ Auth::user()->avatar }}" alt="{{  Auth::user()->avatar }}'s avatar"
+                        @if($user->avatar)
+                            <img src="{{ $user->avatar }}" alt="{{  $user->avatar }}'s avatar"
                             class="current-avatar me-4">
                             <i class="fa-solid fa-arrow-right my-auto"></i>
                         @endif
@@ -62,7 +62,7 @@
                     <!-- Username -->
                     <div class="form-group">
                         <label for="name" class="form-label" style="font-size: 1.5rem;">Username</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Username" value="{{ old('email',Auth::user()->name) }}">
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Username" value="{{ old('email',$user->name) }}">
                         @error('name')
                             <p class="alert alert-danger text-danger small fw-bold">
                                 {{ $message }}
@@ -72,8 +72,7 @@
                     <!-- Email Address -->
                     <div class="form-group">
                         <label for="email" class="form-label" style="font-size: 1.5rem;">Email address</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" value="{{ old('email',Auth::user()->email) }}">
-
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" value="{{ old('email',$user->email) }}">
                         @error('email')
                             <p class="alert alert-danger text-danger small fw-bold">
                                 {{ $message }}

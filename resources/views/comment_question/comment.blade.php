@@ -46,7 +46,7 @@
             <div class="row user_account w-100 ms-0 mb-0 justify-content-between">
               <div class="col-5 d-inline-flex ms-0 ps-0"> 
                 @if($comment->user->avatar)
-                  <img src="{{ asset('images\profile_icon.png') }}" alt="">
+                  <img src="{{ $comment->user->avatar }}" alt="">
                 @else
                   <img 
                     src="{{ asset('images\profile_icon.png') }}" 
@@ -98,7 +98,7 @@
             <div class="user_account d-inline-flex mb-1"> 
               @if($comment->user->avatar) 
                 <img 
-                  src="{{$comment->user()->avatar}}" 
+                  src="{{$comment->user->avatar}}" 
                   alt="{{$comment->user->name}}"
                 >
                 <p class="username my-auto p-1">
@@ -132,7 +132,7 @@
           <div class="user_account d-inline-flex mb-1"> 
             @if($comment->user->avatar) 
               <img 
-                src="{{$comment->user()->avatar}}" 
+                src="{{$comment->user->avatar}}" 
                 alt="{{$comment->user->name}}"
               >
               <p class="username my-auto p-1">
@@ -140,7 +140,7 @@
               </p>
             @else
               <img 
-                src="{{ asset('images\profile_icon.png') }}" 
+                src="{{('images\profile_icon.png') }}" 
                 alt="{{ $comment->user->name }}"
               >
               <p class="username my-auto p-1">

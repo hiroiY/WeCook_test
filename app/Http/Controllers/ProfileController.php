@@ -60,14 +60,14 @@ class ProfileController extends Controller
     {
         $user = $this->user->findOrFail($id);
 
-        if(Auth::user()->id !== $user->id) 
+        if(Auth::user()->id !== $user->id && Auth::user()->role_id === 2) 
         {
             return redirect()->route('home');
         }
 
         $request->validate([
-            'name' => 'required|min:1|unique:users,name,' . Auth::user()->id,
-            'email' => 'required|email|unique:users,email,' . Auth::user()->id,
+            'name' => 'required|min:1|unique:users,name,' . $user->id,
+            'email' => 'required|email|unique:users,email,' . $user->id,
             'avatar' => 'mimes:jpeg,png,jpg,gif,svg|max:1048'
         ]);
 
