@@ -143,7 +143,7 @@
               </p>
             @else
               <img 
-                src="{{ asset('images\profile_icon.png') }}" 
+                src="{{('images\profile_icon.png') }}" 
                 alt="{{ $comment->user->name }}"
               >
               <p class="username my-auto p-1">

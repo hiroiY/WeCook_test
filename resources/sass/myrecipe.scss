@@ -1,6 +1,9 @@
 // CSS
 /* homepage tab */
 // myrecipe.blade.php
+*{
+  font-family: "Nunito";
+}
 .sidebar {
   font-family: "Nunito";
   background-color: #2E1301;
@@ -68,4 +71,7 @@
 }
 .tab_panel-box.is-show {
   display: block;
+}
+.username{
+  color: #E45900;
 }
