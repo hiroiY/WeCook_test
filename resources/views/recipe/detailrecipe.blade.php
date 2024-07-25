@@ -51,21 +51,21 @@
             </h1>
             <div class="row">
                 <div class="col-6">
-                @if($recipe->photo)
-                    <img 
-                        src="{{ $recipe->photo }}" 
-                        alt="{{ $recipe->title }}" 
-                        class="food-photo"
-                    >
-                @else
-                    <img 
-                        src="{{ asset('/images/recipe_photos/weCook.png') }}" 
-                        alt="{{ $recipe->title }}" 
-                        class="food-photo"
-                    >
-                @endif
+                    @if($recipe->photo)
+                        <img 
+                            src="{{ $recipe->photo }}" 
+                            alt="{{ $recipe->title }}" 
+                            class="food-photo"
+                        >
+                    @else
+                        <img 
+                            src="{{ asset('/images/recipe_photos/weCook.png') }}" 
+                            alt="{{ $recipe->title }}" 
+                            class="food-photo"
+                        >
+                    @endif
                 </div>
-                <div class="col-4">
+                <div class="col-6">
                     <div class="detail-content">
                         <!-- dish-category here -->
                         <span 
@@ -75,7 +75,7 @@
                         </span>
 
                         <!-- cooking_time here -->
-                        <span class="cooking-time me-auto ps-2">
+                        <span class="cooking-time me-auto ms-3">
                             <i class="far fa-clock mr-2 fa-xl me-3"></i>
                             {{ $recipe->cooking_time }}
                         </span>

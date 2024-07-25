@@ -1,4 +1,7 @@
 // The js script for logout modal
+import * as bootstrap from 'bootstrap';
+window.bootstrap = bootstrap;
+
 document.addEventListener("DOMContentLoaded", function () {
     const logoutModal = new bootstrap.Modal(
         document.getElementById("logoutModal")

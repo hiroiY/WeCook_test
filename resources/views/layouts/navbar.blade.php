@@ -98,7 +98,7 @@
               >
                 <i class="fa-solid fa-pen-to-square">
                 </i>
-                  Create post
+                  Create Recipe
               </a>
             </li>
 
