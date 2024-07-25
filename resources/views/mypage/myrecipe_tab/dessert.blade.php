@@ -34,9 +34,19 @@
                             'user_id'=>$post->user->id]) }}"
                             style="text-decoration: none"
                             >
-                                <img 
-                                src="{{ $post->photo }}" 
-                                alt="" class="img-fluid"/>
+                                @if($post->photo)
+                                    <img 
+                                    src="{{ $post->photo }}" 
+                                    alt="post-photo" 
+                                    class="img-fluid"
+                                    >
+                                @else
+                                    <img 
+                                    src="{{ asset('/images/recipe_photos/weCook.png') }}" 
+                                    alt="{{ $post->title }}" 
+                                    class="food-photo img-fluid"
+                                    >
+                                @endif
                             </a>
                         </div>
                         <div class="myrecipe-footer d-flex justify-content-between align-items-center">

@@ -28,8 +28,20 @@
         <div class="row my-3">
           <div class="col-5">
             <label for="recipeimage" class="form-label h3">Current image</label>
-            <img src="{{ $post->photo }}" alt="current image" class="img-thumbnail d-block mx-auto">
-          </div>
+                @if($post->photo)
+                    <img 
+                    src="{{ $post->photo }}" 
+                    alt="post-photo" 
+                    class="img-fluid img-thumbnail"
+                    >
+                @else
+                    <img 
+                    src="{{ asset('/images/recipe_photos/ojisan.png') }}" 
+                    alt="{{ $post->title }}" 
+                    class="food-photo img-fluid img-thumbnail"
+                    >
+                @endif
+            </div>
 
           {{-- Recipe image arrow --}}
           <div class="col-2 d-flex justify-content-center align-items-center">
@@ -39,7 +51,7 @@
         {{-- Recipe new image input --}}
           <div class="col">
             <label for="recipeimage" class="form-label h3">New image</label>
-            <img class="img-thumbnail d-block" src="" alt="new image">
+            {{-- <img class="img-thumbnail d-block" src="" alt="new image"> --}}
             <input type="file" name="image" id="recipeimage" class="form-control recipe-inp" aria-describedby="recipeimage-info">
             <div class="form-text" id="recipeimage-info">
                 The acceptable formats are jpeg, jpg, png and gif only. <br>
@@ -105,13 +117,19 @@
 
 
         {{-- Delete recipe button --}}
+        @include('delete_recipe')
           <div class="mb-3">
-            <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#delete-post">Delete recipe</button>
+            <button type="button" 
+            class="btn w-100 btn-delete" 
+            data-bs-toggle="modal" 
+            data-bs-target="#delete-post">
+              Delete recipe <span></span>
+              <i class="fa-solid fa-trash-can btn-delete"></i>
+          </button>
           </div>
 
     </div>
   </div>
 </div>
-@include('delete_recipe')
 @endsection
 
