@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@vite(['resources/sass/mybookmark.scss', 'resources/js/tabs_pagination.js'])
+@vite(['resources/sass/mybookmark.scss', 'resources/js/mybookmark_tabs_pagination.js'])
 
 @section('content')
 <div class="row w-100">
@@ -57,8 +57,8 @@
       <h4 class="pt-5 ps-3">You are visiting <span style="color: #E45900">{{ $user->name }}</span>'s page</h4>
     @endif
     <div
-      class="tab me-auto mt-5"
-      style="max-width: 97%; height: 1600px;"
+      class="tab me-auto my-5"
+      style="max-width: 97%; height: auto;"
       id="content-start"
     >
       <ul class="tab_menu m-0 p-0">

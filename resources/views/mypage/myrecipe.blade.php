@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@vite(['resources/sass/myrecipe.scss', 'resources/js/tabs_pagination.js'])
+@vite(['resources/sass/myrecipe.scss', 'resources/js/mypage_tabs_pagination.js'])
 
 @section('content')
 <div class="row w-100">
