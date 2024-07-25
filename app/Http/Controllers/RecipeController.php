@@ -37,7 +37,7 @@ class RecipeController extends Controller
     // Add storeRecipe method
     public function storeRecipe(Request $request) 
     {
-        $createPost = $request->validate([
+        $request->validate([
             'photo' => 'mimes:jpeg,png,jpg,gif,svg|max:1048',
             'title' => 'required|min:1|max:150',
             'dish_category' => 'required',
