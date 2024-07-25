@@ -91,7 +91,7 @@
                             <a href="{{ route('home') }}#top">Home</a>
                         </li>
                         <li class="my-3">
-                            <a href="/createrecipe">Create Post</a>
+                            <a href="/createrecipe">Create Recipe</a>
                         </li>
                 @endguest
             </div>

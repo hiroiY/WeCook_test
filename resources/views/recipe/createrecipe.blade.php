@@ -102,7 +102,7 @@
                     </p>
                 @enderror
                 <!-- post recipe button -->
-                <button type="submit" class="publish-button mt-3">
+                <button type="submit" class="publish-button mt-4">
                     Publish your recipe!
                 </button>
             </form>
