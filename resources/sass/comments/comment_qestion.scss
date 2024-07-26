@@ -160,16 +160,57 @@ img {
   top: 1.5em;
   right: -1em;
 }
-.questions .username
+.questions 
 {
-  max-width: 3em;
-  min-width: 5em;
-  overflow: hidden;
-  display: -webkit-box;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  .username
+  {
+    max-width: 3em;
+    min-width: 5em;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+  .user_question
+    {
+      .edit-btn,
+      .delete-btn button
+      {
+        background-color: #4d1f0142;
+        color: #4d1f01b0;
+        font-weight: bold;
+        border: none;
+        box-shadow: none;
+        border-radius: 1em;
+        box-shadow: .1em .08rem .1em #8875699a;
+      }
+      .qa_body {
+        height: auto;
+        display: inline-block;
+        position: absolute;
+        top: auto;
+        bottom: 30%;
+        left: 6%;
+        right: 0;
+        margin: auto auto -.3% 2%;
+      }
+    }
+  .user_answer  
+  {
+    .edit-btn,
+    .delete-btn button
+    {
+      background-color: #4d1f0142;
+      color: #4d1f01b0;
+      font-weight: bold;
+      border: none;
+      box-shadow: none;
+      border-radius: 1em;
+      box-shadow: .1em .08rem .1em #8875699a;
+    }
+  }
 }
 .user_answer
 {
@@ -186,6 +227,16 @@ img {
   text-align: right;
   border-radius: 1em;
   box-shadow: 0 .1em .2em #8875699a;
+  .qa_body {
+    height: auto;
+    display: inline-block;
+    position: absolute;
+    top: auto;
+    bottom: 28%;
+    left: 6%;
+    right: 0;
+    margin: auto 2%;
+  }
 }
 .user_answer .answer_body::after
 {
@@ -197,11 +248,14 @@ img {
   top: 1.5em;
   left: -1em;
 }
-.qa_body {
-  display: inline-block;
-  position: absolute;
-  margin: 2% auto auto 2%;
-}
+
+// .qa_body {
+//   height: auto;
+//   display: inline-block;
+//   position: absolute;
+//   margin: 2% auto auto 2%;
+// }
+
 
 /* Paginate style */
 .pagination{
@@ -254,4 +308,38 @@ img {
   font-weight: bold;
   padding: 1em;
   text-decoration: underline dotted #88756965 .1em;
+}
+
+// responsive style
+@media (max-width: 992px) {
+  //Common style
+  .answer
+  {
+    
+    .user_answer .answer_body
+    {
+      position: relative;
+      display: inline-block;
+      margin: 1em 1.3em 1.3em;
+      padding: .75em 1.3em;
+      background: #FCF0E9;
+      text-align: right;
+      height: 100%;
+    }
+  }
+ 
+
+  // Qestion Style
+  .questions 
+  {
+    .username
+      {
+        max-width: 3em;
+        min-width: 5em;
+        overflow: hidden;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+  }
 }

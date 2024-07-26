@@ -1,6 +1,6 @@
 
 //modal
-.commentEdit {
+.questionEdit {
 
   .modal-content
   {
@@ -13,7 +13,8 @@
     background-color: transparent;
     font-size: 1.2em;
     color: #4d1f01;
-    
+    box-shadow: .1em .08rem .1em #8875699a;
+    border-radius: 50%;
   }
   
   .modal-title{
@@ -29,6 +30,12 @@
   {
     font-weight: 800;
     font-size: 1.2em;
+    background-color: #4d1f0142;
+    color: #4d1f01b0;
+    border: none;
+    box-shadow: none;
+    border-radius: 1em;
+    box-shadow: .1em .08rem .1em #8875699a;
   }
   .error-message
   {
@@ -43,13 +50,15 @@
   {
     display: block;
   }
-  .save-comment
+  .save-question
   {
     color: #4d1f01;
     background-color: #fefdfd;
     font-size: 1.2em;
+    outline: solid #e45900;
+    border: none;
   }
-  .current-comment
+  .current-question
   {
     font-size: 1.2em;
   }

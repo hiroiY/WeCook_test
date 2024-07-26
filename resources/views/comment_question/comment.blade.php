@@ -70,7 +70,7 @@
                   type="button" 
                   class="edit-btn ms-3 px-4"
                   data-bs-toggle="modal" 
-                  data-bs-target="#commentEdit"
+                  data-bs-target="#commentEdit-{{ $comment->id }}"
                 >
                   Edit
                 </button>

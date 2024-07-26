@@ -49,7 +49,34 @@
     <div class="p-3 mx-5 mb-3 questions">
       @foreach($all_questions as $question)
         <div class="row user_question ms-0">
-          <div class="col-auto p-0">
+          <!-- edit&delete button --> 
+          <div class="col-auto p-0 h-25 my-auto">
+            @if(Auth::user()->id ===  $question->user_id )
+              <button 
+                type="button" 
+                class="edit-btn ms-3 px-4"
+                data-bs-toggle="modal" 
+                data-bs-target="#questionEdit-{{ $question->id }}"
+              >
+                Edit
+              </button>
+              @include('comment_question.modal.question_update')
+
+              <form 
+                action="{{ route('delete.question', $question->id) }}" 
+                method="post"
+                class="delete-btn d-inline-flex"
+              >
+                @csrf
+                @method('DELETE')
+                <button 
+                  type="submit" 
+                  class="px-4 ms-2 me-0 mt-2"
+                >
+                  Delete
+                </button>
+              </form>
+            @endif
           </div>
           <div class="col-sm-1 p-0 h-25 mt-5 ms-auto text-end">
             <p 
@@ -62,7 +89,7 @@
           <div class="col-8 question_body px-4 d-flex ms-2">
             <div class="my-auto p-1">
               <i class="fa-solid fa-q fa-3x"></i>
-              <p class="qa_body"> {{ $question->body}} </p>
+              <p class="qa_body  text-start pt-1"> {{ $question->body}} </p>
             </div>
           </div>
           <div class="col-1 text-start user_account p-0 ms-0">
@@ -96,9 +123,9 @@
               @endif 
             </div>
             <div class="col-8 answer_body me-0 d-flex">
-              <div class="my-auto p-1">
+              <div class="my-auto px-1 py-auto">
                 <i class="fa-solid fa-a fa-3x"></i>
-                <p class="qa_body">
+                <p class="qa_body text-start">
                   {{ $question->answer($question->id)->body }} 
                 </p>
               </div>
@@ -111,7 +138,34 @@
                 {{ date('M d, Y', strtotime($question->answer($question->id)->created_at)) }}
               </p>
             </div>
-            <div class="col-1 p-0">
+            <!-- edit&delete button -->
+            <div class="col-auto p-0 h-25 mt-5">
+              @if(Auth::user()->id === $recipe->user_id)
+                <button 
+                  type="button" 
+                  class="edit-btn ms-3 px-4"
+                  data-bs-toggle="modal" 
+                  data-bs-target="#answerEdit-{{ $question->answer($question->id)->id }}"
+                >
+                  Edit
+                </button>
+                @include('comment_question.modal.answer_update')
+
+                <form 
+                  action="{{ route('delete.answer', $question->answer($question->id)->id) }}" 
+                  method="post"
+                  class="delete-btn d-inline-flex"
+                >
+                  @csrf
+                  @method('DELETE')
+                  <button 
+                    type="submit" 
+                    class="px-4 ms-2 me-0 mt-2"
+                  >
+                    Delete
+                  </button>
+                </form>
+              @endif
             </div>
           @else
             <!-- add answer -->
