@@ -41,8 +41,7 @@
 
         <p class="current-question">
           <b>Current</b>
-          <i class="fa-regular fa-question-dots"
-          style="color: #e45900;"></i>
+          <i class="fa-solid fa-q" style="color: #e45900;"></i>
           <br>
           &ensp; {{ $question->body }}
         </p>
