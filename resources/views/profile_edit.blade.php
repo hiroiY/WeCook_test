@@ -44,11 +44,11 @@
                         @if($user->avatar)
                             <img src="{{ $user->avatar }}" alt="{{  $user->avatar }}'s avatar"
                             class="current-avatar me-4">
-                            <i class="fa-solid fa-arrow-right my-auto"></i>
+                            <i class="fa-solid fa-arrow-right my-auto me-4"></i>
                         @endif
-                        <input type="file" class="form-control my-auto ms-4"  name="avatar" id="avatar" aria-describedby="image-info">
+                        <input type="file" class="form-control my-auto"  name="avatar" id="avatar" aria-describedby="image-info">
                         </div>
-                       
+                    
                         <div class="file-info mt-2" id="file-info">
                             The acceptable formats are jpeg, jpg, png and gif only.<br>
                             Max file size is 1048kB.

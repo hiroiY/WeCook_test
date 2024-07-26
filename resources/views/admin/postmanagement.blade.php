@@ -48,7 +48,7 @@
                         name="search_post" 
                         id="search-post" 
                         class="form-control d-inline search-input p-2 my-3" 
-                        placeholder="&#xF52A;   Search for recipe" 
+                        placeholder="&#xF52A;   Search by Recipe Title Word" 
                         style="font-family: Bootstrap-icons; width: 400px"
                         >
                     </form>
@@ -138,10 +138,10 @@
                                 </td>
                                 <td style="vertical-align:middle">
                                     <a 
-                                    href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}#comment-start"
+                                    href="{{ route('detailrecipe', [$post->id, $post->user->id]) }}#comment"
                                     class="textdecoration-none"
                                     >
-                                        {{ $post->comment_count ?? 0 }}
+                                        {{ $post->comments_count ?? 0 }}
                                 </a>
                                 </td>
                                 <td style="vertical-align:middle">{{ $post->dish->name }}</td>

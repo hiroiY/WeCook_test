@@ -30,13 +30,28 @@ textarea.recipe-inp {
 // bg colour and text colour for update button
 button.updaterecipe {
     background-color: #e45900;
-    color: white;
+    color: #FEFDFD;
 }
 
 // bg colour and text colour for update button upon hover
 button.updaterecipe:hover {
     background-color: #e45900;
-    color: white;
+    color: #FEFDFD;
+}
+.mb-3 .btn-delete{
+    border-color: #E40000;
+    color: #E40000;
+}
+.mb-3 .btn-delete:hover{
+    border-color: #E40000;
+    color: #E40000;
+}
+.edit-recipe .row .img-thumbnail{
+    width: 100%;
+    max-height: 25em;
+    min-height: 30em;
+    object-fit: cover;
+    object-position: center;
 }
 
 //responsive style
