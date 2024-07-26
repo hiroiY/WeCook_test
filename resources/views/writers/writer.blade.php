@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@vite(['resources/sass/writers.scss','resources/js/tabs_pagination.js'])
+@vite(['resources/sass/writers.scss','resources/js/writer_tabs_pagination.js'])
 <!-- I will chenge JavaScript file to tabs_pagination.js after the Backend/tab_action merged  -->
 
 @section('content')
