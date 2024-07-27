@@ -34,4 +34,32 @@ class AnswerController extends Controller
 
         return redirect()->back();
     }
+
+    public function updateAnswer(Request $request,$id) 
+    {
+        $request->validate([
+            'body' => 'required|min:1|max:300',
+        ]);
+
+        $answer = $this->answer->findOrFail($id);
+
+        if($answer->user_id !== Auth::user()->id) {
+            return redirect()->back();
+        }
+        
+        $answer->body = $request->body;
+        $answer->save();
+
+        return redirect()->back();
+
+    }
+
+    public function deleteAnswer($id) 
+    {
+        $answer = $this->answer->findOrFail($id);
+
+        $answer->delete($id);
+
+       return redirect()->back();
+    }
 }

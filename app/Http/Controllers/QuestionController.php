@@ -33,4 +33,32 @@ class QuestionController extends Controller
 
         return redirect()->back();
     }
+
+    public function updateQuestion(Request $request,$id) 
+    {
+        $request->validate([
+            'body' => 'required|min:1|max:300',
+        ]);
+
+        $question = $this->question->findOrFail($id);
+
+        if($question->user_id !== Auth::user()->id) {
+            return redirect()->back();
+        }
+        
+        $question->body = $request->body;
+        $question->save();
+
+        return redirect()->back();
+
+    }
+
+    public function deleteQuestion($id) 
+    {
+        $question = $this->question->findOrFail($id);
+
+        $question->delete($id);
+
+       return redirect()->back();
+    }
 }

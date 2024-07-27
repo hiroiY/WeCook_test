@@ -112,6 +112,12 @@ Route::controller(AdminController::class)->group(function()
 Route::get('/mypage/profile_edit/{id}', [ProfileController::class, 'profile_edit'])->name('profile_edit');
 Route::patch('/mypage/profile_update/{id}', [ProfileController::class, 'profile_update'])->name('profile_update');
 
-//Q&A
+//Q&A 
+//Questio
 Route::post('/recipe/{post_id}/question', [QuestionController::class, 'storeQuestion'])->name('question');
+Route::patch('/recipe/{post_id}/question/update', [QuestionController::class, 'updateQuestion'])->name('update.question');
+Route::delete('/recipe/{post_id}/question/delete', [QuestionController::class, 'deleteQuestion'])->name('delete.question');
+//answer
 Route::post('/recipe/{question_id}/answer', [AnswerController::class, 'storeAnswer'])->name('answer');
+Route::patch('/recipe/{post_id}/answer/update', [AnswerController::class, 'updateAnswer'])->name('update.answer');
+Route::delete('/recipe/{post_id}/answer/delete', [AnswerController::class, 'deleteAnswer'])->name('delete.answer');

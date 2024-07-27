@@ -1,7 +1,7 @@
-@vite(['resources\sass\comments\comment_modal.scss'])
+@vite(['resources\sass\comments\question_modal.scss'])
 <div 
-  class="modal fade commentEdit" 
-  id="commentEdit-{{ $comment->id }}" 
+  class="modal fade questionEdit" 
+  id="questionEdit-{{ $question->id }}" 
   data-bs-backdrop="static" 
   data-bs-keyboard="false" 
   tabindex="-1" 
@@ -14,7 +14,12 @@
     <div class="modal-content">
       <!-- Header -->
       <div class="modal-header">
-        <p class="modal-title h3 fw-medium" id="exampleModalLabel"> Edit Your Comment </p>
+        <p 
+        class="modal-title h3 fw-medium" 
+        id="exampleModalLabel"
+        > 
+          Edit Your Question 
+        </p>
         <button 
           type="button" 
           class="btn-close" 
@@ -24,30 +29,29 @@
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
-         <!-- the comment body -->
+         <!-- the question body -->
       </div>
       
       <div class="modal-body pb-0">
         <form 
-          action="{{ route('update.comment', $comment->id) }}" 
+          action="{{ route('update.question', $question->id) }}" 
           method="post"
           class="edit-form"
         >
 
-        <p class="current-comment">
+        <p class="current-question">
           <b>Current</b>
-          <i class="fa-regular fa-comment-dots"
-          style="color: #e45900;"></i>
+          <i class="fa-solid fa-q" style="color: #e45900;"></i>
           <br>
-          &ensp; {{ $comment->body }}
+          &ensp; {{ $question->body }}
         </p>
           @csrf
           @method('PATCH')
           <input 
             type="text" 
             name="body" 
-            class="form-control save-comment bootstrap-maxlength data-autofocus"
-            value="{{ old('body',$comment->body) }}"
+            class="form-control save-question bootstrap-maxlength data-autofocus"
+            value="{{ old('body',$question->body) }}"
             minlength="1"
             required
           >
@@ -67,7 +71,7 @@
               Cansel
             </button>
 
-            <!-- The Save comments bitton -->
+            <!-- The Save questions bitton -->
             <button 
               type="submit" 
               class="save-btn ms-4 px-5 py-1"

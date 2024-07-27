@@ -45,7 +45,7 @@
 
           {{-- Recipe image arrow --}}
           <div class="col-2 d-flex justify-content-center align-items-center">
-            <i class="fa-solid fa-arrow-right align-items-center" style="font-size: 5rem;"></i>
+            <i class="fa-solid fa-arrow-right align-items-center edit-arrow"></i>
           </div>
 
         {{-- Recipe new image input --}}
