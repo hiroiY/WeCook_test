@@ -51,7 +51,7 @@
         <div class="row user_question ms-0">
           <!-- edit&delete button --> 
           <div class="col-auto p-0 h-25 my-auto">
-            @if(Auth::user()->id ===  $question->user_id )
+            @if(Auth::user() && Auth::user()->id === $question->user_id )
               <button 
                 type="button" 
                 class="edit-btn ms-3 px-4"
