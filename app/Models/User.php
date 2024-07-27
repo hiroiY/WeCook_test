@@ -80,7 +80,7 @@ class User extends Authenticatable
     }
 
     //when the user is soft deleted, the user's posts are also soft deleted.
-        public static function boot()
+    public static function boot()
     {
         parent::boot();
 
