@@ -79,12 +79,17 @@ class User extends Authenticatable
         return $this->hasMany(Answer::class);
     }
 
-    public static function boot()
+    //when the user is soft deleted, the user's posts are also soft deleted.
+        public static function boot()
     {
         parent::boot();
 
         static::deleted(function ($user) {
             $user->posts()->delete();
+        });
+
+        static::restored(function ($user) {
+            $user->posts()->restore();
         });
     }
 }
