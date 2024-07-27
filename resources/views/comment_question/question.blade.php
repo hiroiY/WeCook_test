@@ -140,7 +140,7 @@
             </div>
             <!-- edit&delete button -->
             <div class="col-auto p-0 h-25 mt-5">
-              @if(Auth::user()->id === $recipe->user_id)
+              @if(Auth::user() && Auth::user()->id === $recipe->user_id)
                 <button 
                   type="button" 
                   class="edit-btn ms-3 px-4"
