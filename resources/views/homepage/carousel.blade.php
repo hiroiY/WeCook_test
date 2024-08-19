@@ -1,5 +1,4 @@
 @vite(['resources/sass/carousel.scss'])
-<!-- @vite(['resources/js/carousel.js']) -->
 <div 
   id="carouselAutoplaying" 
   class="carousel slide m-0" 

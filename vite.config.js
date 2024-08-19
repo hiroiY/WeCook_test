@@ -37,7 +37,6 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/bookmarks.js',
                 'resources/js/bootstrap.js',
-                'resources/js/carousel.js',
                 'resources/js/comment_edit_old.js',
                 'resources/js/comment_qa_tabs.js',
                 'resources/js/logout_modal.js',
