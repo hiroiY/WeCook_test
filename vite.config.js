@@ -43,7 +43,6 @@ export default defineConfig({
                 'resources/js/mybookmark_tabs_pagination.js',
                 'resources/js/mypage_tabs_pagination.js',
                 'resources/js/search_keyword.js',
-                'resources/js/search_tabs_pagination.js',
                 'resources/js/search_tabs_page.js',
                 'resources/js/tabs_paginate.js',
                 'resources/js/tabs_pagination.js',
