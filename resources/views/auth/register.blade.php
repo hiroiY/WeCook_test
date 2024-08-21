@@ -15,7 +15,7 @@
           <div class="card-body">
             {{-- Register card title --}}
             <p class="mb-5 display-4 register-card-ttl"><i class="fa-solid fa-chevron-left fa-xs register-card-ttl"></i>Register</p>
-            <form action="{{ route('register') }}" method="post">
+            <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
               @csrf
 
               {{-- Username input --}}

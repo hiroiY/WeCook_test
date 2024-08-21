@@ -15,7 +15,7 @@
           <div class="card-body">
             {{-- Login title --}}
             <p class="mb-5 display-4 login-card-ttl"><i class="fa-solid fa-chevron-left fa-xs login-card-ttl"></i>Log in</p>
-            <form action="{{ route('login') }}" method="post">
+            <form action="{{ route('login') }}" method="post" enctype="multipart/form-data">
               @csrf
               
               {{-- Email address input field --}}
