@@ -14,10 +14,10 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
-use App\Models\Answer;
+use App\Http\Controllers\Auth\LoginController;
 
 Auth::routes();
- require __DIR__ . '/auth.php';
+// require __DIR__ . '/auth.php';
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 //Homepage's Routes
@@ -121,3 +121,6 @@ Route::delete('/recipe/{post_id}/question/delete', [QuestionController::class, '
 Route::post('/recipe/{question_id}/answer', [AnswerController::class, 'storeAnswer'])->name('answer');
 Route::patch('/recipe/{post_id}/answer/update', [AnswerController::class, 'updateAnswer'])->name('update.answer');
 Route::delete('/recipe/{post_id}/answer/delete', [AnswerController::class, 'deleteAnswer'])->name('delete.answer');
+
+//Login,Register
+Route::post('/login',[LoginController::class, 'login'])->name('login');
