@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @vite(['resources/sass/detailrecipe.scss'])
+
 @section('content')
 <div class="containe py-3">
     <div class="detailrecipe px-5 pb-5 mx-3">

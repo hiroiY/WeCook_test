@@ -17,7 +17,7 @@ use App\Http\Controllers\AnswerController;
 use App\Models\Answer;
 
 Auth::routes();
-// require __DIR__ . '/auth.php';
+ require __DIR__ . '/auth.php';
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 //Homepage's Routes
