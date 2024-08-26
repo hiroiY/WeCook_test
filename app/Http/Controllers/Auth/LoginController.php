@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -46,5 +47,28 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/home');
+    }
+
+    public function login(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+        ]);
+
+        // Attempt to authenticate the user
+        if (Auth::guard('api')->attempt($request->only('email', 'password'))) {
+            // Authentication passed, regenerate session
+            $request->session()->regenerate();
+
+            // Redirect to the intended page or default to /home
+            return redirect()->intended($this->redirectTo);
+        }
+
+        // Authentication failed, redirect back with input and error message
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->withInput($request->only('email'));
     }
 }
