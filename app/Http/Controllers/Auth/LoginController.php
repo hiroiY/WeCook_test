@@ -58,7 +58,7 @@ class LoginController extends Controller
         ]);
 
         // Attempt to authenticate the user
-        if (Auth::guard('api')->attempt($request->only('email', 'password'))) {
+        if (Auth::attempt($request->only('email', 'password'))) {
             // Authentication passed, regenerate session
             $request->session()->regenerate();
 
