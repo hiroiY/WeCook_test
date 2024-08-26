@@ -1,5 +1,5 @@
-@vite(['resources\sass\comments\comment_qestion.scss'])
-@vite(['resources\js\comment_qa_tabs.js'])
+@vite(['resources/sass/comments/comment_qestion.scss'])
+@vite(['resources/js/comment_qa_tabs.js'])
 
 <!-- tab menu area-->
 <div 

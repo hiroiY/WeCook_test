@@ -1,4 +1,4 @@
-@vite(['resources\sass\comments\question_modal.scss'])
+@vite(['resources/sass/comments/question_modal.scss'])
 <div 
   class="modal fade questionEdit" 
   id="questionEdit-{{ $question->id }}" 
