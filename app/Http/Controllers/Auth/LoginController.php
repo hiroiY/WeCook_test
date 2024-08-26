@@ -54,7 +54,7 @@ class LoginController extends Controller
         // Validate the request
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:8',
         ]);
 
         // Attempt to authenticate the user
@@ -63,7 +63,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             // Redirect to the intended page or default to /home
-            return redirect()->intended($this->redirectTo);
+            return redirect('/home');
         }
 
         // Authentication failed, redirect back with input and error message
