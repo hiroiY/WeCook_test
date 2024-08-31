@@ -63,7 +63,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             // Redirect to the intended page or default to /home
-            return redirect('/home');
+            return redirect()->route('home');
         }
 
         // Authentication failed, redirect back with input and error message

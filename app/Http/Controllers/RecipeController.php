@@ -37,6 +37,11 @@ class RecipeController extends Controller
     // Add storeRecipe method
     public function storeRecipe(Request $request) 
     {
+        if(!Auth::user())
+        {
+            return route('home');
+        }
+        
         $request->validate([
             'photo' => 'mimes:jpeg,png,jpg,gif,svg|max:1048',
             'title' => 'required|min:1|max:150',
