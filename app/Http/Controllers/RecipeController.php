@@ -39,9 +39,9 @@ class RecipeController extends Controller
     {
         if(!Auth::user())
         {
-            return route('home');
+            return redirect()->route('home');
         }
-        
+
         $request->validate([
             'photo' => 'mimes:jpeg,png,jpg,gif,svg|max:1048',
             'title' => 'required|min:1|max:150',
