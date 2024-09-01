@@ -18,4 +18,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/Seeder_photo
+public/images/Seeder_photo
