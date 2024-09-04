@@ -51,17 +51,21 @@ class RecipeController extends Controller
             'description' => 'required|min:1',
         ]);
 
-        $this->post->user_id = Auth::user()->id;
-        $this->post->title = $request->title;
-        $this->post->dish_id = $request->dish_category;
-        $this->post->cooking_time = $request->cooking_time;
-        $this->post->ingredients = $request->ingredients;
-        $this->post->description = $request->description;
+        $post = $this->post;
+
+        $post->user_id = Auth::user()->id;
+        $post->title = $request->title;
+        $post->dish_id = $request->dish_category;
+        $post->cooking_time = $request->cooking_time;
+        $post->ingredients = $request->ingredients;
+        $post->description = $request->description;
         if ($request->hasFile('photo')) {
-            $this->post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));
+            $post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));
             // $request->file('photo')->move(public_path('images'), $imageName);
         }
-        $this->post->save();
+        
+        $post->save();
+        
         return redirect()->route('myrecipe',Auth::user()->id);
     }
 
