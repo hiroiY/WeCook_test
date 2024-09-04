@@ -6,11 +6,7 @@
             <nav class="breadcrumb">
                 <a href="{{ route('home') }}">Home</a> &gt; <span> <a href="">Create Recipe</a></span>
             </nav>
-            <!-- @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif -->
+    
             <form class="recipe-form  m-auto" action="{{ route('storerecipe') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <!-- recipe photo -->
