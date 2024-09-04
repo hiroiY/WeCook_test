@@ -22,6 +22,12 @@ class RecipeController extends Controller
     }
 
     public function createrecipe(Request $request){
+        
+        if(!Auth::user())
+        {
+            return redirect()->route('home');
+        }
+        
         $all_dishes = $this->getAllDish();
 
         return view('recipe.createrecipe',compact('all_dishes'));
@@ -37,10 +43,6 @@ class RecipeController extends Controller
     // Add storeRecipe method
     public function storeRecipe(Request $request) 
     {
-        if(!Auth::user())
-        {
-            return redirect()->route('home');
-        }
 
         $request->validate([
             'photo' => 'mimes:jpeg,png,jpg,gif,svg|max:1048',
@@ -51,20 +53,18 @@ class RecipeController extends Controller
             'description' => 'required|min:1',
         ]);
 
-        $post = $this->post;
-
-        $post->user_id = Auth::user()->id;
-        $post->title = $request->title;
-        $post->dish_id = $request->dish_category;
-        $post->cooking_time = $request->cooking_time;
-        $post->ingredients = $request->ingredients;
-        $post->description = $request->description;
+        $this->post->user_id = Auth::user()->id;
+        $this->post->title = $request->title;
+        $this->post->dish_id = $request->dish_category;
+        $this->post->cooking_time = $request->cooking_time;
+        $this->post->ingredients = $request->ingredients;
+        $this->post->description = $request->description;
         if ($request->hasFile('photo')) {
-            $post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));
+            $this->post->photo = 'data:image/' . $request->photo->extension() . ';base64,' . base64_encode(file_get_contents($request->photo));
             // $request->file('photo')->move(public_path('images'), $imageName);
         }
         
-        $post->save();
+        $this->post->save();
         
         return redirect()->route('myrecipe',Auth::user()->id);
     }
