@@ -96,7 +96,6 @@ Route::controller(AdminController::class)->group(function()
     Route::delete('/admin/usermanagement/{id}/deactivate','deactivate')->name('deactivate');
     //Post management
 
-    Route::get('/postmanagement','postmanagement')->name('postmanagement');
     Route::get('/admin/postmanagement','postmanagement')->name('postmanagement');
     Route::get('/post-status','poststatus')->name('poststatus');
     Route::patch('/admin/postmanagement/{id}/activate','activatePost')->name('post.activate');
