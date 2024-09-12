@@ -3,6 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
+        "start": "node index.js",
         "build": "vite build",
         "production": "npm run build"
     },
@@ -17,5 +18,11 @@
     },
     "dependencies": {
         "glob": "^11.0.0"
+    },
+    "name": "21stb_wecook",
+    "description": "A Recipe Sharing App",
+    "version": "1.0.0",
+    "engines": {
+        "node": "20.x"
     }
 }
