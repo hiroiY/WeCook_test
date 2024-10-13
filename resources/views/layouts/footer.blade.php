@@ -97,7 +97,7 @@
             </div>
             <div class="col-md-2 footer-section">
                 <ul class="list-unstyled">
-                    <li class="my-3"><a href="#">About Us</a></li>
+                    <li class="my-3"><a href="{{ route('others.about_us') }}">About Us</a></li>
                     <li class="my-3"><a href="#">FAQ</a></li>
                 </ul>
             </div>

@@ -122,4 +122,4 @@ Route::delete('/recipe/{post_id}/answer/delete', [AnswerController::class, 'dele
 
 //Others
 #about us
-Route::post('/about_us',[HomeController::class, 'aboutUs'])->name('others.about_us');
+Route::get('/about_us',[HomeController::class, 'aboutUs'])->name('others.about_us');
