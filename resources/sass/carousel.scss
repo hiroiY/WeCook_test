@@ -1,4 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+.info{
+  background: url('/public/images/homepage/info.jpg') center;
+  background-size: cover;
+  background-position-y: top;
+  box-shadow: inset 0 -11em 15em #5c5c5c;
+  width: 100%;
+  height: 100%;
+  color: #f7f3eb;
+}
+.about_us{
+  background: url('/public/images/homepage/about_us.jpg') center;
+  background-size: cover;
+  box-shadow: inset 0 -10em 12em #5c5c5c;
+  width: 100%;
+  height: 100%;
+  color: #f7f3eb;
+}
 .appetizer{
   background: url('/public/images/homepage/appetizer.jpg') center;
   background-size: cover;

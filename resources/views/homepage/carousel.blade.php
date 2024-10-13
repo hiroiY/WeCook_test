@@ -6,6 +6,20 @@
 >
   <div class="carousel-inner carousel_menu">
     <div class="carousel-item active is-active">
+      <a href="{{-- route('others.info')--}}" class="text-decoration-none">
+        <div class="info d-flex justify-content-center">
+          <span>information</span>
+        </div>
+      </a>
+    </div>
+    <div class="carousel-item active">
+      <a href="{{route('others.about_us')}}" class="text-decoration-none">
+        <div class="about_us d-flex justify-content-center">
+          <span>about us</span>
+        </div>
+      </a>
+    </div>
+    <div class="carousel-item active">
       {{-- <a href=""> --}}
         <div class="appetizer d-flex justify-content-center">
           <span>appetizer</span>

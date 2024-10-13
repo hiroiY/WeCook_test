@@ -173,4 +173,9 @@ class HomeController extends Controller
     {
         return view('search.search');
     }
+
+    public function aboutUs()
+    {
+        return view('others.about_us');
+    }
 }

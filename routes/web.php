@@ -120,3 +120,6 @@ Route::post('/recipe/{question_id}/answer', [AnswerController::class, 'storeAnsw
 Route::patch('/recipe/{post_id}/answer/update', [AnswerController::class, 'updateAnswer'])->name('update.answer');
 Route::delete('/recipe/{post_id}/answer/delete', [AnswerController::class, 'deleteAnswer'])->name('delete.answer');
 
+//Others
+#about us
+Route::post('/about_us',[HomeController::class, 'aboutUs'])->name('others.about_us');
