@@ -3,13 +3,10 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-<<<<<<< HEAD
         "build": "vite build"
-=======
         "start": "node index.js",
         "build": "vite build",
         "production": "npm run build"
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
@@ -19,8 +16,6 @@
         "laravel-vite-plugin": "^1.0.4",
         "sass": "^1.77.4",
         "vite": "^5.2.13"
-<<<<<<< HEAD
-=======
     },
     "dependencies": {
         "glob": "^11.0.0"
@@ -30,6 +25,5 @@
     "version": "1.0.0",
     "engines": {
         "node": "20.x"
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     }
 }
