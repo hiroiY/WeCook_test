@@ -15,7 +15,11 @@
           <div class="card-body">
             {{-- Register card title --}}
             <p class="mb-5 display-4 register-card-ttl"><i class="fa-solid fa-chevron-left fa-xs register-card-ttl"></i>Register</p>
+<<<<<<< HEAD
             <form action="" method="post">
+=======
+            <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
               @csrf
 
               {{-- Username input --}}
@@ -23,11 +27,24 @@
                 <div class="col-10">
                   <input 
                   type="text"
+<<<<<<< HEAD
                   name="username" 
                   id="username" 
                   class="form-control" 
                   placeholder="Username"
                   >
+=======
+                  name="name" 
+                  id="name" 
+                  class="form-control @error('name') is-invalid @enderror" 
+                  placeholder="Username"
+                  >
+                  @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
                 </div>
               </div>
 
@@ -38,9 +55,20 @@
                   type="email"
                   name="email" 
                   id="email" 
+<<<<<<< HEAD
                   class="form-control" 
                   placeholder="Email address"
                   >
+=======
+                  class="form-control @error('email') is-invalid @enderror" 
+                  placeholder="Email address"
+                  >
+                  @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
                 </div>
               </div>
               
@@ -56,14 +84,22 @@
                   >
                 </div>
               </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
               {{-- Confirm Password input field --}}
               <div class="row mb-5 justify-content-center">
                 <div class="col-10">
                   <input 
                   type="password" 
+<<<<<<< HEAD
                   name="confirm-password" 
                   id="confirm-password" 
+=======
+                  name="password_confirmation" 
+                  id="password_confirmation" 
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
                   class="form-control" 
                   placeholder="Confirm password"
                   >
@@ -80,7 +116,11 @@
               {{-- Login link--}}
               <div class="row mb-3">
                 <div class="col px-auto">
+<<<<<<< HEAD
                   <p class="text-center fw-bold already-have-account">Already have an account? <a href="" class="text-decoration-none login-link">Log in</a></p>
+=======
+                  <p class="text-center fw-bold already-have-account">Already have an account? <a href="{{ route('login') }}" class="text-decoration-none login-link">Log in</a></p>
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
                 </div>
               </div>
             </form>

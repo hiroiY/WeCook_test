@@ -4,12 +4,21 @@ body, td {
 // footer
 .footer{
     color: #F7F3EB;
+<<<<<<< HEAD
+=======
+    // margin-top: 50px;
+    font-family: nunito;
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 }
 .address{
     color: #F7F3EB;
 }
 .footer-custom{
+<<<<<<< HEAD
     background: #2E1310 url("/public/images/Logo_brown.png") no-repeat center center;
+=======
+    background: #2E1301 url("/public/images/Logo_brown.png") no-repeat center center;
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 }
 .we{
     color: #E45900;
@@ -23,3 +32,32 @@ body, td {
     color: #F7F3EB;
     text-decoration: none;
     } 
+<<<<<<< HEAD
+=======
+.wecook{
+    text-decoration: none;
+}
+.disabled-link {
+    color: #887569 !important;
+    cursor: not-allowed;
+    text-decoration: none;
+}
+
+.disabled-link:hover {
+    text-decoration: none;
+}
+
+.footer #searchbar{
+    width: 15em;
+    height: 2em;
+    outline: 1px solid #F7F3EB;
+    border-radius: 0.5rem;
+    background-color: #2E1301;
+    padding: 0.7em;
+    color: #F7F3EB;
+    font-family: Bootstrap-icons, "Nunito";
+  } 
+  .footer #searchbar::placeholder{
+    color: #887569;
+  }
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9

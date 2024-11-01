@@ -1,26 +1,52 @@
+<<<<<<< HEAD
+=======
+* {
+  font-family: Nunito;
+}
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 .breadcrumb
 {
   color: #887569;
   font-weight: bold;
   align-items: center;
+<<<<<<< HEAD
+=======
+  i {
+    cursor: default;
+    margin: auto .4em;
+  }
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   a {
     text-decoration: none;
     color: #887569;
   }
+<<<<<<< HEAD
   a:nth-of-type(3) {
     text-decoration: none;
     color: #e45900;
   }
 }
+=======
+  .writer_name {
+    text-decoration: none;
+    color: #e45900;
+    cursor: default;
+  }
+}
+
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 .writer_account
 {
   color: #2e1301;
   font-size: 24px;
   font-weight: bold;
+<<<<<<< HEAD
   a{
     text-decoration: none;
     color: #2e1301;
   }
+=======
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 }
 .writer_account img {
   height: 2.4em;

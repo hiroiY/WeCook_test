@@ -1,0 +1,114 @@
+.tab-content 
+{
+    .container 
+    {
+        .row 
+        { 
+            .col-md-6 
+            {
+                .card 
+                {
+                    height: 100%;
+                    margin-bottom: 3%;
+                    .card-itself 
+                    {
+                        .myrecipe-header 
+                        {
+                          // display: flex;
+                          // margin-bottom: 5%;
+                          justify-content: space-between;
+                          align-items: center;
+                          .card-title 
+                          {
+                            font-weight: bold;
+                            font-size: 1.9em;
+                            color: #2E1301;
+                            margin-top: 15px;
+                            margin-left: 10px;
+                            text-transform: capitalize;
+                          }
+                          .edit-icon
+                          {
+                            color: #E45900;
+                            font-size: 30px;
+                            margin-right: 10px;
+                            margin-top: 8px;
+                          }
+                        }
+                        .image-container 
+                        {
+                            align-items: center;
+                            img 
+                            {
+                                align-items: center;
+                                object-fit: cover;
+                                width: 100%;
+                                max-height: 18em;
+                                min-height: 20em;
+                                object-fit: auto;
+                                object-position: center;
+                                margin: .7em auto 0 auto;
+                                box-shadow: .05em .05em .08em #5c5c5c62;
+                              }
+                          }
+                        .myrecipe-footer 
+                        {
+                            // display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-top: 5%;
+                            .comment-icon,
+                            .bookmark-icon 
+                            {
+                              color: #E45900;
+                              margin-top: 10%;
+                              margin-bottom: 10%;
+                              font-size: 30px;
+                            }
+                            .comment-text,
+                            .bookmark-text 
+                            {
+                              color: #2E1301;
+                              font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Paginate
+.pagination{
+  padding:0 0 0 40%;
+  margin-bottom: 1em;
+  line-height: 1.5em;
+}
+.page-link {
+  font-family: "Nunito";
+  color: #4d1f01;
+}
+.page-item .page-link {
+  border: solid .01em #e45900;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: #fefdfd;
+}
+.active .page-link {
+  border: solid .01em #e45900;
+  background-color: #e45900;
+  :hover{
+    color: inherit;
+  }
+}
+.page-item .page-link:hover {
+  color: #4d1f01;
+  background-color: #e457002c;
+}
+.disabled .page-link {
+  border: solid .01em #e45900;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: #fefdfd;
+}

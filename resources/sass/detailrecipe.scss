@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* detailrecipe */
   body {
     font-family: Arial, sans-serif;
@@ -125,3 +126,182 @@ i {
 
 
   
+=======
+/* detailrecipe.scss */
+
+.containe 
+{
+
+    background-color: #F7F3EB;
+    font-family: "Nunito";
+    color: #4D1F01;
+}
+
+.detailrecipe .breadcrumb 
+{
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #887569;
+   .breadcrumb-item 
+   {
+        a 
+        {
+            color: #887569;
+            text-decoration: none;
+        }
+    }
+    .current-reciprname 
+    {
+        color: #e45900;
+    }
+}
+.breadcrumb li:not(:first-child)::before {
+    font-family: "Nunito";
+    color: #887569;
+    font: var(--fa-font-solid);
+    content: "\f105";
+    margin-top: .3em;
+  }
+
+.recipe-detail.detailrecipe 
+{
+   
+
+    .writer-name 
+    {
+        text-decoration: none;
+        color: #4D1F01;
+        .chef-icon 
+        {
+            width: 5.4em;
+            height: 4.73em;
+        }
+        
+        .writer-username
+        {
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
+
+    .recipe-title 
+    {
+        text-transform: capitalize;
+        font-size: 2.2rem;
+        font-weight: 600;
+        color: #4d1f01;
+        margin-bottom: 10px;
+
+        .fa-bookmark 
+        {
+            cursor: pointer;
+            transition: color 0.3s ease;
+            &.bookmarked 
+            {
+                fill: #e45900;
+            }
+        }
+    }
+
+    .food-photo 
+    {
+        width: 95%;
+        height: 30rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .badge-primary 
+    {
+        background-color: #e45900;
+        color: #F7F3EB;
+        font-size: 1.35rem;
+        padding: 0.7rem 1rem;
+        border-radius: 20px;
+    }
+
+    // .text-muted {
+    //     color: #4d1f01 !important;
+    // }
+
+    h3 
+    {
+        font-size: 1.9rem;
+        font-weight: 600;
+        color: #4d1f01;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    ul, ol 
+    {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        color: #4d1f01;
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.3rem;
+            font-size: 1.4em;
+            font-weight: 400;
+        }
+    }
+
+    i 
+    {
+        margin-right: 5px;
+        color: #e45900;
+    }
+    .detail-content 
+    {
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .cooking-time 
+    {
+        color: #4d1f01;
+        font-size: x-large;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+    }
+    
+    // .text-muted.d-flex.align-items-center i.far.fa-clock {
+    //     margin-right: 1rem;
+    // }
+    
+    .text-muted.d-flex.align-items-center a.ml-3 {
+        margin-left: 5rem;
+    }
+    
+    
+}
+.jump-comment
+{
+    float: right;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+.fa-comments
+{
+    color: #E45900;
+    font-size: 2rem;
+}
+.textdecoration-none
+{
+    text-decoration: none;
+    color: #4D1F01
+}
+.fa-arrow-turn-down
+{
+    color: #E45900;
+
+}
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9

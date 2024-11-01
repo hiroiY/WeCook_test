@@ -1,7 +1,11 @@
 <?php
 
 namespace Database\Factories;
+<<<<<<< HEAD
 
+=======
+use App\Models\User;
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -15,6 +19,10 @@ class UserFactory extends Factory
      * The current password being used by the factory.
      */
     protected static ?string $password;
+<<<<<<< HEAD
+=======
+    protected $model = User::class;
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 
     /**
      * Define the model's default state.
@@ -23,11 +31,20 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+<<<<<<< HEAD
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+=======
+        $username = fake()->name();
+        return [
+            'name' => $username,
+            'email' => $username . '@mail.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt("password"),
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
             'remember_token' => Str::random(10),
         ];
     }
@@ -41,4 +58,8 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9

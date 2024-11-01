@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .sidebar {
   font-family: "Nunito";
   background-color: #2E1301;
@@ -15,10 +16,29 @@
   color: #887569;
 }
 .sidebar .unselected:hover{
+=======
+/* Side Bar */
+.sidebar {
+    background-color: #2E1301;
+    width: 12em;
+    height: 100%;
+    padding: 2em;
+    color: #F7F3EB;
+    font-size: 1.3rem;
+}
+.sidebar .selected {
+  font-weight: bold;
+}
+.sidebar .unselected {
+  color: #887569;
+}
+.sidebar .unselected:hover {
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   cursor: pointer;
   color: #F7F3EB;
 }
 
+<<<<<<< HEAD
 .body {
     background-color: #F7F3EB;
 }
@@ -121,3 +141,103 @@
         .btn:hover {
             background-color: #ff7a00;
         }
+=======
+/* Body */
+.body {
+  background-color: #F7F3EB;
+  font-family: "Nunito";
+}
+
+/* Contents */
+.contents-box {
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+}
+
+@media (min-width: 992px) {
+  .contents-box {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Bread Crumb */
+.breadcrumb {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #887569;
+}
+
+.breadcrumb .selected-breadcrumb {
+  color: #ff7a00;
+  font-weight: bold;
+}
+
+.breadcrumb a {
+  color: #887569;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.form-group .current-avatar{
+  height: 6.72em;
+  width: 7.28em;
+  object-fit: cover;
+  // object-position: center;
+}
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ff7a00;
+}
+
+.form-group .form-control {
+  border: 1px solid #ff7a00;
+}
+
+.file-info {
+  color: #e45700d8;
+  margin-top: 10px;
+}
+
+.form-group input[type="file"] {
+  border: 1px solid #ff7a00;
+  color: #2E1301;
+  background-color: white;
+}
+
+/* Update Profile Button */
+.submit-box .submit-button {
+  color: #F7F3EB;
+  background-color: #ff7a00;
+//   padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 20px;
+}
+
+.submit-box .submit-button:hover {
+  color: #F7F3EB;
+  background-color: #ff7a00;
+}
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9

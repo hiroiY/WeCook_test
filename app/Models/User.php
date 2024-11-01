@@ -6,10 +6,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+<<<<<<< HEAD
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+=======
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
+
+class User extends Authenticatable
+{
+    use HasFactory, SoftDeletes, Notifiable;
+    const ADMIN_ROLE_ID = 1; //admin user
+    const USER_ROLE_ID = 2; //regular user
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +32,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+<<<<<<< HEAD
+=======
+        'role_id'
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     ];
 
     /**
@@ -44,4 +60,49 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+<<<<<<< HEAD
+=======
+
+    // 自分がbookmarkしている
+    public function bookmarked() {
+        return $this->hasMany(Bookmark::class, 'user_id');
+    }
+
+    public function bookmarks()
+    {
+        return $this->belongsToMany(Post::class, 'bookmarks')->withPivot('user_id', 'post_id');
+    }
+    
+    public function posts()
+    {
+        return $this->hasMany(Post::class)->latest();
+    }
+    public function isAdmin()
+    {
+        return $this->role_id === 1;
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
+    //when the user is soft deleted, the user's posts are also soft deleted.
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($user) {
+            $user->posts()->delete();
+        });
+
+        static::restored(function ($user) {
+            $user->posts()->restore();
+        });
+    }
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 }

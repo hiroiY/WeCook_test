@@ -1,3 +1,15 @@
+<<<<<<< HEAD
 *
 !data/
 !.gitignore
+=======
+compiled.php
+config.php
+down
+events.scanned.php
+maintenance.php
+routes.php
+routes.scanned.php
+schedule-*
+services.json
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9

@@ -1,6 +1,7 @@
 .row {
   margin: 2em auto 1em auto;
 }
+<<<<<<< HEAD
 .row .recipe_photo{
   // width: 320px;
   // height: 240px;
@@ -13,11 +14,28 @@
 }
 .row .card {
   width: 100%;
+=======
+.card a >.recipe_photo {
+  // width: 320px;
+  // height: 240px;
+  width: 98%;
+  max-height: 6em;
+  min-height: 8em;
+  object-fit: cover;
+  object-position: center;
+  margin: .7em auto 0 auto;
+  box-shadow: .05em .05em .08em #5c5c5c62;
+}
+.row .card {
+  width: 100%;
+  height: 30em;
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   margin-bottom: 3em;
   padding: .8em;
   border-radius: 1em 1em;
   box-shadow: .01em .1em .1em #5c5c5c62;
 }
+<<<<<<< HEAD
 .row .card-body{
   font-family: "Nunito";
 }
@@ -33,27 +51,141 @@
   margin-right: 1em;
 }
 .row .card-body p {
+=======
+.card a .card-title {
+  text-shadow: none;
+  color: #4D1F01;
+  font-weight: bold;
+  text-transform: capitalize;
+  // max-width: 9.2em;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: -.5em;
+  // margin-right: 1em;
+}
+.card  .card-text {
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   color: #5c5c5cbc;
   font-size: small;
   overflow: hidden;
   width: 100%;
+<<<<<<< HEAD
   height: 6em;
   overflow: hidden;
+=======
+  min-height: 6em;
+  max-height: 8em;
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   display: -webkit-box;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+<<<<<<< HEAD
 }
 .row a {
+=======
+  line-clamp: 4;
+}
+.card a {
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   margin-left: .3em;
   color: #e45900;
   text-decoration: none;
   font-family: FontAwesome;
   font: var(--fa-font-regular);
   font-size: 1.9em;
+<<<<<<< HEAD
   text-shadow: .01em .01em .09em #5c5c5cbc;
+=======
+  text-shadow: .01em .01em .06em #5c5c5cbc;
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   span {
     font-size: .5em;
     font-weight: bold;
   }
+<<<<<<< HEAD
+=======
+}
+.tab_panel-box .sorry {
+  font-family: "Nunito";
+  font-weight: bold;
+  padding: 1em;
+  text-decoration: underline dotted #88756965 .1em;
+}
+
+/* Paginate style */
+.pagination{
+  padding:0 0 0 40%;
+  margin-bottom: 1em;
+  line-height: 1.5em;
+}
+.page-link {
+  font-family: "Nunito";
+  color: #4d1f01;
+}
+.page-item .page-link {
+  border: solid .01em #e45900;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: #fefdfd;
+}
+.active .page-link {
+  border: solid .01em #e45900;
+  background-color: #e45900;
+  :hover{
+    color: inherit;
+  }
+}
+.page-item .page-link:hover {
+  color: #4d1f01;
+  background-color: #e457002c;
+}
+.disabled .page-link {
+  border: solid .01em #e45900;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: #fefdfd;
+}
+
+//no posts.
+.tab_panel-box .sorry {
+  font-family: "Nunito";
+  font-weight: bold;
+  padding: 1em;
+  text-decoration: underline dotted #88756965 .1em;
+}
+@media (max-width: 912px) {
+  .dropdown-menu {
+    width: auto;
+    border: solid #88756994;
+    .dropdown-item{
+      padding: auto;
+      color: #e45900;
+    }
+    .dropdown-menu .tog-icon:hover{
+    color: inherit;
+    background-color: inherit;
+  }
+  ul li a:focus{
+    color: inherit;
+    background-color: inherit;
+  }
+  }
+  .dropdown-toggle{
+    background-color: transparent;
+    border: none;
+    color: #887569;
+    text-align: right;
+  }
+  
+  
+}
+@media (max-width: 400px) {
+  .dropdown-menu {
+    width: 50%;
+  }
+
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 }

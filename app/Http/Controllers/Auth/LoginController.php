@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+<<<<<<< HEAD
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+=======
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 
 class LoginController extends Controller
 {
@@ -37,4 +44,40 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
+<<<<<<< HEAD
 }
+=======
+
+    public function logout(Request $request)
+    {
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/home');
+    }
+
+    public function login(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:8',
+        ]);
+
+        // Attempt to authenticate the user
+        if (Auth::attempt($request->only('email', 'password'))) {
+            // Authentication passed, regenerate session
+            $request->session()->regenerate();
+
+            // Redirect to the intended page or default to /home
+            return redirect()->route('home');
+        }
+
+        // Authentication failed, redirect back with input and error message
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->withInput($request->only('email'));
+    }
+}
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9

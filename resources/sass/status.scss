@@ -5,6 +5,7 @@
 .modal-dialog{
     border: #4D1F01;
 }
+<<<<<<< HEAD
 .modal-content{
     background-color: #F7F3EB;
     border: solid #4D1F01;
@@ -20,6 +21,33 @@
     color: #F7F3EB;
     background-color: #E45900;
     border-color: #E45900;
+=======
+.custom-modal-dialog{
+    max-width: 700px; 
+}
+
+.modal-content{
+    background-color: #F7F3EB;
+    border: solid #4D1F01;
+    border-width: thick;
+    padding: 70px;
+    text-align: center;
+    border-radius: 40px;
+}
+.modal-header h2, .modal-body p, .modal-footer{
+    width: 100%;
+    text-align: center;
+}
+.modal-footer .btn-cancel, 
+.modal-footer .btn-delete, 
+.modal-footer .btn-activate
+{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    color: #F7F3EB !important;
+    background-color: #E45900;
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     font-size: 20px;
     margin: 25px;
 }

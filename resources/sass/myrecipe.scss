@@ -1,11 +1,22 @@
 // CSS
+<<<<<<< HEAD
 /* homepage tab */
 // myrecipe.blade.php
+=======
+// myrecipe.blade.php
+*{
+  font-family: "Nunito";
+}
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 .sidebar {
   font-family: "Nunito";
   background-color: #2E1301;
   max-width: 100%;
+<<<<<<< HEAD
   height: 115%;
+=======
+  height: 100%;
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   padding: 2rem;
   color: #F7F3EB;
   float: left;
@@ -59,6 +70,7 @@
 .tab_panel-box
 {
   /* min-height: 80%; */
+<<<<<<< HEAD
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.253);
   padding: 1rem 0.3rem;
   border-radius: 0.5rem 0.5rem;
@@ -67,4 +79,35 @@
 }
 .tab_panel-box.is-show {
   display: block;
+=======
+  height: auto;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.253);
+  padding: 2rem 0.3rem;
+  border-radius: 0.5rem 0.5rem;
+  background-color: #F7F3EB;
+  display: none;
+  
+}
+.tab_panel-box.is-show {
+  display: block;
+}
+.username{
+  color: #E45900;
+}
+
+@media (max-width: 992px) 
+{
+  .row
+  {
+    .col-auto
+    {
+      display: none;
+    }
+
+    .col
+    {
+      margin-left: 2.5em;
+    }
+  }
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 }

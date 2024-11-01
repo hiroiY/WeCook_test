@@ -7,6 +7,12 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+<<<<<<< HEAD
+=======
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Log;
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 
 class RegisterController extends Controller
 {
@@ -67,6 +73,31 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+<<<<<<< HEAD
         ]);
     }
+=======
+            'role_id' => User::USER_ROLE_ID,
+            'avatar' => 'default_avatar.png',
+        ]);
+    }
+
+    public function register(Request $request)
+    {
+        Log::info('Registration data:', $request->all());
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            Log::info('Validation failed:', $validator->errors()->all());
+        } else {
+            Log::info('Validation passed.');
+        }
+        $validator->validate();
+        event(new Registered($user = $this->create($request->all())));
+        Log::info('Registered event called.');
+        $this->guard()->login($user);
+        Log::info('User logged in.');
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 }

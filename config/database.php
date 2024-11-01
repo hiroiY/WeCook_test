@@ -33,7 +33,11 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
+<<<<<<< HEAD
             'url' => env('DB_URL'),
+=======
+            'url' => env('JAWSDB_URL'),
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
@@ -41,7 +45,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
+<<<<<<< HEAD
             'url' => env('DB_URL'),
+=======
+            'url' => env('JAWSDB_URL'),
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'laravel'),
@@ -61,7 +69,11 @@ return [
 
         'mariadb' => [
             'driver' => 'mariadb',
+<<<<<<< HEAD
             'url' => env('DB_URL'),
+=======
+            'url' => env('JAWSDB_URL'),
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'laravel'),
@@ -81,7 +93,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
+<<<<<<< HEAD
             'url' => env('DB_URL'),
+=======
+            'url' => env('JAWSDB_URL'),
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'laravel'),
@@ -96,7 +112,11 @@ return [
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
+<<<<<<< HEAD
             'url' => env('DB_URL'),
+=======
+            'url' => env('JAWSDB_URL'),
+>>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '1433'),
             'database' => env('DB_DATABASE', 'laravel'),

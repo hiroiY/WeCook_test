@@ -1,0 +1,65 @@
+
+//modal
+.questionEdit {
+
+  .modal-content
+  {
+    box-shadow: .1em .1em 1em #4d1f01aa;
+    background-color: #FCF0E9;
+  }
+
+  #btn-close 
+  {
+    background-color: transparent;
+    font-size: 1.2em;
+    color: #4d1f01;
+    box-shadow: .1em .08rem .1em #8875699a;
+    border-radius: 50%;
+  }
+  
+  .modal-title{
+    text-decoration: underline dotted #887569 .15em;
+  }
+  .save-comment 
+  {
+    border:solid #e45900;
+  }
+  
+  .btn-cancel,
+  .save-btn 
+  {
+    font-weight: 800;
+    font-size: 1.2em;
+    background-color: #4d1f0142;
+    color: #4d1f01b0;
+    border: none;
+    box-shadow: none;
+    border-radius: 1em;
+    box-shadow: .1em .08rem .1em #8875699a;
+  }
+  .error-message
+  {
+    color: red;
+    display: none;
+  } 
+  .form-control:invalid
+  {
+    border: solid red;
+  }
+  .form-control:invalid + .error-message 
+  {
+    display: block;
+  }
+  .save-question
+  {
+    color: #4d1f01;
+    background-color: #fefdfd;
+    font-size: 1.2em;
+    outline: solid #e45900;
+    border: none;
+  }
+  .current-question
+  {
+    font-size: 1.2em;
+  }
+}
