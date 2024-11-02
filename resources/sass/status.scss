@@ -5,23 +5,6 @@
 .modal-dialog{
     border: #4D1F01;
 }
-<<<<<<< HEAD
-.modal-content{
-    background-color: #F7F3EB;
-    border: solid #4D1F01;
-    padding: 70px;
-    text-align: center;
-    width: 700px;
-    border-radius: 40px;
-}
-.btn-cancel, .btn-delete, .btn-activate{
-    width: 150px;
-    height: 40px;
-    border-radius: 10px;
-    color: #F7F3EB;
-    background-color: #E45900;
-    border-color: #E45900;
-=======
 .custom-modal-dialog{
     max-width: 700px; 
 }
@@ -47,7 +30,6 @@
     border-radius: 10px;
     color: #F7F3EB !important;
     background-color: #E45900;
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     font-size: 20px;
     margin: 25px;
 }

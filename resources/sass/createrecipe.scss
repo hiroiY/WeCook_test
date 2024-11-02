@@ -1,15 +1,5 @@
 /* createrecipe */
 
-<<<<<<< HEAD
-*{
-    font-family: "Nunito";
-    background-color: #F7F3EB;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-=======
 .createrecipe * {
     font-family: "Nunito";
     margin: 0;
@@ -22,34 +12,12 @@
 }
 
 .createrecipe ._container {
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     width: 50%;
     margin: 0 auto;
     padding: 20px;
     background-color: #F7F3EB;
     border: 1px solid #e0e0e0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
-  }
-  
-  .breadcrumb {
-    font-size: 14px;
-    color: #a5a5a5;
-    margin-bottom: 20px;
-  }
-  
-  .breadcrumb a {
-    color: #e45900;
-    text-decoration: none;
-  }
-  
-  .recipe-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .upload-photo {
-=======
 }
 
 .createrecipe .breadcrumb {
@@ -69,7 +37,6 @@
 }
 
 .createrecipe .upload-photo {
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,24 +45,6 @@
     padding: 20px;
     margin-bottom: 20px;
     cursor: pointer;
-<<<<<<< HEAD
-  }
-  
-  .upload-photo img {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-  }
-  
-  .upload-photo span {
-    color: #e45900;
-    font-size: 16px;
-  }
-  
-  .recipe-name {
-    padding: 10px;
-    margin-bottom: 20px;
-=======
 }
 
 .createrecipe .upload-photo img {
@@ -112,24 +61,10 @@
 .createrecipe .recipe-name {
     padding: 10px;
     margin-bottom: 10px;
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     border: 1px solid #e45900;
     border-radius: 1cap;
     font-size: 16px;
     background-color: #F7F3EB;
-<<<<<<< HEAD
-  }
-  
-  .dropdowns {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
- 
-   
-  }
-  
-  .dropdown {
-=======
     
 }
 
@@ -141,24 +76,10 @@
 
 .createrecipe .dish-id ,
 .createrecipe .cooking_time{
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     padding: 10px;
     border: 1px solid #e45900;
     border-radius: 1cap;
     font-size: 16px;
-<<<<<<< HEAD
-    width: 48%;
-    background-color: #F7F3EB;
-  }
-  
-  h3 {
-    margin-bottom: 10px;
-    color: #5a5a5a;
-  }
-  
-  .ingredients,
-  .description {
-=======
     // width: 48%;
     background-color: #F7F3EB;
     color: #5a5a5a;
@@ -171,7 +92,6 @@
 
 .createrecipe .ingredients,
 .createrecipe .description {
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #e45900;
@@ -179,17 +99,10 @@
     font-size: 16px;
     height: 150px;
     resize: vertical;
-<<<<<<< HEAD
-    background-color: #F7F3EB;;
-  }
-  
-  .publish-button {
-=======
     background-color: #F7F3EB;
 }
 
 .createrecipe .publish-button {
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     padding: 15px;
     background-color: #e45900;
     border-radius: 1cap;
@@ -198,17 +111,9 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-<<<<<<< HEAD
-  }
-  
-  .publish-button:hover {
-    background-color: #c64900;
-  }
-=======
     box-shadow: .1em .1em .3em #5a5a5a6f;
 }
 
 .createrecipe .publish-button:hover {
     background-color: #c64900;
 }
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9

@@ -1,20 +1,6 @@
 .row {
   margin: 2em auto 1em auto;
 }
-<<<<<<< HEAD
-.row .recipe_photo{
-  // width: 320px;
-  // height: 240px;
-  width: 24em;
-  height: 16em;
-  object-fit: auto;
-  object-position: center;
-  margin: 2.5em auto 0 auto;
-  box-shadow: .1em .1em .1em #5c5c5c62;
-}
-.row .card {
-  width: 100%;
-=======
 .card a >.recipe_photo {
   // width: 320px;
   // height: 240px;
@@ -29,29 +15,11 @@
 .row .card {
   width: 100%;
   height: 30em;
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   margin-bottom: 3em;
   padding: .8em;
   border-radius: 1em 1em;
   box-shadow: .01em .1em .1em #5c5c5c62;
 }
-<<<<<<< HEAD
-.row .card-body{
-  font-family: "Nunito";
-}
-.row .card-title {
-  color: #4D1F01;
-  font-weight: bold;
-  max-width: 9.2em;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  padding-bottom: .5em;
-  margin-left: -.5em;
-  margin-right: 1em;
-}
-.row .card-body p {
-=======
 .card a .card-title {
   text-shadow: none;
   color: #4D1F01;
@@ -66,47 +34,30 @@
   // margin-right: 1em;
 }
 .card  .card-text {
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   color: #5c5c5cbc;
   font-size: small;
   overflow: hidden;
   width: 100%;
-<<<<<<< HEAD
-  height: 6em;
-  overflow: hidden;
-=======
   min-height: 6em;
   max-height: 8em;
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   display: -webkit-box;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
-<<<<<<< HEAD
-}
-.row a {
-=======
   line-clamp: 4;
 }
 .card a {
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   margin-left: .3em;
   color: #e45900;
   text-decoration: none;
   font-family: FontAwesome;
   font: var(--fa-font-regular);
   font-size: 1.9em;
-<<<<<<< HEAD
-  text-shadow: .01em .01em .09em #5c5c5cbc;
-=======
   text-shadow: .01em .01em .06em #5c5c5cbc;
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
   span {
     font-size: .5em;
     font-weight: bold;
   }
-<<<<<<< HEAD
-=======
 }
 .tab_panel-box .sorry {
   font-family: "Nunito";
@@ -187,5 +138,4 @@
     width: 50%;
   }
 
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 }
