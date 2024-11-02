@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use Illuminate\Http\Request;
-=======
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -13,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 
 class HomeController extends Controller
 {
@@ -22,12 +18,6 @@ class HomeController extends Controller
      *
      * @return void
      */
-<<<<<<< HEAD
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-=======
 
      private $post;
      private $user;
@@ -39,19 +29,11 @@ class HomeController extends Controller
         $this->user = $user;
     }
 
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-<<<<<<< HEAD
-    public function index()
-    {
-        return view('homepage.homepage');
-    }
-
-=======
 
      //Get posts method on Homepage
     private function getRecentlyPosts($page = 1, $perPage = 9)
@@ -167,52 +149,28 @@ class HomeController extends Controller
 
         return view('homepage.homepage', compact('recently_posts','appetizer_posts','sideDish_posts','mainDish_posts','dessert_posts'));
     }
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     public function admin()
     {
         return view('admin');
     }
-<<<<<<< HEAD
-    public function mypage()
-    {
-        return view('mypage');
-    }
-    public function mypage2()
-    {
-        return view('mybookmark');
-    }
-=======
 
     public function mybookmark()
     {
         return view('mypage.mybookmark');
     }
 
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     public function myrecipe()
     {
         return view('mypage.myrecipe');
     }
 
-<<<<<<< HEAD
-
-
-    public function search() 
-    {
-        return view('search.search');
-    }
-=======
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     public function profile_edit()
     {
         return view('profile_edit');
     }
-<<<<<<< HEAD
-=======
     
     public function search() 
     {
         return view('search.search');
     }
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 }

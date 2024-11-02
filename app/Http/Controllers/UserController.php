@@ -2,14 +2,6 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use Illuminate\Http\Request;
-
-class UserController extends Controller
-{
-    public function writer() {
-        return view('writers.writer');
-=======
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -27,6 +19,5 @@ class UserController extends Controller
     {
         $this->user = $user;
         $this->post = $post;
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     }
 }

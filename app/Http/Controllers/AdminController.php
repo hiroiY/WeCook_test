@@ -2,18 +2,6 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use Illuminate\Http\Request;
-
-class AdminController extends Controller
-{
-    public function usermanagement(){
-        return view('admin.usermanagement');
-    }
-    public function postmanagement(){
-        return view('admin.postmanagement');
-    }
-=======
 use App\Http\Controllers;
 use App\Models\User;
 use App\Models\Post;
@@ -113,15 +101,12 @@ class AdminController extends Controller
     }
 
 
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
     public function userstatus(){                                 
         return view('admin.modal.user_status');                  
     }                                                             
     public function poststatus(){                                 
         return view('admin.modal.post_status');                 
     }
-<<<<<<< HEAD
-=======
     public function logout(Request $request)
     {
         $request->session()->invalidate();
@@ -132,5 +117,4 @@ class AdminController extends Controller
     }
 
 
->>>>>>> 77b54b46424960bdd2cf7ccfb3a2614090b111f9
 }
